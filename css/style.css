@@ -1,0 +1,247 @@
+html{
+	width:100%; height:100%; margin:0; padding:0;
+}
+
+body{
+	width:100%; height:100%; margin:0; padding:0;
+}
+
+
+/* ---------------------- Box Rooms -------------------------------- */
+#box_scene {
+    background-color: #d8ecf7;
+    width:500px; 
+    height:100px;
+    margin-top: 2%;
+    margin-left: 1%;
+    border: 1px solid #afcde3;
+}
+
+#escenas {
+    padding-left: 1%;
+    padding-bottom: 2%;
+}
+
+#escenas li {
+    
+    display: block;
+    float: left; 
+    margin-left: 1%;
+ }
+
+/* ---------------------- Box Sculptures ------------------------------ */
+#box_sculpture {
+    background-color: #E84855;
+    width:500px; 
+    height:100px;
+    margin-top: 1%;
+    margin-left: 1%;
+    border: 1px solid #afcde3;
+}
+
+#esculturas {
+    padding-left: 1%;
+    padding-bottom: 2%;
+}
+
+#esculturas li {
+    
+    display: block;
+    float: left; 
+    margin-left: 1%;
+}
+
+
+/* -------------------------- Boton Imagenes -------------------------- */
+.boton img {
+    width:70px; 
+    height:70px;
+}
+
+
+/* -------------------------- Imagenes Sculptures ---------------------- */
+
+#sculpture1 img {
+    border: 3px solid #73AD21;
+}
+#sculpture2 img {
+    border: 3px solid #73AD21;
+}
+#sculpture3 img {
+    border: 3px solid #73AD21;
+}
+#sculpture4 img {
+    border: 3px solid #73AD21;
+}
+#sculpture5 img {
+    border: 3px solid #73AD21;
+}
+#sculpture6 img {
+    border: 3px solid #73AD21;
+}
+
+/* -------------------------- Imagenes Rooms -------------------------- */
+
+#imagen1 img {
+    border: 3px solid #73AD21;
+}
+#imagen2 img {
+    border: 3px solid #73AD21;
+}
+#imagen3 img {
+    border: 3px solid #73AD21;
+}
+#imagen4 img {
+    border: 3px solid #73AD21;
+}
+#imagen5 img {
+    border: 3px solid #73AD21;
+}
+#imagen6 img {
+    border: 3px solid #73AD21;
+}
+
+/*
+#escenas li:hover {
+    border: 3px solid #1C1C1C;
+}
+
+#escenas li:active {
+    border: 3px solid #1C1C1C;
+}
+*/
+ #lienzo{
+    background-color: #c1c1c1;
+    margin-left: 1%;
+    margin-top: 1%;
+    border: 1px solid #73AD21;
+}
+
+/* -------------------------- Radius Button Rooms -------------------------- */
+
+#boton1{
+   display:none;
+}
+
+#boton2{
+   display:none;
+}
+
+#boton3{
+   display:none;
+}
+
+#boton4{
+   display:none;
+}
+
+#boton5{
+   display:none;
+}
+
+#boton6{
+   display:none;
+}
+
+/* -------------------------- Radius Button Sculptures -------------------------- */
+
+#boton7{
+   display:none;
+}
+
+#boton8{
+   display:none;
+}
+
+#boton9{
+   display:none;
+}
+
+#boton10{
+   display:none;
+}
+
+#boton11{
+   display:none;
+}
+
+#boton12{
+   display:none;
+}
+
+/* -------------------------- Auxiliar-------------------------- */
+aside {
+    width : 500px;
+    margin-right : 30px;
+    margin-top : 10px;
+    float : right;
+}
+
+/* -------------------------- Formulario de información -------------------------- */
+
+#viewElement {
+    width:300px; height:300px;
+    border: border: 1px solid #afcde3;
+    margin-top: 1%;
+    margin-right: 1%;
+    float : right;
+ }
+
+#editInfo {
+    font-family:Arial;font-size:14px;
+    background-color: #d8ecf7;
+    width:800px; 
+    height: 500px;
+    margin-top: 1%;
+    margin-right: 1%;
+    float : right;
+    border: 1px solid #afcde3;
+}
+
+#editInfo h1{
+    font-family:Arial;
+    background-color: #d8ecf7;
+    margin-left: 25%;
+}
+
+#editInfo label {
+    margin-left: 2%;
+    display: inline-block;
+    width: 100px;
+    color:#6c6c6c;
+}
+
+#editInfo input{
+    display: inline-block;
+    line-height:31px;
+    margin-right: 5%;
+}
+
+#editInfo input,textarea{
+    width:288px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background-color:rgba(255,255,255,.6);
+    border:solid 1px #b6c7cb;
+}
+
+#editInfo textarea{
+    margin-left: 2%;
+    width: 770px;
+    resize: none;
+}
+
+.row{
+    margin:5px;
+}
+
+#boxTextInfo{
+    margin-bottom: 1%;
+    margin-left: 1%;
+}
+
+#editInfo #botonesFicha{
+    
+    margin-left: 12.5%;
+}
