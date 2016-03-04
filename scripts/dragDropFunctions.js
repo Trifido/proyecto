@@ -105,9 +105,9 @@ function Drop(evt)
                 NewCoord.x= cx;
                 NewCoord.y= cy;
 
-                var p= document.getElementById("info");
+               /* var p= document.getElementById("info");
                 var texto = document.createTextNode(" NUEVO X:" + (cx+posW) + " NUEVO Y:" + (cy+posH));
-                p.appendChild(texto);
+                p.appendChild(texto); */
             }
 
             DragTarget.setAttributeNS(null, 'cX', cx + posW);
@@ -138,11 +138,11 @@ function Drop(evt)
         NewCoord.y= rotY;*/
 //--------------------------------
                                                                                                                       //NewCoord.x +', '+ NewCoord.y
-        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
+        /*DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
 
         var p= document.getElementById("info");
         var texto = document.createTextNode(" CLICK CX: " +  DragTarget.getAttributeNS(null,'cX') + "  CY: " + DragTarget.getAttributeNS(null,'cY'));
-        p.appendChild(texto);
+        p.appendChild(texto);*/
         
     }
     DragTarget = null;
