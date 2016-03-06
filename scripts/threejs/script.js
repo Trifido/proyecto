@@ -22,6 +22,27 @@ function refresh(){
 	renderer.render(scene, camera.get_object());
 }
 
+function loadModel(path){
+	var oLoader = new THREE.OBJLoader();
+	oLoader.load(path, function(object) {
+		
+		object.position.x= 0;
+		object.position.y= 0;
+		object.position.z= 0;
+
+		object.scale.set(0.1, 0.1, 0.1);
+		model = object;
+		model.name= "modelo";
+		scene.add(model);
+	});
+	refresh();
+}
+
+function removeModel(){
+	scene.remove(model);
+	refresh();
+}
+
 function main() {
 	renderer.setClearColor(0x6E6E6E,1.0);	//0x6E6E6E
 	//window.innerWidth/2.72, window.innerHeight/1.3
@@ -38,17 +59,7 @@ function main() {
 	// *************************   Luz  ***************************** //
 	//var venus= new Objetos('./models/venus/venus.obj', 0, 0, 0, './models/venus/venusdiffuse.tif');
 
-	var oLoader = new THREE.OBJLoader();
-	oLoader.load('./models/venus/venus.obj', function(object) {
-		
-		object.position.x= 0;
-		object.position.y= 0;
-		object.position.z= 0;
-
-		object.scale.set(0.1, 0.1, 0.1);
-		var model = object;
-		scene.add(model);
-	});
+	
 
 
 	var iluminacion= new Luz(0xafffff, 1, 500000);
