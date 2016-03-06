@@ -26,6 +26,9 @@
 		<script  type="text/javascript" src="room.js"></script>
 		<script  type="text/javascript" src="sculpture.js"></script>
 
+		<!-- Scripts para montar escenario X3D -->
+		<script  type="text/javascript" src="scripts/createX3DScene.js"></script>
+
 		<link href="./css/style.css" rel="stylesheet" type='text/css' />
 
 		<script>
@@ -100,10 +103,11 @@
 
 		</div>
 
-
+		<input type="button" id="botonX3D" value="Descargar X3D"  onclick="mostrar()/*descargarArchivo(generarX3D(), 'archivo.x3d')*/"/>
 
 		<aside>
 		<p id=info>"Info: " </p>
+
 		</aside>
 <!--
 		<section id="editInfo">
@@ -166,6 +170,13 @@
 			onmousemove='Drag(evt)'
 			onmouseup='Drop(evt)'>
 		</svg>
+
+		<script type="text/javascript">
+			function mostrar(){
+
+			    descargarArchivo(generarX3D(), 'archivo.x3d')
+			};
+		</script>
 
 	</body>
 </html>
