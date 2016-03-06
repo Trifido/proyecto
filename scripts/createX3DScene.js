@@ -36,20 +36,7 @@ function obtenerEscenario(objetoDinamico) {
         z: objetoDinamico.getAttributeNS(null, 'y')
     };
 };
-/*
-//Función de ayuda: "escapa" las entidades XML necesarias
-//para los valores (y atributos) del archivo XML
-function escaparXML(cadena) {
-    if (typeof cadena !== 'string') {
-        return '';
-    };
-    cadena = cadena.replace('&', '&amp;')
-        .replace('<', '&lt;')
-        .replace('>', '&gt;')
-        .replace('"', '&quot;');
-    return cadena;
-};
-*/
+
 //Genera un objeto Blob con los datos en un archivo XML
 function mostrar(){
     var nelements=document.getElementById('lienzo').childNodes.length;

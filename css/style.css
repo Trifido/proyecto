@@ -169,14 +169,6 @@ body{
    display:none;
 }
 
-/* -------------------------- Auxiliar-------------------------- */
-aside {
-    width : 500px;
-    margin-right : 30px;
-    margin-top : 10px;
-    float : right;
-}
-
 /* -------------------------- Formulario de información -------------------------- */
 
 #viewElement {
@@ -244,4 +236,27 @@ aside {
 #editInfo #botonesFicha{
     
     margin-left: 12.5%;
+}
+
+
+/* -------------------------- Auxiliar-------------------------- */
+aside {
+    width : 500px;
+    margin-top : -200px;
+    margin-left: 500px;
+    float : right;
+}
+
+/* -------------------------- Boton de creación de X3D -------------------------- */
+#botonX3D{
+    display: inline-block;
+    line-height:31px;
+    margin-right: 5%;
+
+    width:288px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background-color: #d8ecf7;
+    border:solid 1px #b6c7cb;
 }

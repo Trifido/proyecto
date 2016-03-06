@@ -18,7 +18,7 @@
 THREE.OrbitControls = function ( object, domElement ) {
 
 	this.object = object;
-	this.domElement = ( domElement !== undefined ) ? domElement : document;
+	this.domElement = ( domElement !== undefined ) ? domElement : document.getElementById('viewElement');
 
 	// API
 
@@ -383,37 +383,45 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	function onMouseDown( event ) {
 
-		if ( scope.enabled === false ) return;
-		event.preventDefault();
+		//domElement
+		//if (scope.domElement === document.getElementById('editInfo')){
+		//	alert("entra");
 
-		if ( event.button === scope.mouseButtons.ORBIT ) {
-			if ( scope.noRotate === true ) return;
+			if ( scope.enabled === false ) return;
+			event.preventDefault();
 
-			state = STATE.ROTATE;
+			if ( event.button === scope.mouseButtons.ORBIT ) {
+				if ( scope.noRotate === true ) return;
 
-			rotateStart.set( event.clientX, event.clientY );
+				state = STATE.ROTATE;
 
-		} else if ( event.button === scope.mouseButtons.ZOOM ) {
-			if ( scope.noZoom === true ) return;
+				rotateStart.set( event.clientX, event.clientY );
 
-			state = STATE.DOLLY;
+			} else if ( event.button === scope.mouseButtons.ZOOM ) {
+				if ( scope.noZoom === true ) return;
 
-			dollyStart.set( event.clientX, event.clientY );
+				state = STATE.DOLLY;
 
-		} else if ( event.button === scope.mouseButtons.PAN ) {
-			if ( scope.noPan === true ) return;
+				dollyStart.set( event.clientX, event.clientY );
 
-			state = STATE.PAN;
+			} else if ( event.button === scope.mouseButtons.PAN ) {
+				if ( scope.noPan === true ) return;
 
-			panStart.set( event.clientX, event.clientY );
+				state = STATE.PAN;
 
-		}
+				panStart.set( event.clientX, event.clientY );
 
-		if ( state !== STATE.NONE ) {
-			document.addEventListener( 'mousemove', onMouseMove, false );
-			document.addEventListener( 'mouseup', onMouseUp, false );
-			scope.dispatchEvent( startEvent );
-		}
+			}
+
+			if ( state !== STATE.NONE ) {
+				document.addEventListener( 'mousemove', onMouseMove, false );
+				document.addEventListener( 'mouseup', onMouseUp, false );
+				scope.dispatchEvent( startEvent );
+			}
+		//}
+		//else{
+		//	alert("no entra");
+		//}
 
 	}
 

@@ -109,10 +109,10 @@ function Drop(evt)
             DragTarget.setAttributeNS(null, 'cX', cx+posW);
             DragTarget.setAttributeNS(null, 'cY', cy+posH);
 
-            var p= document.getElementById("info");
+            /*var p= document.getElementById("info");
             var texto = document.createTextNode(" NUEVO CX:" + (cx+posW) + " NUEVO CY:" + (cy+posH));
             //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
-            p.appendChild(texto); 
+            p.appendChild(texto); */
         }
     }
     else if(flag==0){
@@ -140,10 +140,10 @@ function Drop(evt)
 
 
 //--------------------------------       
-        var p= document.getElementById("info");
+       /* var p= document.getElementById("info");
         var texto = document.createTextNode(" CLICK CX: " +  DragTarget.getAttributeNS(null,'cX') + "  CY: " + DragTarget.getAttributeNS(null,'cY'));
         //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
-        p.appendChild(texto);
+        p.appendChild(texto);*/
         
     }
     DragTarget = null;
