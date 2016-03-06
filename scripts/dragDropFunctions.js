@@ -104,19 +104,15 @@ function Drop(evt)
 
                 NewCoord.x= cx;
                 NewCoord.y= cy;
-
-               /* var p= document.getElementById("info");
-                var texto = document.createTextNode(" NUEVO X:" + (cx+posW) + " NUEVO Y:" + (cy+posH));
-                p.appendChild(texto); */
             }
 
-            DragTarget.setAttributeNS(null, 'cX', cx + posW);
-            DragTarget.setAttributeNS(null, 'cY', cy + posH);
+            DragTarget.setAttributeNS(null, 'cX', cx+posW);
+            DragTarget.setAttributeNS(null, 'cY', cy+posH);
 
-            /*var p= document.getElementById("info");
-            var texto = document.createTextNode("CX: " +  DragTarget.getAttributeNS(null,'cX')+ " CY: " + DragTarget.getAttributeNS(null,'cY'));
-            p.appendChild(texto);*/
-        
+            var p= document.getElementById("info");
+            var texto = document.createTextNode(" NUEVO CX:" + (cx+posW) + " NUEVO CY:" + (cy+posH));
+            //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
+            p.appendChild(texto); 
         }
     }
     else if(flag==0){
@@ -129,20 +125,25 @@ function Drop(evt)
         var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
         var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
 
-//--------------------------------
-     /*   var rad= (rot*Math.PI)/180;
-        var rotX= NewCoord.x*Math.cos(rad) + NewCoord.y*Math.sin(rad);
-        var rotY= (-1*NewCoord.x*Math.sin(rad)) + NewCoord.y*Math.cos(rad);
+        /*GetTrueCoords(evt);
+        var transMatrix = DragTarget.getCTM(); 
+        GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
+        GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
+        
+        NewCoord.x = TrueCoords.x - GrabPoint.x;
+        NewCoord.y = TrueCoords.y - GrabPoint.y;*/
 
-        NewCoord.x= rotX;
-        NewCoord.y= rotY;*/
-//--------------------------------
-                                                                                                                      //NewCoord.x +', '+ NewCoord.y
-        /*DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
 
+                                                                                                                    // NewCoord.x +', '+ NewCoord.y
+        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
+//--------------------------------
+
+
+//--------------------------------       
         var p= document.getElementById("info");
         var texto = document.createTextNode(" CLICK CX: " +  DragTarget.getAttributeNS(null,'cX') + "  CY: " + DragTarget.getAttributeNS(null,'cY'));
-        p.appendChild(texto);*/
+        //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
+        p.appendChild(texto);
         
     }
     DragTarget = null;

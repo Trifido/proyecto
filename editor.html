@@ -103,7 +103,7 @@
 
 		</div>
 
-		<input type="button" id="botonX3D" value="Descargar X3D"  onclick="mostrar()/*descargarArchivo(generarX3D(), 'archivo.x3d')*/"/>
+		<input type="button" id="botonX3D" value="Descargar X3D"  onclick="descargarArchivo(generarX3D(), 'archivo.x3d')"/>
 
 		<aside>
 		<p id=info>"Info: " </p>
@@ -170,13 +170,6 @@
 			onmousemove='Drag(evt)'
 			onmouseup='Drop(evt)'>
 		</svg>
-
-		<script type="text/javascript">
-			function mostrar(){
-
-			    descargarArchivo(generarX3D(), 'archivo.x3d')
-			};
-		</script>
 
 	</body>
 </html>

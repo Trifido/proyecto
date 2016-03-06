@@ -27,22 +27,22 @@ function isAlreadySculptureLoad( id ){
 function initSculpture(id){
 	switch(id){
 		case 6:
-			sculpture = new Sculpture('./img/models2D/venus.jpg', 40, 40, 0, 0);
+			sculpture = new Sculpture('venus','./img/models2D/venus.jpg', 40, 40, 0, 0);
 			break;
 		case 7:
-			sculpture = new Sculpture('./img/models2D/thinker.jpg', 60, 60, 50, 50);
+			sculpture = new Sculpture('thinker','./img/models2D/thinker.jpg', 60, 60, 0, 0);
 			break;
 		case 8:
-			sculpture = new Sculpture('./img/models2D/david.jpg', 50, 50, 50, 50);
+			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 50, 50);
 			break;
 		case 9:
-			sculpture = new Sculpture('./img/models2D/dragon.jpg', 40, 40, 50, 50);
+			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 50, 50);
 			break;
 		case 10:
-			sculpture = new Sculpture('./img/models2D/ramses2.jpg', 60, 60, 50, 50);
+			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 50, 50);
 			break;
 		case 11:
-			sculpture = new Sculpture('./img/models2D/pascua.jpg', 10, 10, 50, 50);
+			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 10, 10, 50, 50);
 			break;
 	}
 }

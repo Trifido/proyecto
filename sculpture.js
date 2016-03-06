@@ -1,7 +1,8 @@
 
-function Sculpture( pathLocation, altura, anchura, posX, posY){
+function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 
 	//Atributos para del objeto 
+	var nombre;
 	var location;
 	var coordX;
 	var coordY;
@@ -12,6 +13,7 @@ function Sculpture( pathLocation, altura, anchura, posX, posY){
 	
 
 	// Inicialización de los atributos
+	this.nombre= nombre;
 	this.height= altura;
 	this.width= anchura;
 	this.coordX= posX;
@@ -23,6 +25,7 @@ function Sculpture( pathLocation, altura, anchura, posX, posY){
 	// Contrucción del nodo hijo que representa a la escultura y se cuelga del lienzo
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
+	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);

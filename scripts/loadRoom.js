@@ -28,22 +28,22 @@ function isAlreadyLoad( id ){
 function initRoom(id){
 	switch(id){
 		case 0:
-			svgroom = new Room ('./img/rooms/sala1.png', 500, 500);
+			svgroom = new Room ('Sala1','./img/rooms/sala1.png', 500, 500);
 			break;
 		case 1:
-			svgroom = new Room ('./img/rooms/sala2.png', 500, 500);
+			svgroom = new Room ('Sala2','./img/rooms/sala2.png', 500, 500);
 			break;
 		case 2:
-			svgroom = new Room ('./img/rooms/sala3.png', 500, 500);
+			svgroom = new Room ('Sala3','./img/rooms/sala3.png', 500, 500);
 			break;
 		case 3:
-			svgroom = new Room ('./img/rooms/sala4.png', 500, 500);
+			svgroom = new Room ('Sala4','./img/rooms/sala4.png', 500, 500);
 			break;
 		case 4:
-			svgroom = new Room ('./img/rooms/sala5.png', 500, 500);
+			svgroom = new Room ('Sala5','./img/rooms/sala5.png', 500, 500);
 			break;
 		case 5:
-			svgroom = new Room ('./img/rooms/sala6.png', 500, 500);
+			svgroom = new Room ('Sala6','./img/rooms/sala6.png', 500, 500);
 			break;
 	}
 }

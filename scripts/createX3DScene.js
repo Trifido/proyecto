@@ -52,31 +52,31 @@ function escaparXML(cadena) {
 */
 //Genera un objeto Blob con los datos en un archivo XML
 function mostrar(){
-    var nelements=document.getElementById('box_scene');
+    var nelements=document.getElementById('lienzo').childNodes.length;
     alert(nelements);
 };
 
 function generarX3D() {
     var texto = [];
     texto.push('<X3D id="the_scene">\n');
-    texto.push('\t<Scene>\n');
+    texto.push('\t<Scene>\n\n');
 
     texto.push('\t\t<NavigationInfo headlight=\'false\'></NavigationInfo>\n');
     texto.push('\t\t<Viewpoint description="Faceted box, smooth shading" position="0 0 25"></Viewpoint>\n');
     texto.push('\t\t<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'0 0 0\' radius=\'5000000\' ></PointLight>\n');
 
     //Añadimos el escenario
-    var objDin= obtenerEscenario(document.getElementById('sala'));
+    //childNodes[0] es un texto vacío!!
+    var objDin= obtenerEscenario(document.getElementById('lienzo').childNodes[1]);
 
     texto.push('\t\t<Transform DEF="Position' + objDin.nombre +'" translation="0 0 0">\n');
     texto.push('\t\t\t<inline url="' + objDin.nombre + '.x3d"> </inline>\n');
-    texto.push('\t\t</Transform>\n');
+    texto.push('\t\t</Transform>\n\n');
 
     //Añadimos todos los objetos
-    var nelements=document.getElementById("lienzo").lenght;
+    var nelements=document.getElementById("lienzo").childNodes.length;
 
-    alert(nelements);
-    for(var i=1; i<nelements; i++){
+    for(var i=2; i<nelements; i++){
     
         objDin= obtenerDatos(document.getElementById('lienzo').childNodes[i]);
 
@@ -84,7 +84,7 @@ function generarX3D() {
         texto.push('\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="'+ objDin.x + ' ' + objDin.y + ' ' + objDin.z + '">\n');
         texto.push('\t\t\t\t<inline url="' + objDin.nombre + '.x3d"> </inline>\n');
         texto.push('\t\t\t</Transform>\n');
-        texto.push('\t\t</Transform>\n');
+        texto.push('\t\t</Transform>\n\n');
 
     }
 
