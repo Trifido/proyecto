@@ -31,6 +31,9 @@
 
 		<link href="./css/style.css" rel="stylesheet" type='text/css' />
 
+		<!-- Scripts Alba -->
+		<script  type="text/javascript" src="scripts/loadCamera.js"></script>
+
 		<script>
 			showMenu();
 			showSculptureMenu();
@@ -102,7 +105,37 @@
 			</ul>
 
 		</div>
-
+		
+		<!-- Cámaras -->
+		<div id="box_camera">
+			<ul id="cameras"> 
+				<li id="cameraD">
+					<input  type="radio" name="" id="botonCameraD" onclick="loadNewCamera()"/>
+					<label for="botonCameraD" class="boton"><img src="./img/camera/add.jpg" alt="Add more"></label>
+				</li>
+				<li id="camera1">
+					<input  type="radio" name="" id="botonCamera1" onclick="loadCamera(1)"/>
+					<label for="botonCamera1" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+				<li id="camera2">
+					<input  type="radio" name="" id="botonCamera2" onclick="loadCamera(2)"/>
+					<label for="botonCamera2" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+				<li id="camera3">
+					<input  type="radio" name="" id="botonCamera3" onclick="loadCamera(3)"/>
+					<label for="botonCamera3" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+				<li id="camera4">
+					<input  type="radio" name="" id="botonCamera4" onclick="loadCamera(4)"/>
+					<label for="botonCamera4" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+				<li id="camera5">
+					<input  type="radio" name="" id="botonCamera5" onclick="loadCamera(5)"/>
+					<label for="botonCamera5" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+			</ul>
+		</div>
+		
 		<aside>
 			<input type="button" id="botonX3D" value="Descargar X3D" onclick="descargarArchivo(generarX3D(), 'archivo.x3d')"/>
 		<!--	<p id=info>"Info: " </p> -->

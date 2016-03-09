@@ -1,0 +1,44 @@
+//Variables
+var activeCameras = 0;
+var maxCameras = 5;
+var selectedCamera = 0;
+
+//Funcion para cargar una camara nueva
+function loadNewCamera() {
+    if (activeCameras >= maxCameras)
+        return;
+    else {
+        activeCameras += 1;
+        $("#camera"+activeCameras+" img").css("visibility","visible");
+        loadCamera(activeCameras);
+    }
+}
+
+//Dice si una camara esta visible o no
+function isVisible ( id ) {
+    var visible = $("#camera"+id+" img").css("visibility");
+
+    if (visible == "visible")
+        return true;
+    else
+        return false;
+}
+
+//Desactivar todos los bordes
+function updateBorders() {
+    $("#camera1 img").css("border", "3px solid #73AD21");
+    $("#camera2 img").css("border", "3px solid #73AD21");
+    $("#camera3 img").css("border", "3px solid #73AD21");
+    $("#camera4 img").css("border", "3px solid #73AD21");
+    $("#camera5 img").css("border", "3px solid #73AD21");
+}
+
+//Funcion para seleccionar una camara ya creada
+function loadCamera( id ) {
+    if ( isVisible(id) ) {
+        updateBorders();
+        $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
+    }
+    else
+        return;
+}
