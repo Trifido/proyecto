@@ -33,6 +33,7 @@
 
 		<!-- Scripts Alba -->
 		<script  type="text/javascript" src="scripts/loadCamera.js"></script>
+		<script  type="text/javascript" src="scripts/loadPoint.js"></script>
 
 		<script>
 			showMenu();
@@ -110,28 +111,41 @@
 		<div id="box_camera">
 			<ul id="cameras"> 
 				<li id="cameraD">
-					<input  type="radio" name="" id="botonCameraD" onclick="loadNewCamera()"/>
+					<input  type="radio" id="botonCameraD" onclick="loadNewCamera()"/>
 					<label for="botonCameraD" class="boton"><img src="./img/camera/add.jpg" alt="Add more"></label>
 				</li>
 				<li id="camera1">
-					<input  type="radio" name="" id="botonCamera1" onclick="loadCamera(1)"/>
+					<input  type="radio" id="botonCamera1" onclick="loadCamera(1)"/>
 					<label for="botonCamera1" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
 				</li>
 				<li id="camera2">
-					<input  type="radio" name="" id="botonCamera2" onclick="loadCamera(2)"/>
+					<input  type="radio" id="botonCamera2" onclick="loadCamera(2)"/>
 					<label for="botonCamera2" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
 				</li>
 				<li id="camera3">
-					<input  type="radio" name="" id="botonCamera3" onclick="loadCamera(3)"/>
+					<input  type="radio" id="botonCamera3" onclick="loadCamera(3)"/>
 					<label for="botonCamera3" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
 				</li>
 				<li id="camera4">
-					<input  type="radio" name="" id="botonCamera4" onclick="loadCamera(4)"/>
+					<input  type="radio" id="botonCamera4" onclick="loadCamera(4)"/>
 					<label for="botonCamera4" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
 				</li>
 				<li id="camera5">
-					<input  type="radio" name="" id="botonCamera5" onclick="loadCamera(5)"/>
+					<input  type="radio" id="botonCamera5" onclick="loadCamera(5)"/>
 					<label for="botonCamera5" class="boton"><img src="./img/camera/camera.jpg" alt="Camera"></label>
+				</li>
+			</ul>
+		</div>
+		<!-- Cámaras -->
+		<div id="box_control">
+			<ul id="controls">
+				<li id="controlD">
+					<input  type="radio" id="botonControlD" onclick="loadNewPoint()"/>
+					<label for="botonControlD" class="boton"><img src="./img/camera/add.jpg" alt="Add more"></label>
+				</li>
+				<li id="control1">
+					<input  type="radio" id="botonControl1" onclick="loadPoint(1)"/>
+					<label for="botonControl1" class="boton"><img src="./img/camera/control.jpg" alt="Add more"></label>
 				</li>
 			</ul>
 		</div>

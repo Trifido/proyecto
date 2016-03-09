@@ -25,7 +25,7 @@ function isVisible ( id ) {
 }
 
 //Desactivar todos los bordes
-function updateBorders() {
+function updateBordersC() {
     $("#camera1 img").css("border", "3px solid #73AD21");
     $("#camera2 img").css("border", "3px solid #73AD21");
     $("#camera3 img").css("border", "3px solid #73AD21");
@@ -36,9 +36,17 @@ function updateBorders() {
 //Funcion para seleccionar una camara ya creada
 function loadCamera( id ) {
     if ( isVisible(id) ) {
-        updateBorders();
+        selectedCamera = id;
+
+        updateBordersC();
         $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
+
+        activateControl();
     }
     else
         return;
+}
+
+function activateControl() {
+    $("#box_control").css("visibility", "visible");
 }
