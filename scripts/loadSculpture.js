@@ -1,5 +1,6 @@
 
 var sculptureLoads= [false, false, false, false, false, false];
+var nameScultureLoad;
 
 //Control de la sala que ha sido cargada.
 function updateSculpture( id ){
@@ -29,26 +30,32 @@ function initSculpture(id){
 		case 6:
 			sculpture = new Sculpture('venus','./img/models2D/venus.jpg', 40, 40, 0, 0);
 			loadModel('./models/venus/venus.obj');
+			nameScultureLoad= 'venus';
 			break;
 		case 7:
 			sculpture = new Sculpture('thinker','./img/models2D/thinker.jpg', 60, 60, 0, 0);
 			loadModel('./models/thinker/thinker.obj');
+			nameScultureLoad= 'thinker';
 			break;
 		case 8:
 			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 50, 50);
 			loadModel('./models/david/david.obj');
+			nameScultureLoad= 'david';
 			break;
 		case 9:
 			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 50, 50);
 			loadModel('./models/dragon/dragon.obj');
+			nameScultureLoad= 'dragon';
 			break;
 		case 10:
 			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 50, 50);
 			loadModel('./models/ramses2/ramses2.obj');
+			nameScultureLoad= 'ramses2';
 			break;
 		case 11:
 			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 10, 10, 50, 50);
 			loadModel('./models/pascua/pascua.obj');
+			nameScultureLoad= 'pascua';
 			break;
 	}
 }
@@ -65,6 +72,17 @@ function loadSculpture( id ){
 		else if( !isAlreadySculptureLoad(id) ){
 			updateSculpture(id);
 			initSculpture(id);
+		}
+	}
+}
+
+//Funcion para eliminar y cargar otros modelos de esculturas desde un click de SVG
+function changeSculture( id ){
+	if(RoomInit){
+		if( nameScultureLoad != id ){
+			removeModel();
+			loadModel('./models/'+id+'/'+id+'.obj');
+			nameScultureLoad= id;
 		}
 	}
 }

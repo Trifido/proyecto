@@ -39,6 +39,7 @@ function Grab(evt)
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
         flag= 0;
+        changeSculture(targetElement.getAttributeNS(null,'nombre'));
     }
 };
 
