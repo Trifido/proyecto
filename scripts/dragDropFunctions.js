@@ -107,8 +107,11 @@ function Drop(evt)
                 cy= rotY;
 
                 NewCoord.x= cx - posW;
-                NewCoord.y= cy - posH;
-                
+                NewCoord.y= cy - posH;  
+            }
+            else{
+                cx= NewCoord.x + posW;
+                cy= NewCoord.y + posH;
             }
 
             DragTarget.setAttributeNS(null, 'cX', cx);
