@@ -35,11 +35,11 @@ function Grab(evt)
         DragTarget = targetElement;
 
         var transMatrix = DragTarget.getCTM();
+
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
         flag= 0;
-        changeSculture(targetElement.getAttributeNS(null,'nombre'));
     }
 };
 
@@ -52,16 +52,15 @@ function Drag(evt)
     // if we don't currently have an element in tow, don't do anything
     if (DragTarget)
     {
-        // account for the offset between the element's origin and the
-        //    exact place we grabbed it... this way, the drag will look more natural
+
+        var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
+        var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
+        var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
 
         NewCoord.x = TrueCoords.x - GrabPoint.x;
         NewCoord.y = TrueCoords.y - GrabPoint.y;
 
         //Correción del cambio de origen de coordenadas local de DragTarget
-        var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
-        var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
-        var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
 
        if(rot>0){
             var rad= (rot*Math.PI)/180;
@@ -77,6 +76,7 @@ function Drag(evt)
 
         DragTarget.setAttributeNS(null, 'coordX', NewCoord.x);
         DragTarget.setAttributeNS(null, 'coordY', NewCoord.y);
+
         flag= 1;
     }
 };
@@ -95,56 +95,44 @@ function Drop(evt)
             var cy= NewCoord.y;
 
             if(rot>0){
+                //rot *= 3;
+                var vx= NewCoord.x + posW;
+                var vy= NewCoord.y + posH;
 
                 var rad= (rot*Math.PI)/180;
-                var rotX= NewCoord.x*Math.cos(rad) + NewCoord.y*Math.sin(rad);
-                var rotY= (-1*NewCoord.x*Math.sin(rad)) + NewCoord.y*Math.cos(rad);
+                var rotX= vx*Math.cos(rad) - vy*Math.sin(rad);
+                var rotY= (vx*Math.sin(rad)) + vy*Math.cos(rad);
 
                 cx= rotX;
                 cy= rotY;
 
-                NewCoord.x= cx;
-                NewCoord.y= cy;
+                NewCoord.x= cx - posW;
+                NewCoord.y= cy - posH;
+                
             }
 
-            DragTarget.setAttributeNS(null, 'cX', cx+posW);
-            DragTarget.setAttributeNS(null, 'cY', cy+posH);
+            DragTarget.setAttributeNS(null, 'cX', cx);
+            DragTarget.setAttributeNS(null, 'cY', cy);
 
             /*var p= document.getElementById("info");
-            var texto = document.createTextNode(" NUEVO CX:" + (cx+posW) + " NUEVO CY:" + (cy+posH));
-            //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
+            var texto = document.createTextNode(" NUEVO X: " + (cx+posW) + " NUEVO Y: " + (cy+posH) );
             p.appendChild(texto); */
+
+            //transValueX.value= cx;
+            //transValueY.value= cy;
         }
     }
     else if(flag==0){
-        // En caso de ser un click actualizar la rotación
         var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
-        rot += 10;
+        rot += 90;
         rot %=360;
         DragTarget.setAttributeNS(null,'rotation',rot);
 
         var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
         var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
-
-        /*GetTrueCoords(evt);
-        var transMatrix = DragTarget.getCTM(); 
-        GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
-        GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
         
-        NewCoord.x = TrueCoords.x - GrabPoint.x;
-        NewCoord.y = TrueCoords.y - GrabPoint.y;*/
-
-
-                                                                                                                    // NewCoord.x +', '+ NewCoord.y
-        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
-//--------------------------------
-
-
-//--------------------------------       
-       /* var p= document.getElementById("info");
-        var texto = document.createTextNode(" CLICK CX: " +  DragTarget.getAttributeNS(null,'cX') + "  CY: " + DragTarget.getAttributeNS(null,'cY'));
-        //var texto = document.createTextNode(" CLICK X: " + NewCoord.x + "  Y: " + NewCoord.y );
-        p.appendChild(texto);*/
+        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' 
+            + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
         
     }
     DragTarget = null;
