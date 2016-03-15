@@ -39,6 +39,7 @@ function Grab(evt)
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
+        changeSculture(targetElement.getAttributeNS(null,'nombre'));
         flag= 0;
     }
 };
@@ -95,7 +96,6 @@ function Drop(evt)
             var cy= NewCoord.y;
 
             if(rot>0){
-                //rot *= 3;
                 var vx= NewCoord.x + posW;
                 var vy= NewCoord.y + posH;
 
@@ -113,13 +113,6 @@ function Drop(evt)
 
             DragTarget.setAttributeNS(null, 'cX', cx);
             DragTarget.setAttributeNS(null, 'cY', cy);
-
-            /*var p= document.getElementById("info");
-            var texto = document.createTextNode(" NUEVO X: " + (cx+posW) + " NUEVO Y: " + (cy+posH) );
-            p.appendChild(texto); */
-
-            //transValueX.value= cx;
-            //transValueY.value= cy;
         }
     }
     else if(flag==0){
