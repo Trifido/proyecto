@@ -75,9 +75,6 @@ function Drag(evt)
         DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + 0 +', ' + 0 + ') '
              + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')');
 
-        DragTarget.setAttributeNS(null, 'coordX', NewCoord.x);
-        DragTarget.setAttributeNS(null, 'coordY', NewCoord.y);
-
         flag= 1;
     }
 };
@@ -114,6 +111,8 @@ function Drop(evt)
                 cy= NewCoord.y + posH;
             }
 
+            DragTarget.setAttributeNS(null, 'coordX', NewCoord.x);
+            DragTarget.setAttributeNS(null, 'coordY', NewCoord.y);
             DragTarget.setAttributeNS(null, 'cX', cx);
             DragTarget.setAttributeNS(null, 'cY', cy);
         }
@@ -126,6 +125,8 @@ function Drop(evt)
 
         var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
         var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
+        NewCoord.x= parseFloat(DragTarget.getAttributeNS(null,'coordX'));
+        NewCoord.y= parseFloat(DragTarget.getAttributeNS(null,'coordY'));
         
         DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' 
             + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 

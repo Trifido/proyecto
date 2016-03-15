@@ -38,22 +38,22 @@ function initSculpture(id){
 			nameScultureLoad= 'thinker';
 			break;
 		case 8:
-			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 50, 50);
+			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 0, 0);
 			loadModel('./models/david/david.obj');
 			nameScultureLoad= 'david';
 			break;
 		case 9:
-			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 50, 50);
+			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 0, 0);
 			loadModel('./models/dragon/dragon.obj');
 			nameScultureLoad= 'dragon';
 			break;
 		case 10:
-			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 50, 50);
+			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 0, 0);
 			loadModel('./models/ramses2/ramses2.obj');
 			nameScultureLoad= 'ramses2';
 			break;
 		case 11:
-			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 10, 10, 50, 50);
+			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 30, 30, 0, 0);
 			loadModel('./models/pascua/pascua.obj');
 			nameScultureLoad= 'pascua';
 			break;
