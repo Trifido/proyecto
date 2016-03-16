@@ -29,6 +29,7 @@ function Grab(evt)
 {
     // find out which element we moused down on
     targetElement = evt.target;
+
     // you cannot drag the background itself, so ignore any attempts to mouse down on it
     if ( BackDrop != targetElement && targetElement.id != 'sala'){
         //set the item moused down on as the element to be dragged
