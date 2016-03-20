@@ -11,8 +11,8 @@ function loadNewCamera(){
         activeCameras += 1;
         $("#camera"+activeCameras+" img").css("visibility","visible");
         loadCamera(activeCameras);
-        newCamera = new Camera("camara"+activeCameras, "./img/camera/cameraT.png", 0, 0);
 
+        newCamera = new Camera("camara"+activeCameras, "./img/camera/cameraT.png", 0, 0);
     }
 }
 
@@ -35,6 +35,18 @@ function updateBordersC(){
     $("#camera5 img").css("border", "3px solid #73AD21");
 }
 
+//Desactivar todas las visibilidades
+function updateVisibilityC(){
+    var j = 0;
+    $(".camera").each(function( i, obj ) {
+
+        window.alert(obj.);
+
+        j++;
+    });
+    window.alert("Pos i e: "+j);
+}
+
 //Funcion para seleccionar una camara ya creada
 function loadCamera( id ){
     if ( isVisible(id) ) {
@@ -43,7 +55,11 @@ function loadCamera( id ){
         updateBordersC();
         $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
 
-        activateControl();
+        //updateVisibilityC();
+        //var n = "camara" + id;
+        //window.alert($("image[name="+ n +"]").attr("href"));
+
+        activateControl(); // Viewpoints
     }
     else
         return;

@@ -1,6 +1,3 @@
-/**
- * Created by mipc on 15/03/2016.
- */
 function Camera( vname, vpath, vposX, vposY ){
 
     var sideLength = 50;
@@ -16,7 +13,7 @@ function Camera( vname, vpath, vposX, vposY ){
     //Atributos de la representacion grafica
     this.svgObject.setAttributeNS(null, 'name', this.name);
     this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.path);
-    this.svgObject.setAttributeNS(null,'rotation', this.rotation);
+    this.svgObject.setAttributeNS(null, 'class', 'camera'); // Para localizarla luego por su clase
     // Esquina del objeto
     this.svgObject.setAttributeNS(null,'coordX',this.posX);
     this.svgObject.setAttributeNS(null,'coordY',this.posY);
@@ -26,10 +23,12 @@ function Camera( vname, vpath, vposX, vposY ){
         // Para que se visualice
     this.svgObject.setAttributeNS(null,'height', sideLength);
     this.svgObject.setAttributeNS(null,'width', sideLength);
-    this.svgObject.setAttributeNS(null, 'visibility', 'visible');
-
+    this.svgObject.setAttributeNS(null,'rotation', this.rotation);
     //this.svgObject.setAttributeNS(null,'opacity', 0.9);
-    //this.svgObject.setAttributeNS(null, 'class', "camera"); // Para localizarla luego por su clase
 
     document.getElementById('lienzo').appendChild(this.svgObject);
+}
+
+Camera.prototype.setVisibility = function( value ) {
+    this.svgObject.setAttributeNS(null, 'visibility', value);
 }
