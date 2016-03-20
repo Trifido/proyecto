@@ -21,6 +21,7 @@
 
 		<!-- Scripts para SVG -->
 		<script  type="text/javascript" src="scripts/loadRoom.js"></script>
+		<script  type="text/javascript" src="scripts/loadMenu.js"></script>
 		<script  type="text/javascript" src="scripts/loadSculpture.js"></script>
 		<script  type="text/javascript" src="scripts/removeSculpture.js"></script>
 		<script  type="text/javascript" src="scripts/dragDropFunctions.js"></script>
@@ -44,7 +45,7 @@
     </head>
 	   
 	<!-- Se carga la escena threejs --> 
-	<body onload="main();" >
+	<body  onload="main();" >
 		<!-- Contenedor de salas -->
 		<div id="box_scene">
 			<!-- Lista con las salas que se guardan en el contenedor -->
@@ -215,7 +216,8 @@
 			onload='Init(evt)'
 			onmousedown='Grab(evt)'
 			onmousemove='Drag(evt)'
-			onmouseup='Drop(evt)'>
+			onmouseup='Drop(evt)'
+			oncontextmenu='loadMenu()'>
 		</svg>
 
 	</body>

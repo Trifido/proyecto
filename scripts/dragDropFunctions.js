@@ -29,7 +29,6 @@ function Grab(evt)
 {
     // find out which element we moused down on
     targetElement = evt.target;
-
     // you cannot drag the background itself, so ignore any attempts to mouse down on it
     if ( BackDrop != targetElement && targetElement.id != 'sala'){
         //set the item moused down on as the element to be dragged
@@ -120,7 +119,7 @@ function Drop(evt)
     }
     else if(flag==0){
         var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
-        rot += 90;
+        rot += 10;
         rot %=360;
         DragTarget.setAttributeNS(null,'rotation',rot);
 
@@ -131,6 +130,8 @@ function Drop(evt)
         
         DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' 
             + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
+
+        //loadMenu(DragTarget);
         
     }
     DragTarget = null;
