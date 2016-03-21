@@ -6,11 +6,18 @@ var BackDrop = null;
 var Sala = null;
 var DragTarget = null;
 var targetElement= null;
-var isClick= false;
+var elementoAnterior= null;
 // El flag diferencia el click del drag
-var flag=null;
+var clickFlag=null;
+// EL menú de los elementos
+//var menu=null;
 
 var NewCoord = {
+    x: 0,
+    y: 0
+};
+
+var lMousePos = {
     x: 0,
     y: 0
 };
@@ -21,6 +28,11 @@ function Init(evt)
     TrueCoords = lienzo.createSVGPoint();
     GrabPoint = lienzo.createSVGPoint();
     BackDrop = lienzo;
+    menu= new Menu();
+};
+
+function ObjetoValido(){
+    return (DragTarget.getAttributeNS(null,'nombre') != "rotate" && DragTarget.getAttributeNS(null,'nombre') != "delete"); 
 };
 
 // Función encargada de analizar el objeto debajo del ratón, en el caso de ser un objeto válido (onMouseDown)
@@ -30,7 +42,7 @@ function Grab(evt)
     // find out which element we moused down on
     targetElement = evt.target;
     // you cannot drag the background itself, so ignore any attempts to mouse down on it
-    if ( BackDrop != targetElement && targetElement.id != 'sala'){
+    if ( BackDrop != targetElement && targetElement.id != 'sala' ){
         //set the item moused down on as the element to be dragged
         DragTarget = targetElement;
 
@@ -39,9 +51,14 @@ function Grab(evt)
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
-        changeSculture(targetElement.getAttributeNS(null,'nombre'));
-        flag= 0;
+        if(ObjetoValido())
+            changeSculture(targetElement.getAttributeNS(null,'nombre'));
+        clickFlag= 0;
     }
+    else{
+        clickFlag= 2;
+    }
+    
 };
 
 // Función encargada de mover el objeto corrigiendo la rotación del objeto y obteniendo (OnMouseMove)
@@ -53,29 +70,58 @@ function Drag(evt)
     // if we don't currently have an element in tow, don't do anything
     if (DragTarget)
     {
+        if(ObjetoValido()){
+            var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
+            var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
+            var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
 
-        var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
-        var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
-        var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
+            NewCoord.x = TrueCoords.x - GrabPoint.x;
+            NewCoord.y = TrueCoords.y - GrabPoint.y;
 
-        NewCoord.x = TrueCoords.x - GrabPoint.x;
-        NewCoord.y = TrueCoords.y - GrabPoint.y;
+            //Correción del cambio de origen de coordenadas local de DragTarget
+            if(rot>0){
+                var rad= (rot*Math.PI)/180;
+                var rotX= NewCoord.x*Math.cos(rad) + NewCoord.y*Math.sin(rad);
+                var rotY= (-1*NewCoord.x*Math.sin(rad)) + NewCoord.y*Math.cos(rad);
 
-        //Correción del cambio de origen de coordenadas local de DragTarget
+                NewCoord.x= rotX;
+                NewCoord.y= rotY;
+            }
+                                                                            // 0 0 posX posY
+            DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', 0, 0) translate(' + NewCoord.x +', '+ NewCoord.y + ')');
 
-       if(rot>0){
-            var rad= (rot*Math.PI)/180;
-            var rotX= NewCoord.x*Math.cos(rad) + NewCoord.y*Math.sin(rad);
-            var rotY= (-1*NewCoord.x*Math.sin(rad)) + NewCoord.y*Math.cos(rad);
+            menu.translateMenu(NewCoord.x, NewCoord.y, rot);
 
-            NewCoord.x= rotX;
-            NewCoord.y= rotY;
+            clickFlag= 1;
         }
-                                                                        // 0 0 posX posY
-        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + 0 +', ' + 0 + ') '
-             + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')');
+        else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
+                var rot= parseInt(elementoAnterior.getAttributeNS(null,'rotation'));
+                if(evt.clientX > lMousePos.x)
+                    rot -= 5;
+                else if(evt.clientX < lMousePos.x)
+                    rot += 5;
+                else if(evt.clientY > lMousePos.y)
+                    rot -= 5;
+                else
+                    rot += 5;
 
-        flag= 1;
+                if(rot<0)
+                    rot +=360;
+                else
+                    rot %=360;
+
+                lMousePos.x= evt.clientX;
+                lMousePos.y= evt.clientY;
+
+                elementoAnterior.setAttributeNS(null,'rotation',rot);
+
+                var posX= parseFloat(elementoAnterior.getAttributeNS(null,'cX'));
+                var posY= parseFloat(elementoAnterior.getAttributeNS(null,'cY'));
+                NewCoord.x= parseFloat(elementoAnterior.getAttributeNS(null,'coordX'));
+                NewCoord.y= parseFloat(elementoAnterior.getAttributeNS(null,'coordY'));
+                
+                elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ') translate(' + NewCoord.x +', '+ NewCoord.y + ')');
+        }
     }
 };
 
@@ -83,9 +129,9 @@ function Drag(evt)
 // se activará una u otra funcionalidad.
 function Drop(evt)
 {
-    if(flag==1){
-        // Si hay desplazamiento entonces calculamos la nueva posición del elemento
-        if (DragTarget){
+    if(clickFlag==1){
+        if(DragTarget){
+            // Si hay desplazamiento entonces calculamos la nueva posición del elemento
             var posW=  parseFloat(DragTarget.getAttributeNS(null,'width'))/2;
             var posH=  parseFloat(DragTarget.getAttributeNS(null,'height'))/2;
             var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
@@ -117,25 +163,48 @@ function Drop(evt)
             DragTarget.setAttributeNS(null, 'cY', cy);
         }
     }
-    else if(flag==0){
-        var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
-        rot += 10;
-        rot %=360;
-        DragTarget.setAttributeNS(null,'rotation',rot);
+    else if(clickFlag==0){
+        if(DragTarget){
+            if(elementoAnterior==null)
+                elementoAnterior= DragTarget;
 
-        var posX= parseFloat(DragTarget.getAttributeNS(null,'cX'));
-        var posY= parseFloat(DragTarget.getAttributeNS(null,'cY'));
-        NewCoord.x= parseFloat(DragTarget.getAttributeNS(null,'coordX'));
-        NewCoord.y= parseFloat(DragTarget.getAttributeNS(null,'coordY'));
-        
-        DragTarget.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ')' 
-            + 'translate(' + NewCoord.x +', '+ NewCoord.y + ')'); 
+            if(DragTarget.getAttributeNS(null,'nombre') == "delete"){
+                menu.removeMenu();
+                //Eliminar estatua
+                RemoveIcon(elementoAnterior.getAttributeNS(null,'nombre'));
+            }
+            else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
+                var rot= parseInt(elementoAnterior.getAttributeNS(null,'rotation'));
+                rot += 10;
+                rot %=360;
+                elementoAnterior.setAttributeNS(null,'rotation',rot);
 
-        //loadMenu(DragTarget);
-        
+                var posX= parseFloat(elementoAnterior.getAttributeNS(null,'cX'));
+                var posY= parseFloat(elementoAnterior.getAttributeNS(null,'cY'));
+                NewCoord.x= parseFloat(elementoAnterior.getAttributeNS(null,'coordX'));
+                NewCoord.y= parseFloat(elementoAnterior.getAttributeNS(null,'coordY'));
+                
+                elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ') translate(' + NewCoord.x +', '+ NewCoord.y + ')');
+            }
+            else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre')){
+                menu.removeMenu();
+                menu.loadMenu(DragTarget);
+            }
+            else{
+                menu.loadMenu(DragTarget);
+            }
+        }
     }
+    else if(clickFlag==2){
+        menu.removeMenu();
+    }
+
+    if(DragTarget != null && DragTarget.getAttributeNS(null,'nombre') != "rotate"){
+        elementoAnterior= DragTarget;
+    }
+
     DragTarget = null;
-    flag= null;
+    clickFlag= null;
 };
 
 

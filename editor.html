@@ -44,8 +44,8 @@
 		</script>
     </head>
 	   
-	<!-- Se carga la escena threejs --> 
-	<body  onload="main();" >
+	<!-- Se carga la escena threejs onload="main();" --> 
+	<body  onload="main();" > 
 		<!-- Contenedor de salas -->
 		<div id="box_scene">
 			<!-- Lista con las salas que se guardan en el contenedor -->
@@ -152,11 +152,12 @@
 				</li>
 			</ul>
 		</div>
-		
+		<!--
 		<aside>
-			<input type="button" id="botonX3D" value="Descargar X3D" onclick="descargarArchivo(generarX3D(), 'archivo.x3d')"/>
-		<!--	<p id=info>"Info: " </p> -->
-		</aside>
+			<input type="button" id="botonX3D" value="Descargar X3D" onclick="descargarArchivo(generarX3D(), 'archivo.x3d')"/> 
+			<p id=info>"flag: " </p> 
+		</aside> -->
+		
 
 		<section id="editInfo">
 
@@ -204,7 +205,7 @@
 					<div id="botonesFicha">
 				    	<input type="submit" value="Actualizar"> 
 				    	<input type="reset" value="Restablecer">
-				    	<input type="reset" value="Eliminar" onClick="RemoveElement()";>
+				    	<input type="reset" value="Generar X3D" onClick="descargarArchivo(generarX3D(), 'archivo.x3d')";>
 				    </div>
 			    </p>
  			</form>
@@ -216,8 +217,7 @@
 			onload='Init(evt)'
 			onmousedown='Grab(evt)'
 			onmousemove='Drag(evt)'
-			onmouseup='Drop(evt)'
-			oncontextmenu='loadMenu()'>
+			onmouseup='Drop(evt)'>
 		</svg>
 
 	</body>

@@ -16,3 +16,8 @@ function RemoveElement(){
         }
     }
 }
+
+function RemoveIcon(name){
+    removeModel();
+    document.getElementById('lienzo').removeChild(document.getElementById('lienzo').getElementById(name));
+}

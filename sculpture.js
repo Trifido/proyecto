@@ -26,6 +26,7 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
+	this.svgObject.setAttributeNS(null, 'id', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);
@@ -37,7 +38,6 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject.setAttributeNS(null,'cY',(this.coordY + (this.height/2)));
 	this.svgObject.setAttributeNS(null,'rotation', this.rotation);
 	this.svgObject.setAttributeNS(null, 'fill', 'orange');
-	//this.svgObject.setAttributeNS(null, 'stroke', 'red');
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 
 	document.getElementById('lienzo').appendChild(this.svgObject);
