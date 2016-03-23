@@ -59,7 +59,9 @@ function generarX3D() {
     var objDin= obtenerEscenario(document.getElementById('lienzo').childNodes[1]);
 
     texto.push('\t\t<Transform DEF="Position' + objDin.nombre +'" translation="0 0 0">\n');
+    //CAMBIAR ESTA LINEA
     texto.push('\t\t\t<inline url="' + objDin.nombre + '.x3d"> </inline>\n');
+    // -----------------
     texto.push('\t\t</Transform>\n\n');
 
     //Añadimos todos los objetos
@@ -71,7 +73,9 @@ function generarX3D() {
 
         texto.push('\t\t<Transform DEF="Rotate' + objDin.nombre +'" roation="0 1 0 '+ objDin.rotation + '">\n');
         texto.push('\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="'+ objDin.x + ' ' + objDin.y + ' ' + objDin.z + '">\n');
+        //CAMBIAR ESTA LINEA
         texto.push('\t\t\t\t<inline url="' + objDin.nombre + '.x3d"> </inline>\n');
+        // -----------------
         texto.push('\t\t\t</Transform>\n');
         texto.push('\t\t</Transform>\n\n');
 
