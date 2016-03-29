@@ -1,5 +1,5 @@
 //Variables
-var activePoints = 1; //Siempre hay 1
+var activePoints = 0; //Siempre hay 1
 var maxPoints = 5;
 var selectedPoint = 0;
 
@@ -19,6 +19,8 @@ function loadNewPoint() {
         $("#controls").append(li.append(input, label.append(img)));
 
         loadPoint(activePoints);
+
+        newPoint = new Point("punto"+activeCameras+"-"+activePoints, "./img/camera/controlT.png", 0, 0);
     }
 }
 

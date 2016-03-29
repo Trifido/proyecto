@@ -41,6 +41,7 @@ function Grab(evt)
 {
     // find out which element we moused down on
     targetElement = evt.target;
+
     // you cannot drag the background itself, so ignore any attempts to mouse down on it
     if ( BackDrop != targetElement && targetElement.id != 'sala' ){
         //set the item moused down on as the element to be dragged
@@ -174,24 +175,33 @@ function Drop(evt)
                 RemoveIcon(elementoAnterior.getAttributeNS(null,'nombre'));
             }
             else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
-                var rot= parseInt(elementoAnterior.getAttributeNS(null,'rotation'));
+                var rot = parseInt(elementoAnterior.getAttributeNS(null, 'rotation'));
                 rot += 10;
-                rot %=360;
-                elementoAnterior.setAttributeNS(null,'rotation',rot);
+                rot %= 360;
+                elementoAnterior.setAttributeNS(null, 'rotation', rot);
 
-                var posX= parseFloat(elementoAnterior.getAttributeNS(null,'cX'));
-                var posY= parseFloat(elementoAnterior.getAttributeNS(null,'cY'));
-                NewCoord.x= parseFloat(elementoAnterior.getAttributeNS(null,'coordX'));
-                NewCoord.y= parseFloat(elementoAnterior.getAttributeNS(null,'coordY'));
-                
-                elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ') translate(' + NewCoord.x +', '+ NewCoord.y + ')');
+                var posX = parseFloat(elementoAnterior.getAttributeNS(null, 'cX'));
+                var posY = parseFloat(elementoAnterior.getAttributeNS(null, 'cY'));
+                NewCoord.x = parseFloat(elementoAnterior.getAttributeNS(null, 'coordX'));
+                NewCoord.y = parseFloat(elementoAnterior.getAttributeNS(null, 'coordY'));
+
+                elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX + ', ' + posY + ') translate(' + NewCoord.x + ', ' + NewCoord.y + ')');
             }
             else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre')){
                 menu.removeMenu();
-                menu.loadMenu(DragTarget);
+
+                // Alba - Para que no se giren los puntos de control
+                //if (elementoAnterior.getAttributeNS(null,'class') == "point")
+                    //menu.loadHalfMenu(DragTarget);
+                // else
+                    menu.loadMenu(DragTarget);
             }
             else{
-                menu.loadMenu(DragTarget);
+                // Alba - Para que no se giren los puntos de control
+                //if (elementoAnterior.getAttributeNS(null,'class') == "point")
+                    //menu.loadHalfMenu(DragTarget);
+                //else
+                    menu.loadMenu(DragTarget);
             }
         }
     }

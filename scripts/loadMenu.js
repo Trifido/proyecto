@@ -16,6 +16,16 @@ Menu.prototype.loadMenu= function(element){
 	}
 }
 
+//Alba
+Menu.prototype.loadHalfMenu= function(element){
+	if(!this.loaded){
+		this.objDin= obtenerDatos(element);
+		this.loadDelete();
+		this.loaded= true;
+	}
+}
+//!Alba
+
 Menu.prototype.loadDelete= function(){
 	if(!this.loaded){
 		var delet = document.createElementNS('http://www.w3.org/2000/svg','image');
