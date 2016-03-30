@@ -20,7 +20,7 @@ function loadNewPoint() {
 
         loadPoint(activePoints);
 
-        newPoint = new Point("punto"+activeCameras+"-"+activePoints, "./img/camera/controlT.png", 0, 0);
+        newPoint = new Point(activePoints, "./img/camera/controlT.png", 0, 0);
     }
 }
 
