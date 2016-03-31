@@ -25,7 +25,7 @@ function Point( vname, vpath, vposX, vposY ){
     this.svgObject.setAttributeNS(null,'rotation', this.rotation);
     //this.svgObject.setAttributeNS(null,'opacity', 0.9);
 
-    document.getElementById('lienzo').appendChild(this.svgObject);
+    document.getElementById('point_level').appendChild(this.svgObject);
 
     // Para la linea
     if (vname == 1) { // Unir con la camara
@@ -75,5 +75,5 @@ function drawLine (x1, y1, x2, y2, vname){
     line.setAttributeNS(null, 'class', 'line'); // Para localizarla luego por su clase
     line.setAttributeNS(null, 'name', 'linea'+vname);
 
-    document.getElementById('lienzo').appendChild(line);
+    document.getElementById('line_level').appendChild(line);
 }

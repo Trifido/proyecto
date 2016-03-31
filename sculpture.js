@@ -40,11 +40,11 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject.setAttributeNS(null, 'fill', 'orange');
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 
-	document.getElementById('lienzo').appendChild(this.svgObject);
+	document.getElementById('sculpture_level').appendChild(this.svgObject);
 
 	//Esto me sirve para poder eliminar la escultura que acabo de cargar en la escena
-	var n= document.getElementById("lienzo").childNodes.length;
-	targetElement= document.getElementById('lienzo').childNodes[n-1];
+	var n= document.getElementById('sculpture_level').childNodes.length;
+	targetElement= document.getElementById('sculpture_level').childNodes[n-1];
 }
 
 //Metodo para cambiar los atributos del objeto

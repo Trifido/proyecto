@@ -27,7 +27,7 @@ function Room(nombre, pathLocation, altura, anchura){
 	svgroom.setAttributeNS(null, 'visibility', 'visible');
 
 
-	document.getElementById('lienzo').appendChild(svgroom);
+	document.getElementById('room_level').appendChild(svgroom);
 }
 
 Room.prototype.change = function( pathLocation, altura, anchura){

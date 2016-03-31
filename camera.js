@@ -25,7 +25,7 @@ function Camera( vname, vpath, vposX, vposY ){
     this.svgObject.setAttributeNS(null,'rotation', this.rotation);
     //this.svgObject.setAttributeNS(null,'opacity', 0.9);
 
-    document.getElementById('lienzo').appendChild(this.svgObject);
+    document.getElementById('camera_level').appendChild(this.svgObject);
 }
 
 Camera.prototype.setVisibility = function( value ) {
