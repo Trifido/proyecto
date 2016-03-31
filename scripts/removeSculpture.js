@@ -5,19 +5,20 @@ function RemoveElement(){
 
 	var nombre= targetElement.getAttributeNS(null,'nombre');
 	var objDin, find=false;
-	var nelements=document.getElementById("lienzo").childNodes.length;
+	var nelements=document.getElementById("sculpture_level").childNodes.length;
 
     for(var i=2; i<nelements && !find; i++){
-        objDin= obtenerDatos(document.getElementById('lienzo').childNodes[i]);
+        objDin= obtenerDatos(document.getElementById('sculpture_level').childNodes[i]);
 
         if(objDin.nombre == nombre){
         	find= true;
-        	document.getElementById('lienzo').removeChild(document.getElementById('lienzo').childNodes[i]);
+        	document.getElementById('sculpture_level').removeChild(document.getElementById('sculpture_level').childNodes[i]);
         }
     }
 }
 
 function RemoveIcon(name){
     removeModel();
-    document.getElementById('lienzo').removeChild(document.getElementById('lienzo').getElementById(name));
+    alert(document.getElementById('sculpture_level'));
+    document.getElementById('sculpture_level').removeChild(document.getElementById('sculpture_level').getElementById(name));
 }

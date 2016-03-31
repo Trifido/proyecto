@@ -52,7 +52,7 @@ function Grab(evt)
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
-        if(ObjetoValido())
+        if(ObjetoValido() && DragTarget.getAttributeNS(null,'nombre') != "FirstCamera")
             changeSculture(targetElement.getAttributeNS(null,'nombre'));
         clickFlag= 0;
     }

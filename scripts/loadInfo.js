@@ -24,10 +24,12 @@ $(document).ready(function() {
         }
         else if($(this).attr('title') == "tab2"){
             $("#content #tab2 #the_scene").fadeIn();
+            loadX3D();
         }
         else if($(this).attr('title') == "tab3"){
             $("#content #tab3 .row").fadeIn();
             $("#content #tab3 #FPCscene").fadeIn();
+            var fcamera = new FirstCamera('FirstCamera', './img/camera/FirstCamera.png', 40, 40, 0, 0);
         }
     });
 });

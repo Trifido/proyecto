@@ -169,77 +169,6 @@ body{
    display:none;
 }
 
-/* -------------------------- Formulario de información -------------------------- */
-
-#viewElement {
-    width:300px; height:300px;
-    border: 1px solid #afcde3;
-    margin-top: 1%;
-    margin-right: 1%;
-    float : right;
- }
-
-#editInfo {
-    font-family: Arial;
-    font-size:14px;
-    background-color: #d8ecf7;
-    width:800px; 
-    height: 500px;
-    margin-top: 1%;
-    margin-right: 1%;
-    float : right;
-    border: 1px solid #afcde3;
-}
-
-#editInfo h1{
-    font-family:Arial;
-    background-color: #d8ecf7;
-    margin-left: 25%;
-}
-
-#editInfo label {
-    margin-left: 2%;
-    display: inline-block;
-    width: 100px;
-    color:#6c6c6c;
-}
-
-#editInfo input{
-    display: inline-block;
-    line-height:31px;
-    margin-right: 5%;
-}
-
-#editInfo input,textarea{
-    width:288px;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
-    background-color:rgba(255,255,255,.6);
-    border:solid 1px #b6c7cb;
-}
-
-#editInfo textarea{
-    margin-left: 2%;
-    width: 770px;
-    resize: none;
-}
-
-.row{
-    margin:5px;
-}
-
-#boxTextInfo{
-    margin-bottom: 1%;
-    margin-left: 1%;
-}
-
-#editInfo #botonesFicha{
-    
-    margin-left: 12.5%;
-}
-
-
 /* -------------------------- Auxiliar-------------------------- */
 aside {
     width : 500px;
@@ -358,5 +287,168 @@ aside {
     border: 3px solid #1C1C1C;
 }
 
+/* -------------------- Pestañas de contenido ---------------------- */
 
+#tabs {
+  overflow: auto;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 56%;
+}
 
+#tabs li {
+    margin: 0;
+    padding: 0;
+    float : left;
+}
+
+#tabs a {
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .2);
+    background: #ad1c1c;
+    background: linear-gradient(220deg, transparent 10px, #ad1c1c 10px);
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    color: #fff;
+    float: left;
+    font: bold 12px/35px 'Lucida sans', Arial, Helvetica;
+    height: 35px;
+    padding: 0 30px;
+    text-decoration: none;
+}
+
+#tabs a:hover {
+    background: #c93434;
+    background: linear-gradient(220deg, transparent 10px, #c93434 10px);     
+}
+
+#tabs a:focus {
+    outline: 0;
+}
+
+#tabs #current a {
+    background: #fff;
+    background: linear-gradient(220deg, transparent 10px, #fff 10px);
+    text-shadow: none;    
+    color: #333;
+}
+
+/* -------------------- Contenido de pestañas ---------------------- */
+/* ----------------- Formulario de información --------------------- */
+#content {
+    font-family: Arial;
+    font-size:14px;
+    background-color: #d8ecf7;
+    border-radius: 0 2px 2px 2px;
+    box-shadow: 0 2px 2px #000, 0 -1px 0 #fff inset;
+    width:800px; 
+    height: 500px;
+    margin-right: 1%;
+    float : right;
+}
+
+#content #tab1 #viewElement {
+    width:300px; height:300px;
+    border: 1px solid #afcde3;
+    margin-right: 1%;
+    margin-top: -1%;
+    float : right;
+ }
+
+#content #tab1 h1{
+    font-family:Arial;
+    font-size:18px;
+    background-color: #d8ecf7;
+    margin-left: 25%;
+}
+
+#content #tab1 label {
+    margin-left: 2%;
+    display: inline-block;
+    width: 100px;
+    color:#6c6c6c;
+}
+
+#content #tab1 input{
+    display: inline-block;
+    line-height:31px;
+    margin-right: 5%;
+}
+
+#content #tab1 input,textarea{
+    width:288px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background-color:rgba(255,255,255,.6);
+    border:solid 1px #b6c7cb;
+}
+
+#content #tab1 textarea{
+    margin-left: 2%;
+    width: 770px;
+    resize: none;
+}
+
+#content #tab1 .row{
+    margin:5px;
+}
+
+#content #tab1 #boxTextInfo{
+    margin-bottom: 1%;
+    margin-left: 1%;
+}
+
+#content #tab1 #botonesFicha{  
+    margin-left: 12.5%;
+}
+
+#content #tab2 #the_scene{
+    width:98%; height:98%;
+    margin:1%;
+    border: none;
+    position: relative;
+}
+
+#content #tab3 h1{
+    font-family:Arial;
+    font-size:18px;
+    background-color: #d8ecf7;
+    margin-left: 25%;
+}
+
+#content #tab3 label {
+    margin-left: 2%;
+    display: inline-block;
+    width: 100px;
+    color:#6c6c6c;
+}
+
+#content #tab3 input{
+    display: inline-block;
+    line-height:31px;
+    margin-right: 5%;
+    width:288px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background-color:rgba(255,255,255,.6);
+    border:solid 1px #b6c7cb;
+}
+
+#content #tab3 .row{
+    margin:5px;
+}
+
+#content #tab3 #FPCscene{
+    width:98%; height:50%;
+    margin: 1%;
+    border: none;
+    position: relative;
+}
+
+/* --------------- Section de la ficha tecnica ------------------ */
+
+#SFicha{
+    
+}

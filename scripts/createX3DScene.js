@@ -41,7 +41,7 @@ function obtenerEscenario(objetoDinamico) {
 
 //Genera un objeto Blob con los datos en un archivo XML
 function mostrar(){
-    var nelements=document.getElementById('lienzo').childNodes.length;
+    var nelements=document.getElementById('sculpture_level').childNodes.length;
     alert(nelements);
 };
 
@@ -56,7 +56,7 @@ function generarX3D() {
 
     //Añadimos el escenario
     //childNodes[0] es un texto vacío!!
-    var objDin= obtenerEscenario(document.getElementById('lienzo').childNodes[1]);
+    var objDin= obtenerEscenario(document.getElementById('sculpture_level').childNodes[1]);
 
     texto.push('\t\t<Transform DEF="Position' + objDin.nombre +'" translation="0 0 0">\n');
     //CAMBIAR ESTA LINEA
@@ -65,11 +65,11 @@ function generarX3D() {
     texto.push('\t\t</Transform>\n\n');
 
     //Añadimos todos los objetos
-    var nelements=document.getElementById("lienzo").childNodes.length;
+    var nelements=document.getElementById("sculpture_level").childNodes.length;
 
     for(var i=2; i<nelements; i++){
     
-        objDin= obtenerDatos(document.getElementById('lienzo').childNodes[i]);
+        objDin= obtenerDatos(document.getElementById('sculpture_level').childNodes[i]);
 
         texto.push('\t\t<Transform DEF="Rotate' + objDin.nombre +'" roation="0 1 0 '+ objDin.rotation + '">\n');
         texto.push('\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="'+ objDin.x + ' ' + objDin.y + ' ' + objDin.z + '">\n');
