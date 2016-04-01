@@ -11,7 +11,8 @@ Menu.prototype.loadMenu= function(element){
 	if(!this.loaded){
 		this.objDin= obtenerDatos(element);
 		this.loadDelete();
-		this.loadRotate();
+        if (this.objDin.clase != 'camera' && this.objDin.clase != 'point')
+		    this.loadRotate();
 		this.loaded= true;
 	}
 }
@@ -67,15 +68,18 @@ Menu.prototype.loadRotate= function(){
 Menu.prototype.removeMenu= function(){
 	if(this.loaded){
 		this.removeDelete();
-		this.removeRotate();
+        if (this.objDin.clase != 'camera' && this.objDin.clase != 'point')
+		    this.removeRotate();
 		this.loaded= false;
 	}
 }
 
 Menu.prototype.removeDelete= function(){
+	document.getElementById(this.objDin.clase+'_level').removeChild(document.getElementById('delete'));
 }
 
 Menu.prototype.removeRotate= function(){
+	document.getElementById(this.objDin.clase+'_level').removeChild(document.getElementById('rotate'));
 }
 
 Menu.prototype.translateMenu= function(x, y, rot){
@@ -96,9 +100,11 @@ Menu.prototype.translateMenu= function(x, y, rot){
 Menu.prototype.translateDelete= function(x, y){
 	this.xcord= x - this.despX + this.ancho/2;
 	this.ycord= y - this.despY - this.alto*1.5;
+	document.getElementById('delete').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }
 
 Menu.prototype.translateRotate= function(x, y){
 	this.xcord= x - this.despX + this.ancho/2;
 	this.ycord= y - this.despRotY + this.alto*0.5;
+	document.getElementById('rotate').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }
