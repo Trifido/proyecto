@@ -25,7 +25,8 @@ function obtenerDatos(objetoDinamico) {
         z: objetoDinamico.getAttributeNS(null, 'cY'),
         rotation: objetoDinamico.getAttributeNS(null, 'rotation'),
         ancho: objetoDinamico.getAttributeNS(null, 'width'),
-        alto: objetoDinamico.getAttributeNS(null, 'height')
+        alto: objetoDinamico.getAttributeNS(null, 'height'),
+        clase: objetoDinamico.getAttributeNS(null, 'class')
     };
 };
 

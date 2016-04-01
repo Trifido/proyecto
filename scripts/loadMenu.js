@@ -16,16 +16,6 @@ Menu.prototype.loadMenu= function(element){
 	}
 }
 
-//Alba
-Menu.prototype.loadHalfMenu= function(element){
-	if(!this.loaded){
-		this.objDin= obtenerDatos(element);
-		this.loadDelete();
-		this.loaded= true;
-	}
-}
-//!Alba
-
 Menu.prototype.loadDelete= function(){
 	if(!this.loaded){
 		var delet = document.createElementNS('http://www.w3.org/2000/svg','image');
@@ -46,7 +36,7 @@ Menu.prototype.loadDelete= function(){
 
 		delet.setAttributeNS(null, 'visibility', 'visible');
 
-		document.getElementById('lienzo').appendChild(delet);
+		document.getElementById(this.objDin.clase+'_level').appendChild(delet);
 	}
 }
 
@@ -70,7 +60,7 @@ Menu.prototype.loadRotate= function(){
 
 		delet.setAttributeNS(null, 'visibility', 'visible');
 
-		document.getElementById('lienzo').appendChild(delet);
+		document.getElementById(this.objDin.clase+'_level').appendChild(delet);
 	}
 }
 
@@ -83,11 +73,9 @@ Menu.prototype.removeMenu= function(){
 }
 
 Menu.prototype.removeDelete= function(){
-	document.getElementById('lienzo').removeChild(document.getElementById('lienzo').getElementById('delete'));
 }
 
 Menu.prototype.removeRotate= function(){
-	document.getElementById('lienzo').removeChild(document.getElementById('lienzo').getElementById('rotate'));
 }
 
 Menu.prototype.translateMenu= function(x, y, rot){
@@ -108,11 +96,9 @@ Menu.prototype.translateMenu= function(x, y, rot){
 Menu.prototype.translateDelete= function(x, y){
 	this.xcord= x - this.despX + this.ancho/2;
 	this.ycord= y - this.despY - this.alto*1.5;
-	document.getElementById('lienzo').getElementById('delete').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }
 
 Menu.prototype.translateRotate= function(x, y){
 	this.xcord= x - this.despX + this.ancho/2;
 	this.ycord= y - this.despRotY + this.alto*0.5;
-	document.getElementById('lienzo').getElementById('rotate').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }

@@ -39,6 +39,7 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject.setAttributeNS(null,'rotation', this.rotation);
 	this.svgObject.setAttributeNS(null, 'fill', 'orange');
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
+	this.svgObject.setAttributeNS(null, 'class', 'sculpture'); // Para localizarla luego por su clase
 
 	document.getElementById('sculpture_level').appendChild(this.svgObject);
 

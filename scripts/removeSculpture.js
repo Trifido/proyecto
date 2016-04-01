@@ -19,6 +19,5 @@ function RemoveElement(){
 
 function RemoveIcon(name){
     removeModel();
-    alert(document.getElementById('sculpture_level'));
-    document.getElementById('sculpture_level').removeChild(document.getElementById('sculpture_level').getElementById(name));
+    document.getElementById('sculpture_level').removeChild(document.getElementById(name));
 }
