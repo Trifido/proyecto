@@ -10,7 +10,7 @@ function Point( vname, vpath, vposX, vposY ){
     this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image'); //Representacion grafica mediante una imagen
 
     //Atributos de la representacion grafica
-    this.svgObject.setAttributeNS(null, 'name', this.name);
+    this.svgObject.setAttributeNS(null, 'nombre', this.name);
     this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.path);
     this.svgObject.setAttributeNS(null, 'class', 'point'); // Para localizarla luego por su clase
     // Esquina del objeto
@@ -31,7 +31,7 @@ function Point( vname, vpath, vposX, vposY ){
     if (vname == 1) { // Unir con la camara
 
         $(".camera").each(function( i, obj ) {
-            if ("camara" + selectedCamera == obj.getAttributeNS(null, 'name')) { //Cogemos la camara
+            if ("camara" + selectedCamera == obj.getAttributeNS(null, 'nombre')) { //Cogemos la camara
                 x1 = obj.getAttributeNS(null, 'cX');
                 y1 = obj.getAttributeNS(null, 'cY');
             }
@@ -46,7 +46,7 @@ function Point( vname, vpath, vposX, vposY ){
         var x1 = 0, y1 = 0;
 
         $(".point").each(function( i, obj ) {
-           if ("punto" + (vname-1) == obj.getAttributeNS(null, 'name')) { //Cogemos el punto anterior
+           if ("punto" + (vname-1) == obj.getAttributeNS(null, 'nombre')) { //Cogemos el punto anterior
                x1 = obj.getAttributeNS(null, 'cX');
                y1 = obj.getAttributeNS(null, 'cY');
            }

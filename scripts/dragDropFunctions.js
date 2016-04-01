@@ -113,7 +113,7 @@ function Drag(evt)
 
                 var ancho = DragTarget.getAttributeNS(null, 'width')/2;
                 var alto = DragTarget.getAttributeNS(null, 'height')/2;
-                var numero = DragTarget.getAttributeNS(null, 'name').substr(5); // Tomamos el numero de punto
+                var numero = DragTarget.getAttributeNS(null, 'nombre').substr(5); // Tomamos el numero de punto
 
                 $(".line").each(function( i, obj ) {
                     if ("linea"+numero == obj.getAttributeNS(null, 'name')) { //Se toma la linea anterior
@@ -210,7 +210,7 @@ function Drop(evt)
             if(DragTarget.getAttributeNS(null,'nombre') == "delete"){
                 menu.removeMenu();
                 //Eliminar estatua
-                RemoveIcon(elementoAnterior.getAttributeNS(null,'nombre'));
+                removeElement(elementoAnterior.getAttributeNS(null,'class'), elementoAnterior.getAttributeNS(null,'nombre'));
             }
             else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
                 var rot = parseInt(elementoAnterior.getAttributeNS(null, 'rotation'));
@@ -227,19 +227,10 @@ function Drop(evt)
             }
             else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre')){
                 menu.removeMenu();
-
-                // Alba - Para que no se giren los puntos de control
-                //if (elementoAnterior.getAttributeNS(null,'class') == "point")
-                    //menu.loadHalfMenu(DragTarget);
-                // else
-                    menu.loadMenu(DragTarget);
+                menu.loadMenu(DragTarget);
             }
             else{
-                // Alba - Para que no se giren los puntos de control
-                //if (elementoAnterior.getAttributeNS(null,'class') == "point")
-                    //menu.loadHalfMenu(DragTarget);
-                //else
-                    menu.loadMenu(DragTarget);
+                menu.loadMenu(DragTarget);
             }
         }
     }

@@ -16,6 +16,26 @@ function loadNewCamera(){
     }
 }
 
+//Funcion para seleccionar una camara ya creada
+function loadCamera( id ){
+    if ( isVisible(id) ) {
+        selectedCamera = id;
+
+        updateBordersC(); //Desactiva todos
+        $("#camera" + id + " img").css("border", "3px solid #1C1C1C"); //Activa el especifico
+
+        //updateVisibilityC();
+
+        activateControl(); // Viewpoints
+    }
+    else
+        return;
+}
+
+function removeCamera(id) {
+    $("#camera"+id+" img").css("visibility","hidden");
+}
+
 //Dice si una camara esta visible o no
 function isVisible( id ){
     var visible = $("#camera"+id+" img").css("visibility");
@@ -28,11 +48,9 @@ function isVisible( id ){
 
 //Desactivar todos los bordes
 function updateBordersC(){
-    $("#camera1 img").css("border", "3px solid #73AD21");
-    $("#camera2 img").css("border", "3px solid #73AD21");
-    $("#camera3 img").css("border", "3px solid #73AD21");
-    $("#camera4 img").css("border", "3px solid #73AD21");
-    $("#camera5 img").css("border", "3px solid #73AD21");
+    for (i=1; i<=activeCameras;i++){
+        $("#camera"+i+" img").css("border", "3px solid #73AD21");
+    }
 }
 
 //Desactivar todas las visibilidades
@@ -47,22 +65,7 @@ function updateVisibilityC(){
     });*/
 }
 
-//Funcion para seleccionar una camara ya creada
-function loadCamera( id ){
-    if ( isVisible(id) ) {
-        selectedCamera = id;
-
-        updateBordersC();
-        $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
-
-        //updateVisibilityC();
-
-        activateControl(); // Viewpoints
-    }
-    else
-        return;
-}
-
+//Activa la caja de los puntos de control
 function activateControl(){
     $("#box_control").css("visibility", "visible");
 }

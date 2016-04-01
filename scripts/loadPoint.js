@@ -1,9 +1,9 @@
 //Variables
-var activePoints = 0; //Siempre hay 1
+var activePoints = 0;
 var maxPoints = 5;
 var selectedPoint = 0;
 
-//Funcion para cargar una camara nueva
+//Funcion para cargar un punto nuevo
 function loadNewPoint() {
     if (activePoints >= maxPoints)
         return;
@@ -24,17 +24,28 @@ function loadNewPoint() {
     }
 }
 
+//Funcion para seleccionar un punto ya creado
+function loadPoint( id ) {
+    selectedPoint = id;
+    updateBordersP();
+    $("#control" + id + " img").css("border", "3px solid #1C1C1C");
+}
+
+//Eliminar uel último punto
+function removePoint() {
+    // ------------------------------------- hacer
+    $("#control"+activePoints).remove();
+
+    if (selectedPoint == activePoints)
+        selectedPoint = 1;
+
+    activePoints-=1;
+}
+
 //Desactivar todos los bordes
 function updateBordersP() {
     for(i = 1; i <= activePoints; i++){
         $("#control" + i + " img").css("border", "3px solid #73AD21");
     }
-}
-
-//Funcion para seleccionar una camara ya creada
-function loadPoint( id ) {
-        selectedPoint = id;
-        updateBordersP();
-        $("#control" + id + " img").css("border", "3px solid #1C1C1C");
 }
 

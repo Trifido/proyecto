@@ -10,7 +10,7 @@ function Camera( vname, vpath, vposX, vposY ){
     this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image'); //Representacion grafica mediante una imagen
 
     //Atributos de la representacion grafica
-    this.svgObject.setAttributeNS(null, 'name', this.name);
+    this.svgObject.setAttributeNS(null, 'nombre', this.name);
     this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.path);
     this.svgObject.setAttributeNS(null, 'class', 'camera'); // Para localizarla luego por su clase
     // Esquina del objeto
