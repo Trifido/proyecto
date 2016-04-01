@@ -25,13 +25,19 @@ Menu.prototype.loadDelete= function(){
 		delet.setAttribute('id', 'delete');
 		delet.setAttributeNS(null, 'nombre', 'delete');
 
-		this.ancho= parseFloat(this.objDin.ancho);//*0.5;
-		this.alto= parseFloat(this.objDin.alto);//*0.5;
+		this.ancho= parseFloat(this.objDin.ancho);
+		this.alto= parseFloat(this.objDin.alto);
 		delet.setAttributeNS(null,'height',this.alto);
 		delet.setAttributeNS(null,'width', this.ancho);
-		
-		this.despX= (parseFloat(this.objDin.x) + this.ancho*0.5)
-		this.despY= (parseFloat(this.objDin.z) - this.alto*1.5)
+
+        if (this.objDin.clase != 'camera' && this.objDin.clase != 'point') {
+            this.despX= (parseFloat(this.objDin.x) + this.ancho*0.5);
+            this.despY= (parseFloat(this.objDin.z) - this.alto*1.5);
+        }
+        else {
+            this.despX = (parseFloat(this.objDin.x) + this.ancho * 0.75);
+            this.despY = (parseFloat(this.objDin.z) - this.alto / 2);
+        }
 		delet.setAttributeNS(null,'x',this.despX);
 		delet.setAttributeNS(null,'y',this.despY);
 
@@ -54,8 +60,8 @@ Menu.prototype.loadRotate= function(){
 		delet.setAttributeNS(null,'height',this.alto);
 		delet.setAttributeNS(null,'width', this.ancho);
 		
-		this.despX= (parseFloat(this.objDin.x) + this.ancho*0.5)
-		this.despRotY= (parseFloat(this.objDin.z) + this.alto*0.5)
+		this.despX= (parseFloat(this.objDin.x) + this.ancho*0.5);
+		this.despRotY= (parseFloat(this.objDin.z) + this.alto*0.5);
 		delet.setAttributeNS(null,'x',this.despX);
 		delet.setAttributeNS(null,'y',this.despRotY);
 
@@ -93,18 +99,26 @@ Menu.prototype.translateMenu= function(x, y, rot){
         y= (vx*Math.sin(rad)) + vy*Math.cos(rad);
 
 		this.translateDelete(x, y);
-		this.translateRotate(x, y);
+        if (this.objDin.clase != 'camera' && this.objDin.clase != 'point')
+		    this.translateRotate(x, y);
 	}
 }
 
 Menu.prototype.translateDelete= function(x, y){
-	this.xcord= x - this.despX + this.ancho/2;
-	this.ycord= y - this.despY - this.alto*1.5;
+    if (this.objDin.clase != 'camera' && this.objDin.clase != 'point') {
+        this.xcord= x - this.despX + this.ancho/2;
+        this.ycord= y - this.despY - this.alto*1.5;
+    }
+    else {
+        this.xcord= x - this.despX + this.ancho*0.75;
+        this.ycord= y - this.despY - this.alto/2;
+    }
+
 	document.getElementById('delete').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }
 
 Menu.prototype.translateRotate= function(x, y){
-	this.xcord= x - this.despX + this.ancho/2;
-	this.ycord= y - this.despRotY + this.alto*0.5;
-	document.getElementById('rotate').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
+        this.xcord= x - this.despX + this.ancho/2;
+        this.ycord= y - this.despRotY + this.alto*0.5;
+        document.getElementById('rotate').setAttributeNS(null, 'transform', 'translate(' + this.xcord +', '+ this.ycord + ')');
 }
