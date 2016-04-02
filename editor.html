@@ -27,9 +27,9 @@
 		<script  type="text/javascript" src="scripts/loadSculpture.js"></script>
 		<script  type="text/javascript" src="scripts/removeElement.js"></script>
 		<script  type="text/javascript" src="scripts/dragDropFunctions.js"></script>
-		<script  type="text/javascript" src="room.js"></script>
-		<script  type="text/javascript" src="sculpture.js"></script>
-		<script  type="text/javascript" src="firstCamera.js"></script>
+		<script  type="text/javascript" src="scripts/room.js"></script>
+		<script  type="text/javascript" src="scripts/sculpture.js"></script>
+		<script  type="text/javascript" src="scripts/firstCamera.js"></script>
 
 		<!-- Scripts para montar escenario X3D -->
 		<script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
@@ -38,13 +38,13 @@
 		<script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
 
 		<!-- CSS -->
-		<link href="./css/style.css" rel="stylesheet" type='text/css' />
+		<link href="./css/style2.css" rel="stylesheet" type='text/css' />
 
 		<!-- Scripts Alba -->
 		<script  type="text/javascript" src="scripts/loadCamera.js"></script>
 		<script  type="text/javascript" src="scripts/loadPoint.js"></script>
-        <script  type="text/javascript" src="camera.js"></script>
-		<script  type="text/javascript" src="point.js"></script>
+        <script  type="text/javascript" src="scripts/camera.js"></script>
+		<script  type="text/javascript" src="scripts/point.js"></script>
 
 		<script>
 			showMenu();
@@ -60,27 +60,27 @@
 			<ul id="escenas"> 
 				<li id="imagen1"> 
 					<input  type="radio" name="controlRoom" id="boton1" onclick="loadRoom( 0 )"/>
-					<label for="boton1" class="boton"><img id="0" src="./img/menu/sala1.jpg"></label> 
+					<label for="boton1" class="boton"><img id="0" src="./img/menu/sala1.png"></label> 
 				</li>
 			  	<li id="imagen2"> 
 			  		<input  type="radio" name="controlRoom" id="boton2" onclick="loadRoom( 1 )" /> 
-			  		<label for="boton2" class="boton"><img id="1" src="./img/scene2.png"></label> 
+			  		<label for="boton2" class="boton"><img id="1" src="./img/menu/scene2.png"></label> 
 				</li>
 			  	<li id="imagen3"> 
 			  		<input  type="radio" name="controlRoom" id="boton3" onclick="loadRoom( 2 )" /> 
-			  		<label for="boton3" class="boton"><img id="2" src="./img/scene3.png"></label> 
+			  		<label for="boton3" class="boton"><img id="2" src="./img/menu/scene3.png"></label> 
 				</li>
 			  	<li id="imagen4"> 
 			  		<input  type="radio" name="controlRoom" id="boton4" onclick="loadRoom( 3 )" /> 
-			  		<label for="boton4" class="boton"><img id="3" src="./img/scene4.jpg"></label>
+			  		<label for="boton4" class="boton"><img id="3" src="./img/menu/scene4.png"></label>
 			  	</li>
 			  	<li id="imagen5"> 
 			  		<input  type="radio" name="controlRoom" id="boton5" onclick="loadRoom( 4 )" /> 
-			  		<label for="boton5" class="boton"><img id="4" src="./img/scene4.jpg"></label>
+			  		<label for="boton5" class="boton"><img id="4" src="./img/menu/scene4.png"></label>
 			  	</li>
 			  	<li id="imagen6"> 
 			  		<input  type="radio" name="controlRoom" id="boton6" onclick="loadRoom( 5 )" /> 
-			  		<label for="boton6" class="boton"><img id="5" src="./img/scene4.jpg"></label>
+			  		<label for="boton6" class="boton"><img id="5" src="./img/menu/scene4.png"></label>
 			  	</li>
 			</ul>
 
@@ -96,7 +96,7 @@
 				</li>
 			  	<li id="sculpture2"> 
 			  		<input  type="radio" name="controlSculpture" id="boton8" onclick="loadSculpture( 7 )" /> 
-			  		<label for="boton8" class="boton"><img id="7" src="./img/menu/thinker.jpg"></label> 
+			  		<label for="boton8" class="boton"><img id="7" src="./img/menu/thinker.png"></label> 
 				</li>
 			  	<li id="sculpture3"> 
 			  		<input  type="radio" name="controlSculpture" id="boton9" onclick="loadSculpture( 8 )" /> 
@@ -104,15 +104,15 @@
 				</li>
 			  	<li id="sculpture4"> 
 			  		<input  type="radio" name="controlSculpture" id="boton10" onclick="loadSculpture( 9 )" /> 
-			  		<label for="boton10" class="boton"><img id="9" src="./img/menu/dragon.jpg"></label>
+			  		<label for="boton10" class="boton"><img id="9" src="./img/menu/dragon.png"></label>
 			  	</li>
 			  	<li id="sculpture5"> 
 			  		<input  type="radio" name="controlSculpture" id="boton11" onclick="loadSculpture( 10 )" /> 
-			  		<label for="boton11" class="boton"><img id="10" src="./img/menu/ramses2.jpg"></label>
+			  		<label for="boton11" class="boton"><img id="10" src="./img/menu/ramses2.png"></label>
 			  	</li>
 			  	<li id="sculpture6"> 
 			  		<input  type="radio" name="controlSculpture" id="boton12" onclick="loadSculpture( 11 )" /> 
-			  		<label for="boton12" class="boton"><img id="11" src="./img/menu/pascua.jpg"></label>
+			  		<label for="boton12" class="boton"><img id="11" src="./img/menu/pascua.png"></label>
 			  	</li>
 			</ul>
 

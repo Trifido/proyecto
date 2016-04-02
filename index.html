@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>TFG</title>
+
+	<!-- Script para jquery -->
+    <script  type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script  type="text/javascript" src="scripts/loadInfo.js"></script>
+
+    <!-- Script para threeJS (visualizar modelos) -->
+	<script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/Camara.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/Luz.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/mtl.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/obj.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/Objetos.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/objmtl.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/orbit.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/script.js"></script>
+
+	<!-- Scripts para SVG -->
+	<script  type="text/javascript" src="scripts/loadRoom.js"></script>
+	<script  type="text/javascript" src="scripts/loadMenu.js"></script>
+	<script  type="text/javascript" src="scripts/loadSculpture.js"></script>
+	<script  type="text/javascript" src="scripts/removeElement.js"></script>
+	<script  type="text/javascript" src="scripts/dragDropFunctions.js"></script>
+	<script  type="text/javascript" src="scripts/room.js"></script>
+	<script  type="text/javascript" src="scripts/sculpture.js"></script>
+	<script  type="text/javascript" src="scripts/firstCamera.js"></script>
+
+	<!-- Scripts para montar escenario X3D -->
+	<script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+	<link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+	<script  type="text/javascript" src="scripts/createX3DScene.js"></script>
+	<script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
+
+	<!-- CSS -->
+	<link href="./css/style.css" rel="stylesheet" type='text/css' />
+
+	<!-- Scripts Alba -->
+	<script  type="text/javascript" src="scripts/loadCamera.js"></script>
+	<script  type="text/javascript" src="scripts/loadPoint.js"></script>
+    <script  type="text/javascript" src="scripts/camera.js"></script>
+	<script  type="text/javascript" src="scripts/point.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
+
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body onload="main();">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Editor de Escenarios</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="tables.html"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="fa fa-qq fa-fw"></i> Esculturas</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-picture-o fa-fw"></i> Cuadros</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-rebel fa-fw"></i> Otros Objetos</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO MENÚ ESCENARIOS ------------ -->
+			    <div class="col-md-6" id="columna1">
+			    	<div class="row">
+				        <div class="well">
+				            <div id="myCarousel1" class="carousel slide">
+				                <!-- Carousel items -->
+				                <div class="carousel-inner">
+				                    <div class="item active">
+				                        <div class="row">
+				                            <div class="col-xs-3"><a><img src="img/menu/sala1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                        </div>
+				                        <!--/row-->
+				                    </div>
+				                    <!--/item-->
+				                    <div class="item">
+				                        <div class="row">
+				                            <div class="col-xs-3"><a><img src="img/menu/scene4.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/sala1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+
+				                            </div>
+				                        </div>
+				                        <!--/row-->
+				                    </div>
+				                    <!--/item-->
+				                </div>
+				                <!--/carousel-inner--> 
+				                <a class="left carousel-control" href="#myCarousel1" data-slide="prev">‹</a>
+				 				<a class="right carousel-control" href="#myCarousel1" data-slide="next">›</a>
+
+				            </div>
+				            <!--/myCarousel-->
+				        </div>
+<!--  --------------------------------------------------------------------------------------------------------------------- FIN MENÚ ESCENARIOS --------------- -->
+
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO CANVAS SVG ----------------- -->
+	                    <div class="panel panel-primary" id="panelCanvas">
+	                        <svg id="lienzo" viewbox="0 0 500 500"
+	                        onload='Init(evt)'
+							onmousedown='Grab(evt)'
+							onmousemove='Drag(evt)'
+							onmouseup='Drop(evt)'>
+					            <g id="room_level"></g>
+								<g id="sculpture_level"></g>
+					            <g id="line_level"></g>
+					            <g id="camera_level"></g>
+								<g id="point_level"></g>
+							</svg>
+	                    </div>
+            		</div>
+                	<!-- /.col-lg-4 -->
+			    </div>
+<!--  --------------------------------------------------------------------------------------------------------------------- FIN CANVAS SVG -------------------- -->
+
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO MENÚ OBJETOS --------------- -->
+			    <!-- /col -->
+			    <div class="col-md-6" id="columna2">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <i class="fa fa-qq fa-fw"></i>Esculturas</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER ESCULTURAS ---------- -->
+                                <div class="well">
+						            <div id="myCarouselEscultura" class="carousel slide">
+						                <!-- Carousel items -->
+						                <div class="carousel-inner">
+						                    <div class="item active">
+						                        <div class="row">
+						                            <div class="col-xs-3"><a><img src="./img/menu/venus.png" alt="Image" class="img-responsive" onclick="loadSculpture( 6 )"></a>
+
+						                            </div>
+						                            <div class="col-xs-3"><a><img src="./img/menu/thinker.png" alt="Image" class="img-responsive" onclick="loadSculpture( 7 )"></a>
+
+						                            </div>
+						                            <div class="col-xs-3"><a><img src="./img/menu/david.png" alt="Image" class="img-responsive" onclick="loadSculpture( 8 )"></a>
+
+						                            </div>
+						                            <div class="col-xs-3"><a><img src="./img/menu/dragon.png" alt="Image" class="img-responsive" onclick="loadSculpture( 9 )"></a>
+
+						                            </div>
+						                        </div>
+						                        <!--/row-->
+						                    </div>
+						                    <!--/item-->
+						                    <div class="item">
+						                        <div class="row">
+						                            <div class="col-xs-3"><a><img src="./img/menu/ramses2.png" alt="Image" class="img-responsive" onclick="loadSculpture( 10 )"></a>
+
+						                            </div>
+						                            <div class="col-xs-3"><a><img src="./img/menu/pascua.png" alt="Image" class="img-responsive" onclick="loadSculpture( 11 )"></a>
+
+						                            </div>
+						                        </div>
+						                        <!--/row-->
+						                    </div>
+						                    <!--/item-->
+						                </div>
+						                <!--/carousel-inner--> 
+						                <a class="left carousel-control" href="#myCarouselEscultura" data-slide="prev">‹</a>
+						 				<a class="right carousel-control" href="#myCarouselEscultura" data-slide="next">›</a>
+
+						            </div>
+						            <!--/myCarousel-->
+						        </div>
+<!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER ESCULTURAS ------------- -->
+
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> <i class="fa fa-picture-o fa-fw"></i>Cuadros</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> <i class="fa fa-rebel fa-fw"></i>Otros Objetos</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> <i class="fa fa-video-camera fa-fw"></i>Cámaras y Puntos de Rutas</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--  --------------------------------------------------------------------------------------------------------------------- FIN MENÚ OBJETOS ------------------ -->
+
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
+                    <div class="panel panel-primary" id="panelInfo">
+                        <div class="panel-heading">
+                            Información
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-pills" id="labels">
+                                <li class="active"><a href="#ficha-pills" data-toggle="tab">Ficha Técnica</a>
+                                </li>
+                                <li><a href="#escena-pills" data-toggle="tab">Escenario</a>
+                                </li>
+                                <li><a href="#camara-pills" data-toggle="tab">Primera Persona</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO FICHA TÉCNICA -------------- -->
+                                <div class="tab-pane fade in active" id="ficha-pills">
+                                	<div class="row" id="formSculpture">
+	                                	<div class="col-lg-6">
+		                                    <form role="form">
+		                                        <div class="form-group">
+		                                            <label>Nombre</label>
+		                                            <input class="form-control">
+		                                        </div>
+		                                        <div class="form-group">
+		                                            <label>Cronología</label>
+		                                            <input class="form-control">
+		                                        </div>
+		                                        <div class="form-group">
+		                                            <label>Técnica</label>
+		                                            <input class="form-control">
+		                                        </div>
+		                                    </form>
+	                                    </div>
+	                                    <div class="col-lg-6" id="viewSculture">
+	                                    	<div class="panel panel-primary">
+	                                    		<div id="viewElement"></div>
+	                                    	</div>
+	                                    </div>
+	                                </div>
+	                                <div class="row">
+	                                	<div class="col-lg-12">
+		                                	<div class="form-group">
+	                                            <label>Información</label>
+	                                            <textarea class="form-control" rows="3"></textarea>
+	                                        </div>
+                                        </div>
+	                                </div>
+                                </div>
+<!--  --------------------------------------------------------------------------------------------------------------------- FIN FICHA TÉCNICA ----------------- -->
+                                <div class="tab-pane fade" id="escena-pills">
+                                	<div class="row">
+                                		<div class="col-lg-12">
+		                                    <X3D id="the_scene">
+												<!--<Scene>
+													<!--<NavigationInfo headlight='false'></NavigationInfo>
+													<Viewpoint description="Faceted box, smooth shading" position="0 0 25"></Viewpoint>
+													<PointLight id='point' on='TRUE' intensity='0.9000' color='0.9 0.9 0.9' location='0 0 0 ' radius='5000000' ></PointLight>
+												 	<Background backUrl='space.jpg'></Background>
+													<inline url="./x3d/scene.x3d"  translation="0 0 0"> </inline> 
+												</Scene> -->
+											</X3D>
+										</div>
+									</div>
+                                </div>
+                                <div class="tab-pane fade" id="camara-pills">
+                                	<div class="row">
+                                		<div class="col-lg-12">
+		                                   <!-- <X3D id="the_fpc">
+												<!--<Scene>
+													<!--<NavigationInfo headlight='false'></NavigationInfo>
+													<Viewpoint description="Faceted box, smooth shading" position="0 0 25"></Viewpoint>
+													<PointLight id='point' on='TRUE' intensity='0.9000' color='0.9 0.9 0.9' location='0 0 0 ' radius='5000000' ></PointLight>
+												 	<Background backUrl='space.jpg'></Background>
+													<inline url="./x3d/scene.x3d"  translation="0 0 0"> </inline> 
+												</Scene> -->
+											<!--</X3D> -->
+
+												<div class="form-group">
+		                                            <label>Altura</label>
+		                                            <input class="form-control">
+		                                        </div>
+		                                        <div class="form-group">
+		                                            <label>Zancada</label>
+		                                            <input class="form-control">
+		                                        </div>
+	                                        
+										</div>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+			    </div>
+<!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
+
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

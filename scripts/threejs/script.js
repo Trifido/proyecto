@@ -46,9 +46,9 @@ function removeModel(){
 function main() {
 	renderer.setClearColor(0x6E6E6E,1.0);	//0x6E6E6E
 	//window.innerWidth/2.72, window.innerHeight/1.3
-	renderer.setSize(300, 300);
+	renderer.setSize(200, 200);
 	renderer.shadowMapEnabled = true;
-	renderer.setSize(300, 300);
+	renderer.setSize(200, 200);
 
 	// ************************* Escena ***************************** //
 	//var room = new Room ('models/rooms/ARC170.obj', 0, 0, 0, 'models/rooms/ARC170.mtl');
