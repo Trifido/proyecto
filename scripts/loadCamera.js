@@ -85,3 +85,8 @@ function actualizarIndices( indiceEliminado ) {
 function activateControl(){
     $("#box_control").css("visibility", "visible");
 }
+
+//Activa la caja de los puntos de control
+function deactivateControl(){
+    $("#box_control").css("visibility", "hidden");
+}
