@@ -30,5 +30,5 @@ function removeElement(vclass, vname){
                 if (vname == obj.getAttributeNS(null, 'nombre'))
                     document.getElementById(vclass + '_level').removeChild(obj);
             });
-        }
+    }
 }

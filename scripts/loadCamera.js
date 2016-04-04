@@ -9,7 +9,16 @@ function loadNewCamera(){
         return;
     else {
         activeCameras += 1;
-        $("#camera"+activeCameras+" img").css("visibility","visible");
+
+        //Crear una camara
+        var img = $("<img/>", { src : "./img/camera/camera.jpg", alt : "Camera" });
+        var label = $("<label/>", { for : "botonCamera" + activeCameras, class : "boton" });
+        var input = $("<input/>", { type : "radio", id : "botonCamera" + activeCameras, onclick : "loadCamera(" + activeCameras + ")" });
+        var li = $("<li/>", { id : "camera"+activeCameras });
+        //Aniadir la camara
+        $("#cameras").append(li.append(input, label.append(img)));
+
+        /*$("#camera"+activeCameras+" img").css("visibility","visible");*/
         loadCamera(activeCameras);
 
         newCamera = new Camera("camara"+activeCameras, "./img/camera/cameraT.png", 0, 0);
@@ -18,32 +27,14 @@ function loadNewCamera(){
 
 //Funcion para seleccionar una camara ya creada
 function loadCamera( id ){
-    if ( isVisible(id) ) {
-        selectedCamera = id;
-
-        updateBordersC(); //Desactiva todos
-        $("#camera" + id + " img").css("border", "3px solid #1C1C1C"); //Activa el especifico
-
-        //updateVisibilityC();
-
-        activateControl(); // Viewpoints
-    }
-    else
-        return;
+    selectedCamera = id;
+    updateBordersC();
+    $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
+    activateControl();
 }
 
 function removeCamera(id) {
-    $("#camera"+id+" img").css("visibility","hidden");
-}
-
-//Dice si una camara esta visible o no
-function isVisible( id ){
-    var visible = $("#camera"+id+" img").css("visibility");
-
-    if (visible == "visible")
-        return true;
-    else
-        return false;
+   // $("#camera"+id+" img").css("visibility","hidden");
 }
 
 //Desactivar todos los bordes

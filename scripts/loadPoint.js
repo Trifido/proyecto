@@ -1,6 +1,6 @@
 //Variables
 var activePoints = 0;
-var maxPoints = 5;
+var maxPoints = 4;
 var selectedPoint = 0;
 
 //Funcion para cargar un punto nuevo
@@ -11,7 +11,7 @@ function loadNewPoint() {
         activePoints += 1;
 
         //Crear un punto nuevo
-        var img = $("<img/>", { src : "./img/camera/control.jpg", alt : "Add more" });
+        var img = $("<img/>", { src : "./img/camera/control.jpg", alt : "Point" });
         var label = $("<label/>", { for : "botonControl" + activePoints, class : "boton" });
         var input = $("<input/>", { type : "radio", id : "botonControl" + activePoints, onclick : "loadPoint(" + activePoints + ")" });
         var li = $("<li/>", { id : "control"+activePoints });
@@ -32,12 +32,15 @@ function loadPoint( id ) {
 }
 
 //Eliminar uel último punto
-function removePoint() {
+function removePointLine() {
     // ------------------------------------- hacer
     $("#control"+activePoints).remove();
 
     if (selectedPoint == activePoints)
         selectedPoint = 1;
+
+    removePoint(activePoints);
+    removeLine(activePoints);
 
     activePoints-=1;
 }

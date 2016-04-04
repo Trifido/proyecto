@@ -60,6 +60,14 @@ function Point( vname, vpath, vposX, vposY ){
 
 }
 
+///Borrar la imagen 2D del canvas
+function removePoint(n) {
+    $(".point").each(function (i, obj) {
+        if ('punto' + n == obj.getAttributeNS(null, 'nombre'))
+            document.getElementById('point_level').removeChild(obj);
+    });
+}
+
 // NOMBRE DE LA LINEA:
 //  lX: donde X es el numero del punto de control final que corresponde a la linea
 function drawLine (x1, y1, x2, y2, vname){
@@ -76,4 +84,12 @@ function drawLine (x1, y1, x2, y2, vname){
     line.setAttributeNS(null, 'name', 'linea'+vname);
 
     document.getElementById('line_level').appendChild(line);
+}
+
+function removeLine(n) {
+    $(".line").each(function( i, obj ) {
+        if ('linea' + n == obj.getAttributeNS(null, 'name')) {
+            document.getElementById('line_level').removeChild(obj);
+        }
+    });
 }
