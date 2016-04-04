@@ -225,31 +225,6 @@ aside {
     border: 3px solid #73AD21;
 }
 
-#camera1 img {
-    visibility: hidden;
-    border: 3px solid #73AD21;
-}
-
-#camera2 img {
-    visibility: hidden;
-    border: 3px solid #73AD21;
-}
-
-#camera3 img {
-    visibility: hidden;
-    border: 3px solid #73AD21;
-}
-
-#camera4 img {
-    visibility: hidden;
-    border: 3px solid #73AD21;
-}
-
-#camera5 img {
-    visibility: hidden;
-    border: 3px solid #73AD21;
-}
-
 /* ---------------------- Viewpoint Button ------------------------------ */
 #box_control {
     visibility: hidden;
@@ -283,8 +258,8 @@ aside {
     border: 3px solid #73AD21;
 }
 
-#control1 img {
-    border: 3px solid #1C1C1C;
+#controlD2 img {
+    border: 3px solid #73AD21;
 }
 
 /* -------------------- Pestañas de contenido ---------------------- */

@@ -37,7 +37,7 @@ function removePointLine() {
     $("#control"+activePoints).remove();
 
     if (selectedPoint == activePoints)
-        selectedPoint = 1;
+        loadPoint(1);
 
     removePoint(activePoints);
     removeLine(activePoints);

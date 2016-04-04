@@ -31,3 +31,7 @@ function Camera( vname, vpath, vposX, vposY ){
 Camera.prototype.setVisibility = function( value ) {
     this.svgObject.setAttributeNS(null, 'visibility', value);
 }
+
+Camera.prototype.rename = function( value ) {
+    this.svgObject.setAttributeNS(null, 'nombre', value);
+}

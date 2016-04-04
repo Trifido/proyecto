@@ -33,8 +33,15 @@ function loadCamera( id ){
     activateControl();
 }
 
-function removeCamera(id) {
-   // $("#camera"+id+" img").css("visibility","hidden");
+function removeCamera( id ) {
+    $("#camera"+id).remove();
+
+    if (selectedCamera == id)
+        loadCamera(1);
+
+    actualizarIndices( id );
+
+    activeCameras -= 1;
 }
 
 //Desactivar todos los bordes
@@ -54,6 +61,24 @@ function updateVisibilityC(){
         else{
             obj.setVisibility("hidden");}
     });*/
+}
+
+//Cambia los nombres de las etiquetas correspondientes al índice anterior
+//Por ejemplo: camara2 -> camara1
+function actualizarIndices( indiceEliminado ) {
+    for (i = indiceEliminado; i <= activeCameras; i++) {
+        var indice = (i - 1);
+
+        var nuevoNombre = 'botonCamera' + indice;
+        $('#camera' + i + " input").attr('id', nuevoNombre);
+        $('#camera' + i + " label").attr('for', nuevoNombre);
+
+        nuevoNombre = 'loadCamera(' + indice + ')';
+        $('#camera' + i + " input").attr('onclick', nuevoNombre);
+
+        nuevoNombre = 'camera' + indice;
+        $('#camera' + i).attr('id', nuevoNombre);
+    }
 }
 
 //Activa la caja de los puntos de control
