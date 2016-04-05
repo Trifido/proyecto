@@ -1,6 +1,6 @@
 function loadX3D() {
-    var texto="";// = [];
-    //texto+='<X3D id="the_scene">\n');
+    /*var texto="";// = [];
+    texto+='<X3D id="the_scene">\n');
     texto+='\t<Scene>\n\n';
 
     texto+='\t\t<NavigationInfo headlight=\'false\'></NavigationInfo>\n';
@@ -36,8 +36,23 @@ function loadX3D() {
     }
 
     texto+='\t</Scene>\n';
-    //texto+='</X3D>\n');
+    texto+='</X3D>\n';*/
 
-    document.getElementById('the_scene').innerHTML= texto;
+    var x3d = document.getElementsByTagName("x3d")[0];
+    x3d.parentNode.removeChild(x3d);
+    var div = document.getElementById("escena");
+    //        
+    div.innerHTML =
+    '<X3D id="the_scene">\
+      <Scene>\
+        <Background backUrl=\'space.jpg\'></Background>\
+        <Viewpoint description="Faceted box, smooth shading" position="0 10 0" orientation="1 0 0 -1.5708"></Viewpoint>\
+        <inline url="./models/X3D/Sala1.x3d"> </inline>\
+      </Scene>\
+    </x3d>';
+    //div.innerHTML = texto;
+    x3dom.reload();
+
+    //document.getElementById('the_scene').innerHTML= texto;
     //document.getElementById('the_scene').innerText= texto;
 };
