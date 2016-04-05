@@ -8,9 +8,15 @@ function removeElement(vclass, vname){
         removeCamera(vname.substr(vname.length - 1));
 
         //Borrar la imagen 2D de la camara
+        var activar = false;
         $(".camera").each(function (i, obj) {
-            if (vname == obj.getAttributeNS(null, 'nombre'))
+            if (activar) { //Actualizar los indices de las demas
+                obj.setAttributeNS(null, 'nombre', 'camara'+i);
+            }
+            if (vname == obj.getAttributeNS(null, 'nombre') && !activar) {
                 document.getElementById(vclass + '_level').removeChild(obj);
+                activar = true;
+            }
         });
 
         //Eliminar todos los puntos y las lineas
