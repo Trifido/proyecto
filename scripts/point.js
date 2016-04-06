@@ -23,7 +23,6 @@ function Point( vname, vpath, vposX, vposY ){
     this.svgObject.setAttributeNS(null,'height', sideLength);
     this.svgObject.setAttributeNS(null,'width', sideLength);
     this.svgObject.setAttributeNS(null,'rotation', this.rotation);
-    //this.svgObject.setAttributeNS(null,'opacity', 0.9);
 
     document.getElementById('point_level').appendChild(this.svgObject);
 
@@ -73,7 +72,7 @@ function removePoint(n) {
 function drawLine (x1, y1, x2, y2, vname){
     var line = document.createElementNS('http://www.w3.org/2000/svg','line');
 
-    line.setAttributeNS(null, 'stroke', 'green'); // Color
+    line.setAttributeNS(null, 'stroke', 'red'); // Color
     line.setAttributeNS(null, 'stroke-dasharray', '5,5'); // Para que salga punteada
     line.setAttributeNS(null, 'x1', x1);
     line.setAttributeNS(null, 'y1', y1);
