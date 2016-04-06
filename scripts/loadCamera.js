@@ -27,7 +27,7 @@ function loadNewCamera(){
 function loadCamera( id ){
     selectedCamera = id;
     updateBordersC();
-    $("#camera" + id + " img").css("border", "3px solid #1C1C1C");
+    $("#camera" + id + " img").css("border", "2px solid #D80000");
 }
 
 function removeCamera( id ) {
@@ -44,7 +44,7 @@ function removeCamera( id ) {
 //Desactivar todos los bordes
 function updateBordersC(){
     for (i=1; i<=activeCameras;i++){
-        $("#camera"+i+" img").css("border", "3px solid #73AD21");
+        $("#camera"+i+" img").css("border", "0px solid #D80000");
     }
 }
 
