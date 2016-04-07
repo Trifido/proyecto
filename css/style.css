@@ -423,5 +423,9 @@ aside {
     margin-bottom: -3%;
 }
 
+/* -- Elementos canvas ocultos -- */
+#hidden_level {
+    visibility: hidden;
+}
 
 
