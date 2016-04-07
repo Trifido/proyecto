@@ -8,6 +8,7 @@ function loadNewCamera(){
     if (activeCameras >= maxCameras || !RoomInit)
         return;
     else {
+        activePoints.push(0);
         activeCameras += 1;
 
         //Crear una camara
@@ -26,7 +27,7 @@ function loadNewCamera(){
 //Funcion para seleccionar una camara ya creada
 function loadCamera( id ){
     selectedCamera = id;
-    updateBordersC();
+    updateBorders();
     $("#camera" + id + " img").css("border", "2px solid #D80000");
 }
 
@@ -39,11 +40,12 @@ function removeCamera( id ) {
     actualizarIndices( id );
 
     activeCameras -= 1;
+    activePoints.splice( id-1 , 1 );
 }
 
 //Desactivar todos los bordes
-function updateBordersC(){
-    for (i=1; i<=activeCameras;i++){
+function updateBorders(){
+    for (i=1; i<=activeCameras; i++){
         $("#camera"+i+" img").css("border", "0px solid #D80000");
     }
 }

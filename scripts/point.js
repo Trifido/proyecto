@@ -1,8 +1,13 @@
+/* Punto:
+   - Nombre: nombre del punto
+   - Path: ruta del archivo de imagen.
+   - PosX y PosY: par de posiciones donde aparece el punto inicialmente.
+ */
 function Point( vname, vpath, vposX, vposY ){
     var sideLength = 50;
 
     //Atributos
-    this.name = "punto"+vname;
+    this.name = 'punto'+selectedCamera+'_'+vname;
     this.path = vpath;
     this.posX = vposX;
     this.posY = vposY;
@@ -29,8 +34,8 @@ function Point( vname, vpath, vposX, vposY ){
     // Para la linea
     if (vname == 1) { // Unir con la camara
 
-        $(".camera").each(function( i, obj ) {
-            if ("camara" + selectedCamera == obj.getAttributeNS(null, 'nombre')) { //Cogemos la camara
+        $('.camera').each(function( i, obj ) {
+            if ('camara' + selectedCamera == obj.getAttributeNS(null, 'nombre')) { //Cogemos la camara
                 x1 = obj.getAttributeNS(null, 'cX');
                 y1 = obj.getAttributeNS(null, 'cY');
             }
@@ -44,8 +49,8 @@ function Point( vname, vpath, vposX, vposY ){
     else { // Unir con el punto anterior
         var x1 = 0, y1 = 0;
 
-        $(".point").each(function( i, obj ) {
-           if ("punto" + (vname-1) == obj.getAttributeNS(null, 'nombre')) { //Cogemos el punto anterior
+        $('.point').each(function( i, obj ) {
+           if ('punto'+selectedCamera+'_' + (vname-1) == obj.getAttributeNS(null, 'nombre')) { //Cogemos el punto anterior
                x1 = obj.getAttributeNS(null, 'cX');
                y1 = obj.getAttributeNS(null, 'cY');
            }
@@ -61,16 +66,19 @@ function Point( vname, vpath, vposX, vposY ){
 
 ///Borrar la imagen 2D del canvas
 function removePoint(n) {
-    $(".point").each(function (i, obj) {
-        if ('punto' + n == obj.getAttributeNS(null, 'nombre'))
+    $('.point').each(function (i, obj) {
+        if ('punto'+selectedCamera+'_' + n == obj.getAttributeNS(null, 'nombre'))
             document.getElementById('point_level').removeChild(obj);
     });
 }
 
 // NOMBRE DE LA LINEA:
-//  lX: donde X es el numero del punto de control final que corresponde a la linea
+//  lX_Y: donde X es la camara y donde Y es el numero del punto de control final que corresponde a la linea
 function drawLine (x1, y1, x2, y2, vname){
     var line = document.createElementNS('http://www.w3.org/2000/svg','line');
+
+    line.setAttributeNS(null, 'name', 'linea'+selectedCamera+'_'+vname);
+    line.setAttributeNS(null, 'class', 'line'); // Para localizarla luego por su clase
 
     line.setAttributeNS(null, 'stroke', 'red'); // Color
     line.setAttributeNS(null, 'stroke-dasharray', '5,5'); // Para que salga punteada
@@ -79,15 +87,12 @@ function drawLine (x1, y1, x2, y2, vname){
     line.setAttributeNS(null, 'x2', x2);
     line.setAttributeNS(null, 'y2', y2);
 
-    line.setAttributeNS(null, 'class', 'line'); // Para localizarla luego por su clase
-    line.setAttributeNS(null, 'name', 'linea'+vname);
-
     document.getElementById('line_level').appendChild(line);
 }
 
 function removeLine(n) {
-    $(".line").each(function( i, obj ) {
-        if ('linea' + n == obj.getAttributeNS(null, 'name')) {
+    $('.line').each(function( i, obj ) {
+        if ('linea'+selectedCamera+'_'+n == obj.getAttributeNS(null, 'name')) {
             document.getElementById('line_level').removeChild(obj);
         }
     });
