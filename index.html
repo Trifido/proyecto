@@ -39,6 +39,7 @@
 	<script  type="text/javascript" src="scripts/room.js"></script>
 	<script  type="text/javascript" src="scripts/sculpture.js"></script>
 	<script  type="text/javascript" src="scripts/firstCamera.js"></script>
+	<script  type="text/javascript" src="scripts/addPedestal.js"></script>
 
 	<!-- Scripts para montar escenario X3D -->
 	<script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
@@ -152,16 +153,16 @@
 				                <div class="carousel-inner">
 				                    <div class="item active">
 				                        <div class="row">
-				                            <div class="col-xs-3"><a><img src="img/menu/sala1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
 
 				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 1 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 1 )"></a>
 
 				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 2 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 2 )"></a>
 
 				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 3 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene4.png" alt="Image" class="img-responsive" onclick="loadRoom( 3 )"></a>
 
 				                            </div>
 				                        </div>
@@ -170,13 +171,13 @@
 				                    <!--/item-->
 				                    <div class="item">
 				                        <div class="row">
-				                            <div class="col-xs-3"><a><img src="img/menu/scene4.png" alt="Image" class="img-responsive" onclick="loadRoom( 4 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene5.png" alt="Image" class="img-responsive" onclick="loadRoom( 4 )"></a>
 
 				                            </div>
 				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 5 )"></a>
 
 				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/sala1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
 
 				                            </div>
 				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
@@ -350,9 +351,9 @@
                             <ul class="nav nav-pills" id="labels">
                                 <li class="active"><a href="#ficha-pills" data-toggle="tab">Ficha Técnica</a>
                                 </li>
-                                <li><a href="#escena-pills" data-toggle="tab" >Escenario</a>
+                                <li><a href="#escena-pills" data-toggle="tab"  onclick="loadX3D()" >Escenario</a>
                                 </li>
-                                <li><a href="#camara-pills" data-toggle="tab" onclick="loadX3D()" >Primera Persona</a>
+                                <li><a href="#camara-pills" data-toggle="tab" >Primera Persona</a>
                                 </li>
                             </ul>
 
@@ -375,12 +376,20 @@
 		                                            <label>Técnica</label>
 		                                            <input class="form-control">
 		                                        </div>
+		                                        <div class="form-group">
+		                                            <label>Ancho Pedestal</label>
+		                                            <input class="form-control" onkeyup="addAnchuraPedestal(this.value)">
+		                                        </div>
 		                                    </form>
 	                                    </div>
 	                                    <div class="col-lg-6" id="viewSculture">
 	                                    	<div class="panel panel-primary">
 	                                    		<div id="viewElement"></div>
 	                                    	</div>
+	                                    	<div class="form-group">
+	                                            <label>Alto Pedestal</label>
+	                                            <input class="form-control" onkeyup="addAlturaPedestal(this.value)">
+	                                        </div>
 	                                    </div>
 	                                </div>
 	                                <div class="row">
@@ -407,7 +416,7 @@
                                 <div class="tab-pane fade" id="camara-pills">
                                 	<div class="row">
                                 		<div class="col-lg-12">
-		                                    <X3D id="the_fpc">
+		                                   <!-- <X3D id="the_fpc">
 												<Scene>
 													<NavigationInfo headlight='false'></NavigationInfo>
 													<Viewpoint description="Faceted box, smooth shading" position="0 0 25"></Viewpoint>
@@ -415,7 +424,7 @@
 												 	<Background backUrl='space.jpg'></Background>
 													<inline url="./x3d/scene.x3d"  translation="0 0 0"> </inline> 
 												</Scene> 
-											</X3D> 
+											</X3D> -->
 
 												<div class="form-group">
 		                                            <label>Altura</label>

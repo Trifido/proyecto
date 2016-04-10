@@ -18,15 +18,19 @@ function descargarArchivo(contenidoEnBlob, nombreArchivo) {
 
 //Función de ayuda: reúne los datos a exportar en un solo objeto
 function obtenerDatos(objetoDinamico) {
+    var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
+
     return {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
         x: objetoDinamico.getAttributeNS(null, 'cX'),
         y: 0.0,
         z: objetoDinamico.getAttributeNS(null, 'cY'),
-        rotation: objetoDinamico.getAttributeNS(null, 'rotation'),
+        rotation: radianes,
         ancho: objetoDinamico.getAttributeNS(null, 'width'),
         alto: objetoDinamico.getAttributeNS(null, 'height'),
-        clase: objetoDinamico.getAttributeNS(null, 'class')
+        clase: objetoDinamico.getAttributeNS(null, 'class'),
+        pedestalAncho: objetoDinamico.getAttributeNS(null, 'pedestalAncho'),
+        pedestalAlto: objetoDinamico.getAttributeNS(null, 'pedestalAlto')
     };
 };
 

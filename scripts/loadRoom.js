@@ -4,11 +4,13 @@ var RoomInit= false;
 
 //Control de la sala que ha sido cargada.
 function updateRoom( id ){
-	for(var i=0; i<RoomLoads.length; i++)
+	RoomLoads= [false, false, false, false, false, false];
+	RoomLoads[id]= true;
+	/*for(var i=0; i<RoomLoads.length; i++)
 		if(i == id)
 			RoomLoads[i]= true;
 		else
-			RoomLoads[i]= false;
+			RoomLoads[i]= false;*/
 }
 
 //Comprobar que existe actualmente una sala cargada.
@@ -28,7 +30,7 @@ function isAlreadyLoad( id ){
 function initRoom(id){
 	switch(id){
 		case 0:
-			svgroom = new Room ('Sala1','./img/rooms/sala1.png', 500, 500);
+			svgroom = new Room ('scene6','./img/rooms/sala6.png', 500, 500);
 			break;
 		case 1:
 			svgroom = new Room ('Sala2','./img/rooms/sala2.png', 500, 500);
@@ -75,16 +77,15 @@ function changeRoom(id){
 //Funcion encargada de comprobar y cargar la sala correspondiente.
 function loadRoom( id ){
 
-	RoomInit = true;
-
-	if( isRoomLoad() ){
-		updateRoom(id);
+	if( RoomInit) {
+		//updateRoom(id);
 		changeRoom(id);
 	}
 
-	else if( !isAlreadyLoad(id) ){
-		updateRoom(id);
+	else if( !RoomInit ){
+		//updateRoom(id);
 		initRoom(id);
+		RoomInit=true;
 	}
 
 }

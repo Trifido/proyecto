@@ -7,6 +7,7 @@ var Sala = null;
 var DragTarget = null;
 var targetElement= null;
 var elementoAnterior= null;
+var elementoSeleccionado= null;
 // El flag diferencia el click del drag
 var clickFlag=null;
 // EL menú de los elementos
@@ -134,32 +135,32 @@ function Drag(evt)
             clickFlag= 1;
         }
         else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
-                var rot= parseInt(elementoAnterior.getAttributeNS(null,'rotation'));
-                if(evt.clientX > lMousePos.x)
-                    rot -= 5;
-                else if(evt.clientX < lMousePos.x)
-                    rot += 5;
-                else if(evt.clientY > lMousePos.y)
-                    rot -= 5;
-                else
-                    rot += 5;
+            var rot= parseInt(elementoAnterior.getAttributeNS(null,'rotation'));
+            if(evt.clientX > lMousePos.x)
+                rot -= 5;
+            else if(evt.clientX < lMousePos.x)
+                rot += 5;
+            else if(evt.clientY > lMousePos.y)
+                rot -= 5;
+            else
+                rot += 5;
 
-                if(rot<0)
-                    rot +=360;
-                else
-                    rot %=360;
+            if(rot<0)
+                rot +=360;
+            else
+                rot %=360;
 
-                lMousePos.x= evt.clientX;
-                lMousePos.y= evt.clientY;
+            lMousePos.x= evt.clientX;
+            lMousePos.y= evt.clientY;
 
-                elementoAnterior.setAttributeNS(null,'rotation',rot);
+            elementoAnterior.setAttributeNS(null,'rotation',rot);
 
-                var posX= parseFloat(elementoAnterior.getAttributeNS(null,'cX'));
-                var posY= parseFloat(elementoAnterior.getAttributeNS(null,'cY'));
-                NewCoord.x= parseFloat(elementoAnterior.getAttributeNS(null,'coordX'));
-                NewCoord.y= parseFloat(elementoAnterior.getAttributeNS(null,'coordY'));
-                
-                elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ') translate(' + NewCoord.x +', '+ NewCoord.y + ')');
+            var posX= parseFloat(elementoAnterior.getAttributeNS(null,'cX'));
+            var posY= parseFloat(elementoAnterior.getAttributeNS(null,'cY'));
+            NewCoord.x= parseFloat(elementoAnterior.getAttributeNS(null,'coordX'));
+            NewCoord.y= parseFloat(elementoAnterior.getAttributeNS(null,'coordY'));
+            
+            elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX +', ' + posY + ') translate(' + NewCoord.x +', '+ NewCoord.y + ')');
         }
     }
 };
@@ -171,8 +172,8 @@ function Drop(evt)
     if(clickFlag==1){
         if(DragTarget){
             // Si hay desplazamiento entonces calculamos la nueva posición del elemento
-            var posW=  parseFloat(DragTarget.getAttributeNS(null,'width'))/2;
-            var posH=  parseFloat(DragTarget.getAttributeNS(null,'height'))/2;
+            var posW= parseFloat(DragTarget.getAttributeNS(null,'width'))/2;
+            var posH= parseFloat(DragTarget.getAttributeNS(null,'height'))/2;
             var rot= parseInt(DragTarget.getAttributeNS(null,'rotation'));
             var cx= NewCoord.x;
             var cy= NewCoord.y;
@@ -209,6 +210,7 @@ function Drop(evt)
 
             if(DragTarget.getAttributeNS(null,'nombre') == "delete"){
                 menu.removeMenu();
+                elementoSeleccionado= null;
                 //Eliminar estatua
                 removeElement(elementoAnterior.getAttributeNS(null,'class'), elementoAnterior.getAttributeNS(null,'nombre'));
             }
@@ -228,14 +230,19 @@ function Drop(evt)
             else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre')){
                 menu.removeMenu();
                 menu.loadMenu(DragTarget);
+                elementoSeleccionado= DragTarget;
             }
             else{
                 menu.loadMenu(DragTarget);
+                elementoSeleccionado= DragTarget;
             }
         }
     }
+    //Si clickeamos algo que no es un objeto válido desaparece el menú y el modelo 3d del formulario.
     else if(clickFlag==2){
         menu.removeMenu();
+        removeSculpture();
+        elementoSeleccionado= null;
     }
 
     if(DragTarget != null && DragTarget.getAttributeNS(null,'nombre') != "rotate"){

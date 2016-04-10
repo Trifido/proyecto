@@ -1,6 +1,6 @@
 
 var sculptureLoads= [false, false, false, false, false, false];
-var nameScultureLoad;
+var nameScultureLoad= null;
 
 //Control de la sala que ha sido cargada.
 function updateSculpture( id ){
@@ -29,33 +29,33 @@ function initSculpture(id){
 	switch(id){
 		case 6:
 			sculpture = new Sculpture('venus','./img/models2D/venus.jpg', 40, 40, 0, 0);
-			loadModel('./models/venus/venus.obj');
-			nameScultureLoad= 'venus';
+			//loadModel('./models/venus/venus.obj');
+			//nameScultureLoad= 'venus';
 			break;
 		case 7:
 			sculpture = new Sculpture('thinker','./img/models2D/thinker.jpg', 60, 60, 0, 0);
-			loadModel('./models/thinker/thinker.obj');
-			nameScultureLoad= 'thinker';
+			//loadModel('./models/thinker/thinker.obj');
+			//nameScultureLoad= 'thinker';
 			break;
 		case 8:
 			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 0, 0);
-			loadModel('./models/david/david.obj');
-			nameScultureLoad= 'david';
+			//loadModel('./models/david/david.obj');
+			//nameScultureLoad= 'david';
 			break;
 		case 9:
 			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 0, 0);
-			loadModel('./models/dragon/dragon.obj');
-			nameScultureLoad= 'dragon';
+			//loadModel('./models/dragon/dragon.obj');
+			//nameScultureLoad= 'dragon';
 			break;
 		case 10:
 			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 0, 0);
-			loadModel('./models/ramses2/ramses2.obj');
-			nameScultureLoad= 'ramses2';
+			//loadModel('./models/ramses2/ramses2.obj');
+			//nameScultureLoad= 'ramses2';
 			break;
 		case 11:
 			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 30, 30, 0, 0);
-			loadModel('./models/pascua/pascua.obj');
-			nameScultureLoad= 'pascua';
+			//loadModel('./models/pascua/pascua.obj');
+			//nameScultureLoad= 'pascua';
 			break;
 	}
 }
@@ -80,10 +80,18 @@ function loadSculpture( id ){
 function changeSculture( id ){
 	if(RoomInit){
 		if( nameScultureLoad != id ){
-			removeModel();
+			if(nameScultureLoad!=null)
+				removeModel();
 			loadModel('./models/'+id+'/'+id+'.obj');
 			nameScultureLoad= id;
 		}
+	}
+}
+
+function removeSculpture(){
+	if(RoomInit){
+		removeModel();
+		nameScultureLoad=null;
 	}
 }
 
