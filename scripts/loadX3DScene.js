@@ -5,7 +5,7 @@ function loadX3D() {
 
     
     texto+='\t\t<Background backUrl=\'space.jpg\'></Background>\n';
-    texto+='\t\t<Viewpoint description="Faceted box, smooth shading" position="-3 10 2" orientation="1 0 0 -1.5708"></Viewpoint>\n';
+    texto+='\t\t<Viewpoint description="Faceted box, smooth shading" position="2 10 3" orientation="1 0 0 -1.5708"></Viewpoint>\n';
     
     //Añadimos el escenario    
     var objDin= obtenerEscenario(document.getElementById('room_level').childNodes[0]);
@@ -26,8 +26,19 @@ function loadX3D() {
         elemento= document.getElementById('sculpture_level').childNodes[i];
         if(elemento.id != 'delete' && elemento.id != 'rotate'){
             objDin= obtenerDatos(elemento);
-            posX= parseInt(objDin.x) * 0.01;
-            posZ= parseInt(objDin.z) * 0.01;
+
+            /*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO */
+            var interY= (parseInt(objDin.z)*61)/500; //61m de largo y 500px de lienzo
+            posZ= interY * 0.1;
+
+            //altoImagen= 636;
+            var anchoImg= (500*500)/636;
+            //500 del ancho del lienzo;
+            var interX= (500-anchoImg)/2;
+
+            var auxX= ((parseInt(objDin.x)-interX)*46)/anchoImg;
+            posX= auxX * 0.1;
+            
 
             if(objDin.pedestalAlto>0){
                 var ancho= objDin.pedestalAncho * 0.01;
