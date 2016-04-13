@@ -18,12 +18,31 @@ function removeElement(vclass, vname){
         });
         //Actualizar los nombres
         $(".camera").each(function (i, obj) {
-            var number = obj.getAttributeNS(null, 'nombre'); // Numero de la camara
-            number = number.substr( number.length - 1);
+            var cNumber = obj.getAttributeNS(null, 'nombre'); // Numero de la camara
+            cNumber = cNumber.substr( cNumber.length - 1);
 
-            if (number > vname.substr(vname.length - 1)) { // Si hay que cambiar su numero
-                var aux = parseInt(number)-1;
-                obj.setAttributeNS(null, 'nombre', 'camara'+aux);
+            if (cNumber > vname.substr(vname.length - 1)) { // Actualizar el resto de las camaras
+                var aux = parseInt(cNumber) - 1;
+
+                obj.setAttributeNS(null, 'nombre', 'camara'+aux); // Camara
+
+                $(".point").each(function (i, obj) { //Puntos
+                    var pNumber = obj.getAttributeNS(null, 'nombre').substr(5, 1); // Indice de la camara a la que pertenece
+
+                    if (pNumber == cNumber) { // Si pertenecen a la misma camara
+                        var myNum = obj.getAttributeNS(null, 'nombre').substr(7, 1);
+                        obj.setAttributeNS(null, 'nombre', 'punto' + aux + '_' + myNum); // Punto
+                    }
+                });
+
+                $(".line").each(function (i, obj) { //Lineas
+                    var lNumber = obj.getAttributeNS(null, 'name').substr(5, 1); // Indice de la camara a la que pertenece
+
+                    if (lNumber == cNumber) { // Si pertenecen a la misma camara
+                        var myNum = obj.getAttributeNS(null, 'name').substr(7, 1);
+                        obj.setAttributeNS(null, 'name', 'linea' + aux + '_' + myNum); // Linea
+                    }
+                });
             }
         });
 

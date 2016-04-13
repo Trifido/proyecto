@@ -41,10 +41,12 @@ function loadCamera( id ){
 function removeCamera( id ) {
     $('#camera'+id).remove();
 
+    updateCameraIndex( id );
+
     if (selectedCamera == id)
         loadCamera(1);
 
-    updateCameraIndex( id );
+
 
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
