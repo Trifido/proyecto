@@ -1,7 +1,7 @@
 function removeElement(vclass, vname){
     if (vclass == 'sculpture') {
         removeModel();
-        document.getElementById(vclass + '_level').removeChild(document.getElementById(vname)); //Borrar la imagen 2D
+        document.getElementById('sculpture_level').removeChild(document.getElementById(vname)); //Borrar la imagen 2D
     }
     if (vclass == 'camera') {
         //Eliminar todos los puntos y las lineas
@@ -10,20 +10,24 @@ function removeElement(vclass, vname){
             removePointLine();
         }
 
-        //Eliminar el control de la camara
-        removeCamera(vname.substr(vname.length - 1));
-
         //Borrar la imagen 2D de la camara
-        var activar = false;
         $(".camera").each(function (i, obj) {
-            if (activar) { //Actualizar los indices de las demas
-                obj.setAttributeNS(null, 'nombre', 'camara'+i);
-                //actualizar nombre de lineas y de puntos
-            }
-            if (vname == obj.getAttributeNS(null, 'nombre') && !activar) {
-                document.getElementById(vclass + '_level').removeChild(obj);
-                activar = true;
+            if (vname == obj.getAttributeNS(null, 'nombre')) {
+                document.getElementById('camera_level').removeChild(obj);
             }
         });
+        //Actualizar los nombres
+        $(".camera").each(function (i, obj) {
+            var number = obj.getAttributeNS(null, 'nombre'); // Numero de la camara
+            number = number.substr( number.length - 1);
+
+            if (number > vname.substr(vname.length - 1)) { // Si hay que cambiar su numero
+                var aux = parseInt(number)-1;
+                obj.setAttributeNS(null, 'nombre', 'camara'+aux);
+            }
+        });
+
+        //Eliminar el control de la camara
+        removeCamera(vname.substr(vname.length - 1))
     }
 }

@@ -44,7 +44,7 @@ function removeCamera( id ) {
     if (selectedCamera == id)
         loadCamera(1);
 
-    actualizarIndices( id );
+    updateCameraIndex( id );
 
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
@@ -101,8 +101,8 @@ function updateLines() {
 
 //Cambia los nombres de las etiquetas correspondientes al índice anterior
 //Por ejemplo: camara2 -> camara1
-function actualizarIndices( indiceEliminado ) {
-    for (i = indiceEliminado; i <= activeCameras; i++) {
+function updateCameraIndex( deletedIndex ) {
+    for (i = deletedIndex; i <= activeCameras; i++) {
         var indice = (i - 1);
 
         var nuevoNombre = 'loadCamera(' + indice + ')';
