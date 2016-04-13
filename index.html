@@ -299,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                    <!--------------------------------------------------------------------- Cámaras --------------------------------------------------------------------->
+                        <!-------------------------------------------------------------- INICIO CÁMARA SLIDER -------------------------------------------------------------->
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -307,20 +307,23 @@
                                 </h4>
                             </div>
                             <div id="collapseFour" class="panel-collapse collapse">
-                            	<div class="row">
-                                    <!-- Botones -->
-	                            	<div class="col-md-3">
-	                            		<button type="button" class="btn btn-primary" onclick="loadNewCamera()">Nueva Cámara</button>
-	                            	</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-primary" onclick="loadNewPoint()">Nuevo Punto</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-primary" onclick="removePointLine()">Eliminar Punto</button>
-                                    </div>
-                            	</div>
+                                <!-- Botones -->
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-primary" onclick="loadNewCamera()">Nueva Cámara</button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-primary" onclick="loadNewPoint()">Nuevo Punto</button>
+										</div>
+										<div class="col-md-3">
+											<button type="button" class="btn btn-primary" onclick="removePointLine()">Eliminar Punto</button>
+										</div>
+									</div>
+								</div>
+                                <!-- !Botones -->
                                 <div class="well">
                                     <div id="box_camera" class="carousel slide">
                                         <!-- Carousel items -->
@@ -334,13 +337,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <!-------------------------------------------------------------------- Fin Cámaras -------------------------------------------------------------------->
+						</div>
                     </div>
 
 <!--  --------------------------------------------------------------------------------------------------------------------- FIN MENÚ OBJETOS ------------------ -->
 
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
+                    <!--------------------------------------------- INICIO INFORMACIÓN --------------------------------------------->
                     <div class="panel panel-primary" id="panelInfo">
                         <div class="panel-heading">
                             Información
@@ -351,15 +353,18 @@
                             <ul class="nav nav-pills" id="labels">
                                 <li class="active"><a href="#ficha-pills" data-toggle="tab">Ficha Técnica</a>
                                 </li>
-                                <li><a href="#escena-pills" data-toggle="tab"  onclick="loadX3D()" >Escenario</a>
+                                <li><a href="#escena-pills" data-toggle="tab" onclick="loadX3D()">Escenario</a>
                                 </li>
-                                <li><a href="#camara-pills" data-toggle="tab" >Primera Persona</a>
+                                <li><a href="#camara-pills" data-toggle="tab">Primera Persona</a>
+                                </li>
+                                <li><a href="#activeCamera-pills" data-toggle="tab">Ficha Cámara</a> <!-- Alba -->
+                                </li>
+                                <li><a href="#controlPoints-pills" data-toggle="tab">Ficha Puntos</a> <!-- Alba -->
                                 </li>
                             </ul>
-
                             <!-- Tab panes -->
                             <div class="tab-content">
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO FICHA TÉCNICA -------------- -->
+                            <!------------------------------------ INICIO FICHA TÉCNICA ------------------------------------>
                                 <div class="tab-pane fade in active" id="ficha-pills">
                                 	<div class="row" id="formSculpture">
 	                                	<div class="col-lg-6">
@@ -401,7 +406,7 @@
                                         </div>
 	                                </div>
                                 </div>
-<!--  --------------------------------------------------------------------------------------------------------------------- FIN FICHA TÉCNICA ----------------- -->
+                                <!------------------------------------ INICIO ESCENARIO ------------------------------------>
                                 <div class="tab-pane fade" id="escena-pills">
                                 	<div class="row">
                                 		<div class="col-lg-12" id="escena">
@@ -413,6 +418,7 @@
 										</div>
 									</div>
                                 </div>
+                                <!------------------------------------ INICIO PRIMERA PERSONA ------------------------------------>
                                 <div class="tab-pane fade" id="camara-pills">
                                 	<div class="row">
                                 		<div class="col-lg-12">
@@ -425,24 +431,75 @@
 													<inline url="./x3d/scene.x3d"  translation="0 0 0"> </inline> 
 												</Scene> 
 											</X3D> -->
-
-												<div class="form-group">
-		                                            <label>Altura</label>
-		                                            <input class="form-control">
-		                                        </div>
-		                                        <div class="form-group">
-		                                            <label>Zancada</label>
-		                                            <input class="form-control">
-		                                        </div>
-	                                        
+                                            <div class="form-group">
+                                                <label>Altura</label>
+                                                <input class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Zancada</label>
+                                                <input class="form-control">
+                                            </div>
 										</div>
 									</div>
                                 </div>
+                                <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
+                                <div class="tab-pane fade in active" id="activeCamera-pills">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <label> Vista de Cámara </label> <!-- Pongo así la etiqueta a pelo? -->
+                                            <div class="panel panel-primary">
+                                                <div id="activeCameraView"></div> <!-- Lo que ve la camara que esta activa ? -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="formActiveCamera">
+                                        <!-- Funcionalidad Potencial: cámara activada en un tiempo específico -->
+                                        <div class="col-lg-6">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label> Posición </label>
+                                                    <input class="form-control" onkeyup=""> <!-- Tiene que ser de 3 (X, Y , Z) -->
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Duración Recorrido </label>
+                                                    <input class="form-control">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label> Recorte Delantero </label>
+                                                    <input class="form-control" onkeyup="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Recorte Trasero </label>
+                                                    <input class="form-control">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!------------------------------------INICIO PUNTOS DE CONTROL ------------------------------------>
+                                <div class="tab-pane fade in active" id="controlPoints-pills">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <label> Posición </label>
+                                                    <input class="form-control" onkeyup=""> <!-- Tiene que ser de 3 (X, Y , Z) -->
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label> Tiempo </label>
+                                                    <input class="form-control" onkeyup=""> <!-- Tiene que estar entre el tiempo anterior y el siguiente -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
+                        </div> <!-- /.panel-body -->
+                    </div> <!-- /.panel -->
 			    </div>
 <!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
 
