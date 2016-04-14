@@ -22,6 +22,9 @@ function loadNewCamera(){
 
         newCamera = new Camera('camara'+activeCameras, './img/camera/cameraT.png', 0, 0);
     }
+    
+    $('#btnAddPoint').removeAttr('disabled'); 
+    $('#btnRemPoint').attr('disabled','disabled');
 }
 
 //Funcion para seleccionar una camara ya creada
@@ -36,6 +39,11 @@ function loadCamera( id ){
     //Seleccionar en el menú
     updateBorders();
     $('#camera' + id + ' img').css('border', '2px solid #D80000');
+
+    if (activePoints[selectedCamera-1] > 0)
+        $('#btnRemPoint').removeAttr('disabled');
+    else
+        $('#btnRemPoint').attr('disabled','disabled');
 }
 
 function removeCamera( id ) {
@@ -48,6 +56,9 @@ function removeCamera( id ) {
     
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
+
+    if (activeCameras == 0)
+        $('#btnAddPoint').attr('disabled','disabled');
 }
 
 //Desactivar todos los bordes

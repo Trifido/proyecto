@@ -303,38 +303,32 @@
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> <i class="fa fa-video-camera fa-fw"></i>Cámaras y Puntos de Rutas</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" class="collapsed"> <i class="fa fa-video-camera fa-fw"></i>Cámaras y Puntos de Ruta</a>
                                 </h4>
                             </div>
-                            <div id="collapseFour" class="panel-collapse collapse">
-                                <!-- Botones -->
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-md-3">
-											<button type="button" class="btn btn-primary" onclick="loadNewCamera()">Nueva Cámara</button>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-3">
-											<button type="button" class="btn btn-primary" onclick="loadNewPoint()">Nuevo Punto</button>
-										</div>
-										<div class="col-md-3">
-											<button type="button" class="btn btn-primary" onclick="removePointLine()">Eliminar Punto</button>
-										</div>
-									</div>
-								</div>
-                                <!-- !Botones -->
-                                <div class="well">
-                                    <div id="box_camera" class="carousel slide">
-                                        <!-- Carousel items -->
-                                        <div class="carousel-inner">
-                                            <div class="item active">
-                                                <div id="cameras" class="row"></div>
+                            <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body">
+                                    <div class="well">
+                                        <div id="box_camera" class="carousel slide">
+                                            <!-- Carousel items -->
+                                            <div class="carousel-inner">
+                                                <div class="item active">
+                                                    <div id="cameras" class="row"></div>
+                                                </div>
                                             </div>
+                                            <a class="left carousel-control" href="#box_camera" data-slide="prev">‹</a>
+                                            <a class="right carousel-control" href="#box_camera" data-slide="next">›</a>
                                         </div>
-                                        <a class="left carousel-control" href="#box_camera" data-slide="prev">‹</a>
-                                        <a class="right carousel-control" href="#box_camera" data-slide="next">›</a>
                                     </div>
+                                    <!-- Botones -->
+                                    <p>
+                                        <button type="button" id="btnAddCamera" class="btn btn-info" onclick="loadNewCamera()" disabled>Nueva Cámara</button>
+                                    </p>
+                                    <p>
+                                        <button type="button" id="btnAddPoint" class="btn btn-success" onclick="loadNewPoint()" disabled>Nuevo Punto Ruta</button>
+                                        <button type="button" id="btnRemPoint" class="btn btn-success" onclick="removePointLine()" disabled>Eliminar Punto Ruta</button>
+                                    </p>
+                                    <!-- !Botones -->
                                 </div>
                             </div>
 						</div>
@@ -359,7 +353,7 @@
                                 </li>
                                 <li><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
                                 </li>
-                                <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Control</a> <!-- Alba -->
+                                <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
                             </ul>
                             <!-- Tab panes -->
@@ -567,7 +561,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                        </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

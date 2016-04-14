@@ -86,6 +86,8 @@ function loadRoom( id ){
 		//updateRoom(id);
 		initRoom(id);
 		RoomInit=true;
+		
+		$('#btnAddCamera').removeAttr('disabled');
 	}
 
 }
