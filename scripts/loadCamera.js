@@ -45,9 +45,7 @@ function removeCamera( id ) {
 
     if (selectedCamera == id)
         loadCamera(1);
-
-
-
+    
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
 }
