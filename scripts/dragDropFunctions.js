@@ -94,43 +94,16 @@ function Drag(evt)
 
             menu.translateMenu(NewCoord.x, NewCoord.y, rot);
 
+             // ALBA - Actualizar la ficha de información
+            var vancho = DragTarget.getAttributeNS(null, 'width')/2;
+            var valto = DragTarget.getAttributeNS(null, 'height')/2;
+            updateFileCoords(DragTarget.getAttributeNS(null, 'class'), NewCoord.x+vancho, NewCoord.y+valto);
+
             // ALBA - Trasladar la línea si corresponde
             var clase = DragTarget.getAttributeNS(null, 'class');
 
-            if (clase == 'camera') { // Si somos camara
-                var ancho = DragTarget.getAttributeNS(null, 'width')/2;
-                var alto = DragTarget.getAttributeNS(null, 'height')/2;
-
-                if ($(".line").length >= 1) { //Si esta unido a una linea (EXTENDER A MAS LINEAS)
-                    $(".line").each(function( i, obj ) {
-                        if ('linea'+selectedCamera+'_'+'1' == obj.getAttributeNS(null, 'name')) { //Se toma la linea
-                            obj.setAttributeNS(null, 'x1', NewCoord.x+ancho);
-                            obj.setAttributeNS(null, 'y1', NewCoord.y+alto);
-                        }
-                    });
-                }
-             }
-            if (clase == 'point') { // Si somos punto
-
-                var ancho = DragTarget.getAttributeNS(null, 'width')/2;
-                var alto = DragTarget.getAttributeNS(null, 'height')/2;
-                var numero = DragTarget.getAttributeNS(null, 'nombre').substr(7); // Tomamos el numero de punto
-
-                $(".line").each(function( i, obj ) {
-                    if ('linea'+selectedCamera+'_'+numero == obj.getAttributeNS(null, 'name')) { //Se toma la linea anterior
-                        obj.setAttributeNS(null, 'x2', NewCoord.x+ancho);
-                        obj.setAttributeNS(null, 'y2', NewCoord.y+alto);
-                    }
-
-                    var aux = parseInt(numero)+1;
-                    if ('linea'+selectedCamera+'_'+aux == obj.getAttributeNS(null, 'name')) { //Se toma la linea siguiente (si existe)
-                        obj.setAttributeNS(null, 'x1', NewCoord.x+ancho);
-                        obj.setAttributeNS(null, 'y1', NewCoord.y+alto);
-                    }
-                });
-
-            }
-            //----
+            if (clase == 'camera') translateCameraLine();
+            else if (clase == 'point') translatePointLine();
 
             clickFlag= 1;
         }
@@ -262,3 +235,36 @@ function GetTrueCoords(evt)
 	TrueCoords.x = (evt.clientX - translation.x)/newScale;
 	TrueCoords.y = (evt.clientY - translation.y)/newScale;
 };
+
+function translateCameraLine(){
+    var ancho = DragTarget.getAttributeNS(null, 'width')/2;
+    var alto = DragTarget.getAttributeNS(null, 'height')/2;
+
+    if ($(".line").length >= 1) { //Si esta unido a una linea (EXTENDER A MAS LINEAS)
+        $(".line").each(function( i, obj ) {
+            if ('linea'+selectedCamera+'_'+'1' == obj.getAttributeNS(null, 'name')) { //Se toma la linea
+                obj.setAttributeNS(null, 'x1', NewCoord.x+ancho);
+                obj.setAttributeNS(null, 'y1', NewCoord.y+alto);
+            }
+        });
+    }
+}
+
+function translatePointLine(){
+    var ancho = DragTarget.getAttributeNS(null, 'width')/2;
+    var alto = DragTarget.getAttributeNS(null, 'height')/2;
+    var numero = DragTarget.getAttributeNS(null, 'nombre').substr(7); // Tomamos el numero de punto
+
+    $(".line").each(function( i, obj ) {
+        if ('linea'+selectedCamera+'_'+numero == obj.getAttributeNS(null, 'name')) { //Se toma la linea anterior
+            obj.setAttributeNS(null, 'x2', NewCoord.x+ancho);
+            obj.setAttributeNS(null, 'y2', NewCoord.y+alto);
+        }
+
+        var aux = parseInt(numero)+1;
+        if ('linea'+selectedCamera+'_'+aux == obj.getAttributeNS(null, 'name')) { //Se toma la linea siguiente (si existe)
+            obj.setAttributeNS(null, 'x1', NewCoord.x+ancho);
+            obj.setAttributeNS(null, 'y1', NewCoord.y+alto);
+        }
+    });
+}
