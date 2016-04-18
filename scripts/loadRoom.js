@@ -54,7 +54,7 @@ function initRoom(id){
 function changeRoom(id){
 	switch(id){
 		case 0:
-			svgroom.change('./img/rooms/sala1.png', 500, 500);
+			svgroom.change('./img/rooms/sala6.png', 500, 500);
 			break;
 		case 1:
 			svgroom.change('./img/rooms/sala2.png', 500, 500);

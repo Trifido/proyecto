@@ -116,7 +116,9 @@ function loadVRX3D() {
 
 	var div = document.getElementById("FirstCameraVR");   
     div.innerHTML = texto;
+
     x3dom.reload();
+    cargarEscenarioVRX3D();
 };
 
 
@@ -150,7 +152,7 @@ window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, fal
 
 function deg2rad(deg){return deg * degreeToRadiansFactor;}
 
-document.onload = function ()
+function cargarEscenarioVRX3D()
 {
     runtime = document.getElementById('x3dElement').runtime;
     rtLeft = document.getElementById('rtLeft');
@@ -227,7 +229,7 @@ function loadNodeVRCamera(){
 	var objdin= obtenerVRCamera();
 
 	/*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO */
-            var interY= (parseInt(objDin.z)*61)/500; //61m de largo y 500px de lienzo
+            var interY= (parseInt(objdin.z)*61)/500; //61m de largo y 500px de lienzo
             var posZ= interY * 0.1;
 
             //altoImagen= 636;
@@ -235,7 +237,7 @@ function loadNodeVRCamera(){
             //500 del ancho del lienzo;
             var interX= (500-anchoImg)/2;
 
-            var auxX= ((parseInt(objDin.x)-interX)*46)/anchoImg;
+            var auxX= ((parseInt(objdin.x)-interX)*46)/anchoImg;
             var posX= auxX * 0.1;
 
 
