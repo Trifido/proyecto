@@ -386,7 +386,16 @@ aside {
 }
 
 #viewSculture{
-    padding-right: -1%;
+    margin-top: 1%;
+    width:100%; height:100%;
+    border: 1px solid black;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Google Chrome y Safari */
+    border-radius: 5px; 
+}
+
+#the_monument_viewer{
+    width:100%; height:100%;
 }
 
 #formSculpture{
@@ -404,7 +413,7 @@ aside {
 }
 
 /* -------------- Pestaña Cámara primera persona ------------------------- */
- #the_fpc{
+ #VRCamera{
     margin-top: 1%;
     width:100%; height:100%;
     border: 1px solid black;
@@ -426,6 +435,11 @@ aside {
 /* -- Elementos canvas ocultos -- */
 #hidden_level {
     visibility: hidden;
+}
+
+/* -- X3D RVCamera -- */
+#FirstCameraVR{
+    width:100%; height:100%;
 }
 
 

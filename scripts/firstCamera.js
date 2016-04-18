@@ -25,6 +25,7 @@ function FirstCamera( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
+	this.svgObject.setAttributeNS(null, 'class', 'VRcamera');
 	this.svgObject.setAttributeNS(null, 'id', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
@@ -40,14 +41,7 @@ function FirstCamera( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 	this.svgObject.setAttributeNS(null, 'altura', '170');
 	this.svgObject.setAttributeNS(null, 'zancada', '30');
+	this.svgObject.setAttributeNS(null, 'salto', '0.5');
 
-	document.getElementById('sculpture_level').appendChild(this.svgObject);
-
-	//Esto me sirve para poder eliminar la escultura que acabo de cargar en la escena
-	var n= document.getElementById("sculpture_level").childNodes.length;
-	targetElement= document.getElementById('sculpture_level').childNodes[n-1];
-}
-
-function RemoveCamera(name){
-    document.getElementById('sculpture_level').removeChild(document.getElementById('sculpture_level').getElementById(name));
+	document.getElementById('VRcamera_level').appendChild(this.svgObject);
 }

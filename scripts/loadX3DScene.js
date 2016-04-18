@@ -1,12 +1,23 @@
 function loadX3D() {
-    var texto="";// = [];
+    var texto="";
     texto+='<X3D id="the_scene">\n';
     texto+='\t<Scene>\n\n';
 
-    
     texto+='\t\t<Background backUrl=\'space.jpg\'></Background>\n';
     texto+='\t\t<Viewpoint description="Faceted box, smooth shading" position="2 10 3" orientation="1 0 0 -1.5708"></Viewpoint>\n';
     
+    texto+= chargeX3DScene();
+
+    texto+='\t</Scene>\n';
+    texto+='</X3D>\n';
+
+    var div = document.getElementById("escena");   
+    div.innerHTML = texto;
+    x3dom.reload();
+};
+
+function chargeX3DScene(){
+    var texto="";
     //Añadimos el escenario    
     var objDin= obtenerEscenario(document.getElementById('room_level').childNodes[0]);
 
@@ -51,12 +62,6 @@ function loadX3D() {
                 texto+='\t\t\t\t\t<Box DEF=\"box\" size=\''+ ancho + alto + ancho +'\' />';
                 texto+='\t\t\t\t</Shape>';
                 texto+='\t\t\t</Transform>\n';
-
-                /*texto+='\t\t\t<Transform DEF="TranslatePedestal" translation="' + posX + ' 0 ' + posZ + '">\n';
-                var ancho= objDin.pedestalAncho * 0.01;
-                var alto= objDin.pedestalAlto * 0.01;
-                texto+='\t\t\t\t<Box ccw="true" hasHelperColors="false" lit="true" size="'+ ancho +' , ' + alto + ' , ' + ancho +'" solid="true" useGeoCache="true" ></Box>\n';
-                texto+='\t\t\t</Transform>\n';*/
             }
             
             texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + posX + ' ' + ((objDin.pedestalAlto/2)*0.01) + ' ' + posZ + '">\n';
@@ -71,25 +76,11 @@ function loadX3D() {
             texto+='\t\t</Transform>\n\n';
         }
     }
+    return texto;
+};
 
-    texto+='\t</Scene>\n';
-    texto+='</X3D>\n';
+function chargeVRCamera(){
+    var texto= "";
 
-    var x3d = document.getElementsByTagName("x3d")[0];
-    x3d.parentNode.removeChild(x3d);
-    var div = document.getElementById("escena");
-    //        
-    div.innerHTML = texto;
-    /*'<X3D id="the_scene">\
-      <Scene>\
-        <Background backUrl=\'space.jpg\'></Background>\
-        <Viewpoint description="Faceted box, smooth shading" position="-3 10 2" orientation="1 0 0 -1.5708"></Viewpoint>\
-        <inline url="./models/X3D/Sala1.x3d"> </inline>\
-      </Scene>\
-    </x3d>';*/
-    //div.innerHTML = texto;
-    x3dom.reload();
-
-    //document.getElementById('the_scene').innerHTML= texto;
-    //document.getElementById('the_scene').innerText= texto;
+    return texto;
 };

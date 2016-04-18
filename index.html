@@ -28,7 +28,7 @@
 	<script  type="text/javascript"  src="./scripts/threejs/Objetos.js"></script>
 	<script  type="text/javascript"  src="./scripts/threejs/objmtl.js"></script>
 	<script  type="text/javascript"  src="./scripts/threejs/orbit.js"></script>
-	<script  type="text/javascript"  src="./scripts/threejs/script.js"></script>
+	<script  type="text/javascript"  src="./scripts/threejs/script.js"></script> 
 
 	<!-- Scripts para SVG -->
 	<script  type="text/javascript" src="scripts/loadRoom.js"></script>
@@ -46,6 +46,8 @@
 	<link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
 	<script  type="text/javascript" src="scripts/createX3DScene.js"></script>
 	<script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
+	<!--<script  type="text/javascript" src="scripts/SculptureViewerX3D.js"></script> -->
+	<script  type="text/javascript" src="scripts/loadFirstCameraX3D.js"></script>
 
 	<!-- CSS -->
 	<link href="./css/style.css" rel="stylesheet" type='text/css' />
@@ -55,7 +57,6 @@
 	<script  type="text/javascript" src="scripts/loadPoint.js"></script>
     <script  type="text/javascript" src="scripts/camera.js"></script>
 	<script  type="text/javascript" src="scripts/point.js"></script>
-    <script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -207,6 +208,7 @@
 							onmouseup='Drop(evt)'>
                                 <g id="hidden_level"></g>
 					            <g id="room_level"></g>
+					            <g id="VRcamera_level"></g>
 								<g id="sculpture_level"></g>
 					            <g id="line_level"></g>
 					            <g id="camera_level"></g>
@@ -350,7 +352,7 @@
                                 </li>
                                 <li><a href="#escena-pills" data-toggle="tab" onclick="loadX3D()">Escenario</a>
                                 </li>
-                                <li><a href="#camara-pills" data-toggle="tab">Primera Persona</a>
+                                <li><a href="#camara-pills" data-toggle="tab" onclick="loadVRX3D()">Primera Persona</a>
                                 </li>
                                 <li><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
                                 </li>
@@ -376,21 +378,42 @@
 		                                            <label>Técnica</label>
 		                                            <input class="form-control">
 		                                        </div>
-		                                        <div class="form-group">
-		                                            <label>Ancho Pedestal</label>
-		                                            <input class="form-control" onkeyup="addAnchuraPedestal(this.value)">
-		                                        </div>
 		                                    </form>
 	                                    </div>
-	                                    <div class="col-lg-6" id="viewSculture">
+
+	                                    <!--
+										<div class="col-lg-6" id="viewSculture">
 	                                    	<div class="panel panel-primary">
 	                                    		<div id="viewElement"></div>
 	                                    	</div>
-	                                    	<div class="form-group">
+	                                    </div>
+	                                    -->
+
+	                                    <div class="col-md-6" id="visorEscultura">
+											<!--<X3D id="the_monument_viewer">
+												<Scene>
+													<Viewpoint description="Faceted box, smooth shading" position="0 0.5 0.5"></Viewpoint>
+													<inline url="./models/X3D/venus.x3d" translation="0 0 0"> </inline>
+												</Scene>
+											</X3D> -->
+											<div class="panel panel-primary">
+	                                    		<div id="viewElement"></div>
+	                                    	</div>
+	                                    </div>
+	                                </div>
+	                                <div class="row">
+	                                	<div class="col-lg-6">
+		                                	<div class="form-group">
+                                             	<label>Ancho Pedestal</label>
+	                                            <input class="form-control" onkeyup="addAnchuraPedestal(this.value)">
+	                                        </div>
+                                        </div>
+                                        <div class="col-lg-6">
+		                                	<div class="form-group">
 	                                            <label>Alto Pedestal</label>
 	                                            <input class="form-control" onkeyup="addAlturaPedestal(this.value)">
 	                                        </div>
-	                                    </div>
+                                        </div>
 	                                </div>
 	                                <div class="row">
 	                                	<div class="col-lg-12">
@@ -417,15 +440,15 @@
                                 <div class="tab-pane fade" id="camara-pills">
                                 	<div class="row">
                                 		<div class="col-lg-12">
-		                                   <!-- <X3D id="the_fpc">
-												<Scene>
-													<NavigationInfo headlight='false'></NavigationInfo>
-													<Viewpoint description="Faceted box, smooth shading" position="0 0 25"></Viewpoint>
-													<PointLight id='point' on='TRUE' intensity='0.9000' color='0.9 0.9 0.9' location='0 0 0 ' radius='5000000' ></PointLight>
-												 	<Background backUrl='space.jpg'></Background>
-													<inline url="./x3d/scene.x3d"  translation="0 0 0"> </inline> 
-												</Scene> 
-											</X3D> -->
+                                			<div class="row">
+                                				<div class="col-lg-12" id="FirstCameraVR">
+				                                    <X3D id="VRCamera">
+														<Scene>
+															<inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
+														</Scene>
+													</X3D> 
+												</div>
+											</div>
                                             <div class="form-group">
                                                 <label>Altura</label>
                                                 <input class="form-control">
@@ -452,19 +475,19 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord X </label>
-                                                        <input id="aCameraX" type="number" class="form-control" onkeyup="" readonly>
+                                                        <input type="number" class="form-control" onkeyup="">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Y </label>
-                                                        <input id="aCameraY" type="number" class="form-control" onkeyup="" readonly>
+                                                        <input type="number" class="form-control" onkeyup="">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Z </label>
-                                                        <input id="aCameraZ" type="number" class="form-control" onkeyup="" readonly>
+                                                        <input type="number" class="form-control" onkeyup="">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >

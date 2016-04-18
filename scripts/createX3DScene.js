@@ -34,6 +34,24 @@ function obtenerDatos(objetoDinamico) {
     };
 };
 
+function obtenerVRCamera() {
+    var objetoDinamico= document.getElementById('VRcamera_level').childNodes[0];
+    var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
+
+    alert((objetoDinamico.getAttributeNS(null, 'cY')*0.1));
+
+    return {
+        nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
+        x: (objetoDinamico.getAttributeNS(null, 'cX')*0.1),
+        y: 1.5,
+        z: (objetoDinamico.getAttributeNS(null, 'cY')*0.1),
+        rotation: radianes,
+        altura: objetoDinamico.getAttributeNS(null, 'altura'),
+        zancada: objetoDinamico.getAttributeNS(null, 'zancada'),
+        salto: objetoDinamico.getAttributeNS(null, 'salto')
+    };
+};
+
 //Función de ayuda: reúne los datos a exportar en un solo objeto
 function obtenerEscenario(objetoDinamico) {
     return {
@@ -50,6 +68,7 @@ function mostrar(){
     alert(nelements);
 };
 
+/*
 function generarX3D() {
     var texto = [];
     texto.push('<X3D id="the_scene">\n');
@@ -92,4 +111,4 @@ function generarX3D() {
     return new Blob(texto, {
         type: 'application/x3d'
     });
-};
+};*/

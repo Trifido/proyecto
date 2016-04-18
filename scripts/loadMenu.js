@@ -9,13 +9,18 @@ function Menu(){
 Menu.prototype.loadMenu= function(element){
 	if(!this.loaded){
 		this.objDin= obtenerDatos(element);
-        if (this.objDin.clase != 'point') {
+        if (this.objDin.clase != 'point' && this.objDin.clase != 'VRcamera') {
             this.loadDelete();
 
             if (this.objDin.clase != 'camera')
                 this.loadRotate();
 
             this.loaded = true;
+        }
+        else if(this.objDin.clase == 'VRcamera'){
+        	this.loadRotate();
+
+        	 this.loaded = true;
         }
 	}
 }
@@ -76,7 +81,9 @@ Menu.prototype.loadRotate= function(){
 
 Menu.prototype.removeMenu= function(){
 	if(this.loaded){
-		this.removeDelete();
+
+		if(this.objDin.clase != 'VRcamera')
+			this.removeDelete();
 
         if (this.objDin.clase != 'camera')
 		    this.removeRotate();
@@ -103,7 +110,9 @@ Menu.prototype.translateMenu= function(x, y, rot){
         x= vx*Math.cos(rad) - vy*Math.sin(rad);
         y= (vx*Math.sin(rad)) + vy*Math.cos(rad);
 
-		this.translateDelete(x, y);
+        if (this.objDin.clase != 'VRcamera')
+			this.translateDelete(x, y);
+		
         if (this.objDin.clase != 'camera')
 		    this.translateRotate(x, y);
 	}

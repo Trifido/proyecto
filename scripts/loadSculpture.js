@@ -29,33 +29,34 @@ function initSculpture(id){
 	switch(id){
 		case 6:
 			sculpture = new Sculpture('venus','./img/models2D/venus.jpg', 40, 40, 0, 0);
-			//loadModel('./models/venus/venus.obj');
-			//nameScultureLoad= 'venus';
+			//loadX3DSculpture('venus');
+			loadModel('./models/venus/venus.obj');
+			nameScultureLoad= 'venus';
 			break;
 		case 7:
 			sculpture = new Sculpture('thinker','./img/models2D/thinker.jpg', 60, 60, 0, 0);
-			//loadModel('./models/thinker/thinker.obj');
-			//nameScultureLoad= 'thinker';
+			loadModel('./models/thinker/thinker.obj');
+			nameScultureLoad= 'thinker';
 			break;
 		case 8:
 			sculpture = new Sculpture('david','./img/models2D/david.jpg', 50, 50, 0, 0);
-			//loadModel('./models/david/david.obj');
-			//nameScultureLoad= 'david';
+			loadModel('./models/david/david.obj');
+			nameScultureLoad= 'david';
 			break;
 		case 9:
 			sculpture = new Sculpture('dragon','./img/models2D/dragon.jpg', 40, 40, 0, 0);
-			//loadModel('./models/dragon/dragon.obj');
-			//nameScultureLoad= 'dragon';
+			loadModel('./models/dragon/dragon.obj');
+			nameScultureLoad= 'dragon';
 			break;
 		case 10:
 			sculpture = new Sculpture('ramses2','./img/models2D/ramses2.jpg', 60, 60, 0, 0);
-			//loadModel('./models/ramses2/ramses2.obj');
-			//nameScultureLoad= 'ramses2';
+			loadModel('./models/ramses2/ramses2.obj');
+			nameScultureLoad= 'ramses2';
 			break;
 		case 11:
 			sculpture = new Sculpture('pascua','./img/models2D/pascua.jpg', 30, 30, 0, 0);
-			//loadModel('./models/pascua/pascua.obj');
-			//nameScultureLoad= 'pascua';
+			loadModel('./models/pascua/pascua.obj');
+			nameScultureLoad= 'pascua';
 			break;
 	}
 }
@@ -64,6 +65,7 @@ function initSculpture(id){
 function loadSculpture( id ){
 	if(RoomInit){
 		if( isSculptureLoad() ){
+			//removeX3DSculpture();
 			removeModel();
 			updateSculpture( id );
 			initSculpture(id);
@@ -82,6 +84,7 @@ function changeSculture( id ){
 		if( nameScultureLoad != id ){
 			if(nameScultureLoad!=null)
 				removeModel();
+				//removeX3DSculpture();
 			loadModel('./models/'+id+'/'+id+'.obj');
 			nameScultureLoad= id;
 		}
@@ -90,62 +93,8 @@ function changeSculture( id ){
 
 function removeSculpture(){
 	if(RoomInit){
+		//removeX3DSculpture();
 		removeModel();
 		nameScultureLoad=null;
 	}
-}
-
-function showSculptureMenu(){
-	$(document).ready(function() {
-		$("#6").click(function(){
-		    $("#sculpture1 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture2 img").css("border", "3px solid #73AD21");
-		    $("#sculpture3 img").css("border", "3px solid #73AD21");
-		    $("#sculpture4 img").css("border", "3px solid #73AD21");
-		    $("#sculpture5 img").css("border", "3px solid #73AD21");
-		    $("#sculpture6 img").css("border", "3px solid #73AD21");
-
-		});
-		$("#7").click(function(){
-		    $("#sculpture2 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture1 img").css("border", "3px solid #73AD21");
-		    $("#sculpture3 img").css("border", "3px solid #73AD21");
-		    $("#sculpture4 img").css("border", "3px solid #73AD21");
-		    $("#sculpture5 img").css("border", "3px solid #73AD21");
-		    $("#sculpture6 img").css("border", "3px solid #73AD21");
-		});
-		$("#8").click(function(){
-		    $("#sculpture3 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture2 img").css("border", "3px solid #73AD21");
-		    $("#sculpture1 img").css("border", "3px solid #73AD21");
-		    $("#sculpture4 img").css("border", "3px solid #73AD21");
-		    $("#sculpture5 img").css("border", "3px solid #73AD21");
-		    $("#sculpture6 img").css("border", "3px solid #73AD21");
-		});
-		$("#9").click(function(){
-		    $("#sculpture4 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture3 img").css("border", "3px solid #73AD21");
-		    $("#sculpture2 img").css("border", "3px solid #73AD21");
-		    $("#sculpture1 img").css("border", "3px solid #73AD21");
-		    $("#sculpture5 img").css("border", "3px solid #73AD21");
-		    $("#sculpture6 img").css("border", "3px solid #73AD21");
-		});
-		$("#10").click(function(){
-		    $("#sculpture5 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture4 img").css("border", "3px solid #73AD21");
-		    $("#sculpture3 img").css("border", "3px solid #73AD21");
-		    $("#sculpture2 img").css("border", "3px solid #73AD21");
-		    $("#sculpture1 img").css("border", "3px solid #73AD21");
-		    $("#sculpture6 img").css("border", "3px solid #73AD21");
-		    
-		});
-		$("#11").click(function(){
-		    $("#sculpture6 img").css("border", "3px solid #1C1C1C");
-		    $("#sculpture1 img").css("border", "3px solid #73AD21");
-		    $("#sculpture2 img").css("border", "3px solid #73AD21");
-		    $("#sculpture3 img").css("border", "3px solid #73AD21");
-		    $("#sculpture4 img").css("border", "3px solid #73AD21");
-		    $("#sculpture5 img").css("border", "3px solid #73AD21");
-		});
-	});
 }
