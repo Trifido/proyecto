@@ -55,6 +55,7 @@
 	<script  type="text/javascript" src="scripts/loadPoint.js"></script>
     <script  type="text/javascript" src="scripts/camera.js"></script>
 	<script  type="text/javascript" src="scripts/point.js"></script>
+    <script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -451,19 +452,19 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord X </label>
-                                                        <input type="number" class="form-control" onkeyup="">
+                                                        <input id="aCameraX" type="number" class="form-control" onkeyup="" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Y </label>
-                                                        <input type="number" class="form-control" onkeyup="">
+                                                        <input id="aCameraY" type="number" class="form-control" onkeyup="" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Z </label>
-                                                        <input type="number" class="form-control" onkeyup="">
+                                                        <input id="aCameraZ" type="number" class="form-control" onkeyup="" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >

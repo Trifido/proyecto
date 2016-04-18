@@ -18,9 +18,9 @@ function loadNewCamera(){
         //Aniadir la camara
         $('#cameras').append(div.append(a.append(img)));
 
-        loadCamera(activeCameras);
-
         newCamera = new Camera('camara'+activeCameras, './img/camera/cameraT.png', 0, 0);
+
+        loadCamera(activeCameras);
     }
     
     $('#btnAddPoint').removeAttr('disabled'); 
@@ -40,6 +40,13 @@ function loadCamera( id ){
     updateBorders();
     $('#camera' + id + ' img').css('border', '2px solid #D80000');
 
+    // Actualizar la ficha
+    $('.camera').each(function (i, obj) { //Buscar el objeto SVG
+        var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
+        if (selectedCamera == aux) updateFileCoords('camera', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
+    });
+
+    // Actualizar botones de la interfaz
     if (activePoints[selectedCamera-1] > 0)
         $('#btnRemPoint').removeAttr('disabled');
     else
