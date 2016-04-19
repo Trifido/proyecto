@@ -52,15 +52,15 @@ function Limit( vname, vpath, vposX, vposY ){
         y3 = 0;
     }
 
-    drawLine(x1, y1, x2, y2, this.name+'X');
-    drawLine(x1, y1, x3, y3, this.name+'Y');
+    drawLimitLine(x1, y1, x2, y2, this.name+'X');
+    drawLimitLine(x1, y1, x3, y3, this.name+'Y');
 }
 
-function drawLine (x1, y1, x2, y2, vname){
+function drawLimitLine (x1, y1, x2, y2, vname){
     var line = document.createElementNS('http://www.w3.org/2000/svg','line');
 
     line.setAttributeNS(null, 'name', 'linea'+'_'+vname);
-    line.setAttributeNS(null, 'class', 'line'); // Para localizarla luego por su clase
+    line.setAttributeNS(null, 'class', 'limitline'); // Para localizarla luego por su clase
 
     line.setAttributeNS(null, 'stroke', 'orange'); // Color
     line.setAttributeNS(null, 'stroke-dasharray', '5,5'); // Para que salga punteada
@@ -78,9 +78,8 @@ function translateLimitLine( coords ){
     var alto = DragTarget.getAttributeNS(null, 'height')/2;
     var nombre = DragTarget.getAttributeNS(null, 'nombre'); // Tomamos el nombre de punto
 
-    $(".line").each(function( i, obj ) {
-        //alert(nombre);
-        if ('linea0'+'_'+nombre+'X' == obj.getAttributeNS(null, 'name')) { //Se toma la linea X
+    $(".limitline").each(function( i, obj ) {
+        if ('linea'+'_'+nombre+'X' == obj.getAttributeNS(null, 'name')) { //Se toma la linea X
 
             if(nombre=="puntoLimite_superior"){
                 
