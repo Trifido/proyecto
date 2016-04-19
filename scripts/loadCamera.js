@@ -47,6 +47,7 @@ function loadCamera( id ){
     });
         //Puntos
     $('#pointAccordion').empty(); //Limpia todos los hijos
+
     for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes (no se actualizan aun)
         createFilePoint(i+1);
 
@@ -62,11 +63,11 @@ function removeCamera( id ) {
 
     updateCameraIndex( id );
 
-    if (selectedCamera == id)
-        loadCamera(1);
-    
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
+
+    if (selectedCamera == id)
+        loadCamera(1);
 
     if (activeCameras == 0)
         $('#btnAddPoint').attr('disabled','disabled');
