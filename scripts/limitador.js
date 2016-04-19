@@ -1,8 +1,4 @@
-/* Punto:
-   - Nombre: nombre del punto
-   - Path: ruta del archivo de imagen.
-   - PosX y PosY: par de posiciones donde aparece el punto inicialmente.
- */
+
 function Limit( vname, vpath, vposX, vposY ){
     var sideLength = 50;
 
@@ -95,7 +91,7 @@ function translateLimitLine(){
             }
         }
         else if ('linea_' + nombre + 'Y' == obj.getAttributeNS(null, 'name')) {
-            if(obj.getAttributeNS(null, 'name') == "linea_puntoLimite_superiorX"){
+            if(obj.getAttributeNS(null, 'name') == "linea_puntoLimite_superiorY"){
                 obj.setAttributeNS(null, 'x1', x);
                 obj.setAttributeNS(null, 'y1', y);
                 obj.setAttributeNS(null, 'x2', x);
@@ -106,13 +102,5 @@ function translateLimitLine(){
                 obj.setAttributeNS(null, 'x2', x+450);
             }
         }
-        else{ // Las lineas correspondientes al otro punto
-            /*var nombre_aux = obj.getAttributeNS(null, 'name');
-            var tipo = nombre_aux.substr(nombre_aux.length - 1); // Si es X o si es Y
-
-            if (tipo == 'X') obj.setAttributeNS(null, 'x2', x);
-            else if (tipo == 'Y') obj.setAttributeNS(null, 'y2', y);*/
-        }
-
     });
 }
