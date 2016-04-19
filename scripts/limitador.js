@@ -73,36 +73,32 @@ function drawLimitLine (x1, y1, x2, y2, vname){
 }
 
 //Recolocar líneas
-function translateLimitLine( coords ){
+function translateLimitLine(){
+    var nombre = DragTarget.getAttributeNS(null, 'nombre'); // Nombre del punto a mover
     var ancho = DragTarget.getAttributeNS(null, 'width')/2;
     var alto = DragTarget.getAttributeNS(null, 'height')/2;
-    var nombre = DragTarget.getAttributeNS(null, 'nombre'); // Tomamos el nombre de punto
+
+    var x = NewCoord.x+ancho;
+    var y = NewCoord.y+alto;
 
     $(".limitline").each(function( i, obj ) {
-        if ('linea'+'_'+nombre+'X' == obj.getAttributeNS(null, 'name')) { //Se toma la linea X
-
-            if(nombre=="puntoLimite_superior"){
-                
-                obj.setAttributeNS(null, 'y2', DragTarget.getAttributeNS(null, 'cY'));
-            }
-            /*else{
-                
-                obj.setAttributeNS(null, 'x2', DragTarget.getAttributeNS(null, 'cX'));
-            }*/
-            obj.setAttributeNS(null, 'x1', DragTarget.getAttributeNS(null, 'cX'));
-            obj.setAttributeNS(null, 'y1', DragTarget.getAttributeNS(null, 'cY'));
+        if ('linea_' + nombre + 'X' == obj.getAttributeNS(null, 'name')) {
+            obj.setAttributeNS(null, 'x1', x);
+            obj.setAttributeNS(null, 'y1', y);
+            obj.setAttributeNS(null, 'y2', y);
         }
-
-        if ('linea0'+'_'+nombre+'Y' == obj.getAttributeNS(null, 'name')) { //Se toma la linea Y
-            if(nombre=="puntoLimite_superior"){
-                obj.setAttributeNS(null, 'x2', DragTarget.getAttributeNS(null, 'cX'));
-            }/* else{
-                obj.setAttributeNS(null, 'y2', DragTarget.getAttributeNS(null, 'cY'));
-            }*/
-            obj.setAttributeNS(null, 'x1', DragTarget.getAttributeNS(null, 'cX'));
-            obj.setAttributeNS(null, 'y1', DragTarget.getAttributeNS(null, 'cY'));
+        else if ('linea_' + nombre + 'Y' == obj.getAttributeNS(null, 'name')) {
+            obj.setAttributeNS(null, 'x1', x);
+            obj.setAttributeNS(null, 'y1', y);
+            obj.setAttributeNS(null, 'x2', x);
         }
+        else{ // Las lineas correspondientes al otro punto
+            /*var nombre_aux = obj.getAttributeNS(null, 'name');
+            var tipo = nombre_aux.substr(nombre_aux.length - 1); // Si es X o si es Y
 
+            if (tipo == 'X') obj.setAttributeNS(null, 'x2', x);
+            else if (tipo == 'Y') obj.setAttributeNS(null, 'y2', y);*/
+        }
 
     });
 }

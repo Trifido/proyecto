@@ -109,7 +109,7 @@ function Drag(evt)
 
             if (clase == 'camera') translateCameraLine();
             else if (clase == 'point') translatePointLine();
-            else if (clase == 'LimitPoint') translateLimitLine(NewCoord);
+            else if (clase == 'LimitPoint') translateLimitLine();
 
             clickFlag= 1;
         }
