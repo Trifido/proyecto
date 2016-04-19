@@ -10,7 +10,7 @@ function removeElement(vclass, vname){
             removePointLine();
         }
 
-        //Borrar la imagen 2D de la camara
+        //Borrar SVG de la camara
         $(".camera").each(function (i, obj) {
             if (vname == obj.getAttributeNS(null, 'nombre')) {
                 document.getElementById('camera_level').removeChild(obj);

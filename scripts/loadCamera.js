@@ -37,14 +37,18 @@ function loadCamera( id ){
     updateLines();
 
     //Seleccionar en el menú
-    updateBorders();
-    $('#camera' + id + ' img').css('border', '2px solid #D80000');
+    updateCameraBorder( id );
 
     // Actualizar la ficha
+        // Camara
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
         var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
         if (selectedCamera == aux) updateFileCoords('camera', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
     });
+        //Puntos
+    $('#pointAccordion').empty(); //Limpia todos los hijos
+    for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes (no se actualizan aun)
+        createFilePoint(i+1);
 
     // Actualizar botones de la interfaz
     if (activePoints[selectedCamera-1] > 0)
@@ -68,11 +72,12 @@ function removeCamera( id ) {
         $('#btnAddPoint').attr('disabled','disabled');
 }
 
-//Desactivar todos los bordes
-function updateBorders(){
+//Activa el borde en el carousel para la cámara activa
+function updateCameraBorder( id ){
     for (i=1; i<=activeCameras; i++){
         $('#camera'+i+' img').css('border', '0px solid #D80000');
     }
+    $('#camera' + id + ' img').css('border', '2px solid #D80000');
 }
 
 // Activar los puntos de control correspondientes a la camara cargada

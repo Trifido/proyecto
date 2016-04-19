@@ -14,19 +14,76 @@ function loadNewPoint() {
 
         // Nombre: "puntoX_Y". X es la cámara a la que pertenece el punto. Y es el número del punto.
         newPoint = new Point(activePoints[selectedCamera-1], "./img/camera/controlT.png", 0, 0);
-    }
 
-    $('#btnRemPoint').removeAttr('disabled');
+        //Crear la ficha
+        createFilePoint(activePoints[selectedCamera-1]); // Con el ID del punto a crear
+
+        //Activar boton "eliminar"
+        $('#btnRemPoint').removeAttr('disabled');
+    }
 }
 
 //Eliminar uel último punto
 function removePointLine() {
-    removePoint(activePoints[selectedCamera-1]);
-    removeLine(activePoints[selectedCamera-1]);
+    removePoint(activePoints[selectedCamera-1]); //Eliminar punto svg
+    removeLine(activePoints[selectedCamera-1]); //Eliminar linea svg
+
+    //Eliminar la ficha
+    removeFilePoint(activePoints[selectedCamera-1]); //Con el ID del punto a borrar
 
     activePoints[selectedCamera-1] -= 1;
 
+    //Desactivar boton "eliminar"
     if (activePoints[selectedCamera-1] == 0)
         $('#btnRemPoint').attr('disabled','disabled');
+}
+
+//Crea el punto en la ficha de puntos de la página
+function createFilePoint( id ){
+    var div = $('<div/>', {id: 'pointLi'+id, class: 'panel panel-info'});
+
+    var heading = $('<div/>', {class: 'panel-heading'});
+    var a = $('<a/>', {"data-toggle": 'collapse', "data-parent": '#pointAccordion', href:'#pointCollapse'+id, "aria-expanded": 'false', class: 'collapsed', text: 'Punto '+id});
+    div.append(heading.append(a));
+
+    var content = $('<div/>', {id: 'pointCollapse'+id, class: 'panel-collapse collapse', "aria-expanded": 'false', style: 'height: 0px;'});
+    var body = $('<div/>', {class: 'panel-body'});
+    var form = $('<form/>', {role: 'form'});
+
+    //Coord X
+    var col1 = $('<div/>', {class: 'col-lg-4'});
+    var group1 = $('<div/>', {class: 'form-group'});
+    var label1 = $('<label/>', {text: 'Coord X'});
+    var input1 = $('<input/>', {type: 'number', class: 'form-control'});
+    col1.append(group1.append(label1, input1));
+
+    //Coord Y
+    var col2 = $('<div/>', {class: 'col-lg-4'});
+    var group2 = $('<div/>', {class: 'form-group'});
+    var label2 = $('<label/>', {text: 'Coord Y'});
+    var input2 = $('<input/>', {type: 'number', class: 'form-control'});
+    col2.append(group2.append(label2, input2));
+
+    //Coord Z
+    var col3 = $('<div/>', {class: 'col-lg-4'});
+    var group3 = $('<div/>', {class: 'form-group'});
+    var label3 = $('<label/>', {text: 'Coord Z'});
+    var input3 = $('<input/>', {type: 'number', class: 'form-control'});
+    col3.append(group3.append(label3, input3));
+
+    //Tiempo llegada
+    var col4 = $('<div/>', {class: 'col-lg-6'});
+    var group4 = $('<div/>', {class: 'form-group'});
+    var label4 = $('<label/>', {text: 'Tiempo Llegada'});
+    var input4 = $('<input/>', {type: 'number', class: 'form-control'});
+    col4.append(group4.append(label4, input4));
+
+    div.append(content.append(body.append(form.append(col1, col2, col3, col4))));
+
+    $('#pointAccordion').append(div);
+}
+
+function removeFilePoint( id ) {
+    $('#pointLi'+id).remove();
 }
 

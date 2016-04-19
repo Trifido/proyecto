@@ -10,7 +10,6 @@ function updateFileCoords (vclass, nX, nY) {
         $('#aCameraX').val(Math.round(nX));
         $('#aCameraY').val(Math.round(nY));
         $('#aCameraZ').val(0);
-
     }
     if (vclass == 'point') {
         
