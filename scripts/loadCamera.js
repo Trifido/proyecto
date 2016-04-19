@@ -12,11 +12,12 @@ function loadNewCamera(){
         activeCameras += 1;
 
         //Crear una camara
-        var img = $('<img/>', { src : './img/camera/camera.png', alt : 'Image', class: 'img-responsive', onclick : 'loadCamera(' + activeCameras + ')' });
-        var a = $('<a/>', {});
-        var div = $('<div/>', {class: 'col-xs-3', id : 'camera'+activeCameras });
+        var img = $('<img/>', {style: "position: relative;", src : './img/camera/camera.png', alt : 'Image', class: 'img-responsive', onclick : 'loadCamera(' + activeCameras + ')'});
+        var a = $('<div/>', {});
+        var p = $('<p/>', {text: activeCameras, style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 500%; color: white; opacity: 0.75;"});
+        var div = $('<div/>', {class: 'col-xs-3', id : 'camera'+activeCameras});
         //Aniadir la camara
-        $('#cameras').append(div.append(a.append(img)));
+        $('#cameras').append(div.append(a.append(img), p));
 
         newCamera = new Camera('camara'+activeCameras, './img/camera/cameraT.png', 0, 0);
 
@@ -129,10 +130,13 @@ function updateCameraIndex( deletedIndex ) {
     for (i = deletedIndex; i <= activeCameras; i++) {
         var indice = (i - 1);
 
+        $('#camera' + i + ' p').text(indice) // Actualizar el numero que sale encima
+
         var nuevoNombre = 'loadCamera(' + indice + ')';
         $('#camera' + i + ' img').attr('onclick', nuevoNombre);
 
         nuevoNombre = 'camera' + indice;
         $('#camera' + i).attr('id', nuevoNombre);
+
     }
 }
