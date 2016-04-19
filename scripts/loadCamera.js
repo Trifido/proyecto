@@ -44,12 +44,12 @@ function loadCamera( id ){
         // Camara
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
         var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
-        if (selectedCamera == aux) updateFileCoords('camera', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
+        if (selectedCamera == aux) updateFileCoords('camera', '',  obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
     });
         //Puntos
     $('#pointAccordion').empty(); //Limpia todos los hijos
 
-    for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes (no se actualizan aun)
+    for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes
         createFilePoint(i+1);
 
     // Actualizar botones de la interfaz

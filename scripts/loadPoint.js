@@ -18,6 +18,15 @@ function loadNewPoint() {
         //Crear la ficha
         createFilePoint(activePoints[selectedCamera-1]); // Con el ID del punto a crear
 
+        // Actualizar la ficha
+            // Coordenads Punto
+        $('.point').each(function (i, obj) { //Buscar el objeto SVG
+            var nombre = obj.getAttributeNS(null, 'nombre'); //Indice
+            var id = nombre.substr(nombre.length-1);
+            if ('punto'+selectedCamera+'_' + id == obj.getAttributeNS(null, 'nombre'))
+                updateFileCoords('point', nombre, obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
+        });
+
         //Activar boton "eliminar"
         $('#btnRemPoint').removeAttr('disabled');
     }
@@ -54,21 +63,21 @@ function createFilePoint( id ){
     var col1 = $('<div/>', {class: 'col-lg-4'});
     var group1 = $('<div/>', {class: 'form-group'});
     var label1 = $('<label/>', {text: 'Coord X'});
-    var input1 = $('<input/>', {type: 'number', class: 'form-control'});
+    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X'});
     col1.append(group1.append(label1, input1));
 
     //Coord Y
     var col2 = $('<div/>', {class: 'col-lg-4'});
     var group2 = $('<div/>', {class: 'form-group'});
     var label2 = $('<label/>', {text: 'Coord Y'});
-    var input2 = $('<input/>', {type: 'number', class: 'form-control'});
+    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y'});
     col2.append(group2.append(label2, input2));
 
     //Coord Z
     var col3 = $('<div/>', {class: 'col-lg-4'});
     var group3 = $('<div/>', {class: 'form-group'});
     var label3 = $('<label/>', {text: 'Coord Z'});
-    var input3 = $('<input/>', {type: 'number', class: 'form-control'});
+    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z'});
     col3.append(group3.append(label3, input3));
 
     //Tiempo llegada

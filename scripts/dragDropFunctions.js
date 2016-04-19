@@ -102,7 +102,7 @@ function Drag(evt)
              // ALBA - Actualizar la ficha de información
             var vancho = DragTarget.getAttributeNS(null, 'width')/2;
             var valto = DragTarget.getAttributeNS(null, 'height')/2;
-            updateFileCoords(DragTarget.getAttributeNS(null, 'class'), NewCoord.x+vancho, NewCoord.y+valto);
+            updateFileCoords(DragTarget.getAttributeNS(null, 'class'), DragTarget.getAttributeNS(null, 'nombre'), NewCoord.x+vancho, NewCoord.y+valto);
 
             // ALBA - Trasladar la línea si corresponde
             var clase = DragTarget.getAttributeNS(null, 'class');
