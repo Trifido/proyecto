@@ -83,14 +83,28 @@ function translateLimitLine(){
 
     $(".limitline").each(function( i, obj ) {
         if ('linea_' + nombre + 'X' == obj.getAttributeNS(null, 'name')) {
-            obj.setAttributeNS(null, 'x1', x);
-            obj.setAttributeNS(null, 'y1', y);
-            obj.setAttributeNS(null, 'y2', y);
+            if(obj.getAttributeNS(null, 'name') == "linea_puntoLimite_superiorX"){
+                obj.setAttributeNS(null, 'x1', x);
+                obj.setAttributeNS(null, 'y1', y);
+                obj.setAttributeNS(null, 'y2', y);
+            }
+            else{
+                obj.setAttributeNS(null, 'x1', x+450);
+                obj.setAttributeNS(null, 'y1', y+450);
+                obj.setAttributeNS(null, 'y2', y+450);
+            }
         }
         else if ('linea_' + nombre + 'Y' == obj.getAttributeNS(null, 'name')) {
-            obj.setAttributeNS(null, 'x1', x);
-            obj.setAttributeNS(null, 'y1', y);
-            obj.setAttributeNS(null, 'x2', x);
+            if(obj.getAttributeNS(null, 'name') == "linea_puntoLimite_superiorX"){
+                obj.setAttributeNS(null, 'x1', x);
+                obj.setAttributeNS(null, 'y1', y);
+                obj.setAttributeNS(null, 'x2', x);
+            }
+            else{
+                obj.setAttributeNS(null, 'x1', x+450);
+                obj.setAttributeNS(null, 'y1', y+450);
+                obj.setAttributeNS(null, 'x2', x+450);
+            }
         }
         else{ // Las lineas correspondientes al otro punto
             /*var nombre_aux = obj.getAttributeNS(null, 'name');
