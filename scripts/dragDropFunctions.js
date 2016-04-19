@@ -37,7 +37,8 @@ function ObjetoValido(){
 };
 
 function ObjetoEscultura(){
-    return (ObjetoValido() && DragTarget.getAttributeNS(null,'nombre') != "FirstCamera" && DragTarget.getAttributeNS(null,'class') != "LimitPoint");
+    //return (ObjetoValido() && DragTarget.getAttributeNS(null,'nombre') != "FirstCamera" && DragTarget.getAttributeNS(null,'class') != "LimitPoint");
+    return (DragTarget.getAttributeNS(null,'class') == 'sculpture');
 }
 
 // Función encargada de analizar el objeto debajo del ratón, en el caso de ser un objeto válido (onMouseDown)
