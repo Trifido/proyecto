@@ -7,7 +7,7 @@ function Menu(){
 }
 
 Menu.prototype.loadMenu= function(element){
-	if(!this.loaded){
+	if(!this.loaded && element.getAttributeNS(null,'class') != "LimitPoint"){
 		this.objDin= obtenerDatos(element);
         if (this.objDin.clase != 'point' && this.objDin.clase != 'VRcamera') {
             this.loadDelete();

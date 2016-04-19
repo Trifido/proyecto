@@ -83,6 +83,8 @@ function loadRoom( id ){
 	}
 
 	else if( !RoomInit ){
+		var limit1= Limit("superior","./img/camera/limitIcon.png",0,0);
+		var limit2= Limit("inferior","./img/camera/limitIcon.png",450,450);
 		//updateRoom(id);
 		initRoom(id);
 		RoomInit=true;

@@ -36,6 +36,10 @@ function ObjetoValido(){
     return (DragTarget.getAttributeNS(null,'nombre') != "rotate" && DragTarget.getAttributeNS(null,'nombre') != "delete"); 
 };
 
+function ObjetoEscultura(){
+    return (ObjetoValido() && DragTarget.getAttributeNS(null,'nombre') != "FirstCamera" && DragTarget.getAttributeNS(null,'class') != "LimitPoint");
+}
+
 // Función encargada de analizar el objeto debajo del ratón, en el caso de ser un objeto válido (onMouseDown)
 // se obtienen las coordenadas en el svg del ratón.
 function Grab(evt)
@@ -53,7 +57,7 @@ function Grab(evt)
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
-        if(ObjetoValido() && DragTarget.getAttributeNS(null,'nombre') != "FirstCamera")
+        if(ObjetoEscultura())
             changeSculture(targetElement.getAttributeNS(null,'nombre'));
         clickFlag= 0;
     }
@@ -104,6 +108,7 @@ function Drag(evt)
 
             if (clase == 'camera') translateCameraLine();
             else if (clase == 'point') translatePointLine();
+            else if (clase == 'LimitPoint') translateLimitLine(NewCoord);
 
             clickFlag= 1;
         }
@@ -200,14 +205,16 @@ function Drop(evt)
 
                 elementoAnterior.setAttributeNS(null, 'transform', 'rotate(' + rot + ', ' + posX + ', ' + posY + ') translate(' + NewCoord.x + ', ' + NewCoord.y + ')');
             }
-            else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre')){
+            else if(DragTarget.getAttributeNS(null,'nombre') != elementoAnterior.getAttributeNS(null,'nombre') && ObjetoValido()){
                 menu.removeMenu();
                 menu.loadMenu(DragTarget);
                 elementoSeleccionado= DragTarget;
             }
             else{
-                menu.loadMenu(DragTarget);
-                elementoSeleccionado= DragTarget;
+                if(ObjetoValido()){
+                    menu.loadMenu(DragTarget);
+                    elementoSeleccionado= DragTarget;
+                }
             }
         }
     }
