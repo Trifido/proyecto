@@ -53,11 +53,16 @@
 	<link href="./css/style.css" rel="stylesheet" type='text/css' />
 
 	<!-- Scripts Alba -->
-	<script  type="text/javascript" src="scripts/loadCamera.js"></script>
-	<script  type="text/javascript" src="scripts/loadPoint.js"></script>
-    <script  type="text/javascript" src="scripts/camera.js"></script>
-	<script  type="text/javascript" src="scripts/point.js"></script>
-	<script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
+        <script  type="text/javascript" src="scripts/loadCamera.js"></script>
+        <script  type="text/javascript" src="scripts/loadPoint.js"></script>
+        <script  type="text/javascript" src="scripts/camera.js"></script>
+        <script  type="text/javascript" src="scripts/point.js"></script>
+        <script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
+        <script type="text/javascript" src="scripts/audioScripts/createWave.js"></script>
+            <!-- Scripts para WaveSurfer -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.regions.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.timeline.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -198,7 +203,6 @@
 				            </div>
 				            <!--/myCarousel-->
 				        </div>
-<!--  --------------------------------------------------------------------------------------------------------------------- FIN MENÚ ESCENARIOS --------------- -->
 
 <!--  --------------------------------------------------------------------------------------------------------------------- INICIO CANVAS SVG ----------------- -->
 	                    <div class="panel panel-primary" id="panelCanvas">
@@ -217,6 +221,24 @@
 								<g id="VRcamera_level"></g>
 							</svg>
 	                    </div>
+
+                        <!------------------------------------ INICIO AUDIO ------------------------------------>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"> <i class="fa fa-music fa-fw"></i> Audio </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>Cargar Audio</label>
+                                    <!---<label for="audioFiles"> <span class="btn btn-primary">Seleccionar archivo</span></label>-->
+                                    <input type="file" id="loadAudio" onchange="handleAudioFile(this.files)"> <!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
+                                </div>
+                                <div class="form-group">
+                                    <!---<label for="audioFiles"> <span class="btn btn-primary">Seleccionar archivo</span></label>-->
+                                    <button type="button" class="btn btn-danger btn-circle" onclick="destroyAudioWave()"><i class="fa fa-times"></i></button>
+                                </div>
+                                <div id="waveform"></div>
+                                <div id="waveform-timeline"></div>
+                            </div>
+                        </div>
             		</div>
                 	<!-- /.col-lg-4 -->
 			    </div>
@@ -233,7 +255,7 @@
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER ESCULTURAS ---------- -->
+    <!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER ESCULTURAS ---------- -->
                                 <div class="well">
 						            <div id="myCarouselEscultura" class="carousel slide">
 						                <!-- Carousel items -->
@@ -276,7 +298,7 @@
 						            </div>
 						            <!--/myCarousel-->
 						        </div>
-<!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER ESCULTURAS ------------- -->
+    <!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER ESCULTURAS ------------- -->
 
                             </div>
                         </div>
@@ -339,11 +361,10 @@
 						</div>
                     </div>
 
-<!--  --------------------------------------------------------------------------------------------------------------------- FIN MENÚ OBJETOS ------------------ -->
-
                     <!--------------------------------------------- INICIO INFORMACIÓN --------------------------------------------->
                     <div class="panel panel-primary" id="panelInfo">
                         <div class="panel-heading">
+                            <i class="fa fa-info fa-fw"></i>
                             Información
                         </div>
                         <!-- /.panel-heading -->
