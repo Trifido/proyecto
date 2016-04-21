@@ -30,7 +30,7 @@ function initSculpture(id){
 		case 6:
 			sculpture = new Sculpture('venus','./img/models2D/venus.jpg', 40, 40, 0, 0);
 			//loadX3DSculpture('venus');
-			loadModel('./models/venus/venus.obj');
+			//loadModel('./models/venus/venus.obj');
 			nameScultureLoad= 'venus';
 			break;
 		case 7:
@@ -94,7 +94,7 @@ function changeSculture( id ){
 function removeSculpture(){
 	if(RoomInit){
 		//removeX3DSculpture();
-		removeModel();
+		//removeModel();
 		nameScultureLoad=null;
 	}
 }

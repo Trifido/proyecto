@@ -1,6 +1,7 @@
 
 function Limit( vname, vpath, vposX, vposY ){
     var sideLength = 50;
+    var posX, posY;
 
     //Atributos
     this.name = 'puntoLimite'+'_'+vname;
@@ -52,6 +53,14 @@ function Limit( vname, vpath, vposX, vposY ){
     drawLimitLine(x1, y1, x3, y3, this.name+'Y');
 }
 
+function getLimitX (){
+    return document.getElementById('limit_level').childNodes[1].getAttributeNS(null, 'x1');
+}
+
+function getLimitY (){
+    return document.getElementById('limit_level').childNodes[1].getAttributeNS(null, 'y1');
+}
+
 function drawLimitLine (x1, y1, x2, y2, vname){
     var line = document.createElementNS('http://www.w3.org/2000/svg','line');
 
@@ -69,7 +78,7 @@ function drawLimitLine (x1, y1, x2, y2, vname){
 }
 
 //Recolocar líneas
-function translateLimitLine(){
+function translateLimitLine ( ){
     var nombre = DragTarget.getAttributeNS(null, 'nombre'); // Nombre del punto a mover
     var ancho = DragTarget.getAttributeNS(null, 'width')/2;
     var alto = DragTarget.getAttributeNS(null, 'height')/2;
@@ -104,3 +113,4 @@ function translateLimitLine(){
         }
     });
 }
+

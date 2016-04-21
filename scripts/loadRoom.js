@@ -1,4 +1,7 @@
 
+var interpolador;
+var puntolimitador;
+
 var RoomLoads= [false, false, false, false, false, false];
 var RoomInit= false;
 
@@ -31,6 +34,7 @@ function initRoom(id){
 	switch(id){
 		case 0:
 			svgroom = new Room ('scene6','./img/rooms/sala6.png', 500, 500);
+			interpolador= new InterpolarCoords( 636, 500, 61, 46 );
 			break;
 		case 1:
 			svgroom = new Room ('Sala2','./img/rooms/sala2.png', 500, 500);
@@ -83,8 +87,8 @@ function loadRoom( id ){
 	}
 
 	else if( !RoomInit ){
-		var limit1= Limit("superior","./img/camera/limitIcon.png",0,0);
-		var limit2= Limit("inferior","./img/camera/limitIcon.png",450,450);
+		puntolimitador= Limit("superior","./img/camera/limitIcon.png",0,0);
+		//var limit2= Limit("inferior","./img/camera/limitIcon.png",450,450);
 		//updateRoom(id);
 		initRoom(id);
 		RoomInit=true;
