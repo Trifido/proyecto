@@ -224,16 +224,29 @@
 
                         <!------------------------------------ INICIO AUDIO ------------------------------------>
                         <div class="panel panel-primary">
-                            <div class="panel-heading"> <i class="fa fa-music fa-fw"></i> Audio </div>
+                            <div class="panel-heading">
+                                <i class="fa fa-music fa-fw"></i> Audio
+                            </div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label>Cargar Audio</label>
-                                    <!---<label for="audioFiles"> <span class="btn btn-primary">Seleccionar archivo</span></label>-->
-                                    <input type="file" id="loadAudio" onchange="handleAudioFile(this.files)"> <!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
+                                    <!---<label for="loadAudio"> <span class="btn btn-primary">Seleccionar archivo</span></label> -->
+                                    <input type="file" id="loadAudio" onchange="handleAudioFile(this.files)" style="width: 100%;"><!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
                                 </div>
-                                <div class="form-group">
-                                    <!---<label for="audioFiles"> <span class="btn btn-primary">Seleccionar archivo</span></label>-->
-                                    <button type="button" class="btn btn-danger btn-circle" onclick="destroyAudioWave()"><i class="fa fa-times"></i></button>
+                                <label>Controles</label>
+                                <div class="form-group col-lg-offset-4">
+                                    <button id="playAudio" type="button" class="btn btn-primary btn-circle" onclick="playAudioWave()" disabled>
+                                        <i class="fa fa-play"></i>
+                                    </button>
+                                    <button id="pauseAudio" type="button" class="btn btn-primary btn-circle" onclick="pauseAudioWave()" disabled>
+                                        <i class="fa fa-pause"></i>
+                                    </button>
+                                    <button id="stopAudio" type="button" class="btn btn-primary btn-circle" onclick="stopAudioWave()" disabled>
+                                        <i class="fa fa-stop"></i>
+                                    </button>
+                                    <button style="margin-left: 2.5%;" id="removeAudio" type="button" class="btn btn-danger btn-circle" onclick="destroyAudioWave()" disabled>
+                                        <i class="fa fa-times"></i>
+                                    </button>
                                 </div>
                                 <div id="waveform"></div>
                                 <div id="waveform-timeline"></div>
