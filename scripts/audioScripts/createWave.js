@@ -53,6 +53,9 @@ function destroyAudioWave() {
         wavesurfer.destroy();
     }
 
+    // Truco para que no se quede activo el tooltip
+    $('#removeAudio').tooltip('hide')
+    //Desactivar los botones
     $('#removeAudio').attr('disabled','disabled');
     $('#playAudio').attr('disabled','disabled');
     $('#pauseAudio').attr('disabled','disabled');

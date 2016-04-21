@@ -64,6 +64,12 @@
             <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.regions.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.timeline.min.js"></script>
+            <!-- Activar tooltips en todo el documento -->
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -232,20 +238,24 @@
                                 <div class="form-group">
                                     <label>Cargar Audio</label>
                                     <!---<label for="loadAudio"> <span class="btn btn-primary">Seleccionar archivo</span></label> -->
-                                    <input type="file" id="loadAudio" onchange="handleAudioFile(this.files)" style="width: 100%;"><!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
+                                    <input type="file" accept="audio/*" id="loadAudio" onchange="handleAudioFile(this.files)" style="width: 100%;"><!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
                                 </div>
                                 <label>Controles</label>
                                 <div class="form-group col-lg-offset-4">
-                                    <button id="playAudio" type="button" class="btn btn-primary btn-circle" onclick="playAudioWave()" disabled>
+                                    <button id="playAudio" type="button" class="btn btn-primary btn-circle"
+                                            data-toggle="tooltip" data-placement="top" title="Comenzar" onclick="playAudioWave();this.blur();" disabled>
                                         <i class="fa fa-play"></i>
                                     </button>
-                                    <button id="pauseAudio" type="button" class="btn btn-primary btn-circle" onclick="pauseAudioWave()" disabled>
+                                    <button id="pauseAudio" type="button" class="btn btn-primary btn-circle"
+                                            data-toggle="tooltip" data-placement="top" title="Pausar" onclick="pauseAudioWave();this.blur();" disabled>
                                         <i class="fa fa-pause"></i>
                                     </button>
-                                    <button id="stopAudio" type="button" class="btn btn-primary btn-circle" onclick="stopAudioWave()" disabled>
+                                    <button id="stopAudio" type="button" class="btn btn-primary btn-circle"
+                                            data-toggle="tooltip" data-placement="top" title="Detener" onclick="stopAudioWave();this.blur();" disabled>
                                         <i class="fa fa-stop"></i>
                                     </button>
-                                    <button style="margin-left: 2.5%;" id="removeAudio" type="button" class="btn btn-danger btn-circle" onclick="destroyAudioWave()" disabled>
+                                    <button style="margin-left: 2.5%;" id="removeAudio" type="button" class="btn btn-danger btn-circle"
+                                            data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="destroyAudioWave();" disabled>
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </div>
@@ -504,17 +514,16 @@
                             Información de Cámaras y Puntos de Ruta
                         </div>
                         <div class="panel-body">
-                            <ul class="nav nav-pills" id="">
-                                <li><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
+                            <ul class="nav nav-tabs" id="">
+                                <li class="active"><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
                                 </li>
                                 <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
-                                <div class="tab-pane fade" id="activeCamera-pills">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-body">
+                                <div class="tab-pane fade active in row" id="activeCamera-pills">
+                                    <div class="panel-body">
                                             <form role="form">
                                                 <div class="col-lg-12">
                                                     <label> Vista de Cámara </label> <!-- Pongo así la etiqueta a pelo? -->
@@ -559,13 +568,15 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
                                 </div>
                                 <!------------------------------------INICIO PUNTOS DE CONTROL ------------------------------------>
-                                <div class="tab-pane fade" id="controlPoints-pills">
-                                    <div class="panel panel-primary">
-                                        <div class="panel-body">
-                                            <div class="panel-group" id="pointAccordion"></div>
+                                <div class="tab-pane fade row" id="controlPoints-pills">
+                                    <div class="panel-body">
+                                        <div class="panel-group">
+                                            <div id="noPointAlert" class="alert alert-warning text-center">
+                                                Añada un nuevo <strong> punto de ruta </strong> a la cámara activa.
+                                            </div>
+                                            <div id="pointAccordion"></div>
                                         </div>
                                     </div>
                                 </div>

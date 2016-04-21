@@ -29,6 +29,8 @@ function loadNewPoint() {
 
         //Activar boton "eliminar"
         $('#btnRemPoint').removeAttr('disabled');
+        //Eliminar alerta
+        $('#noPointAlert').css('display', 'none');
     }
 }
 
@@ -42,9 +44,10 @@ function removePointLine() {
 
     activePoints[selectedCamera-1] -= 1;
 
-    //Desactivar boton "eliminar"
-    if (activePoints[selectedCamera-1] == 0)
-        $('#btnRemPoint').attr('disabled','disabled');
+    if (activePoints[selectedCamera-1] == 0) {
+        $('#btnRemPoint').attr('disabled', 'disabled'); //Desactivar boton "eliminar"
+        $('#noPointAlert').css('display', ''); //Activar alerta
+    }
 }
 
 //Crea el punto en la ficha de puntos de la página
