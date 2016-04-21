@@ -17,10 +17,9 @@ function createAudioWave( file ){
         container: '#waveform',
         waveColor: 'deepskyblue',
         progressColor: 'darkslateblue',
-        cursorWidth: 2
-        //interact: false
-        //cursorColor: 'white'
-        //scrollParent: true
+        cursorWidth: 2,
+        //barWidth: 2, // Para que salga cn cuadritos
+        //scrollParent: true // Para que se pueda desplazar con una barra espaciadora
     });
     wavesurfer.loadBlob( file ); //Cargar objeto de tipo "File" o "Blob"
 
@@ -38,7 +37,7 @@ function createAudioWave( file ){
         /*wavesurfer.addRegion({
             start: 0, // time in seconds
             end: 30, // time in seconds --- AQUI PONER LA DURACION DEL RECORRIDO DE LA CAMARA, CONTROLAR SI ES MAYOR
-            color: 'hsla(275, 100%, 30%, 0.1)', //Color rosa-rojo
+            color: 'hsla(275, 100%, 30%, 0.2)', //Color rosa-rojo
             resize: false
         });*/
     });

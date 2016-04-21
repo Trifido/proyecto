@@ -379,7 +379,7 @@
                     <div class="panel panel-primary" id="panelInfo">
                         <div class="panel-heading">
                             <i class="fa fa-info fa-fw"></i>
-                            Información
+                            Información General
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -390,10 +390,6 @@
                                 <li><a href="#escena-pills" data-toggle="tab" onclick="loadX3D()">Escenario</a>
                                 </li>
                                 <li><a href="#camara-pills" data-toggle="tab" onclick="loadVRX3D()">Primera Persona</a>
-                                </li>
-                                <li><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
-                                </li>
-                                <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
                             </ul>
                             <!-- Tab panes -->
@@ -497,6 +493,24 @@
 										</div>
 									</div>
                                 </div>
+                            </div>
+                        </div> <!-- /.panel-body -->
+                    </div> <!-- /.panel -->
+
+                    <!------------------------------------INICIO INFORMACIÓN DE CÁMARAS ------------------------------------>
+                    <div class="panel panel-primary" id="panelCameras">
+                        <div class="panel-heading">
+                            <i class="fa fa-thumb-tack fa-fw"></i>
+                            Información de Cámaras y Puntos de Ruta
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills" id="">
+                                <li><a href="#activeCamera-pills" data-toggle="tab">Información General</a> <!-- Alba -->
+                                </li>
+                                <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
+                                </li>
+                            </ul>
+                            <div class="tab-content">
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
                                 <div class="tab-pane fade" id="activeCamera-pills">
                                     <div class="panel panel-primary">
@@ -528,10 +542,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >
-                                                        <div class="form-group">
-                                                            <label> Tiempo Animación </label>
-                                                            <input type="number" class="form-control">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label> Tiempo Animación </label>
+                                                        <input type="number" class="form-control">
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
@@ -556,11 +570,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- /.panel-body -->
-                    </div> <!-- /.panel -->
+                        </div>
+                    </div>
 			    </div>
 <!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
-
             </div>
             <!-- /.container-fluid -->
         </div>
