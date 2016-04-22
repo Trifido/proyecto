@@ -299,11 +299,13 @@ function changeZoom(zoomType){
   else
     alert("function zoom(zoomType) given invalid zoomType parameter.");
 
-  document.getElementById('linezo').setAttribute('currentScale', currentZoomFactor);
+  document.getElementById('room_level').setAttributeNS(null, 'transform', 'scale( ' + currentZoomFactor +' )');
+
+  //alert(currentZoomFactor);
 
   //var newText = document.createTextNode("Current zoom factor = " + currentZoomFactor.toFixed(3));   // Create a generic new text node object.
   //var parentNode = document.getElementById('currentZoomFactorText');                                // Get the parent node of the text node we want to replace.
   
   //parentNode.replaceChild(newText, parentNode.firstChild);  // Replace the first child text node with the new text object.
 }
-        
+    
