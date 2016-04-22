@@ -8,6 +8,9 @@ var DragTarget = null;
 var targetElement= null;
 var elementoAnterior= null;
 var elementoSeleccionado= null;
+// Granularidad del zoom
+var currentZoomFactor = 1;
+var zoomRate = 1.1;
 // El flag diferencia el click del drag
 var clickFlag=null;
 // EL menú de los elementos
@@ -276,3 +279,31 @@ function translatePointLine(){
         }
     });
 }
+
+// -------------------------------- ZOOM ------------------------------------
+function Zoom(evt){
+    if (evt.wheelDelta > 0)
+        changeZoom('zoomIn');
+      else
+        changeZoom('zoomOut');   
+      /* When the mouse is over the webpage, don't let the mouse wheel scroll the entire webpage: */
+      evt.cancelBubble = true;  
+      return false;
+}
+    
+function changeZoom(zoomType){
+  if (zoomType == 'zoomIn')
+    currentZoomFactor *= zoomRate;
+  else if (zoomType == 'zoomOut')
+    currentZoomFactor /= zoomRate;      
+  else
+    alert("function zoom(zoomType) given invalid zoomType parameter.");
+
+  document.getElementById('linezo').setAttribute('currentScale', currentZoomFactor);
+
+  //var newText = document.createTextNode("Current zoom factor = " + currentZoomFactor.toFixed(3));   // Create a generic new text node object.
+  //var parentNode = document.getElementById('currentZoomFactorText');                                // Get the parent node of the text node we want to replace.
+  
+  //parentNode.replaceChild(newText, parentNode.firstChild);  // Replace the first child text node with the new text object.
+}
+        
