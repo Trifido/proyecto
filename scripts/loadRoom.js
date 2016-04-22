@@ -59,22 +59,22 @@ function initRoom(id){
 function changeRoom(id){
 	switch(id){
 		case 0:
-			svgroom.change('./img/rooms/sala6.png', 500, 500);
+			svgroom.change('scene6','./img/rooms/sala6.png', 500, 500);
 			break;
 		case 1:
-			svgroom.change('./img/rooms/sala2.png', 500, 500);
+			svgroom.change('Sala2','./img/rooms/sala2.png', 500, 500);
 			break;
 		case 2:
-			svgroom.change('./img/rooms/sala3.png', 500, 500);
+			svgroom.change('Sala3','./img/rooms/sala3.png', 500, 500);
 			break;
 		case 3:
-			svgroom.change('./img/rooms/sala4.png', 500, 500);
+			svgroom.change('Sala4','./img/rooms/sala4.png', 500, 500);
 			break;
 		case 4:
-			svgroom.change('./img/rooms/sala5.png', 500, 500);
+			svgroom.change('Sala5','./img/rooms/sala5.png', 500, 500);
 			break;
 		case 5:
-			svgroom.change('./img/rooms/sala6.png', 500, 500);
+			svgroom.change('Sala6','./img/rooms/sala6.png', 500, 500);
 			break;
 	}
 }
