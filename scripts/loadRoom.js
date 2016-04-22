@@ -3,6 +3,8 @@ var interpolador;
 var puntolimitador;
 var puntolimitador2;
 
+var fcamera;
+
 var RoomLoads= [false, false, false, false, false, false];
 var RoomInit= false;
 
@@ -90,6 +92,7 @@ function loadRoom( id ){
 	else if( !RoomInit ){
 		puntolimitador= Limit("superior","./img/camera/limitIcon.png",0,0);
 		puntolimitador2= Limit("inferior","./img/camera/limitIcon.png",450,450);
+		fcamera= new FirstCamera('FirstCamera', './img/camera/FirstCamera.png', 40, 40, 0, 0);
 		//updateRoom(id);
 		initRoom(id);
 		RoomInit=true;

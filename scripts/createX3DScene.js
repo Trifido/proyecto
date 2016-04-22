@@ -38,13 +38,11 @@ function obtenerVRCamera() {
     var objetoDinamico= document.getElementById('VRcamera_level').childNodes[0];
     var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
 
-    alert((objetoDinamico.getAttributeNS(null, 'cY')*0.1));
-
     return {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
-        x: (objetoDinamico.getAttributeNS(null, 'cX')*0.1),
+        x: (objetoDinamico.getAttributeNS(null, 'cX')),
         y: 1.5,
-        z: (objetoDinamico.getAttributeNS(null, 'cY')*0.1),
+        z: (objetoDinamico.getAttributeNS(null, 'cY')),
         rotation: radianes,
         altura: objetoDinamico.getAttributeNS(null, 'altura'),
         zancada: objetoDinamico.getAttributeNS(null, 'zancada'),
@@ -65,7 +63,7 @@ function obtenerEscenario(objetoDinamico) {
 //Genera un objeto Blob con los datos en un archivo XML
 function mostrar(){
     var nelements=document.getElementById('sculpture_level').childNodes.length;
-    alert(nelements);
+    //alert(nelements);
 };
 
 /*

@@ -81,9 +81,3 @@ function chargeX3DScene(){
     }
     return texto;
 };
-
-function chargeVRCamera(){
-    var texto= "";
-
-    return texto;
-};

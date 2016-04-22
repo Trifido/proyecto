@@ -1,8 +1,5 @@
-var fcamera;
-function loadVRX3D() {
 
-	if(fcamera==null)
-		fcamera= new FirstCamera('FirstCamera', './img/camera/FirstCamera.png', 40, 40, 0, 0);
+function loadVRX3D() {
 
 	var texto="";
 
@@ -228,7 +225,7 @@ function loadNodeVRCamera(){
 
 	var objdin= obtenerVRCamera();
 
-	/*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO */
+	/*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO 
             var interY= (parseInt(objdin.z)*61)/500; //61m de largo y 500px de lienzo
             var posZ= interY * 0.1;
 
@@ -240,13 +237,17 @@ function loadNodeVRCamera(){
             var auxX= ((parseInt(objdin.x)-interX)*46)/anchoImg;
             var posX= auxX * 0.1;
 
+            alert("X: " + posX + "  Y: " + posZ); */
+    alert("X: " + parseInt(objdin.x) + " Z: " + parseInt(objdin.z));
+    interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
 
+    alert("X: " + interpolador.getX() + " Z: " + interpolador.getZ());
 
 	texto += "<navigationInfo  avatarSize=\'" + 0.001 + " " + 0.15 + " " + 0.15 + "\' type=\'\"game\"\'></navigationInfo>\n";
 
 	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 
 	texto += "	<viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";
-	texto += "  orientation=\'0 1 0" + objdin.rotation + "\' position=\'" + posX + " " + objdin.y + " " + posZ + "\'\n";
+	texto += "  orientation=\'0 1 0" + objdin.rotation + "\' position=\'" + interpolador.getX() + " " + objdin.y + " " + interpolador.getZ() + "\'\n";
 	texto += "  zNear=\'0.001\' zFar=\'100\'></viewpoint> \n";
 	texto += "</transform>\n";
 
