@@ -61,6 +61,14 @@ function getLimitY (){
     return document.getElementById('limit_level').childNodes[1].getAttributeNS(null, 'y1');
 }
 
+function getLimitX2 (){
+    return document.getElementById('limit_level').childNodes[4].getAttributeNS(null, 'x1');
+}
+
+function getLimitY2 (){
+    return document.getElementById('limit_level').childNodes[4].getAttributeNS(null, 'y1');
+}
+
 function drawLimitLine (x1, y1, x2, y2, vname){
     var line = document.createElementNS('http://www.w3.org/2000/svg','line');
 
