@@ -51,15 +51,20 @@ function createAudioWave( file ){
 function destroyAudioWave() {
     if (typeof wavesurfer !== 'undefined') { // Si ya está creada, se elimina
         wavesurfer.destroy();
-    }
 
-    // Truco para que no se quede activo el tooltip
-    $('#removeAudio').tooltip('hide')
-    //Desactivar los botones
-    $('#removeAudio').attr('disabled','disabled');
-    $('#playAudio').attr('disabled','disabled');
-    $('#pauseAudio').attr('disabled','disabled');
-    $('#stopAudio').attr('disabled','disabled');
+        // Truco para que no se quede activo el tooltip
+        $('#removeAudio').tooltip('hide')
+        //Desactivar los botones
+        $('#removeAudio').attr('disabled', 'disabled');
+        $('#playAudio').attr('disabled', 'disabled');
+        $('#pauseAudio').attr('disabled', 'disabled');
+        $('#stopAudio').attr('disabled', 'disabled');
+
+        //Eliminar el contenido del sonido que no funciona porque no se actualiza despues
+        //var inputAudio = $("#loadAudio");
+        //inputAudio.replaceWith( inputAudio = inputAudio.clone( true ) );
+        //inputAudio.val("");
+    }
 }
 
 function playAudioWave() {
@@ -79,4 +84,3 @@ function stopAudioWave() {
         wavesurfer.stop();
     }
 }
-
