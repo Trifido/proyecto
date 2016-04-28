@@ -225,23 +225,7 @@ function loadNodeVRCamera(){
 
 	var objdin= obtenerVRCamera();
 
-	/*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO 
-            var interY= (parseInt(objdin.z)*61)/500; //61m de largo y 500px de lienzo
-            var posZ= interY * 0.1;
-
-            //altoImagen= 636;
-            var anchoImg= (500*500)/636;
-            //500 del ancho del lienzo;
-            var interX= (500-anchoImg)/2;
-
-            var auxX= ((parseInt(objdin.x)-interX)*46)/anchoImg;
-            var posX= auxX * 0.1;
-
-            alert("X: " + posX + "  Y: " + posZ); */
-    alert("X: " + parseInt(objdin.x) + " Z: " + parseInt(objdin.z));
     interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
-
-    alert("X: " + interpolador.getX() + " Z: " + interpolador.getZ());
 
 	texto += "<navigationInfo  avatarSize=\'" + 0.001 + " " + 0.15 + " " + 0.15 + "\' type=\'\"game\"\'></navigationInfo>\n";
 

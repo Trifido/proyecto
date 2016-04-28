@@ -38,18 +38,6 @@ function chargeX3DScene(){
         if(elemento.id != 'delete' && elemento.id != 'rotate'){
             objDin= obtenerDatos(elemento);
 
-            /*      EN EL CASO DE UNA IMAGEN CON: ALTO > ANCHO 
-            var interY= (parseInt(objDin.z)*61)/500; //61m de largo y 500px de lienzo
-            posZ= interY * 0.1;
-
-            //altoImagen= 636;
-            var anchoImg= (500*500)/636;
-            //500 del ancho del lienzo;
-            var interX= (500-anchoImg)/2;
-
-            var auxX= ((parseInt(objDin.x)-interX)*46)/anchoImg;
-            posX= auxX * 0.1;
-            */
             interpolador.Interpolacion(parseInt(objDin.x),parseInt(objDin.z));
             
             if(objDin.pedestalAlto>0){
