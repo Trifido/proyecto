@@ -23,3 +23,18 @@ function updateFileCoords (vclass, vname, nX, nY) {
         $('#aPoint'+id+'Z').val(interpolador.getZCam());
     }
 }
+
+function updateCameraCoords (coord) {
+    var valueX = -1, valueY = -1, valueZ = -1; // Para que no se modifiquen tienen que valer -1
+    if (coord.toLowerCase() == 'x')
+        valueX = $('#aCameraX').val();
+    if (coord.toLowerCase() == 'y')
+        valueY = $('#aCameraY').val();
+    if (coord.toLowerCase() == 'z')
+        valueZ = $('#aCameraZ').val();
+
+    $('.camera').each(function (i, obj) { //Buscar el objeto SVG
+        var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
+        if (selectedCamera == aux) obj.updateCoords(valueX, valueY, valueZ); //Actualiza las coordenadas
+    });
+}
