@@ -8,15 +8,18 @@ function updateFileCoords (vclass, vname, nX, nY) {
         
     }
     if (vclass == 'camera') {
-        $('#aCameraX').val(Math.round(nX));
-        $('#aCameraY').val(Math.round(nY));
-        $('#aCameraZ').val(0);
+        interpolador.InterpolCamera(nX, nY, 0);
+
+        $('#aCameraX').val(interpolador.getXCam());
+        $('#aCameraY').val(interpolador.getYCam());
+        $('#aCameraZ').val(interpolador.getZCam());
     }
     if (vclass == 'point') {
         var id = vname.substr(vname.length-1);
+        interpolador.InterpolCamera(nX, nY, 0);
 
-        $('#aPoint'+id+'X').val(Math.round(nX));
-        $('#aPoint'+id+'Y').val(Math.round(nY));
-        $('#aPoint'+id+'Z').val(0);
+        $('#aPoint'+id+'X').val(interpolador.getXCam());
+        $('#aPoint'+id+'Y').val(interpolador.getYCam());
+        $('#aPoint'+id+'Z').val(interpolador.getZCam());
     }
 }

@@ -10,6 +10,7 @@ function InterpolarCoords( pixAltoImagen, pixAnchoImagen, largoMSala, anchoMSala
 	var largoSala;
 	var anchoSala;
 	var newX, newZ;
+	var xCamera, yCamera, zCamera;
 
 	this.pixCanvasX = 500; 			// El canvas es de 500 x 500 px
 	this.pixCanvasY = 500;
@@ -37,6 +38,13 @@ InterpolarCoords.prototype.InterpolNormal = function ( cord, datoSala, pixels ){
 	var interN= (cord*datoSala)/pixels;
     return (interN * this.parseMeters);
 } 
+
+InterpolarCoords.prototype.InterpolCamera = function ( x, y, z ){
+	this.xCamera = x - parseFloat(getLimitX());
+	this.yCamera = y - parseFloat(getLimitY());
+	this.zCamera = z;
+}
+
 /*
 InterpolarCoords.prototype.InterpolComp = function ( cord, datoImagen, datoSala ){
     var anchoImg= (this.pixCanvasX*this.pixCanvasY)/datoImagen;
@@ -52,4 +60,16 @@ InterpolarCoords.prototype.getX = function ( ){
 
 InterpolarCoords.prototype.getZ = function ( ){
 	return this.newZ;
+}
+
+InterpolarCoords.prototype.getXCam = function ( ){
+	return Math.round(this.xCamera);
+}
+
+InterpolarCoords.prototype.getYCam = function ( ){
+	return Math.round(this.yCamera);
+}
+
+InterpolarCoords.prototype.getZCam = function ( ){
+	return Math.round(this.zCamera);
 }
