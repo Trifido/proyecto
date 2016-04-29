@@ -30,6 +30,7 @@ function updateCameraCoords (coord) {
         var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
 
         if (selectedCamera == id){
+            //Actualizar coordenadas de camara
             if (coord == 'x'){
                 valueX = $('#aCameraX').val();
                 valueY = obj.getAttributeNS(null, 'coordY');
@@ -47,6 +48,13 @@ function updateCameraCoords (coord) {
             }
             
             obj.updateCoords(valueX, valueY, valueZ);
+
+            //Actualizar coordenadas de linea
+            var vancho = obj.getAttributeNS(null, 'width')/2, valto = obj.getAttributeNS(null, 'height')/2;
+            if (coord != 'z') {
+                translateCameraLine(valueX, valueY, vancho, valto);
+                obj.style.display='';
+            }
         }
     });
 }
@@ -75,6 +83,13 @@ function updatePointCoords (coord) {
             }
 
             obj.updateCoords(valueX, valueY, valueZ);
+
+            //Actualizar coordenadas de linea
+            var vancho = obj.getAttributeNS(null, 'width')/2, valto = obj.getAttributeNS(null, 'height')/2;
+            if (coord != 'z') {
+                translatePointLine(nombre, valueX, valueY, vancho, valto);
+                obj.style.display='';
+            }
         }
     });
 }

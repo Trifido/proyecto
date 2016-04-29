@@ -34,12 +34,12 @@ function Camera( vname, vpath, vposX, vposY ){
      */
     this.svgObject.updateCoords = function ( cordX, cordY, cordZ ) {
         if (cordX != -1) {
-            var nX = parseInt(cordX) + parseInt(this.getAttributeNS(null, 'width'));
+            var nX = parseInt(cordX) + parseInt(this.getAttributeNS(null, 'width')/2);
             this.setAttributeNS(null, 'coordX', cordX);
             this.setAttributeNS(null, 'cX', nX);
         }
         if (cordY != -1) {
-            var nY = parseInt(cordY) + parseInt(this.getAttributeNS(null, 'height'));
+            var nY = parseInt(cordY) + parseInt(this.getAttributeNS(null, 'height')/2);
             this.setAttributeNS(null, 'coordY', cordY);
             this.setAttributeNS(null, 'cY', nY);
         }
