@@ -43,8 +43,8 @@ function loadCamera( id ) {
     // Actualizar la ficha
     // Camara
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
-        var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
-        if (selectedCamera == aux) updateFileCoords('camera', '', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
+        var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
+        if (selectedCamera == id) updateFileCoords('camera', '', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
     });
     //Puntos
     $('#pointAccordion').empty(); //Limpia todos los hijos
@@ -89,9 +89,9 @@ function updateCameraBorder( id ){
 // Activar los puntos de control correspondientes a la camara cargada
 function updateCamera() {
     $('.camera').each(function (i, obj) {
-        var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice de la camara a la que pertenece
+        var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice de la camara a la que pertenece
 
-        if (selectedCamera == aux){ // Traer al frente
+        if (selectedCamera == id){ // Traer al frente
             document.getElementById('camera_level').appendChild(obj);
         }
         else{ //Llevar al fondo
@@ -103,9 +103,9 @@ function updateCamera() {
 // Activar los puntos de control correspondientes a la camara cargada
 function updatePoints() {
     $('.point').each(function (i, obj) {
-        var aux = obj.getAttributeNS(null, 'nombre').substr(5, 1); //Indice de la camara a la que pertenece
+        var id = obj.getAttributeNS(null, 'nombre').substr(5, 1); //Indice de la camara a la que pertenece
 
-        if (selectedCamera == aux){ // Traer al frente
+        if (selectedCamera == id){ // Traer al frente
             document.getElementById('point_level').appendChild(obj);
         }
         else{ //Llevar al fondo
@@ -117,9 +117,9 @@ function updatePoints() {
 // Activar los puntos de control correspondientes a la camara cargada
 function updateLines() {
     $('.line').each(function (i, obj) {
-        var aux = obj.getAttributeNS(null, 'name').substr(5, 1); //Indice de la linea a la que pertenece
+        var id= obj.getAttributeNS(null, 'name').substr(5, 1); //Indice de la linea a la que pertenece
 
-        if (selectedCamera == aux){ // Traer al frente
+        if (selectedCamera == id){ // Traer al frente
             document.getElementById('line_level').appendChild(obj);
         }
         else{ //Llevar al fondo

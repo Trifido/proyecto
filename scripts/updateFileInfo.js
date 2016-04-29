@@ -25,16 +25,56 @@ function updateFileCoords (vclass, vname, nX, nY) {
 }
 
 function updateCameraCoords (coord) {
-    var valueX = -1, valueY = -1, valueZ = -1; // Para que no se modifiquen tienen que valer -1
-    if (coord.toLowerCase() == 'x')
-        valueX = $('#aCameraX').val();
-    if (coord.toLowerCase() == 'y')
-        valueY = $('#aCameraY').val();
-    if (coord.toLowerCase() == 'z')
-        valueZ = $('#aCameraZ').val();
-
+    var valueX = -1, valueY = -1, valueZ = -1;
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
-        var aux = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
-        if (selectedCamera == aux) obj.updateCoords(valueX, valueY, valueZ); //Actualiza las coordenadas
+        var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
+
+        if (selectedCamera == id){
+            if (coord == 'x'){
+                valueX = $('#aCameraX').val();
+                valueY = obj.getAttributeNS(null, 'coordY');
+
+                obj.setAttributeNS(null, 'transform', 'rotate(0, 0, 0) translate(' + valueX +', ' + valueY + ')');
+            }
+            else if (coord == 'y'){
+                valueX = obj.getAttributeNS(null, 'coordX');
+                valueY = $('#aCameraY').val();
+
+                obj.setAttributeNS(null, 'transform', 'rotate(0, 0, 0) translate(' + valueX +', ' + valueY + ')');
+            }
+            else if (coord == 'z'){
+                valueZ = $('#aCameraZ').val();
+            }
+            
+            obj.updateCoords(valueX, valueY, valueZ);
+        }
+    });
+}
+
+function updatePointCoords (coord) {
+    var valueX = -1, valueY = -1, valueZ = -1;
+    $('.point').each(function (i, obj) { //Buscar el objeto SVG
+        var nombre = obj.getAttributeNS(null, 'nombre'); //Indice
+        var id = nombre.substr(nombre.length-1);
+
+        if ('punto'+selectedCamera+'_' + id == nombre){
+            if (coord == 'x'){
+                valueX = $('#aPoint'+id+'X').val();
+                valueY = obj.getAttributeNS(null, 'coordY');
+
+                obj.setAttributeNS(null, 'transform', 'rotate(0, 0, 0) translate(' + valueX +', ' + valueY + ')');
+            }
+            else if (coord == 'y'){
+                valueX = obj.getAttributeNS(null, 'coordX');
+                valueY = $('#aPoint'+id+'Y').val();
+
+                obj.setAttributeNS(null, 'transform', 'rotate(0, 0, 0) translate(' + valueX +', ' + valueY + ')');
+            }
+            else if (coord == 'z'){
+                valueZ = $('#aPoint'+id+'Z').val();
+            }
+
+            obj.updateCoords(valueX, valueY, valueZ);
+        }
     });
 }
