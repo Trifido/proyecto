@@ -13,13 +13,12 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 	this.height= altura;
 	this.width= anchura;
 	this.longitud= largo;
-	this.id= 0;
 	this.location= pathLocation;
 	this.nombre= nombre;
 	
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
-	this.svgObject.setAttribute('id', this.id);
+	this.svgObject.setAttribute('id', this.nombre);
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
@@ -29,6 +28,7 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 	this.svgObject.setAttributeNS(null,'y','0');
 	this.svgObject.setAttributeNS(null,'cX', (this.coordX + (this.width/2)));
 	this.svgObject.setAttributeNS(null,'cY',(this.coordY + (this.height/2)));
+	this.svgObject.setAttributeNS(null,'rotation', 0);
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 	this.svgObject.setAttributeNS(null, 'class', 'picture');
 

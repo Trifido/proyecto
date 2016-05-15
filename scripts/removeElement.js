@@ -3,6 +3,10 @@ function removeElement(vclass, vname){
         removeModel();
         document.getElementById('sculpture_level').removeChild(document.getElementById(vname)); //Borrar la imagen 2D
     }
+    if (vclass == 'picture') {
+        //removeModel();
+        document.getElementById('picture_level').removeChild(document.getElementById(vname)); //Borrar la imagen 2D
+    }
     if (vclass == 'camera') {
         //Eliminar todos los puntos y las lineas
         var iteraciones = activePoints[(vname.substr(vname.length - 1))-1];

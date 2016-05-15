@@ -28,17 +28,17 @@ function isAlreadyPictureLoad( id ){
 function initPicture(id){
 	switch(id){
 		case 1:
-			picture = new Picture('guernica','./img/cuadros2D/guernica.png', 40, 40, 0);
+			picture = new Picture('elgrito','./img/cuadros2D/elgrito.png', 40, 40, 0);
 			//loadModel('./models/venus/venus.obj');
 			//nameScultureLoad= 'venus';
 			break;
 		case 2:
-			picture = new Picture('monalisa','./img/cuadros2D/monalisa.png', 40, 40, 0);
+			picture = new Picture('guernica','./img/cuadros2D/guernica.png', 40, 40, 0);
 			//loadModel('./models/thinker/thinker.obj');
 			//nameScultureLoad= 'thinker';
 			break;
 		case 3:
-			picture = new Picture('nocheestrellada','./img/cuadros2D/nocheestrellada.png', 40, 40, 0);
+			picture = new Picture('meninas','./img/cuadros2D/meninas.png', 40, 40, 0);
 			//loadModel('./models/david/david.obj');
 			//nameScultureLoad= 'david';
 			break;
@@ -48,12 +48,12 @@ function initPicture(id){
 			//nameScultureLoad= 'dragon';
 			break;
 		case 5:
-			picture = new Picture('elgrito','./img/cuadros2D/elgrito.png', 40, 40, 0);
+			picture = new Picture('monalisa','./img/cuadros2D/monalisa.png', 40, 40, 0);
 			//loadModel('./models/ramses2/ramses2.obj');
 			//nameScultureLoad= 'ramses2';
 			break;
 		case 6:
-			picture = new Picture('meninas','./img/cuadros2D/meninas.png', 40, 40, 0);
+			picture = new Picture('nocheestrellada','./img/cuadros2D/nocheestrellada.png', 40, 40, 0);
 			//loadModel('./models/pascua/pascua.obj');
 			//nameScultureLoad= 'pascua';
 			break;

@@ -276,12 +276,12 @@ function translatePointLine(nombre, cX, cY, wd, ht){
 }
 
 // -------------------------------- ZOOM ------------------------------------
-function Zoom(evt){
+/*function Zoom(evt){
     if (evt.wheelDelta > 0)
         changeZoom('zoomIn');
       else
         changeZoom('zoomOut');   
-      /* When the mouse is over the webpage, don't let the mouse wheel scroll the entire webpage: */
+      // When the mouse is over the webpage, don't let the mouse wheel scroll the entire webpage: 
       evt.cancelBubble = true;  
       return false;
 }
@@ -303,4 +303,4 @@ function changeZoom(zoomType){
   
   //parentNode.replaceChild(newText, parentNode.firstChild);  // Replace the first child text node with the new text object.
 }
-    
+    */

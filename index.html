@@ -34,10 +34,12 @@
 	<script  type="text/javascript" src="scripts/loadRoom.js"></script>
 	<script  type="text/javascript" src="scripts/loadMenu.js"></script>
 	<script  type="text/javascript" src="scripts/loadSculpture.js"></script>
+    <script  type="text/javascript" src="scripts/loadPicture.js"></script>
 	<script  type="text/javascript" src="scripts/removeElement.js"></script>
 	<script  type="text/javascript" src="scripts/dragDropFunctions.js"></script>
 	<script  type="text/javascript" src="scripts/room.js"></script>
 	<script  type="text/javascript" src="scripts/sculpture.js"></script>
+    <script  type="text/javascript" src="scripts/picture.js"></script>
 	<script  type="text/javascript" src="scripts/firstCamera.js"></script>
 	<script  type="text/javascript" src="scripts/addPedestal.js"></script>
 	<script  type="text/javascript" src="scripts/limitador.js"></script>
@@ -223,6 +225,7 @@
 					            <g id="room_level"></g>
 					            <g id="limit_level"></g>
 								<g id="sculpture_level"></g>
+                                <g id="picture_level"></g>
 					            <g id="line_level"></g>
 					            <g id="camera_level"></g>
 								<g id="point_level"></g>
@@ -324,7 +327,7 @@
 						            <!--/myCarousel-->
 						        </div>
     <!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER ESCULTURAS ------------- -->
-
+    <!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER CUADROS ---------- -->
                             </div>
                         </div>
                         <div class="panel panel-success">
@@ -334,11 +337,50 @@
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <div class="well">
+                                    <div id="myCarouselCuadro" class="carousel slide">
+                                        <!-- Carousel items -->
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <div class="row">
+                                                    <div class="col-xs-3"><a><img src="./img/menu/elgrito.png" alt="Image" class="img-responsive" onclick="loadPicture( 1 )"></a>
+
+                                                    </div>
+                                                    <div class="col-xs-3"><a><img src="./img/menu/guernica.png" alt="Image" class="img-responsive" onclick="loadPicture( 2 )"></a>
+
+                                                    </div>
+                                                    <div class="col-xs-3"><a><img src="./img/menu/meninas.png" alt="Image" class="img-responsive" onclick="loadPicture( 3 )"></a>
+
+                                                    </div>
+                                                    <div class="col-xs-3"><a><img src="./img/menu/miro.png" alt="Image" class="img-responsive"  onclick="loadPicture( 4 )"></a>
+
+                                                    </div>
+                                                </div>
+                                                <!--/row-->
+                                            </div>
+                                            <!--/item-->
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="col-xs-3"><a><img src="./img/menu/monalisa.png" alt="Image" class="img-responsive" onclick="loadPicture( 5 )"></a>
+
+                                                    </div>
+                                                    <div class="col-xs-3"><a><img src="./img/menu/nocheestrellada.png" alt="Image" class="img-responsive" onclick="loadPicture( 6 )"></a>
+                                                    </div>
+                                                </div>
+                                                <!--/row-->
+                                            </div>
+                                            <!--/item-->
+                                        </div>
+                                        <!--/carousel-inner--> 
+                                        <a class="left carousel-control" href="#myCarouselCuadro" data-slide="prev">‹</a>
+                                        <a class="right carousel-control" href="#myCarouselCuadro" data-slide="next">›</a>
+
+                                    </div>
+                                    <!--/myCarousel-->
                                 </div>
                             </div>
                         </div>
+        <!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER CUADROS ------------- -->
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
