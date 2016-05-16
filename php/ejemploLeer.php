@@ -1,41 +1,51 @@
 <?php
-	include 'Puntos.php';
+	include 'Escenario.php';
 
-	$xml=simplexml_load_file("../models/X3D/scene6.x3d") or die("Error: Cannot create object");
-	//echo $xml->x3d->head . "<br>";
-	//print_r($xml->Scene->Transform[0]->Transform->Group->Shape->IndexedFaceSet->attributes()->coordIndex);
-	//print_r($xml);
-	//$indicesString = $xml->Scene->Transform[0]->Transform->Group->Shape->IndexedFaceSet->attributes()->coordIndex;
-	//$coordString = $xml->Scene->Transform[0]->Transform->Group->Shape->IndexedFaceSet->Coordinate->attributes()->point;
+	/*$escena = new Escenario("../models/X3D/scene6.x3d");
 
-	$puntos = array();
-	$indi;
-	//Punto cordPunto = Punto();
-	$aux = 0;
-	foreach ($xml->Scene->Transform as $node) {
-		$indicesString = $node->Transform->Group->Shape->IndexedFaceSet->attributes()->coordIndex;
-   		$coordString = $node->Transform->Group->Shape->IndexedFaceSet->Coordinate->attributes()->point;
+	//$escena->getCoords();
 
-   		$indi = explode(" ", $indicesString);
-   		$coordenadas = explode(" ", $coordString);
+	$puntoCuadro= new Punto();
 
-   		foreach (array_keys($indi, '-1') as $key) {
-		    unset($indi[$key]);
-		}
+	$puntoCuadro->setX(10);
+	$puntoCuadro->setY(10);
+	$puntoCuadro->setZ(10);
 
-		$indices = array_values($indi);
+	$puntoMin = $escena->findMinPoint($puntoCuadro);
 
+	echo "puntoMin = (" . $puntoMin->getX() . ", " . $puntoMin->getY() . ", " . $puntoMin->getZ() . ") </br>";
+
+	echo "puntoCuadro antes = (" . $puntoCuadro->getX() . ", " . $puntoCuadro->getY() . ", " . $puntoCuadro->getZ() . ") </br>";
+
+	$finalPoint = getPicturePoint($puntoCuadro, $puntoMin);
+
+	echo "puntoCuadro despues = (" . $finalPoint->getX() . ", " . $finalPoint->getY() . ", " . $finalPoint->getZ() . ") </br>";
+*/
+
+	$scene = $_REQUEST["scene"];
+
+	if( $scene == ""){
+		echo '<script language="javascript">alert("vacio");</script>'; 
+	}
+	else{
+		echo '<script language="javascript">alert("' . $scene . '");</script>'; 
 	}
 
-	echo 'indices: ' . count($indices) . '<br>';
-	for($i=0; $i+3<count($indices); $i+=3){
-		echo '(' . $indices[$i] . ', ' . $indices[$i+1] . ', ' . $indices[$i+2] . ') <br>';
-	}
+	$escena = new Escenario($scene);
 
-	echo 'coordenadas: ' . count($coordenadas) . '<br>';
-	for($i=0; $i+3<count($coordenadas); $i+=3){
-		echo '(' . $coordenadas[$i] . ', ' . $coordenadas[$i+1] . ', ' . $coordenadas[$i+2] . ') <br>';
-	}
-	   	
+	$puntoCuadro= new Punto();
 
+	$puntoCuadro->setX(10);
+	$puntoCuadro->setY(10);
+	$puntoCuadro->setZ(10);
+
+	$puntoMin = $escena->findMinPoint($puntoCuadro);
+
+	echo "puntoMin = (" . $puntoMin->getX() . ", " . $puntoMin->getY() . ", " . $puntoMin->getZ() . ") </br>";
+
+	$finalPoint = getPicturePoint($puntoCuadro, $puntoMin);
+
+	echo "puntoCuadro = (" . $finalPoint->getX() . ", " . $finalPoint->getY() . ", " . $finalPoint->getZ() . ") </br>";
+
+	//echo $scene;
 ?>

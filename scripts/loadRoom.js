@@ -2,6 +2,7 @@
 var interpolador;
 var puntolimitador;
 var puntolimitador2;
+var sceneName;
 
 var fcamera;
 
@@ -38,6 +39,7 @@ function initRoom(id){
 		case 0:
 			svgroom = new Room ('scene6','./img/rooms/sala6.png', 500, 500);
 			interpolador= new InterpolarCoords( 636, 500, 61, 46 );
+			sceneName = 'scene6';
 			break;
 		case 1:
 			svgroom = new Room ('Sala2','./img/rooms/sala2.png', 500, 500);
@@ -55,6 +57,7 @@ function initRoom(id){
 			svgroom = new Room ('Sala6','./img/rooms/sala6.png', 500, 500);
 			break;
 	}
+
 }
 
 //Cambiar de sala.
@@ -100,4 +103,8 @@ function loadRoom( id ){
 		$('#btnAddCamera').removeAttr('disabled');
 	}
 
+	var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("GET", "./php/ejemploLeer.php?scene= ../models/X3D/" + sceneName + ".x3d" , true);
+    xmlhttp.send();
 }

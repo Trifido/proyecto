@@ -31,6 +31,8 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 	this.svgObject.setAttributeNS(null,'rotation', 0);
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 	this.svgObject.setAttributeNS(null, 'class', 'picture');
+	this.svgObject.setAttributeNS(null,'posXFinal','0');
+	this.svgObject.setAttributeNS(null,'posZFinal','0');
 
 	document.getElementById('picture_level').appendChild(this.svgObject);
 	//Esto me sirve para poder eliminar el cuadro que acabo de cargar en la escena
