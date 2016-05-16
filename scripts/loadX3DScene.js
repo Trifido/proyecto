@@ -6,17 +6,19 @@ function loadX3D() {
     texto+='\t\t<Background backUrl=\'space.jpg\'></Background>\n';
     texto+='\t\t<Viewpoint description="Faceted box, smooth shading" position="2 10 3" orientation="1 0 0 -1.5708"></Viewpoint>\n';
     
-    texto+= chargeX3DScene();
+    texto+= initX3DScene();
 
     texto+='\t</Scene>\n';
     texto+='</X3D>\n';
 
-    var div = document.getElementById("escena");   
+   var div = document.getElementById("escena"); 
+    //activeCameraView  
+   // var div = document.getElementById("activeCameraView"); 
     div.innerHTML = texto;
     x3dom.reload();
 };
 
-function chargeX3DScene(){
+function initX3DScene(){
     var texto="";
     //Añadimos el escenario    
     var objDin= obtenerEscenario(document.getElementById('room_level').childNodes[0]);
@@ -65,6 +67,54 @@ function chargeX3DScene(){
             if(objDin.rotation > 0)
                 texto+='\t\t\t</Transform>\n';
             texto+='\t\t</Transform>\n\n';
+        }
+    }
+
+    //Añadimos todos los cuadros
+    nelements=document.getElementById("picture_level").childNodes.length;
+
+    for(var i=0; i<nelements; i++){
+        elemento= document.getElementById('picture_level').childNodes[i];
+        if(elemento.id != 'delete' && elemento.id != 'rotate'){
+            objDin= obtenerDatosCuadro(elemento);
+
+            interpolador.Interpolacion(parseInt(objDin.x),parseInt(objDin.z));
+            
+           // alert("X: " + (interpolador.getX()*10) + " _ Z: " + (interpolador.getZ()*10) );
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    //alert("hello");
+                  //  document.getElementById("wrapper").innerHTML = xmlhttp.responseText;
+                }
+            };
+
+            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + (interpolador.getX()*10) + "&posZ=" + (interpolador.getZ()*10), false);
+            xmlhttp.send();
+
+            alert("X: " + (interpolador.getX()*10) + " _ Z: " + (interpolador.getZ()*10) );
+
+            var coordText = '<?php echo $textMinPoint ?>';
+
+            texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordText + '">\n';
+            /*
+            if(objDin.rotation > 0){
+                texto+='\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';
+            }
+            */
+
+            texto+='\t\t\t\t<Shape DEF="boxShape">';
+            texto+='\t\t\t\t\t<Appearance DEF="boxApp">'; 
+            texto+='\t\t\t\t\t\t<Material diffuseColor="1 0 0" specularColor=".5 .5 .5" />';
+            texto+='\t\t\t\t\t</Appearance>';
+            texto+='\t\t\t\t\t<Box DEF=\"box\" size=\'0.1 0.1 0.1\' />';
+            texto+='\t\t\t\t</Shape>';
+
+            /*if(objDin.rotation > 0)
+                texto+='\t\t\t</Transform>\n'; */
+            texto+='\t\t</Transform>\n\n'; 
+            
         }
     }
     return texto;

@@ -105,6 +105,13 @@ function loadRoom( id ){
 
 	var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("GET", "./php/ejemploLeer.php?scene= ../models/X3D/" + sceneName + ".x3d" , true);
+	xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //alert("hello");
+          //  document.getElementById("wrapper").innerHTML = xmlhttp.responseText;
+        }
+    };
+
+    xmlhttp.open("GET", "./php/iniciarEscenario.php?nameScene=../models/X3D/" + sceneName + ".x3d" , true);
     xmlhttp.send();
 }

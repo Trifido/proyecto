@@ -34,6 +34,22 @@ function obtenerDatos(objetoDinamico) {
     };
 };
 
+//Función de ayuda: reúne los datos a exportar en un solo objeto
+function obtenerDatosCuadro(objetoDinamico) {
+    var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
+
+    return {
+        nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
+        x: objetoDinamico.getAttributeNS(null, 'cX'),
+        y: 1.0,
+        z: objetoDinamico.getAttributeNS(null, 'cY'),
+        rotation: radianes,
+        ancho: objetoDinamico.getAttributeNS(null, 'width'),
+        alto: objetoDinamico.getAttributeNS(null, 'height'),
+        clase: objetoDinamico.getAttributeNS(null, 'class')
+    };
+};
+
 function obtenerVRCamera() {
     var objetoDinamico= document.getElementById('VRcamera_level').childNodes[0];
     var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
