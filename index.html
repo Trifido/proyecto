@@ -582,52 +582,51 @@
                                 </li>
                                 <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
+                                <li><a href="#cameraView-pills" data-toggle="tab">Vista de Cámara</a> <!-- Alba -->
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
                                 <div class="tab-pane fade active in row" id="activeCamera-pills">
                                     <div class="panel-body">
-                                            <form role="form">
-                                                <div class="col-lg-12">
-                                                    <label> Vista de Cámara </label> <!-- Pongo así la etiqueta a pelo? -->
-                                                    <div class="panel panel-primary">
-                                                        <div id="activeCameraView"> Lo que ve la camara </div> <!-- Lo que ve la camara que esta activa ? -->
-                                                    </div>
-                                                </div>
+                                            <form role="form" action="./php/prueba.php" method="post">
                                                 <!-- Funcionalidad Potencial: cámara activada en un tiempo específico -->
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label> Coord X </label>
-                                                        <input id="aCameraX" type="number" class="form-control" onchange="updateCameraCoords('x')">
+                                                        <label for="aCameraX"> Coord X </label>
+                                                        <input id="aCameraX" type="number" name="cX" class="form-control" onchange="updateCameraCoords('x')"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Y </label>
-                                                        <input id="aCameraY" type="number" class="form-control" onchange="updateCameraCoords('y')">
+                                                        <input id="aCameraY" type="number" name="cY" class="form-control" onchange="updateCameraCoords('y')"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Z </label>
-                                                        <input id="aCameraZ" type="number" class="form-control" onchange="updateCameraCoords('z')">
+                                                        <input id="aCameraZ" type="number" name="cZ" class="form-control" onchange="updateCameraCoords('z')"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >
                                                     <div class="form-group">
                                                         <label> Tiempo Animación </label>
-                                                        <input type="number" class="form-control">
+                                                        <input type="number" name="duration" class="form-control"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label> Recorte Delantero </label>
-                                                        <input type="number" class="form-control" onkeyup="">
+                                                        <input type="number" name="zFar" class="form-control"/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Recorte Trasero </label>
-                                                        <input type="number" class="form-control">
+                                                        <input type="number" name="zClose" class="form-control"/>
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <button type="submit" class="btn btn-default">Actualizar datos</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -641,6 +640,11 @@
                                             </div>
                                             <div id="pointAccordion"></div>
                                         </div>
+                                    </div>
+                                </div>
+                                <!------------------------------------INICIO VISTA DE CAMARA ------------------------------------>
+                                <div class="tab-pane fade row" id="cameraView-pills">
+                                    <div class="panel-body">
                                     </div>
                                 </div>
                             </div>

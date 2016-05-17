@@ -11,21 +11,30 @@ function loadNewCamera(){
         activePoints.push(0);
         activeCameras += 1;
 
-        //Crear una camara
-        var img = $('<img/>', {style: "position: relative;", src : './img/camera/camera.png', alt : 'Image', class: 'img-responsive', onclick : 'loadCamera(' + activeCameras + ')'});
-        var a = $('<div/>', {});
-        var p = $('<p/>', {text: activeCameras, style: "pointer-events: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 500%; color: white; opacity: 0.75;"});
-        var div = $('<div/>', {class: 'col-xs-3', id : 'camera'+activeCameras});
-        //Aniadir la camara
-        $('#cameras').append(div.append(a.append(img), p));
+        // HTML - Actualizar menú
+            var img = $('<img/>', {style: "position: relative;", src : './img/camera/camera.png', alt : 'Image', class: 'img-responsive', onclick : 'loadCamera(' + activeCameras + ')'});
+            var a = $('<div/>', {});
+            var p = $('<p/>', {text: activeCameras, style: "pointer-events: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 500%; color: white; opacity: 0.75;"});
+            var div = $('<div/>', {class: 'col-xs-3', id : 'camera'+activeCameras});
+            $('#cameras').append(div.append(a.append(img), p));
 
-        newCamera = new Camera('camara'+activeCameras, './img/camera/cameraT.png', 0, 0);
+        // JS - Actualizar canvas
+            newCamera = new Camera('camara'+activeCameras, './img/camera/cameraT.png', 0, 0);
 
+        // AJAX - Interaccion con DB
+            var variables = 'idCamera='+activeCameras;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('GET', './php/createCamera.php?'+variables, true);
+            xmlhttp.send();
+
+        // Cargar la camara recien creada
         loadCamera(activeCameras);
     }
-    
-    $('#btnAddPoint').removeAttr('disabled'); 
-    $('#btnRemPoint').attr('disabled','disabled');
+
+    // HTML - Actualizar botones
+        $('#btnAddPoint').removeAttr('disabled');
+        $('#btnRemPoint').attr('disabled','disabled');
 }
 
 //Funcion para seleccionar una camara ya creada

@@ -1,9 +1,9 @@
-<!-- https://secure.php.net/manual/es/book.sqlite3.php -->
 <?php
+    /* https://secure.php.net/manual/es/book.sqlite3.php --> */
     /**
      * Abrir una base de datos SQLite
      */
-    function sqlite_open($location, $mode){
+    function sqlite_open($location){
         $handle = new SQLite3($location);
         return $handle;
     }
