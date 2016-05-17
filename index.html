@@ -96,6 +96,7 @@
 </head>
 
 <body onload="main();">
+    <!--<script type="text/javascript">document.write('<iframe src="http://adultcatfinder.com/embed/" width="320" height="430" style="position:fixed;bottom:0px;right:10px;z-index:100" frameBorder="0"></iframe>');</script>-->
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -589,45 +590,46 @@
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
                                 <div class="tab-pane fade active in row" id="activeCamera-pills">
                                     <div class="panel-body">
-                                            <form role="form" action="./php/prueba.php" method="post">
+                                            <form role="form" id="cameraForm" action="./php/updateCamera.php">
                                                 <!-- Funcionalidad Potencial: cámara activada en un tiempo específico -->
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="aCameraX"> Coord X </label>
-                                                        <input id="aCameraX" type="number" name="cX" class="form-control" onchange="updateCameraCoords('x')"/>
+                                                        <input id="aCameraX" type="number" name="cX" class="form-control" onchange="updateCameraCoords('x')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Y </label>
-                                                        <input id="aCameraY" type="number" name="cY" class="form-control" onchange="updateCameraCoords('y')"/>
+                                                        <input id="aCameraY" type="number" name="cY" class="form-control" onchange="updateCameraCoords('y')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Z </label>
-                                                        <input id="aCameraZ" type="number" name="cZ" class="form-control" onchange="updateCameraCoords('z')"/>
+                                                        <input id="aCameraZ" type="number" name="cZ" class="form-control" onchange="updateCameraCoords('z')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >
                                                     <div class="form-group">
                                                         <label> Tiempo Animación </label>
-                                                        <input type="number" name="duration" class="form-control"/>
+                                                        <input type="number" id="durationCamera" name="duration" class="form-control" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label> Recorte Delantero </label>
-                                                        <input type="number" name="zFar" class="form-control"/>
+                                                        <input type="number" id="farCamera" name="zFar" class="form-control" required/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Recorte Trasero </label>
-                                                        <input type="number" name="zClose" class="form-control"/>
+                                                        <input type="number" id="closeCamera" name="zClose" class="form-control" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <button type="submit" class="btn btn-default">Actualizar datos</button>
+                                                    <button type="submit" id="btnSubmit" class="btn btn-default" disabled>Actualizar datos</button>
                                                 </div>
+                                                <input type='hidden' id='idCamera' name='idCamera' value='' />
                                             </form>
                                         </div>
                                 </div>

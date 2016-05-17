@@ -35,6 +35,7 @@ function loadNewCamera(){
     // HTML - Actualizar botones
         $('#btnAddPoint').removeAttr('disabled');
         $('#btnRemPoint').attr('disabled','disabled');
+        $('#btnSubmit').removeAttr('disabled');
 }
 
 //Funcion para seleccionar una camara ya creada
@@ -51,6 +52,9 @@ function loadCamera( id ) {
 
     // Actualizar la ficha
     // Camara
+    $('#idCamera').val(id); // Valor oculto del formulario con la cámara activa
+    $('#farCamera').val(-1);
+    $('#closeCamera').val(-1);
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
         var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
         if (selectedCamera == id) updateFileCoords('camera', '', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
@@ -83,8 +87,11 @@ function removeCamera( id ) {
     if (selectedCamera == id)
         loadCamera(1);
 
-    if (activeCameras == 0)
-        $('#btnAddPoint').attr('disabled','disabled');
+    if (activeCameras == 0) {
+        $('#btnAddPoint').attr('disabled', 'disabled');
+        $('#btnSubmit').attr('disabled', 'disabled');
+        $('#cameraForm').trigger("reset"); //Resetea el formulario entero
+    }
 }
 
 //Activa el borde en el carousel para la cámara activa

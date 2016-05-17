@@ -12,20 +12,28 @@ function loadNewPoint() {
     else {
         activePoints[selectedCamera-1] += 1;
 
-        // Nombre: "puntoX_Y". X es la cámara a la que pertenece el punto. Y es el número del punto.
-        newPoint = new Point(activePoints[selectedCamera-1], "./img/camera/controlT.png", 0, 0);
+        // JS - Actualizar canvas
+            // Nombre: "puntoX_Y". X es la cámara a la que pertenece el punto. Y es el número del punto.
+            newPoint = new Point(activePoints[selectedCamera-1], "./img/camera/controlT.png", 0, 0);
 
-        //Crear la ficha
-        createFilePoint(activePoints[selectedCamera-1]); // Con el ID del punto a crear
+        // HTML - Crear la ficha
+            createFilePoint(activePoints[selectedCamera-1]); // Con el ID del punto a crear
+    
+            // Actualizar la ficha
+                // Coordenadas Punto
+            $('.point').each(function (i, obj) { //Buscar el objeto SVG
+                var nombre = obj.getAttributeNS(null, 'nombre'); //Indice
+                var id = nombre.substr(nombre.length-1);
+                if ('punto'+selectedCamera+'_' + id == obj.getAttributeNS(null, 'nombre'))
+                    updateFileCoords('point', nombre, obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
+            });
 
-        // Actualizar la ficha
-            // Coordenads Punto
-        $('.point').each(function (i, obj) { //Buscar el objeto SVG
-            var nombre = obj.getAttributeNS(null, 'nombre'); //Indice
-            var id = nombre.substr(nombre.length-1);
-            if ('punto'+selectedCamera+'_' + id == obj.getAttributeNS(null, 'nombre'))
-                updateFileCoords('point', nombre, obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
-        });
+        // AJAX - Interaccion con DB
+        var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', './php/createPoint.php?'+variables, true);
+        xmlhttp.send();
 
         //Activar boton "eliminar"
         $('#btnRemPoint').removeAttr('disabled');
@@ -60,7 +68,7 @@ function createFilePoint( id ){
 
     var content = $('<div/>', {id: 'pointCollapse'+id, class: 'panel-collapse collapse', "aria-expanded": 'false', style: 'height: 0px;'});
     var body = $('<div/>', {class: 'panel-body'});
-    var form = $('<form/>', {role: 'form'});
+    var form = $('<form/>', {role: 'form', id: 'pointForm', action: './php/updatePoint.php'});
 
     //Coord X
     var col1 = $('<div/>', {class: 'col-lg-4'});
@@ -90,7 +98,13 @@ function createFilePoint( id ){
     var input4 = $('<input/>', {type: 'number', class: 'form-control'});
     col4.append(group4.append(label4, input4));
 
-    div.append(content.append(body.append(form.append(col1, col2, col3, col4))));
+    //Submit
+    var col5 = $('<div/>', {class: 'col-lg-12'});
+    var button5 = $('<button/>', {type: 'submit', id: 'btnSubmit', class: 'btn btn-default', disabled: ''});
+    button5.text('Actualizar datos');
+    col5.append(button5);
+
+    div.append(content.append(body.append(form.append(col1, col2, col3, col4, col5))));
 
     $('#pointAccordion').append(div);
 }
