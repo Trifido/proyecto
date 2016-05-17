@@ -1,3 +1,7 @@
+function auxFunc(){
+    alert("okkkkkk");
+}
+
 function loadX3D() {
     var texto="";
     texto+='<X3D id="the_scene">\n';
@@ -90,14 +94,14 @@ function initX3DScene(){
                 }
             };
 
-            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + (interpolador.getX()*10) + "&posZ=" + (interpolador.getZ()*10), false);
+            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + (interpolador.getX()*10) + "&posZ=" + (interpolador.getZ()*10), true);
             xmlhttp.send();
 
-            alert("X: " + (interpolador.getX()*10) + " _ Z: " + (interpolador.getZ()*10) );
+            var coordAux = "<?php echo json_encode($_SESSION[\"posX\"]) ; ?>";
 
-            var coordText = '<?php echo $textMinPoint ?>';
+            alert(coordAux);
 
-            texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordText + '">\n';
+           // texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordText + '">\n';
             /*
             if(objDin.rotation > 0){
                 texto+='\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';
