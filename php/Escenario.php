@@ -49,12 +49,14 @@
 	 		$minPoint;
 
 	 		for($i=0; $i<count($this->coordenadas); $i++){
-	 			$dist = distance( $pCuadro, $this->coordenadas[$i] );
+	 			if($pCuadro->getY() >=  ($this->coordenadas[$i]->getY()/10) ){
+		 			$dist = distance( $pCuadro, $this->coordenadas[$i] );
 
-	 			if( $dist < $minDist ){
-	 				$minDist = $dist;
-	 				$minPoint =  $this->coordenadas[$i];
-	 			}
+		 			if( $dist < $minDist ){
+		 				$minDist = $dist;
+		 				$minPoint =  $this->coordenadas[$i];
+		 			}
+		 		}
 	 		}
 
 	 		return $minPoint;

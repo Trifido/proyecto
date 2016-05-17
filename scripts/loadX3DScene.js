@@ -1,6 +1,3 @@
-function auxFunc(){
-    alert("okkkkkk");
-}
 
 function loadX3D() {
     var texto="";
@@ -45,6 +42,8 @@ function initX3DScene(){
             objDin= obtenerDatos(elemento);
 
             interpolador.Interpolacion(parseInt(objDin.x),parseInt(objDin.z));
+
+            alert(interpolador.getX() + ' 0 ' + interpolador.getZ());
             
             if(objDin.pedestalAlto>0){
                 var ancho= objDin.pedestalAncho * 0.01; //Convierte en centimetros (0.01)
@@ -82,26 +81,20 @@ function initX3DScene(){
         if(elemento.id != 'delete' && elemento.id != 'rotate'){
             objDin= obtenerDatosCuadro(elemento);
 
-            interpolador.Interpolacion(parseInt(objDin.x),parseInt(objDin.z));
+            interpolador.InterpolacionCuadro(parseInt(objDin.x),parseInt(objDin.z));
             
-           // alert("X: " + (interpolador.getX()*10) + " _ Z: " + (interpolador.getZ()*10) );
-
+            var coordPicture;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    //alert("hello");
-                  //  document.getElementById("wrapper").innerHTML = xmlhttp.responseText;
+                    coordPicture= xmlhttp.responseText;
                 }
             };
 
-            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + (interpolador.getX()*10) + "&posZ=" + (interpolador.getZ()*10), true);
+            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + interpolador.getX() + "&posZ=" + interpolador.getZ(), false);
             xmlhttp.send();
 
-            var coordAux = "<?php echo json_encode($_SESSION[\"posX\"]) ; ?>";
-
-            alert(coordAux);
-
-           // texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordText + '">\n';
+            texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordPicture + '">\n';
             /*
             if(objDin.rotation > 0){
                 texto+='\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';

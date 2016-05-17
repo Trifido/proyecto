@@ -28,6 +28,11 @@
         	return $this->z;
     	}
 
+        public function interpolCoord() {
+            $this->x = ($this->x)/10;
+            $this->z = ($this->z)/10;
+        }
+
         public function getCoordinates(){
             return ($this->x . ' ' . $this->y . ' ' . $this->z);
         }

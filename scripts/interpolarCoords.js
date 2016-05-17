@@ -34,9 +34,26 @@ InterpolarCoords.prototype.Interpolacion = function ( cordX, cordZ ){
 
 }
 
+InterpolarCoords.prototype.InterpolacionCuadro = function ( cordX, cordZ ){
+
+	this.pixCanvasY = parseFloat(getLimitY2()) - parseFloat(getLimitY());
+	this.pixCanvasX = parseFloat(getLimitX2()) - parseFloat(getLimitX());
+
+	cordX = cordX - parseFloat(getLimitX());
+	cordZ = cordZ - parseFloat(getLimitY());
+
+	this.newX = this.InterpolNormalCuadro( cordX, this.anchoSala, this.pixCanvasX );
+	this.newZ = this.InterpolNormalCuadro( cordZ, this.largoSala, this.pixCanvasY );
+
+}
+
 InterpolarCoords.prototype.InterpolNormal = function ( cord, datoSala, pixels ){
 	var interN= (cord*datoSala)/pixels;
     return (interN * this.parseMeters);
+} 
+
+InterpolarCoords.prototype.InterpolNormalCuadro = function ( cord, datoSala, pixels ){
+	return (cord*datoSala)/pixels;
 } 
 
 InterpolarCoords.prototype.InterpolCamera = function ( x, y, z ){

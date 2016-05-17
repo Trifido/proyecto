@@ -18,6 +18,11 @@
 
 	$finalPoint = getPicturePoint($puntoCuadro, $puntoMin);
 
+	//echo json_encode(array('posX' => $finalPoint->getX(), 'posZ' => $finalPoint->getZ()));
+
+	$finalPoint->interpolCoord();
+
+	echo $finalPoint->getCoordinates();
 	$_SESSION["puntoMinCuadro"] = $finalPoint->getCoordinates();
-	$textMinPoint = $finalPoint->getCoordinates();
+	//$textMinPoint = $finalPoint->getCoordinates();
 ?>
