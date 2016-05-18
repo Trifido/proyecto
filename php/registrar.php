@@ -27,6 +27,36 @@
     <link href="../css/style.css" rel="stylesheet" type='text/css' />
 </head>
 
+
+<script type="text/javascript">
+	function validar(){
+		var valor = document.getElementById("campoUsuario").value;
+		if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+			alert("Campo usuario incorrecto");
+		  	return false;
+		}
+
+		var valor = document.getElementById("campoPassword").value;
+		if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+			alert("Campo contraseña incorrecto");
+		  	return false;
+		}
+
+		valor = document.getElementById("campoCorreo").value;
+		if( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(valor)) ) {
+			alert("Formato Email erroneo");
+		  	return false;
+		}
+		
+		valor = document.getElementById("campoTelefono").value;
+		if( !(/^\d{9}$/.test(valor)) ) {
+			alert("Formato Telefono erroneo");
+		  	return false;
+		}
+		return true;
+	}
+</script>
+
 <body>
 	<div class="container">
         <div class="row">
@@ -36,15 +66,15 @@
                         <h3 class="panel-title">Registro</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" id="cameraForm" method="post" action="./checkRegister.php">
+                        <form role="form" id="cameraForm" method="post" onsubmit="return validar()" action="./checkRegister.php" >
                             <fieldset>
                                 <div class="form-group">
                                 	<label>Nombre de usuario</label>
-                                    <input class="form-control" placeholder="Usuario" name="username" type="username" autofocus>
+                                    <input id="campoUsuario" class="form-control" placeholder="Usuario" name="username" type="username" autofocus>
                                 </div>
                                 <div class="form-group">
                                 	<label>Contraseña</label>
-                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
+                                    <input id="campoPassword" class="form-control" placeholder="Contraseña" name="password" type="password" value="">
                                 </div>
                                 <div class="form-group">
                                 	<label>Nombre</label>
@@ -56,11 +86,11 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Correo Electronico</label>
-                                    <input class="form-control" placeholder="Correo" name="correo" type="correo" value="">
+                                    <input id="campoCorreo" class="form-control" placeholder="Correo" name="correo" type="correo" value="">
                                 </div>
                                 <div class="form-group">
                                 	<label>Telefono</label>
-                                    <input class="form-control" placeholder="Telefono" name="telefono" type="telefono" value="">
+                                    <input id="campoTelefono" class="form-control" placeholder="Telefono" name="telefono" type="telefono" value="">
                                 </div>
                                 <div class="form-group">
                                 	<label>Dirección</label>
@@ -80,13 +110,9 @@
                             display: <?php
                                         session_start();
                                         if (isset($_SESSION['message']))
-                                        {
                                             echo "block";
-                                            unset($_SESSION['message']);
-                                        }
-                                        else{
+                                        else
                                             echo "none";
-                                        }
                                     ?>
                         }
                     </style>
@@ -94,7 +120,10 @@
 
                     <div id="alertLogin" class="col-lg" >
                         <div id="alertLogin" class="alert alert-danger">
-                            Username o Password estan incorrectos.
+                            <?php
+                                echo $_SESSION['message'];
+                                unset($_SESSION['message']);
+                            ?>
                         </div>
                     </div>
                 </div>

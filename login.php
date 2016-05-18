@@ -87,7 +87,7 @@
 
                     <div id="alertLogin" class="col-lg" >
                         <div id="alertLogin" class="alert alert-danger">
-                            Username o Password estan incorrectos.
+                           Username o Password estan incorrectos.
                         </div>
                     </div>
                 </div>
