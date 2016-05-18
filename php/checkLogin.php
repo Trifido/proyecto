@@ -8,7 +8,7 @@
 	$password = $_POST['password'];
 
 	if($password != ""){
-		$query = 'SELECT*FROM user_info WHERE username=\'' . $username . '\' AND password=\'' . $password . '\'';
+		$query = 'SELECT*FROM Usuarios WHERE username=\'' . $username . '\' AND password=\'' . $password . '\'';
 		$db = sqlite_open('../database/tfgDB.db');
 
 	    $result = sqlite_query($db, $query);
