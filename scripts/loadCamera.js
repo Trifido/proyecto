@@ -52,7 +52,7 @@ function loadCamera( id ) {
 
     // Actualizar la ficha
     // Camara
-    $('#idCamera').val(id); // Valor oculto del formulario con la cámara activa
+    $('#idCamera').val(id); // Actualizar valor oculto del formulario con la cámara activa
     $('#farCamera').val(-1);
     $('#closeCamera').val(-1);
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG

@@ -590,7 +590,7 @@
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
                                 <div class="tab-pane fade active in row" id="activeCamera-pills">
                                     <div class="panel-body">
-                                            <form role="form" id="cameraForm" action="./php/updateCamera.php">
+                                            <form role="form" id="cameraForm" action="./php/updateCamera.php" target="form_aux_frame">
                                                 <!-- Funcionalidad Potencial: cámara activada en un tiempo específico -->
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
@@ -661,6 +661,9 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- Frame auxiliar para la redireccion de formularios -->
+    <iframe name="form_aux_frame" width="1" height="1" style="border:none"></iframe>
 
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>

@@ -2,18 +2,17 @@
     require_once 'config.php';
     require_once 'dbhandler.php';
 
+    $idPoint = $_GET['idPoint']; //Punto a modificar
     $idCamera = $_GET['idCamera']; // Camara a modificar
     $cX = $_GET['cX'];
     $cY = $_GET['cY'];
     $cZ = $_GET['cZ'];
-    $duration = $_GET['duration'];
-    $zFar = $_GET['zFar'];
-    $zClose = $_GET['zClose'];
+    $timePos = $_GET['timePos'];
 
     // Query actualizacion de fila de la camara con id idCamera
-    $query = 'UPDATE Camera SET 
-              cX = '.$cX.', cY = '.$cY.', cZ = '.$cZ.', duration = '.$duration.', zFar = '.$zFar.', zClose = '.$zClose.
-              ' WHERE idCamera = '.$idCamera;
+    $query = 'UPDATE Point SET
+              cX = '.$cX.', cY = '.$cY.', cZ = '.$cZ.', timePos = '.$timePos. 
+              ' WHERE idPoint = '.$idPoint.' AND idCamera = '.$idCamera;
 
     $db = sqlite_open(URL_DB.'/360DB.db');
 

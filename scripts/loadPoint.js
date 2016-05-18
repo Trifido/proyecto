@@ -73,34 +73,34 @@ function createFilePoint( id ){
 
     var content = $('<div/>', {id: 'pointCollapse'+id, class: 'panel-collapse collapse', "aria-expanded": 'false', style: 'height: 0px;'});
     var body = $('<div/>', {class: 'panel-body'});
-    var form = $('<form/>', {role: 'form', id: 'pointForm', action: './php/updatePoint.php'});
+    var form = $('<form/>', {role: 'form', id: 'pointForm', action: './php/updatePoint.php', target: 'form_aux_frame'});
 
     //Coord X
     var col1 = $('<div/>', {class: 'col-lg-4'});
     var group1 = $('<div/>', {class: 'form-group'});
     var label1 = $('<label/>', {text: 'Coord X'});
-    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', onchange:'updatePointCoords("x")', required : ''});
+    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', name: 'cX', onchange:'updatePointCoords("x")', required : ''});
     col1.append(group1.append(label1, input1));
 
     //Coord Y
     var col2 = $('<div/>', {class: 'col-lg-4'});
     var group2 = $('<div/>', {class: 'form-group'});
     var label2 = $('<label/>', {text: 'Coord Y'});
-    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', onchange:'updatePointCoords("y")', required : ''});
+    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', name: 'cY', onchange:'updatePointCoords("y")', required : ''});
     col2.append(group2.append(label2, input2));
 
     //Coord Z
     var col3 = $('<div/>', {class: 'col-lg-4'});
     var group3 = $('<div/>', {class: 'form-group'});
     var label3 = $('<label/>', {text: 'Coord Z'});
-    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', onchange:'updatePointCoords("z")', required : ''});
+    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', name: 'cZ', onchange:'updatePointCoords("z")', required : ''});
     col3.append(group3.append(label3, input3));
 
     //Tiempo llegada
     var col4 = $('<div/>', {class: 'col-lg-6'});
     var group4 = $('<div/>', {class: 'form-group'});
     var label4 = $('<label/>', {text: 'Tiempo Llegada'});
-    var input4 = $('<input/>', {type: 'number', class: 'form-control', required : ''});
+    var input4 = $('<input/>', {type: 'number', class: 'form-control', name: 'timePos', required : ''});
     col4.append(group4.append(label4, input4));
 
     //Submit
@@ -109,7 +109,11 @@ function createFilePoint( id ){
     button5.text('Actualizar datos');
     col5.append(button5);
 
-    div.append(content.append(body.append(form.append(col1, col2, col3, col4, col5))));
+    //Hidden
+    var inputHiddenC = $('<input/>', {type: 'hidden', name: 'idCamera', value : selectedCamera});
+    var inputHiddenP = $('<input/>', {type: 'hidden', name: 'idPoint', value : id });
+    
+    div.append(content.append(body.append(form.append(col1, col2, col3, col4, col5, inputHiddenC, inputHiddenP))));
 
     $('#pointAccordion').append(div);
 }
