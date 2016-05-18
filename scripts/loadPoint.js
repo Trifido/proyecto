@@ -3,8 +3,6 @@ var maxPoints = 10; //Maximo de puntos por camara
 
 var activePoints = []; // Vector
 
-var selectedPoint = 0; //?????????????????????????????????????????????????????????????????????????????????????
-
 //Funcion para cargar un punto nuevo
 function loadNewPoint() {
     if (activePoints[selectedCamera-1] >= maxPoints || !RoomInit)
@@ -50,6 +48,13 @@ function removePointLine() {
     //Eliminar la ficha
     removeFilePoint(activePoints[selectedCamera-1]); //Con el ID del punto a borrar
 
+    // AJAX - Interaccion con DB
+    var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', './php/deletePoint.php?'+variables, true);
+    xmlhttp.send();
+
     activePoints[selectedCamera-1] -= 1;
 
     if (activePoints[selectedCamera-1] == 0) {
@@ -74,33 +79,33 @@ function createFilePoint( id ){
     var col1 = $('<div/>', {class: 'col-lg-4'});
     var group1 = $('<div/>', {class: 'form-group'});
     var label1 = $('<label/>', {text: 'Coord X'});
-    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', onchange:'updatePointCoords("x")'});
+    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', onchange:'updatePointCoords("x")', required : ''});
     col1.append(group1.append(label1, input1));
 
     //Coord Y
     var col2 = $('<div/>', {class: 'col-lg-4'});
     var group2 = $('<div/>', {class: 'form-group'});
     var label2 = $('<label/>', {text: 'Coord Y'});
-    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', onchange:'updatePointCoords("y")'});
+    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', onchange:'updatePointCoords("y")', required : ''});
     col2.append(group2.append(label2, input2));
 
     //Coord Z
     var col3 = $('<div/>', {class: 'col-lg-4'});
     var group3 = $('<div/>', {class: 'form-group'});
     var label3 = $('<label/>', {text: 'Coord Z'});
-    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', onchange:'updatePointCoords("z")'});
+    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', onchange:'updatePointCoords("z")', required : ''});
     col3.append(group3.append(label3, input3));
 
     //Tiempo llegada
     var col4 = $('<div/>', {class: 'col-lg-6'});
     var group4 = $('<div/>', {class: 'form-group'});
     var label4 = $('<label/>', {text: 'Tiempo Llegada'});
-    var input4 = $('<input/>', {type: 'number', class: 'form-control'});
+    var input4 = $('<input/>', {type: 'number', class: 'form-control', required : ''});
     col4.append(group4.append(label4, input4));
 
     //Submit
     var col5 = $('<div/>', {class: 'col-lg-12'});
-    var button5 = $('<button/>', {type: 'submit', id: 'btnSubmit', class: 'btn btn-default', disabled: ''});
+    var button5 = $('<button/>', {type: 'submit', id: 'btnSubmit', class: 'btn btn-default'});
     button5.text('Actualizar datos');
     col5.append(button5);
 

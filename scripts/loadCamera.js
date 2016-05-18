@@ -79,7 +79,14 @@ function loadCamera( id ) {
 function removeCamera( id ) {
     $('#camera'+id).remove();
 
-    updateCameraIndex( id );
+    // AJAX - Interaccion con DB
+    var variables = 'idCamera='+id;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', './php/deleteCamera.php?'+variables, true);
+    xmlhttp.send();
+    
+    updateCameraIndex( id ); //Acualizar los índices
 
     activeCameras -= 1;
     activePoints.splice( id-1 , 1 );
@@ -150,7 +157,7 @@ function updateCameraIndex( deletedIndex ) {
     for (i = deletedIndex; i <= activeCameras; i++) {
         var indice = (i - 1);
 
-        $('#camera' + i + ' p').text(indice) // Actualizar el numero que sale encima
+        $('#camera' + i + ' p').text(indice); // Actualizar el numero que sale encima
 
         var nuevoNombre = 'loadCamera(' + indice + ')';
         $('#camera' + i + ' img').attr('onclick', nuevoNombre);
@@ -158,5 +165,12 @@ function updateCameraIndex( deletedIndex ) {
         nuevoNombre = 'camera' + indice;
         $('#camera' + i).attr('id', nuevoNombre);
 
+
+        // AJAX - Interaccion con DB
+        var variables = 'idCamera='+i;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', './php/updateCameraIndex.php?'+variables, true);
+        xmlhttp.send();
     }
 }
