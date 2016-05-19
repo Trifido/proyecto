@@ -1,6 +1,6 @@
 <?php
-    require_once 'config.php';
-    require_once 'dbhandler.php';
+    require_once '../config.php';
+    require_once '../dbhandler.php';
 
     $idCamera = $_GET['idCamera']; // Camara a modificar
     $cX = $_GET['cX'];
