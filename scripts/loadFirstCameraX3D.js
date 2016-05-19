@@ -23,7 +23,7 @@ function loadVRX3D() {
 	texto += "       <group id=\'root\' render=\'true\'>\n";
 	texto += "            <group DEF=\'theScene\'>\n";
 	
-	texto += chargeX3DScene();
+	texto += initX3DScene();
 
 	texto += "            </group>\n";
 	texto += "        </group>\n";
