@@ -61,6 +61,7 @@
         <script  type="text/javascript" src="scripts/camera.js"></script>
         <script  type="text/javascript" src="scripts/point.js"></script>
         <script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
+        <script  type="text/javascript" src="scripts/loadX3DScene360.js"></script>
         <script type="text/javascript" src="scripts/audioScripts/createWave.js"></script>
             <!-- Scripts para WaveSurfer -->
             <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
@@ -96,7 +97,7 @@
 </head>
 
 <body onload="main();">
-    <script type="text/javascript">document.write('<iframe src="http://adultcatfinder.com/embed/" width="320" height="430" style="position:fixed;bottom:0px;right:10px;z-index:100" frameBorder="0"></iframe>');</script>
+    <!--<script type="text/javascript">document.write('<iframe src="http://adultcatfinder.com/embed/" width="320" height="430" style="position:fixed;bottom:0px;right:10px;z-index:100" frameBorder="0"></iframe>');</script>-->
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -583,7 +584,7 @@
                                 </li>
                                 <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
-                                <li><a href="#cameraView-pills" data-toggle="tab">Vista de Cámara</a> <!-- Alba -->
+                                <li><a href="#cameraView-pills" data-toggle="tab" onclick="loadX3D360()">Vista de Cámara</a> <!-- Alba -->
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -647,6 +648,9 @@
                                 <!------------------------------------INICIO VISTA DE CAMARA ------------------------------------>
                                 <div class="tab-pane fade row" id="cameraView-pills">
                                     <div class="panel-body">
+                                        <div class="col-lg-12">
+                                            <X3D id="sceneCamera"></X3D>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
