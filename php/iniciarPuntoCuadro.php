@@ -16,13 +16,14 @@
 
 	$puntoMin = $escena->findMinPoint($puntoCuadro);
 
-	$finalPoint = getPicturePoint($puntoCuadro, $puntoMin);
+	$puntoMin->setY(0.3);
 
-	//echo json_encode(array('posX' => $finalPoint->getX(), 'posZ' => $finalPoint->getZ()));
+	$finalPoint = $puntoMin;//= getPicturePoint($puntoCuadro, $puntoMin);
 
 	$finalPoint->interpolCoord();
 
 	echo $finalPoint->getCoordinates();
 	$_SESSION["puntoMinCuadro"] = $finalPoint->getCoordinates();
 	//$textMinPoint = $finalPoint->getCoordinates();
+	
 ?>
