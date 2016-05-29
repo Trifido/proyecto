@@ -22,6 +22,8 @@
 
 	  		session_start();
 
+	  		$ind=0;
+
 	  		foreach ($xml->Scene->Transform as $node) {
 
 		   		$coordString = $node->Transform->Group->Shape->IndexedFaceSet->Coordinate->attributes()->point;
@@ -42,7 +44,8 @@
 					$cara->setC2( (float) $indices[$i+1]);
 					$cara->setC3( (float) $indices[$i+2]);
 
-					$this->caras[] = $cara;
+					//$this->caras[$ind] = new Array();
+					$this->caras[$ind][] = $cara;
 				}
 
 				for($i=0; $i+3<count($coords); $i+=3){
@@ -51,23 +54,62 @@
 					$punto->setY( (float) $coords[$i+2]);
 					$punto->setZ( (float) $coords[$i]);
 
-					$this->coordenadas[] = $punto;
+					//$this->coordenadas[$ind] = new Array();
+					$this->coordenadas[$ind][] = $punto;
 				}
 
-				//Obtener el resto de puntos  count($this->caras) 
-				for($i=0; $i<count($this->caras); $i++){
-					$eqPlane = findPlane( $this->coordenadas[$this->caras[$i]->getC1()], $this->coordenadas[$this->caras[$i]->getC2()], $this->coordenadas[$this->caras[$i]->getC3()] );
+				for($i=0; $i<count($this->caras[$ind]); $i++){
+					$norm = obtainNormal( $this->coordenadas[$ind][$this->caras[$ind][$i]->getC1()], $this->coordenadas[$ind][$this->caras[$ind][$i]->getC2()], $this->coordenadas[$ind][$this->caras[$ind][$i]->getC3()] );
+					
+					$this->caras[$ind][$i]->setNormal( $norm );
+					$this->caras[$ind][$i]->setD( obtainD($this->caras[$ind][$i]->getNormal(), $this->coordenadas[$ind][$this->caras[$ind][$i]->getC1()]) );
+				}
+				$ind++;
+			}
+		}
 
-					if($eqPlane > 0){
-						//Inicializamos/vaciamos el array local
-						$this->resultLocalCoords = array();
-						
-						$this->resultLocalCoords = obtainPoints( $this->coordenadas[$this->caras[$i]->getC1()], $this->coordenadas[$this->caras[$i]->getC2()], $this->coordenadas[$this->caras[$i]->getC3()], $eqPlane);
+		public function hayPuntoAlto($picturePoint, $p1, $p2, $p3){
+			return (($picturePoint->getY() < $p1->getY()) || ($picturePoint->getY() < $p2->getY()) || ($picturePoint->getY() < $p3->getY()));
+		}
 
-						$this->resultCoords = array_merge($this->resultCoords, $this->resultLocalCoords);
+		public function calculateMinTriangle( $picturePoint ){
+			$minDist= INF;
+			$stringer = array();
+			for($i=0; $i<count($this->caras); $i++){
+				for($j=0; $j<count($this->caras[$i]);$j++){
+					$stringer[] = "( " . $this->caras[$i][$j]->getNormal()->getX() . ", " . $this->caras[$i][$j]->getNormal()->getY() . ", " . $this->caras[$i][$j]->getNormal()->getZ() . " )";
+					$dist = distancePointPlane( $this->caras[$i][$j]->getNormal(), $this->caras[$i][$j]->getD(), $picturePoint);
+					$hayPunto = $this->hayPuntoAlto($picturePoint, $this->coordenadas[$i][$this->caras[$i][$j]->getC1()], $this->coordenadas[$i][$this->caras[$i][$j]->getC2()], $this->coordenadas[$i][$this->caras[$i][$j]->getC3()]);
+					if( ($minDist > $dist) && $hayPunto){
+						$vA = $this->coordenadas[$i][$this->caras[$i][$j]->getC1()];
+						$vB = $this->coordenadas[$i][$this->caras[$i][$j]->getC2()];
+						$vC = $this->coordenadas[$i][$this->caras[$i][$j]->getC3()];
+						$minDist = $dist;
 					}
 				}
 			}
+
+			session_start();
+			$_SESSION["auxVar"] = $stringer;
+
+			obtenerRestoPuntos($vA, $vB, $vC);
+		}
+
+		public function obtenerRestoPuntos($vA, $vB, $vC){
+			//Obtener el resto de puntos  count($this->caras) 
+			//for($i=0; $i<count($this->caras); $i++){
+				$eqPlane = findPlane( $vA, $vB, $vC );
+
+				if($eqPlane > 0){
+					//Inicializamos el array local
+					/*$this->resultLocalCoords = array();
+					
+					$this->resultLocalCoords = obtainPoints( $this->coordenadas[$this->caras[$i]->getC1()], $this->coordenadas[$this->caras[$i]->getC2()], $this->coordenadas[$this->caras[$i]->getC3()], $eqPlane);
+
+					$this->resultCoords = array_merge($this->resultCoords, $this->resultLocalCoords);*/
+					$this->resultCoords = obtainPoints( $vA, $vB, $vC, $eqPlane);
+				}
+			//}
 		}
 
 		public function getCaras() {
@@ -100,7 +142,6 @@
 		 			}
 		 		}
 	 		}
-
 	 		return $minPoint;
 	 	}
 	}

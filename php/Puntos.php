@@ -39,8 +39,6 @@
 	}
 
     function findPlane( $punto1, $punto2, $punto3 ){
-        //session_start();
-        //$_SESSION["auxVar2"]= $punto1->getX() . ' , ' . $punto2->getX() . ' , ' . $punto3->getX() . '<br>';
         if( $punto1->getX() == $punto2->getX() && $punto2->getX() == $punto3->getX() )
             return 1;
         else if( $punto1->getY() == $punto2->getY() && $punto2->getY() == $punto3->getY() )
@@ -110,11 +108,7 @@
         $min = obtainMin( $punto1, $punto2, $punto3, $eqPlane );
         $max = obtainMax( $punto1, $punto2, $punto3, $eqPlane );
 
-        /*session_start();
-        $_SESSION["min"] = $min;
-        $_SESSION["max"] = $max;*/
-
-        for($i=$min; $i<$max; $i+=0.5){
+        for($i=$min; $i<$max; $i+=0.05){
             $puntoNuevo = new Punto();
 
             if($eqPlane == 1){

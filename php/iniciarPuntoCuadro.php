@@ -14,7 +14,8 @@
 	$puntoCuadro->setY(0.3);
 	$puntoCuadro->setZ($_SESSION["posZ"]);
 
-	$puntoMin = $escena->findMinPoint($puntoCuadro);
+	//$puntoMin = $escena->findMinPoint($puntoCuadro);
+	$escena->calculateMinTriangle( $puntoCuadro );
 
 	$puntoMin->setY(0.3);
 
