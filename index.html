@@ -56,6 +56,8 @@
 	<link href="./css/style.css" rel="stylesheet" type='text/css' />
 
 	<!-- Scripts Alba -->
+    <script  type="text/javascript" src="scripts/showHideDiv.js"></script>
+
         <script  type="text/javascript" src="scripts/loadCamera.js"></script>
         <script  type="text/javascript" src="scripts/loadPoint.js"></script>
         <script  type="text/javascript" src="scripts/camera.js"></script>
@@ -97,9 +99,7 @@
 </head>
 
 <body onload="main();">
-    <!--<script type="text/javascript">document.write('<iframe src="http://adultcatfinder.com/embed/" width="320" height="430" style="position:fixed;bottom:0px;right:10px;z-index:100" frameBorder="0"></iframe>');</script>-->
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -163,10 +163,12 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO MENÚ ESCENARIOS ------------ -->
+            <!-------------------------------------------------------------- COLUMNA IZQUIERDA ----------------------------------------------------------------->
 			    <div class="col-md-6" id="columna1">
-			    	<div class="row">
-				        <div class="well">
+                    <!---------------------------------------------------------- EDITOR ---------------------------------------------------------------------------->
+                    <div class="row">
+                        <!------------------------------------------------------ MENÚ ESCENARIOS ------------------------------------------------------------------->
+                        <div class="well">
 				            <div id="myCarousel1" class="carousel slide">
 				                <!-- Carousel items -->
 				                <div class="carousel-inner">
@@ -214,8 +216,7 @@
 				            </div>
 				            <!--/myCarousel-->
 				        </div>
-
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO CANVAS SVG ----------------- -->
+                        <!------------------------------------------------------ INICIO CANVAS SVG ----------------------------------------------------------------->
 	                    <div class="panel panel-primary" id="panelCanvas">
 	                        <svg id="lienzo" viewbox="0 0 500 500"
 	                        onload='Init(evt)'
@@ -235,42 +236,50 @@
 							</svg>
 	                    </div>
 
-                        <!------------------------------------ INICIO AUDIO ------------------------------------>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <i class="fa fa-music fa-fw"></i> Audio
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label>Cargar Audio</label>
-                                    <!---<label for="loadAudio"> <span class="btn btn-primary">Seleccionar archivo</span></label> -->
-                                    <input type="file" accept="audio/*" id="loadAudio" onchange="handleAudioFile(this.files)" style="width: 100%;"><!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
-                                </div>
-                                <label>Controles</label>
-                                <div class="form-group col-lg-offset-4">
-                                    <button id="playAudio" type="button" class="btn btn-primary btn-circle"
-                                            data-toggle="tooltip" data-placement="top" title="Comenzar" onclick="playAudioWave();this.blur();" disabled>
-                                        <i class="fa fa-play"></i>
-                                    </button>
-                                    <button id="pauseAudio" type="button" class="btn btn-primary btn-circle"
-                                            data-toggle="tooltip" data-placement="top" title="Pausar" onclick="pauseAudioWave();this.blur();" disabled>
-                                        <i class="fa fa-pause"></i>
-                                    </button>
-                                    <button id="stopAudio" type="button" class="btn btn-primary btn-circle"
-                                            data-toggle="tooltip" data-placement="top" title="Detener" onclick="stopAudioWave();this.blur();" disabled>
-                                        <i class="fa fa-stop"></i>
-                                    </button>
-                                    <button style="margin-left: 2.5%;" id="removeAudio" type="button" class="btn btn-danger btn-circle"
-                                            data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="destroyAudioWave();" disabled>
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                                <div id="waveform"></div>
-                                <div id="waveform-timeline"></div>
-                            </div>
+                        <div class="panel">
+                            <button id="buttonCameraMode" type="button" class="btn btn-danger btn-outline btn-block" onclick="activateCameraMode()">
+                                Activar/Desactivar Modo Generación de Rutas
+                            </button>
                         </div>
             		</div>
-                	<!-- /.col-lg-4 -->
+
+                    <!----------------------------------------------------------- AUDIO ---------------------------------------------------------------------------->
+                    <div class="row">
+                        <div class="panel panel-primary" id="panelAudio">
+                        <div class="panel-heading">
+                            <i class="fa fa-music fa-fw"></i> Audio
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>Cargar Audio</label>
+                                <!---<label for="loadAudio"> <span class="btn btn-primary">Seleccionar archivo</span></label> -->
+                                <input type="file" accept="audio/*" id="loadAudio" onchange="handleAudioFile(this.files)" style="width: 100%;"><!--style="visibility: hidden; position: absolute;" id="audioFiles"-->
+                            </div>
+                            <label>Controles</label>
+                            <div class="form-group col-lg-offset-4">
+                                <button id="playAudio" type="button" class="btn btn-primary btn-circle"
+                                        data-toggle="tooltip" data-placement="top" title="Comenzar" onclick="playAudioWave();this.blur();" disabled>
+                                    <i class="fa fa-play"></i>
+                                </button>
+                                <button id="pauseAudio" type="button" class="btn btn-primary btn-circle"
+                                        data-toggle="tooltip" data-placement="top" title="Pausar" onclick="pauseAudioWave();this.blur();" disabled>
+                                    <i class="fa fa-pause"></i>
+                                </button>
+                                <button id="stopAudio" type="button" class="btn btn-primary btn-circle"
+                                        data-toggle="tooltip" data-placement="top" title="Detener" onclick="stopAudioWave();this.blur();" disabled>
+                                    <i class="fa fa-stop"></i>
+                                </button>
+                                <button style="margin-left: 2.5%;" id="removeAudio" type="button" class="btn btn-danger btn-circle"
+                                        data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="destroyAudioWave();" disabled>
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                            <div id="waveform"></div>
+                            <div id="waveform-timeline"></div>
+                        </div>
+                    </div>
+                    </div>
+
 			    </div>
 <!--  --------------------------------------------------------------------------------------------------------------------- FIN CANVAS SVG -------------------- -->
 
@@ -573,7 +582,7 @@
                     </div> <!-- /.panel -->
 
                     <!------------------------------------INICIO INFORMACIÓN DE CÁMARAS ------------------------------------>
-                    <div class="panel panel-primary" id="panelCameras">
+                    <div class="panel panel-primary" id="panelCameras" style="display: none;">
                         <div class="panel-heading">
                             <i class="fa fa-thumb-tack fa-fw"></i>
                             Información de Cámaras y Puntos de Ruta
@@ -661,7 +670,6 @@
                         </div>
                     </div>
 			    </div>
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO INFORMACION ---------------- -->
             </div>
             <!-- /.container-fluid -->
         </div>
