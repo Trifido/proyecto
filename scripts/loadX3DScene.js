@@ -42,8 +42,6 @@ function initX3DScene(){
             objDin= obtenerDatos(elemento);
 
             interpolador.Interpolacion(parseInt(objDin.x),parseInt(objDin.z));
-
-            alert(interpolador.getX() + ' 0 ' + interpolador.getZ());
             
             if(objDin.pedestalAlto>0){
                 var ancho= objDin.pedestalAncho * 0.01; //Convierte en centimetros (0.01)
@@ -95,6 +93,7 @@ function initX3DScene(){
             xmlhttp.send();
 
             texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordPicture + '">\n';
+
             /*
             if(objDin.rotation > 0){
                 texto+='\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';

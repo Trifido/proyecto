@@ -3,18 +3,26 @@
 	session_start();
 
 	echo $_SESSION["nameScene"] . '</br>';
+	$var = $_SESSION["auxVar"];
 
-	echo 'coords = ' . $_SESSION["puntoMinCuadro"] . '</br>';
+	for($i=0; $i<count($var); $i++){
+		echo $var[$i] . "<br>";
+	}
 
-	echo 'cX = ' . $_SESSION["posX"] . '</br>';
-	echo 'cZ = ' . $_SESSION["posZ"] . '</br>';
+	//echo 'coords = ' . $_SESSION["puntoMinCuadro"] . '</br>';
+
+	//echo 'cX = ' . $_SESSION["posX"] . '</br>';
+	//echo 'cZ = ' . $_SESSION["posZ"] . '</br>';
 
 	$escena = $_SESSION["scene"];
 
-	$escena->getCoords();
+	//$escena->getCaras();
+	//$escena->getCoords();
+	
 /*
 	unset($_SESSION["puntoMinCuadro"]); 
 	unset($_SESSION["nameScene"]);
 	session_destroy();
 */
+
 ?>
