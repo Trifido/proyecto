@@ -286,7 +286,9 @@
 <!--  --------------------------------------------------------------------------------------------------------------------- INICIO MENÚ OBJETOS --------------- -->
 			    <!-- /col -->
 			    <div class="col-md-6" id="columna2">
-                    <div class="panel-group" id="accordion">
+
+                    <div id="accordion" class="panel-group">
+                        <!-------------------------------------------------------------- ESCULTURAS -------------------------------------------------------------->
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -341,6 +343,7 @@
     <!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER CUADROS ---------- -->
                             </div>
                         </div>
+                        <!-------------------------------------------------------------- CUADROS    -------------------------------------------------------------->
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -391,7 +394,7 @@
                                 </div>
                             </div>
                         </div>
-        <!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER CUADROS ------------- -->
+                        <!-------------------------------------------------------------- OTROS      -------------------------------------------------------------->
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -404,39 +407,46 @@
                                 </div>
                             </div>
                         </div>
-                        <!-------------------------------------------------------------- INICIO CÁMARA SLIDER -------------------------------------------------------------->
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" class="collapsed"> <i class="fa fa-video-camera fa-fw"></i>Cámaras y Puntos de Ruta</a>
-                                </h4>
-                            </div>
-                            <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    </div>
+
+                    <!------------------------------------------------------------------ CÁMARA     -------------------------------------------------------------->
+                    <div id="panelCamerasPoints" class="panel panel-success" style="display: none;">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <i class="fa fa-gear fa-fw"></i>&nbsp;Control de Cámaras y Puntos de Ruta
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center" style="padding: 1%;"> <small> Cámaras Activas </small> </div>
                                 <div class="panel-body">
-                                    <div class="well">
-                                        <div id="box_camera" class="carousel slide">
-                                            <!-- Carousel items -->
-                                            <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <div id="cameras" class="row"></div>
-                                                </div>
-                                            </div>
-                                            <a class="left carousel-control" href="#box_camera" data-slide="prev">‹</a>
-                                            <a class="right carousel-control" href="#box_camera" data-slide="next">›</a>
+                                    <div id="box_camera">
+                                        <div class="item active">
+                                            <div id="cameras" class="row"></div>
                                         </div>
                                     </div>
-                                    <!-- Botones -->
-                                    <p>
-                                        <button type="button" id="btnAddCamera" class="btn btn-info" onclick="loadNewCamera()" disabled>Nueva Cámara</button>
-                                    </p>
-                                    <p>
-                                        <button type="button" id="btnAddPoint" class="btn btn-success" onclick="loadNewPoint()" disabled>Nuevo Punto Ruta</button>
-                                        <button type="button" id="btnRemPoint" class="btn btn-success" onclick="removePointLine()" disabled>Eliminar Punto Ruta</button>
-                                    </p>
-                                    <!-- !Botones -->
                                 </div>
                             </div>
-						</div>
+                            <!-- Botones -->
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <label>Cámaras</label>
+                                    </br>
+                                    <button type="button" id="btnAddCamera" class="btn btn-primary" onclick="loadNewCamera()" disabled><i class="fa fa-plus-circle"></i>&nbsp;Nueva Cámara</button>                                    </br></br>
+                                    <button type="button" id="btnRemCamera" class="btn btn-primary" onclick="removeSelectedCamera()" disabled><i class="fa fa-times-circle"></i>&nbsp;Eliminar Cámara</button>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <label>Puntos de Ruta</label>
+                                    </br>
+                                    <button type="button" id="btnAddPoint" class="btn btn-success" onclick="loadNewPoint()" disabled><i class="fa fa-plus-circle"></i>&nbsp;Nuevo Punto Ruta</button>
+                                    </br></br>
+                                    <button type="button" id="btnRemPoint" class="btn btn-success" onclick="removePointLine()" disabled><i class="fa fa-times-circle"></i>&nbsp;Eliminar Punto Ruta</button>
+                                </div>
+                            </div>
+                            <!-- !Botones -->
+
+                        </div>
                     </div>
 
                     <!--------------------------------------------- INICIO INFORMACIÓN --------------------------------------------->

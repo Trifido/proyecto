@@ -74,6 +74,9 @@ function activateCameraMode() {
     // Modificar mas cosas -------------------------------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ReverseDisplay("panelInfo");
     ReverseDisplay("panelCameras");
+
+    ReverseDisplay("accordion");
+    ReverseDisplay("panelCamerasPoints");
 }
 
 

@@ -33,6 +33,7 @@ function loadNewCamera(){
     }
 
     // HTML - Actualizar botones
+        $('#btnRemCamera').removeAttr('disabled');
         $('#btnAddPoint').removeAttr('disabled');
         $('#btnRemPoint').attr('disabled','disabled');
         $('#btnSubmit').removeAttr('disabled');
@@ -76,6 +77,10 @@ function loadCamera( id ) {
     }
 }
 
+function removeSelectedCamera() {
+    removeElement("camera", "camara"+selectedCamera);
+}
+
 function removeCamera( id ) {
     $('#camera'+id).remove();
 
@@ -95,6 +100,7 @@ function removeCamera( id ) {
         loadCamera(1);
 
     if (activeCameras == 0) {
+        $('#btnRemCamera').attr('disabled', 'disabled');
         $('#btnAddPoint').attr('disabled', 'disabled');
         $('#btnSubmit').attr('disabled', 'disabled');
         $('#cameraForm').trigger("reset"); //Resetea el formulario entero
