@@ -110,9 +110,9 @@ function removeCamera( id ) {
 //Activa el borde en el carousel para la cámara activa
 function updateCameraBorder( id ){
     for (i=1; i<=activeCameras; i++){
-        $('#camera'+i+' img').css('border', '0px solid #D80000');
+        $('#camera'+i+' img').css('opacity', '0.5');
     }
-    $('#camera' + id + ' img').css('border', '2px solid #D80000');
+    $('#camera'+id+' img').css('opacity', '1');
 }
 
 // Activar los puntos de control correspondientes a la camara cargada

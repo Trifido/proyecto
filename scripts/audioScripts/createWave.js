@@ -34,12 +34,11 @@ function createAudioWave( file ){
 
         //Region
         // Add a region
-        /*wavesurfer.addRegion({
+        wavesurfer.addRegion({
             start: 0, // time in seconds
             end: 30, // time in seconds --- AQUI PONER LA DURACION DEL RECORRIDO DE LA CAMARA, CONTROLAR SI ES MAYOR
-            color: 'hsla(275, 100%, 30%, 0.2)', //Color rosa-rojo
-            resize: false
-        });*/
+            color: 'hsla(275, 100%, 30%, 0.2)' //Color rosa-rojo
+        });
     });
 
     $('#removeAudio').removeAttr('disabled');
