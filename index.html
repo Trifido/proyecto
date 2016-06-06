@@ -610,18 +610,18 @@
                                 <!------------------------------------ INICIO CAMARA SELECCIONADA ------------------------------------>
                                 <div class="tab-pane fade active in row" id="activeCamera-pills">
                                     <div class="panel-body">
-                                            <form role="form" id="cameraForm" action="php/cameras/updateCamera.php" target="form_aux_frame">
+                                            <form role="form" id="cameraForm" action="php/cameras/updateCamera.php" target="form_aux_frame" onsubmit="submitCameraForm()">
                                                 <!-- Funcionalidad Potencial: cámara activada en un tiempo específico -->
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="aCameraX"> Coord X </label>
-                                                        <input id="aCameraX" type="number" name="cX" class="form-control" onchange="updateCameraCoords('x')" required/>
+                                                        <input id="aCameraX" type="number" class="form-control" onchange="updateCameraCoords('x')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label> Coord Y </label>
-                                                        <input id="aCameraY" type="number" name="cY" class="form-control" onchange="updateCameraCoords('y')" required/>
+                                                        <label> Coord Y  </label>
+                                                        <input id="aCameraY" type="number" class="form-control" onchange="updateCameraCoords('y')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -647,9 +647,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <button type="submit" id="btnSubmit" class="btn btn-default" disabled>Actualizar datos</button>
+                                                    <button type="submit" id="btnSubmit" class="btn btn-default" onclick="submitCameraForm()" disabled>Guardar datos</button>
                                                 </div>
                                                 <input type='hidden' id='idCamera' name='idCamera' value='' />
+                                                <input type='hidden' id='aCameraXN' step="0.0001" name='cX' value='' />
+                                                <input type='hidden' id='aCameraYN' step="0.0001" name='cY' value='' />
                                             </form>
                                         </div>
                                 </div>

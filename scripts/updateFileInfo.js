@@ -93,3 +93,18 @@ function updatePointCoords (coord) {
         }
     });
 }
+
+function afterSubmitCameraForm() {
+    $('#aCameraX').val(inicialX);
+    $('#aCameraY').val(inicialY);
+}
+
+function submitCameraForm() {
+    inicialX = $('#aCameraX').val();
+    inicialY = $('#aCameraY').val();
+
+    interpolador.Interpolacion(inicialX, inicialY);
+
+    $('#aCameraXN').val( parseFloat(interpolador.getX()).toFixed(4) );
+    $('#aCameraYN').val( parseFloat(interpolador.getZ()).toFixed(4) );
+}

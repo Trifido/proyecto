@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.regions.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.timeline.min.js"></script>
+
+    <script>
+        function ejemplo1(url){
+            //Crear Wave
+            wavesurfer = Object.create(WaveSurfer);
+            wavesurfer.init({ //Inicializar parámetros de objeto
+                container: '#waveform',
+                waveColor: 'deepskyblue',
+                progressColor: 'darkslateblue',
+                cursorWidth: 2,
+                //barWidth: 2, // Para que salga cn cuadritos
+                //scrollParent: true // Para que se pueda desplazar con una barra espaciadora
+            });
+            wavesurfer.loadBlob( url ); //Cargar objeto de tipo "File" o "Blob"
+
+            //Crear TimeLine
+            wavesurfer.on('ready', function(){
+                //Timeline
+                var timeline = Object.create(WaveSurfer.Timeline);
+                timeline.init({ //Inicializar parámetros de objeto
+                    wavesurfer: wavesurfer,
+                    container: '#waveform-timeline'
+                });
+
+                //Region
+                // Add a region
+                region = wavesurfer.addRegion({
+                    start: 0, // time in seconds
+                    end: 30, // time in seconds --- AQUI PONER LA DURACION DEL RECORRIDO DE LA CAMARA, CONTROLAR SI ES MAYOR
+                    color: 'hsla(275, 100%, 30%, 0.2)', //Color rosa-rojo
+                });
+
+                region.addEventListener('click', function () {});
+
+
+            });
+        }
+
+        function handleFiles(files){
+            ejemplo1(files[0]);
+        }
+
+        function ejemplo2(){
+            wavesurfer.play();
+        }
+    </script>
+</head>
+<body>
+<button type="button" onclick="ejemplo2()">Try it</button>
+    <input type="file" id="files" onchange="handleFiles(this.files)" />
+    <div id="waveform"></div>
+    <div id="waveform-timeline"></div>
+</body>
+</html>
