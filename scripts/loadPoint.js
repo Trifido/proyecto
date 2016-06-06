@@ -30,7 +30,7 @@ function loadNewPoint() {
         var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', './php/createPoint.php?'+variables, true);
+        xmlhttp.open('GET', './php/cameras/createPoint.php?'+variables, true);
         xmlhttp.send();
 
         //Activar boton "eliminar"
@@ -52,7 +52,7 @@ function removePointLine() {
     var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', './php/deletePoint.php?'+variables, true);
+    xmlhttp.open('GET', './php/cameras/deletePoint.php?'+variables, true);
     xmlhttp.send();
 
     activePoints[selectedCamera-1] -= 1;

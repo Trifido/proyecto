@@ -31,9 +31,11 @@
     sqlite_close($db);
 
     /* Position Interpolator */
-/*
+
     $viewPoint = '<ViewPoint id="camera" position="'.$cameraCord['x'].' '.$cameraCord['y'].' '.$cameraCord['z'].'" orientation="0 0 0 1"></Viewpoint>';
 
+    echo $viewPoint;
+/*
     // Key
     $key = ' 0 ';
     foreach ($pointTime as $time){

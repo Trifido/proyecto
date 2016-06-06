@@ -25,7 +25,7 @@ function loadNewCamera(){
             var variables = 'idCamera='+activeCameras;
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open('GET', './php/createCamera.php?'+variables, true);
+            xmlhttp.open('GET', './php/cameras/createCamera.php?'+variables, true);
             xmlhttp.send();
 
         // Cargar la camara recien creada
@@ -88,7 +88,7 @@ function removeCamera( id ) {
     var variables = 'idCamera='+id;
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', './php/deleteCamera.php?'+variables, true);
+    xmlhttp.open('GET', './php/cameras/deleteCamera.php?'+variables, true);
     xmlhttp.send();
     
     updateCameraIndex( id ); //Acualizar los índices
@@ -176,7 +176,7 @@ function updateCameraIndex( deletedIndex ) {
         var variables = 'idCamera='+i;
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', './php/updateCameraIndex.php?'+variables, true);
+        xmlhttp.open('GET', './php/cameras/updateCameraIndex.php?'+variables, true);
         xmlhttp.send();
     }
 }
