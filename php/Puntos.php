@@ -30,6 +30,7 @@
 
         public function interpolCoord() {
             $this->x = ($this->x)/10;
+            //$this->y = ($this->y)/10;
             $this->z = ($this->z)/10;
         }
 
@@ -44,7 +45,7 @@
         else if( $punto1->getY() == $punto2->getY() && $punto2->getY() == $punto3->getY() )
             return -1;   //Techos y suelos
         else if( $punto1->getZ() == $punto2->getZ() && $punto2->getZ() == $punto3->getZ() )
-            return 3;
+            return 2;
         else
             return -1;   //No es una pared
     }
@@ -62,7 +63,7 @@
             if($min > $punto3->getZ())
                 $min = $punto3->getZ();
         }
-        else if($eqPlane == 3){
+        else if($eqPlane == 2){
             if($punto1->getX() < $punto2->getX()){
                 $min = $punto1->getX();
             }
@@ -89,7 +90,7 @@
             if($max < $punto3->getZ())
                 $max = $punto3->getZ();
         }
-        else if($eqPlane == 3){
+        else if($eqPlane == 2){
             if($punto1->getX() > $punto2->getX()){
                 $max = $punto1->getX();
             }
@@ -124,7 +125,12 @@
 
             $coordsLocal[] = $puntoNuevo;
         }
+
         return $coordsLocal;
+    }
+
+    function distancePointToPoint ( $point1, $point2 ){
+        return sqrt( pow(($point2->getX() - $point1->getX()) , 2) + pow(($point2->getY() - $point1->getY()) , 2) + pow(($point2->getZ() - $point1->getZ()) , 2) );
     }
 
 ?>

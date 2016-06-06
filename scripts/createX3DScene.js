@@ -36,16 +36,28 @@ function obtenerDatos(objetoDinamico) {
 
 //Función de ayuda: reúne los datos a exportar en un solo objeto
 function obtenerDatosCuadro(objetoDinamico) {
-    var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
+    var radianes;
+
+    var auxRot= parseFloat(objetoDinamico.getAttributeNS(null, 'rotation'));
+    if(auxRot>45 && auxRot<135)
+        radianes= ((360 - 90)*Math.PI)/180.0;
+    else if(auxRot>135 && auxRot<225)
+        radianes= ((360 - 180)*Math.PI)/180.0;
+    else if(auxRot>255 && auxRot<315)
+        radianes= ((360 - 270)*Math.PI)/180.0;
+    else
+        radianes= (360*Math.PI)/180.0;
 
     return {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
         x: objetoDinamico.getAttributeNS(null, 'cX'),
         y: 1.0,
         z: objetoDinamico.getAttributeNS(null, 'cY'),
+        rotCuadro: parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')),
         rotation: radianes,
-        ancho: objetoDinamico.getAttributeNS(null, 'width'),
-        alto: objetoDinamico.getAttributeNS(null, 'height'),
+        largo: parseFloat(objetoDinamico.getAttributeNS(null, 'longitudReal'))/10,
+        alto: parseFloat(objetoDinamico.getAttributeNS(null, 'alturaReal'))/10,
+        textura: "./img/cuadros/" + objetoDinamico.getAttributeNS(null, 'nombre') + ".jpg",
         clase: objetoDinamico.getAttributeNS(null, 'class')
     };
 };

@@ -3,8 +3,7 @@
 		private $c1;
 		private $c2;
 		private $c3;
-        private $normal;
-        private $D;
+        private $ecPlano;
 
 		public function setC1( $c1Value ) {
         	$this->c1 = $c1Value;
@@ -18,12 +17,8 @@
             $this->c3 = $c3Value;
         }
 
-        public function setNormal( $normValue ) {
-            $this->normal = $normValue;
-        }
-
-        public function setD( $DValue ) {
-            $this->D = $DValue;
+        public function setEcPlano( $ecPlanoValue ) {
+            $this->ecPlano = $ecPlanoValue;
         }
 
     	public function getC1() {
@@ -38,12 +33,8 @@
         	return $this->c3;
     	}
 
-        public function getNormal() {
-            return $this->normal;
-        }
-
-        public function getD() {
-            return $this->D;
+        public function getEcPlano() {
+            return $this->ecPlano;
         }
 
         public function getIndices(){
@@ -51,9 +42,10 @@
         }
 	}
 
-    function obtainNormal( $punto1, $punto2, $punto3 ){
+    function obtainEcPlano( $punto1, $punto2, $punto3 ){
         $V2V1 = new Punto();
         $V3V1 = new Punto();
+        $result = new ecPlano();
 
         $V2V1->setX( $punto2->getX() - $punto1->getX() );
         $V2V1->setY( $punto2->getY() - $punto1->getY() );
@@ -63,46 +55,30 @@
         $V3V1->setY( $punto3->getY() - $punto1->getY() );
         $V3V1->setZ( $punto3->getZ() - $punto1->getZ() );
 
-        $dotDif = new Punto();
+        $PlanoXpos = ($V2V1->getY() * $V3V1->getZ());
+        $PlanoXneg = ($V2V1->getZ() * $V3V1->getY());
+        $result->setX( $PlanoXpos - $PlanoXneg );
 
-        $dotDif->setX( $V2V1->getX() * $V3V1->getX() );
-        $dotDif->setY( $V2V1->getY() * $V3V1->getY() );
-        $dotDif->setZ( $V2V1->getZ() * $V3V1->getZ() );
+        $PlanoYpos = ($V2V1->getZ() * $V3V1->getX());
+        $PlanoYneg = ($V2V1->getX() * $V3V1->getZ());
+        $result->setY( $PlanoYpos - $PlanoYneg );
 
-        $divisor = $dotDif;
+        $PlanoZpos = ($V2V1->getX() * $V3V1->getY());
+        $PlanoZneg = ($V2V1->getY() * $V3V1->getX());
+        $result->setZ( $PlanoZpos - $PlanoZneg );
 
-        if($divisor->getX() < 0)
-            $divisor->setX( -1 * $divisor->getX() );
-        if($divisor->getY() < 0)
-            $divisor->setY( -1 * $divisor->getY() );
-        if($divisor->getZ() < 0)
-            $divisor->setZ( -1 * $divisor->getZ() );
-
-        $result = new Punto();
-
-        $result->setX( $dotDif->getX() / $divisor->getX() );
-        $result->setY( $dotDif->getY() / $divisor->getY() );
-        $result->setZ( $dotDif->getZ() / $divisor->getZ() );
+        $result->setD( ($PlanoXpos*$punto1->getX()) + ($PlanoYpos*$punto1->getY()) + ($PlanoZpos*$punto1->getZ()) - ($PlanoXneg*$punto1->getX()) - ($PlanoYneg*$punto1->getY()) - ($PlanoZneg*$punto1->getZ()) );
 
         return $result;
     }
 
-    function obtainD( $normal, $point){
-        return -$normal->getX()*$point->getX() - $normal->getY()*$point->getY() - $normal->getZ()*$point->getZ();
-    }
-
-    function distancePointPlane( $normal, $D, $point){
-        $dividendo = $normal->getX()*$point->getX() + $normal->getY()*$point->getY() + $normal->getZ()*$point->getZ() + $D;
+    function distancePointPlane( $ecPlano, $point){
+        $dividendo = $ecPlano->getX()*$point->getX() + $ecPlano->getY()*$point->getY() + $ecPlano->getZ()*$point->getZ() + $ecPlano->getD();
 
         if($dividendo < 0)
             $dividendo *= -1;
 
-        $divisor = sqrt( ($normal->getX()*$normal->getX()) + ($normal->getY()*$normal->getY()) + ($normal->getZ()*$normal->getZ()) );
-
-       /* if($divisor == 0 ){
-            session_start();
-            $_SESSION["auxVar"] = "( " . $normal->getX() . ", " . $normal->getY() . ", " . $normal->getZ() ." )";
-        }*/
+        $divisor = sqrt( ($ecPlano->getX()*$ecPlano->getX()) + ($ecPlano->getY()*$ecPlano->getY()) + ($ecPlano->getZ()*$ecPlano->getZ()) );
 
         return $dividendo/$divisor;
     }

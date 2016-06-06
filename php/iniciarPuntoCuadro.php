@@ -7,6 +7,7 @@
 	$escena = $_SESSION["scene"];
 	$_SESSION["posX"] = $_REQUEST["posX"];
 	$_SESSION["posZ"] = $_REQUEST["posZ"];
+	$_SESSION["rotCuadro"] = $_REQUEST["rotCuadro"];
 
 	$puntoCuadro= new Punto();
 
@@ -14,17 +15,11 @@
 	$puntoCuadro->setY(0.3);
 	$puntoCuadro->setZ($_SESSION["posZ"]);
 
-	//$puntoMin = $escena->findMinPoint($puntoCuadro);
-	$escena->calculateMinTriangle( $puntoCuadro );
-
-	$puntoMin->setY(0.3);
-
-	$finalPoint = $puntoMin;//= getPicturePoint($puntoCuadro, $puntoMin);
+	$finalPoint = $escena->calculateIntMinPoint($puntoCuadro, $_SESSION["rotCuadro"]);
 
 	$finalPoint->interpolCoord();
 
 	echo $finalPoint->getCoordinates();
 	$_SESSION["puntoMinCuadro"] = $finalPoint->getCoordinates();
-	//$textMinPoint = $finalPoint->getCoordinates();
 	
 ?>

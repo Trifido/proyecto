@@ -89,7 +89,7 @@ function initX3DScene(){
                 }
             };
 
-            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + interpolador.getX() + "&posZ=" + interpolador.getZ(), false);
+            xmlhttp.open("GET", "./php/iniciarPuntoCuadro.php?posX=" + interpolador.getX() + "&posZ=" + interpolador.getZ() + "&rotCuadro=" +  objDin.rotCuadro, false);
             xmlhttp.send();
 
             texto+='\t\t\t<Transform DEF="Translate' + objDin.nombre +'" translation="' + coordPicture + '">\n';
@@ -100,12 +100,15 @@ function initX3DScene(){
             }
             */
 
+            texto+='\t\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';
             texto+='\t\t\t\t<Shape DEF="boxShape">';
             texto+='\t\t\t\t\t<Appearance DEF="boxApp">'; 
-            texto+='\t\t\t\t\t\t<Material diffuseColor="1 0 0" specularColor=".5 .5 .5" />';
+            //texto+='\t\t\t\t\t\t<Material diffuseColor="1 0 0" specularColor=".5 .5 .5" />';
+            texto+='\t\t\t\t\t\t<ImageTexture  url="' + objDin.textura + '"><ImageTexture/>';
             texto+='\t\t\t\t\t</Appearance>';
-            texto+='\t\t\t\t\t<Box DEF=\"box\" size=\'0.1 0.1 0.1\' />';
+            texto+='\t\t\t\t\t<Box DEF=\"box\" size=\'' + objDin.alto + ' ' + objDin.largo + '0.01\' />';//size=\'' + (parseInt(objDin.largo)) + ' ' + (parseInt(objDin.alto)) + ' 0.01\' />';
             texto+='\t\t\t\t</Shape>';
+            texto+='\t\t\t</Transform>\n';
 
             /*if(objDin.rotation > 0)
                 texto+='\t\t\t</Transform>\n'; */

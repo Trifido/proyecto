@@ -1,10 +1,11 @@
 var picture;
 
-function Picture(nombre, pathLocation, altura, anchura, largo){
+function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
 
 	var location;
 	var height;
-	var longitud;
+	var longitudReal;
+	var alturaReal;
 	var width;
 	var id;
 	var nombre;
@@ -12,7 +13,8 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 
 	this.height= altura;
 	this.width= anchura;
-	this.longitud= largo;
+	this.alturaReal = altoReal;
+	this.longitudReal= largoReal;
 	this.location= pathLocation;
 	this.nombre= nombre;
 	
@@ -22,7 +24,6 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
-	this.svgObject.setAttributeNS(null,'longitud', this.long);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);
 	this.svgObject.setAttributeNS(null,'x','0');
 	this.svgObject.setAttributeNS(null,'y','0');
@@ -33,6 +34,8 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 	this.svgObject.setAttributeNS(null, 'class', 'picture');
 	this.svgObject.setAttributeNS(null,'posXFinal','0');
 	this.svgObject.setAttributeNS(null,'posZFinal','0');
+	this.svgObject.setAttributeNS(null,'alturaReal', this.alturaReal);
+	this.svgObject.setAttributeNS(null,'longitudReal', this.longitudReal);
 
 	document.getElementById('picture_level').appendChild(this.svgObject);
 	//Esto me sirve para poder eliminar el cuadro que acabo de cargar en la escena
@@ -43,7 +46,6 @@ function Picture(nombre, pathLocation, altura, anchura, largo){
 Picture.prototype.change = function( nombre, pathLocation, altura, largo, anchura){
 	this.nombre= nombre;
 	this.height= altura;
-	this.long= largo;
 	this.width= anchura;
 	this.location= pathLocation;
 }
