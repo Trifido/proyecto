@@ -1,4 +1,8 @@
 function loadX3D360() {
+    if (activeCameras == 0) { // Si no hay una cámara activa
+        $('#sceneCamera').html('\n'); // Actualizar el contenido
+        return;
+    }
     // Mensaje de error si no esta cargada la escena
 
     //o...

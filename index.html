@@ -633,17 +633,14 @@
                                                 <div class="col-lg-6" >
                                                     <div class="form-group">
                                                         <label> Tiempo Animación </label>
-                                                        <input type="number" id="durationCamera" name="duration" class="form-control" required/>
+                                                        <input type="number" id="durationCamera" name="duration" class="form-control" min="0" required
+                                                        onchange="timeChanged()"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <label> Recorte Delantero </label>
-                                                        <input type="number" id="farCamera" name="zFar" class="form-control" required/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label> Recorte Trasero </label>
-                                                        <input type="number" id="closeCamera" name="zClose" class="form-control" required/>
+                                                        <label> Puntos de Ruta </label>
+                                                        <input type="number" id="numPoint" class="form-control" readonly/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
@@ -669,12 +666,17 @@
                                 <!------------------------------------INICIO VISTA DE CAMARA ------------------------------------>
                                 <div class="tab-pane fade row" id="cameraView-pills">
                                     <div class="panel-body">
-                                        <div class="col-lg-12" id="sceneCamera">
-                                            <X3D id="the_sceneCamera">
-                                                <Scene>
-                                                    <inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
-                                                </Scene>
-                                            </X3D>
+                                        <div class="panel-group">
+                                            <div id="noCameraAlert" class="alert alert-warning text-center">
+                                                Añada una nueva <strong> cámara </strong>.
+                                            </div>
+                                            <div class="col-lg-12" id="sceneCamera">
+                                                <X3D id="the_sceneCamera">
+                                                    <Scene>
+                                                        <inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
+                                                    </Scene>
+                                                </X3D>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

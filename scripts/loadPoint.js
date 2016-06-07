@@ -18,6 +18,8 @@ function loadNewPoint() {
             createFilePoint(activePoints[selectedCamera-1]); // Con el ID del punto a crear
     
             // Actualizar la ficha
+                // Camara
+            $('#numPoint').val(activePoints[selectedCamera-1]); // Actualizar el número de puntos
                 // Coordenadas Punto
             $('.point').each(function (i, obj) { //Buscar el objeto SVG
                 var nombre = obj.getAttributeNS(null, 'nombre'); //Indice
@@ -27,11 +29,15 @@ function loadNewPoint() {
             });
 
         // AJAX - Interaccion con DB
+            // Crear punto
         var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open('GET', './php/cameras/createPoint.php?'+variables, true);
         xmlhttp.send();
+
+            // Actualizar puntos
+        updatePointsTime();
 
         //Activar boton "eliminar"
         $('#btnRemPoint').removeAttr('disabled');
@@ -49,6 +55,7 @@ function removePointLine() {
     removeFilePoint(activePoints[selectedCamera-1]); //Con el ID del punto a borrar
 
     // AJAX - Interaccion con DB
+        // Borrar punto
     var variables = 'idPoint='+activePoints[selectedCamera-1]+'&idCamera='+selectedCamera;
 
     var xmlhttp = new XMLHttpRequest();
@@ -57,68 +64,32 @@ function removePointLine() {
 
     activePoints[selectedCamera-1] -= 1;
 
+        // Actualizar puntos
+    updatePointsTime();
+
+    // Actualizar ficha
+        // Camara
+    $('#numPoint').val(activePoints[ selectedCamera - 1 ]); // Actualizar el número de puntos
+
     if (activePoints[selectedCamera-1] == 0) {
         $('#btnRemPoint').attr('disabled', 'disabled'); //Desactivar boton "eliminar"
         $('#noPointAlert').css('display', ''); //Activar alerta
     }
 }
 
-//Crea el punto en la ficha de puntos de la página
-function createFilePoint( id ){
-    var div = $('<div/>', {id: 'pointLi'+id, class: 'panel panel-info'});
+// Actualiza el valor del tiempo de los puntos en relación al tiempo total de la cámara
+function updatePointsTime() {
+    var timeAux = parseInt($('#durationCamera').val()) / parseInt(activePoints[selectedCamera-1]);
+    for (i = 1; i <= activePoints[selectedCamera-1]; i++) {
+        var timePos = (timeAux * i).toFixed(4);
 
-    var heading = $('<div/>', {class: 'panel-heading'});
-    var a = $('<a/>', {"data-toggle": 'collapse', "data-parent": '#pointAccordion', href:'#pointCollapse'+id, "aria-expanded": 'false', class: 'collapsed', text: 'Punto '+id});
-    div.append(heading.append(a));
+        updateFilePoint( i, timePos ); // Actualizar en la ficha
 
-    var content = $('<div/>', {id: 'pointCollapse'+id, class: 'panel-collapse collapse', "aria-expanded": 'false', style: 'height: 0px;'});
-    var body = $('<div/>', {class: 'panel-body'});
-    var form = $('<form/>', {role: 'form', id: 'pointForm', action: './php/updatePoint.php', target: 'form_aux_frame'});
+        var variables = 'idPoint='+activePoints[i-1]+'&idCamera='+selectedCamera
+            +'&timePos='+timePos;
 
-    //Coord X
-    var col1 = $('<div/>', {class: 'col-lg-4'});
-    var group1 = $('<div/>', {class: 'form-group'});
-    var label1 = $('<label/>', {text: 'Coord X'});
-    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', name: 'cX', onchange:'updatePointCoords("x")', required : ''});
-    col1.append(group1.append(label1, input1));
-
-    //Coord Y
-    var col2 = $('<div/>', {class: 'col-lg-4'});
-    var group2 = $('<div/>', {class: 'form-group'});
-    var label2 = $('<label/>', {text: 'Coord Y'});
-    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', name: 'cY', onchange:'updatePointCoords("y")', required : ''});
-    col2.append(group2.append(label2, input2));
-
-    //Coord Z
-    var col3 = $('<div/>', {class: 'col-lg-4'});
-    var group3 = $('<div/>', {class: 'form-group'});
-    var label3 = $('<label/>', {text: 'Coord Z'});
-    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', name: 'cZ', onchange:'updatePointCoords("z")', required : ''});
-    col3.append(group3.append(label3, input3));
-
-    //Tiempo llegada
-    var col4 = $('<div/>', {class: 'col-lg-6'});
-    var group4 = $('<div/>', {class: 'form-group'});
-    var label4 = $('<label/>', {text: 'Tiempo Llegada'});
-    var input4 = $('<input/>', {type: 'number', class: 'form-control', name: 'timePos', required : ''});
-    col4.append(group4.append(label4, input4));
-
-    //Submit
-    var col5 = $('<div/>', {class: 'col-lg-12'});
-    var button5 = $('<button/>', {type: 'submit', id: 'btnSubmit', class: 'btn btn-default'});
-    button5.text('Actualizar datos');
-    col5.append(button5);
-
-    //Hidden
-    var inputHiddenC = $('<input/>', {type: 'hidden', name: 'idCamera', value : selectedCamera});
-    var inputHiddenP = $('<input/>', {type: 'hidden', name: 'idPoint', value : id });
-    
-    div.append(content.append(body.append(form.append(col1, col2, col3, col4, col5, inputHiddenC, inputHiddenP))));
-
-    $('#pointAccordion').append(div);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', './php/cameras/updatePointTime.php?'+variables, true);
+        xmlhttp.send();
+    }
 }
-
-function removeFilePoint( id ) {
-    $('#pointLi'+id).remove();
-}
-

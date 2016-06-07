@@ -37,6 +37,8 @@ function loadNewCamera(){
         $('#btnAddPoint').removeAttr('disabled');
         $('#btnRemPoint').attr('disabled','disabled');
         $('#btnSubmit').removeAttr('disabled');
+        //Eliminar alerta
+        $('#noCameraAlert').css('display', 'none');
 }
 
 //Funcion para seleccionar una camara ya creada
@@ -54,8 +56,8 @@ function loadCamera( id ) {
     // Actualizar la ficha
     // Camara
     $('#idCamera').val(id); // Actualizar valor oculto del formulario con la cámara activa
-    $('#farCamera').val(-1);
-    $('#closeCamera').val(-1);
+    $('#numPoint').val(activePoints[selectedCamera-1]); // Actualizar el número de puntos
+    $('#durationCamera').val(10);
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
         var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
         if (selectedCamera == id) updateFileCoords('camera', '', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
@@ -63,11 +65,11 @@ function loadCamera( id ) {
     //Puntos
     $('#pointAccordion').empty(); //Limpia todos los hijos
 
-    for (i = 0; i < activePoints[selectedCamera - 1]; i++) //Crea los hijos correspondientes
+    for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes
         createFilePoint(i + 1);
 
     // Actualizar botones de la interfaz
-    if (activePoints[selectedCamera - 1] > 0) {
+    if (activePoints[selectedCamera-1] > 0) {
         $('#btnRemPoint').removeAttr('disabled');
         $('#noPointAlert').css('display', 'none'); // Desactivar alerta
     }
@@ -100,10 +102,14 @@ function removeCamera( id ) {
         loadCamera(1);
 
     if (activeCameras == 0) {
+        // Botones
         $('#btnRemCamera').attr('disabled', 'disabled');
         $('#btnAddPoint').attr('disabled', 'disabled');
         $('#btnSubmit').attr('disabled', 'disabled');
-        $('#cameraForm').trigger("reset"); //Resetea el formulario entero
+
+        $('#cameraForm').trigger("reset"); // Resetea el formulario entero
+
+        $('#noCameraAlert').css('display', ''); //Activar alerta
     }
 }
 

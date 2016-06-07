@@ -6,13 +6,11 @@
     $cX = 0.0;
     $cY = 0.0;
     $cZ = 0.0;
-    $duration = 0;
-    $zFar = 0;
-    $zClose = 0;
+    $duration = 10;
 
     // Query insercion de fila en la tabla camara
-    $query = 'INSERT INTO Camera (idCamera, cX, cY, cZ, duration, zFar, zClose) 
-              VALUES ('.$idCamera.', '.$cX.', '.$cY.', '.$cZ.', '.$duration.', '.$zFar.', '.$zClose.')';
+    $query = 'INSERT INTO Camera (idCamera, cX, cY, cZ, duration) 
+              VALUES ('.$idCamera.', '.$cX.', '.$cY.', '.$cZ.', '.$duration.')';
 
     $db = sqlite_open(URL_DB.'/360DB.db');
 
