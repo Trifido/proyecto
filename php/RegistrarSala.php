@@ -4,15 +4,28 @@
 
 	session_start();
 
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$nombre = $_POST['nombre'];
-	$apellido = $_POST['apellidos'];
-	$mail = $_POST['correo'];
-	$telefono = $_POST['telefono'];
-	$direccion = $_POST['direccion'];
+	$nombreSala = $_POST['nomSala'];
+	$anchoSala = $_POST['anchoSala'];
+	$largoSala = $_POST['largoSala'];
 
-	$db = sqlite_open('../database/tfgDB.db');
+	//Datos Modelos 3D
+	$x3dTecho = $_POST['x3dTecho'];
+	$x3dsinTecho = $_POST['x3dsinTecho'];
+	$objSala = $_POST['objSala'];
+
+	//Datos Imagen Sala
+	$imgSala = $_POST['imgSala'];
+	$anchoPixSala = $_POST['anchoPixSala'];
+	$altoPixSala = $_POST['altoPixSala'];
+
+	//Datos Imagen Sala Menu
+	$imgMenuSala = $_POST['imgMenuSala'];
+	$anchoPixMenSala = $_POST['anchoPixMenSala'];
+	$altoPixMenSala = $_POST['altoPixMenSala'];
+
+	echo "imgSala= " . $imgSala;
+
+	/*$db = sqlite_open('../database/tfgDB.db');
 
 	$query = 'SELECT*FROM Usuarios WHERE username=\'' . $username . '\'';
 	$result = sqlite_query($db, $query);
@@ -42,6 +55,6 @@
 		echo "<script>location.href='../php/registrar.php'</script>";
 	}
 
-	sqlite_close($db);
+	sqlite_close($db);*/
 
 ?>

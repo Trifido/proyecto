@@ -27,6 +27,9 @@
     <!-- CSS -->
     <link href="./css/style.css" rel="stylesheet" type='text/css' />
 
+    <!-- Javascript -->
+    <script  type="text/javascript" src="./scripts/redireccionar/redireccionarRegister.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -61,7 +64,7 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button type="submit" id="btnSubmit" class="btn btn-lg btn-success btn-block">Login</button>
-                                <a  class="btn btn-lg btn-info btn-block">Register</a>
+                                <a class="btn btn-lg btn-info btn-block" onclick="LoadRegister()">Register</a>
                             </fieldset>
                         </form>  
 
