@@ -38,6 +38,7 @@
 
         <?php
             $_SESSION["seccion"] = "nuevoEscenario";
+            $_SESSION["username"] = "Vicente";
             include('menuSupYLat.php');
         ?>
 

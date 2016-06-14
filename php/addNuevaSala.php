@@ -27,6 +27,10 @@
                 return true;
             }
         </script> -->
+        <?php
+           // session_start();
+            $_SESSION["username"] = "Vicente";
+        ?>
 
         <div class="row">
             <div class="col-lg-12">
@@ -42,7 +46,7 @@
                             <h3 class="panel-title">Añadir Sala</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" id="cameraForm" method="post" enctype="multipart/form-data" action="./RegistrarSala.php" >
+                        <form role="form" id="cameraForm" method="post" action="./RegistrarSala.php" >
                             <fieldset>
                                 <div class="form-group">
                                     <label>Nombre de Sala</label>
@@ -58,15 +62,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Archivo X3D con techo</label>
-                                    <input class="form-control" placeholder="X3D con techo" name="x3dTecho" type="file" value="">
+                                    <input class="form-control" placeholder="X3D con techo" name="model[]" type="file" value="">
                                 </div>
                                 <div class="form-group">
                                     <label>Archivo X3D sin techo</label>
-                                    <input class="form-control" placeholder="X3D sin techo" name="x3dsinTecho" type="file" value="">
+                                    <input class="form-control" placeholder="X3D sin techo" name="model[]" type="file" value="">
                                 </div>
                                 <div class="form-group">
                                     <label>Archivo OBJ Sala</label>
-                                    <input class="form-control" placeholder="OBJ Sala" name="objSala" type="file" value="">
+                                    <input class="form-control" placeholder="OBJ Sala" name="model[]" type="file" value="">
                                 </div>
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
