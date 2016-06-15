@@ -58,6 +58,7 @@ function loadCamera( id ) {
     $('#idCamera').val(id); // Actualizar valor oculto del formulario con la cámara activa
     $('#numPoint').val(activePoints[selectedCamera-1]); // Actualizar el número de puntos
     $('#durationCamera').val(10);
+    // Actualizar las coordenadas
     $('.camera').each(function (i, obj) { //Buscar el objeto SVG
         var id = obj.getAttributeNS(null, 'nombre').substr(6, 1); //Indice
         if (selectedCamera == id) updateFileCoords('camera', '', obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
@@ -65,8 +66,14 @@ function loadCamera( id ) {
     //Puntos
     $('#pointAccordion').empty(); //Limpia todos los hijos
 
-    for (i = 0; i < activePoints[selectedCamera-1]; i++) //Crea los hijos correspondientes
-        createFilePoint(i + 1);
+    for (i = 0; i < activePoints[selectedCamera-1]; i++) { //Crea los hijos correspondientes
+        var id = i + 1;
+
+        createFilePoint(id);
+
+        // Se desactiva la modificación de tiempo para el primer y último punto
+        if (id == activePoints[selectedCamera-1]) $('#timePoint'+id).attr('readonly', true);
+    }
 
     // Actualizar botones de la interfaz
     if (activePoints[selectedCamera-1] > 0) {
