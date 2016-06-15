@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,6 +57,7 @@
 
 	<!-- Scripts Alba -->
     <script  type="text/javascript" src="scripts/showHideDiv.js"></script>
+    <script  type="text/javascript" src="scripts/validation/validateCameraForm.js"></script>
 
         <script  type="text/javascript" src="scripts/loadCamera.js"></script>
         <script  type="text/javascript" src="scripts/loadPoint.js"></script>
@@ -562,40 +562,48 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="aCameraX"> Coord X </label>
-                                                        <input id="aCameraX" type="number" class="form-control" onchange="updateCameraCoords('x')" required/>
+                                                        <input id="aCameraX" type="number" class="form-control"
+                                                               min=0 max=500 step="0.0001" onchange="updateCameraCoords('x')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Y  </label>
-                                                        <input id="aCameraY" type="number" class="form-control" onchange="updateCameraCoords('y')" required/>
+                                                        <input id="aCameraY" type="number" class="form-control"
+                                                               min=0 max=500 step="0.0001" onchange="updateCameraCoords('y')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label> Coord Z </label>
-                                                        <input id="aCameraZ" type="number" name="cZ" class="form-control" onchange="updateCameraCoords('z')" required/>
+                                                        <input id="aCameraZ" type="number" class="form-control" name="cZ"
+                                                               step="0.0001" onchange="updateCameraCoords('z')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" >
                                                     <div class="form-group">
                                                         <label> Tiempo Animación </label>
-                                                        <input type="number" id="durationCamera" name="duration" class="form-control" min="0" required
-                                                        onchange="timeChanged()"/>
+                                                        <input type="number" id="durationCamera" class="form-control" name="duration"
+                                                               min="0" onchange="timeChanged()" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label> Puntos de Ruta </label>
-                                                        <input type="number" id="numPoint" class="form-control" readonly/>
+                                                        <input type="number" id="numPoint" class="form-control"
+                                                               readonly/>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <button type="submit" id="btnSubmit" class="btn btn-default" onclick="submitCameraForm()" disabled>Guardar datos</button>
+                                                    <button type="submit" id="btnSubmit" class="btn btn-default"
+                                                            onclick="submitCameraForm()" disabled> Guardar datos </button>
                                                 </div>
-                                                <input type='hidden' id='idCamera' name='idCamera' value='' />
-                                                <input type='hidden' id='aCameraXN' step="0.0001" name='cX' value='' />
-                                                <input type='hidden' id='aCameraYN' step="0.0001" name='cY' value='' />
+                                                <input type='hidden' id='idCamera' name='idCamera'
+                                                       value='' required/>
+                                                <input type='hidden' id='aCameraXN' name='cX'
+                                                       step="0.0001" value='' required/>
+                                                <input type='hidden' id='aCameraYN' name='cY'
+                                                       step="0.0001" value='' required/>
                                             </form>
                                         </div>
                                 </div>
