@@ -1,10 +1,28 @@
 <?php  
+	require_once 'config.php';
+    require_once 'dbhandler.php';
+
+	//$nombreUsuario = $_SESSION["username"];
 	$nombEscena = $_REQUEST["nombEscena"];
 	$contenido = $_REQUEST["contenido"];
 	$destino = $_REQUEST["destino"];
-	$file = fopen("../Exposiciones/" . $destino . "/". $nombEscena, "w");
+	$path = "./Exposiciones/" . $destino . "/". $nombEscena;
+	$file = fopen( "." . $path, "w" );
 	fwrite($file, $contenido);
 	fclose($file);
+
+	$db = sqlite_open('../database/tfgDB.db');
+	//$query = 'SELECT*FROM EscenarioCreados WHERE NombreEscenario=\'' . $nombEscena . '\'';
+	//$result = sqlite_query($db, $query);
+	//$array = $result->fetchArray();
+
+	//if($nombEscena != $array["NombreEscenario"]){
+		$query = 'INSERT INTO EscenarioCreados (NombreEscenario, Tipo, PathEscenario, NombreUsuario) 
+				  VALUES (\''.$nombEscena.'\', \''.$destino.'\', \''. $path .'\', \'' .'Vicente'.'\')';
+	    $result = sqlite_query($db, $query);
+	//}
+
+	sqlite_close($db);
 
 		/*
 		
