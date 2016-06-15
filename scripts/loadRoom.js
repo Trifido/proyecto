@@ -42,7 +42,7 @@ function initRoom(id){
 			sceneName = 'scene6';
 			break;
 		case 1:
-			svgroom = new Room ('Sala2','./img/rooms/sala2.png', 500, 500);
+			svgroom = new Room ('Sala1','./img/rooms/sala2.png', 500, 500);
 			break;
 		case 2:
 			svgroom = new Room ('Sala3','./img/rooms/sala3.png', 500, 500);

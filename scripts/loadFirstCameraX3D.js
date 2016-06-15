@@ -1,6 +1,4 @@
-
-function loadVRX3D() {
-
+function generarVRX3D() {
 	var texto="";
 
 	texto += "<x3d id=\'x3dElement\' showStat=\'false\' showLog=\'false\' style=\'width:100%; height:100%; border:0; margin:0; padding:0;\'>\n";
@@ -8,15 +6,7 @@ function loadVRX3D() {
 	texto += "<Environment frustumCulling=\"false\"></Environment>\n";
 
 	texto += "<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'20 20 20\' radius=\'5000000\' ></PointLight>\n";
-/*
-	texto += "<navigationInfo  avatarSize=\'0.001 0.15 0.15\' type=\'\"game\"\'></navigationInfo>\n";
 
-	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 
-	texto += "            <viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";
-	texto += "                   orientation=\'0 1 0 0\' position=\'0.2 0.1 0.2\'\n";
-	texto += "                  zNear=\'0.001\' zFar=\'100\'></viewpoint> \n";
-	texto += "        </transform>\n";
-*/
 	texto += loadNodeVRCamera();
 
 	texto += "        <background DEF=\'bgnd\' backUrl=\'space.jpg\'></background>\n";
@@ -46,13 +36,11 @@ function loadVRX3D() {
 	texto += "                           uniform mat4 modelViewProjectionMatrix;\n";
 	texto += "                            varying vec2 fragTexCoord;\n";
 
-	texto += "                            void main()\n";
-	texto += "                            {\n";
+	texto += "                            void main(){\n";
 	texto += "                                vec2 pos = sign(position.xy);\n";
 	texto += "                                fragTexCoord = texcoord;\n";
 
-	texto += "                                gl_Position = vec4((pos.x/2.0)-0.5, pos.y, 0.0, 1.0);\n";
-	texto += "                            }\n";
+	texto += "                                gl_Position = vec4((pos.x/2.0)-0.5, pos.y, 0.0, 1.0); }\n";
 	texto += "                        </shaderPart>\n";
 	texto += "                        <shaderPart DEF=\"frag\" type=\'FRAGMENT\'>\n";
 	texto += "                            #ifdef GL_ES\n";
@@ -111,8 +99,39 @@ function loadVRX3D() {
 	texto += "    </scene>\n";
 	texto += "</x3d>";
 
+	return texto;
+}
+
+function generarGameCameraX3D() {
+	var texto="";
+
+	texto += "<x3d id=\'x3dElement\' showStat=\'false\' showLog=\'false\' style=\'width:100%; height:100%; border:0; margin:0; padding:0;\'>\n";
+	texto += "	  <scene id=\'scene\'>\n";
+	texto += "    	<Environment frustumCulling=\"false\"></Environment>\n";
+
+	texto += "		<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'20 20 20\' radius=\'5000000\' ></PointLight>\n";
+
+	texto += "		<navigationInfo  avatarSize=\'0.001 0.15 0.15\' type=\'\"game\"\'></navigationInfo>\n";
+
+	texto += loadSimpleCamera();
+
+	texto += "        <background DEF=\'bgnd\' backUrl=\'space.jpg\'></background>\n";
+	
+	texto += initX3DScene();
+
+	texto += "    </scene>\n";
+	texto += "</x3d>";
+
+	return texto;
+}
+
+
+function loadVRX3D() {
+
+	var textoX3D = generarGameCameraX3D();
+
 	var div = document.getElementById("FirstCameraVR");   
-    div.innerHTML = texto;
+    div.innerHTML = textoX3D;
 
     x3dom.reload();
     cargarEscenarioVRX3D();
@@ -233,6 +252,23 @@ function loadNodeVRCamera(){
 	texto += "	<viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";
 	texto += "  orientation=\'0 1 0" + objdin.rotation + "\' position=\'" + interpolador.getX() + " " + objdin.y + " " + interpolador.getZ() + "\'\n";
 	texto += "  zNear=\'0.001\' zFar=\'100\'></viewpoint> \n";
+	texto += "</transform>\n";
+
+	return texto;
+}
+
+function loadSimpleCamera(){
+	texto= "";
+
+	var objdin= obtenerVRCamera();
+
+    interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
+
+	texto += "<navigationInfo  avatarSize=\'" + 0.001 + " " + 0.15 + " " + 0.15 + "\' type=\'\"game\"\'></navigationInfo>\n";
+	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 
+	texto += "   <viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";
+	texto += "   orientation=\'0 1 0" + objdin.rotation + "\' position=\'" + interpolador.getX() + " " + objdin.y + " " + interpolador.getZ() + "\'\n";
+	texto += "   zNear=\'0.001\' zFar=\'100\'></viewpoint> \n";
 	texto += "</transform>\n";
 
 	return texto;

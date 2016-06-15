@@ -1,21 +1,21 @@
 
 function LoadMostrarSalas(tipo){
-	if(tipo == "nuevoEscenario")
+	//if(tipo == "nuevoEscenario")
 		
-	else
+	//else
 		
 	//location.href='./php/mostrarSalas.php'
 }
 
 function LoadMostrarCuadros(){
-	location.href='./php/mostrarCuadros.php'
+	location.href='./php/mostrarCuadros.php';
 }
 
 function LoadMostrarOtrosObjetos(){
-	location.href='./php/MostrarOtrosObjetos.php'
+	location.href='./php/MostrarOtrosObjetos.php';
 }
 
 function LoadIndex(){
-	location.href='./index.php'
+	location.href='./index.php';
 }
 
