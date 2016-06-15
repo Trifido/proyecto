@@ -16,7 +16,7 @@
     <title>TFG</title>
 
     <!-- CSS -->
-    <link href="./css/style.css" rel="stylesheet" type='text/css' />
+    <!--<link href="./css/style.css" rel="stylesheet" type='text/css' /> -->
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

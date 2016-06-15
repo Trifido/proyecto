@@ -18,7 +18,7 @@
 	<!-- Script para jquery -->
     <script  type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
     <script  type="text/javascript" src="scripts/loadInfo.js"></script>
-    <script  type="text/javascript" src="scripts/redireccionarMostrar.js"></script>
+    <script  type="text/javascript" src="scripts/Redireccionar/redireccionarMostrar.js"></script>
 
     <!-- Script para threeJS (visualizar modelos) -->
 	<script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.js"></script>

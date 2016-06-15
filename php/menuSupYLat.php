@@ -17,8 +17,17 @@
 
             <?php
                 if( $seccion == "nuevoEscenario" ){
-                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoEscenario\" data-toggle=\"modal\" data-target=\"#myModal\"> 
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoEscenario\"> 
                         Añadir Nuevo Escenario 
+                        </button>";
+                }
+                else if( $seccion == "editor" ){
+                    echo "<button class=\"btn btn-warning btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemplo', 'web')\"> 
+                        Exportar Escenario Web
+                        </button>
+                        
+                        <button class=\"btn btn-info btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemplo', 'app')\"> 
+                        Exportar Escenario App
                         </button>";
                 }
             ?>

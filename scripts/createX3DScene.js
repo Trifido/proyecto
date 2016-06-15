@@ -138,3 +138,49 @@ function generarX3D() {
         type: 'application/x3d'
     });
 };*/
+
+function exportarX3D( nombre, tipo ){
+    var textoX3D, destino;
+
+    destino = "Otro";
+
+    if( tipo == "web" ){
+        destino = "Web";
+        textoX3D = generarVRX3D();
+    }
+    else{
+        destino = "App";
+        textoX3D = generarGameCameraX3D();
+    }
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        }
+    };
+
+    xmlhttp.open("GET", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&contenido=" + textoX3D + "&destino=" + destino, true);
+    xmlhttp.send();
+
+    alert("El escenario " + nombre + ".x3d " + "ha sido exportado con éxito");
+}
+
+/*
+    destino = "Otro";
+
+    if( tipo == "web" )
+        destino = "Web";
+        //textoX3D = generarVRX3D();
+    else
+        destino = "App";
+        //textoX3D = generarGameCameraX3D();
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        }
+    };
+
+    xmlhttp.open("POST", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&destino=" + destino, true);
+    xmlhttp.send();
+*/
