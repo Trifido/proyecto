@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+    $_SESSION['username'] = "Vicente";
+    $_SESSION["seccion"] = "editor";
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -102,10 +108,7 @@
 <body onload="main();">
     <div id="wrapper">
 
-        <?php
-            $_SESSION["seccion"] = "editor";
-            include('./php/menuSupYLat.php');
-        ?>
+        <?php include('./php/menuSupYLat.php'); ?>
 
         <!-- Page Content -->
         <div id="page-wrapper">

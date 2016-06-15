@@ -139,7 +139,7 @@ function generarX3D() {
     });
 };*/
 
-function exportarX3D( nombre, tipo ){
+function exportarX3D( nombre, tipo, usuario ){
     var textoX3D, destino;
 
     destino = "Otro";
@@ -159,7 +159,7 @@ function exportarX3D( nombre, tipo ){
         }
     };
 
-    xmlhttp.open("GET", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&contenido=" + textoX3D + "&destino=" + destino, true);
+    xmlhttp.open("GET", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&contenido=" + textoX3D + "&destino=" + destino + "&usuario=" + usuario, true);
     xmlhttp.send();
 
     alert("El escenario " + nombre + ".x3d " + "ha sido exportado con éxito");

@@ -1,14 +1,12 @@
-<?php
-    //session_start();
-
-   //$username = $_REQUEST['username'];
-    $seccion = $_SESSION['seccion'];
-
-?>
-
 
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="index.html">Editor de Escenarios</a>
         </div>
         <!-- /.navbar-header -->
@@ -16,17 +14,17 @@
         <ul class="nav navbar-top-links navbar-right">
 
             <?php
-                if( $seccion == "nuevoEscenario" ){
+                if( $_SESSION['seccion'] == "nuevoEscenario" ){
                     echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoEscenario\"> 
                         Añadir Nuevo Escenario 
                         </button>";
                 }
-                else if( $seccion == "editor" ){
-                    echo "<button class=\"btn btn-warning btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemplo', 'web')\"> 
+                else if( $_SESSION['seccion'] == "editor" ){
+                    echo "<button class=\"btn btn-warning btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemploWeb', 'web', '" . $_SESSION['username'] . "' )\"> 
                         Exportar Escenario Web
                         </button>
                         
-                        <button class=\"btn btn-info btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemplo', 'app')\"> 
+                        <button class=\"btn btn-info btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemploApp', 'app',  '" . $_SESSION['username'] . "' )\"> 
                         Exportar Escenario App
                         </button>";
                 }
@@ -50,10 +48,20 @@
                 </a>
             </li>
             <!-- /.dropdown -->
-            <li class="dropdown">
+           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="./logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
         </ul>

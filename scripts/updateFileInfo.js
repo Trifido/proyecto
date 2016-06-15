@@ -2,27 +2,25 @@
  * Created by Alba on 18/04/2016.
  */
 
-var changed = false;
-
 // Actualiza las coordenadas de la Ficha del objeto que se está moviendo
 function updateFileCoords (vclass, vname, nX, nY) {
-    var valueX, valueY, valueZ;
-
-    if (nX < 0) valueX = parseFloat(0).toFixed(4); else if (nX > 500) valueX = parseFloat(500).toFixed(4); else valueX = parseFloat(nX).toFixed(4);
-    if (nY < 0) valueY = parseFloat(0).toFixed(4); else if (nY > 500) valueY = parseFloat(500).toFixed(4); else valueY = parseFloat(nY).toFixed(4);
-    valueZ = (0.3).toFixed(4);
-
+    if (vclass == 'sculpture') {
+        
+    }
     if (vclass == 'camera') {
-        $('#aCameraX').val(valueX);
-        $('#aCameraY').val(valueY);
-        $('#aCameraZ').val(valueZ);
+        interpolador.InterpolCamera(nX, nY, 0);
+
+        $('#aCameraX').val(interpolador.getXCam());
+        $('#aCameraY').val(interpolador.getYCam());
+        $('#aCameraZ').val(interpolador.getZCam());
     }
     if (vclass == 'point') {
         var id = vname.substr(vname.length-1);
+        interpolador.InterpolCamera(nX, nY, 0);
 
-        $('#aPoint'+id+'X').val(valueX);
-        $('#aPoint'+id+'Y').val(valueY);
-        $('#aPoint'+id+'Z').val(valueZ);
+        $('#aPoint'+id+'X').val(interpolador.getXCam());
+        $('#aPoint'+id+'Y').val(interpolador.getYCam());
+        $('#aPoint'+id+'Z').val(interpolador.getZCam());
     }
 }
 
@@ -114,28 +112,28 @@ function createFilePoint( id ){
     var col1 = $('<div/>', {class: 'col-lg-4'});
     var group1 = $('<div/>', {class: 'form-group'});
     var label1 = $('<label/>', {text: 'Coord X'});
-    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', step: '0.0001', onchange:'updatePointCoords("x")', required : ''});
+    var input1 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'X', onchange:'updatePointCoords("x")', required : ''});
     col1.append(group1.append(label1, input1));
 
     //Coord Y
     var col2 = $('<div/>', {class: 'col-lg-4'});
     var group2 = $('<div/>', {class: 'form-group'});
     var label2 = $('<label/>', {text: 'Coord Y'});
-    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', step: '0.0001', onchange:'updatePointCoords("y")', required : ''});
+    var input2 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Y', onchange:'updatePointCoords("y")', required : ''});
     col2.append(group2.append(label2, input2));
 
     //Coord Z
     var col3 = $('<div/>', {class: 'col-lg-4'});
     var group3 = $('<div/>', {class: 'form-group'});
     var label3 = $('<label/>', {text: 'Coord Z'});
-    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', name: 'cZ', step: '0.0001', onchange:'updatePointCoords("z")', required : ''});
+    var input3 = $('<input/>', {type: 'number', class: 'form-control', id: 'aPoint'+id+'Z', name: 'cZ', onchange:'updatePointCoords("z")', required : ''});
     col3.append(group3.append(label3, input3));
 
     //Tiempo llegada
     var col4 = $('<div/>', {class: 'col-lg-6'});
     var group4 = $('<div/>', {class: 'form-group'});
     var label4 = $('<label/>', {text: 'Tiempo Llegada'});
-    var input4 = $('<input/>', {type: 'number', class: 'form-control', id: 'timePoint'+id , name: 'timePos', step: '0.0001', onchange:'validatePointTime('+id+')', required : ''});
+    var input4 = $('<input/>', {type: 'number', class: 'form-control', id: 'timePoint'+id , name: 'timePos', step: '0.0001', required : ''});
     col4.append(group4.append(label4, input4));
 
     //Submit
@@ -147,8 +145,8 @@ function createFilePoint( id ){
     //Hidden
     var inputHiddenC = $('<input/>', {type: 'hidden', name: 'idCamera', value : selectedCamera});
     var inputHiddenP = $('<input/>', {type: 'hidden', name: 'idPoint', value : id });
-    var inputHiddenCordX = $('<input/>', {type: 'hidden', id: 'aPoint'+id+'XN', name: 'cX', step: '0.0001'});
-    var inputHiddenCordY = $('<input/>', {type: 'hidden', id: 'aPoint'+id+'YN', name: 'cY', step: '0.0001'});
+    var inputHiddenCordX = $('<input/>', {type: 'hidden', id: 'aPoint'+id+'XN', name: 'cX'});
+    var inputHiddenCordY = $('<input/>', {type: 'hidden', id: 'aPoint'+id+'YN', name: 'cY'});
 
 
     div.append(content.append(body.append(form.append(col1, col2, col3, col4, col5, inputHiddenC, inputHiddenP, inputHiddenCordX, inputHiddenCordY))));

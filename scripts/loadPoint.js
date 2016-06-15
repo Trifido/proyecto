@@ -27,10 +27,6 @@ function loadNewPoint() {
                 if ('punto'+selectedCamera+'_' + id == obj.getAttributeNS(null, 'nombre'))
                     updateFileCoords('point', nombre, obj.getAttributeNS(null, 'cX'), obj.getAttributeNS(null, 'cY'));
             });
-            // Desactivar campos
-            var id = activePoints[selectedCamera-1];
-            $('#timePoint'+id).attr('readonly', true); // Se desactiva la modificación de tiempo
-            $('#timePoint'+(id-1)).attr('readonly', false); // Se activa para el punto anterior
 
         // AJAX - Interaccion con DB
             // Crear punto
@@ -74,9 +70,7 @@ function removePointLine() {
     // Actualizar ficha
         // Camara
     $('#numPoint').val(activePoints[ selectedCamera - 1 ]); // Actualizar el número de puntos
-        // Puntos
-        $('#timePoint'+activePoints[selectedCamera-1]).attr('readonly', true); // Se desactiva la modificación de tiempo
-        // Botones
+
     if (activePoints[selectedCamera-1] == 0) {
         $('#btnRemPoint').attr('disabled', 'disabled'); //Desactivar boton "eliminar"
         $('#noPointAlert').css('display', ''); //Activar alerta

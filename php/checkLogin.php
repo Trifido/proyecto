@@ -22,7 +22,7 @@
 			$_SESSION['start'] = time();
 			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
 
-			echo "<script>location.href='../index.html'</script>";
+			echo "<script>location.href='../index.php'</script>";
 			//header( "location: ../index.html");
 		}
 		else {

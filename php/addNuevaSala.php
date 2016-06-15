@@ -28,7 +28,6 @@
             }
         </script> -->
         <?php
-           // session_start();
             $_SESSION["username"] = "Vicente";
         ?>
 
