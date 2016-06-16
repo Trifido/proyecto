@@ -30,6 +30,16 @@
                         Exportar Escenario App
                         </button>";
                 }
+                else if( $_SESSION['seccion'] == "nuevaEscultura" ){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevaEscultura\"> 
+                        Añadir Nueva Escultura
+                        </button>";
+                }
+                else if( $_SESSION['seccion'] == "nuevoCuadro" ){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoCuadro\"> 
+                        Añadir Nuevo Cuadro
+                        </button>";
+                }
             ?>
 
             <li class="dropdown">
@@ -102,7 +112,12 @@
 
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-picture-o fa-fw"></i> Cuadros</a>
+                        <?php
+                            if( $_SESSION['seccion'] == "editor" )
+                                echo '<a href="./php/opciones.php?seccion=nuevoCuadro"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
+                            else
+                                echo '<a href="./opciones.php?seccion=nuevoCuadro"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
+                        ?>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-rebel fa-fw"></i> Otros Objetos</a>

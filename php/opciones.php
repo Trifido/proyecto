@@ -54,6 +54,8 @@
                 	include('addNuevaSala.php');
                 else if( $_SESSION["seccion"] == "nuevaEscultura" )
                 	include('addNuevaEscultura.php');
+                else if( $_SESSION["seccion"] == "nuevoCuadro" )
+                	include('addNuevoCuadro.php');
             ?>
       
         </div>
