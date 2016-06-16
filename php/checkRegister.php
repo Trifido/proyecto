@@ -28,8 +28,21 @@
 			$_SESSION['username'] = $username;
 			$_SESSION['start'] = time();
 			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+
+			$carpetaIMG = '../uploads/IMG/' . $username;
+			$carpetaX3D = '../uploads/X3D/' . $username;
+			$carpetaOBJ = '../uploads/OBJ/' . $username;
+			if (!file_exists($carpetaIMG)) {
+			    mkdir($carpetaIMG, 0777, true);
+			}
+			if (!file_exists($carpetaX3D)) {
+			    mkdir($carpetaX3D, 0777, true);
+			}
+			if (!file_exists($carpetaOBJ)) {
+			    mkdir($carpetaOBJ, 0777, true);
+			}
 			
-		    echo "<script>location.href='../index.html'</script>";
+			header('Location: ../index.php');
 		}
 		else{
 			$_SESSION['message'] = 'El campo contraseña está vacío.';

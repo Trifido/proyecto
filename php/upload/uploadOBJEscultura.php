@@ -12,8 +12,8 @@
 	$array = $result->fetchArray();
 
 	if($nombreEscultura != $array["NombreEscultura"]){
-		$target_dir = "../../uploads/OBJ/";
-		$path_dir = "./uploads/OBJ/";
+		$target_dir = "../../uploads/OBJ/" . $_SESSION['username'] . "/";
+		$path_dir = "./uploads/OBJ/" . $_SESSION['username'] . "/";
 	    $target_file = $target_dir . basename($_FILES["modelOBJ"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["modelOBJ"]["name"]);
 

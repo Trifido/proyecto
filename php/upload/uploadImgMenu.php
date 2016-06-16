@@ -14,8 +14,8 @@
 
 	if( $array["PathImgSala"] == NULL ){
 
-	    $path_dir = "./uploads/IMG/";
-		$target_dir = "../../uploads/IMG/";
+	    $path_dir = "./uploads/IMG/" . $_SESSION['username'] . "/";
+		$target_dir = "../../uploads/IMG/" . $_SESSION['username'] . "/";
 	    $target_file = $target_dir . basename($_FILES["imgMenu"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["imgMenu"]["name"]);
 

@@ -12,8 +12,8 @@
 	$array = $result->fetchArray();
 
 	if($nombreEscultura != $array["NombreEscultura"]){
-		$target_dir = "../../uploads/X3D/";
-		$path_dir = "./uploads/X3D/";
+		$target_dir = "../../uploads/X3D/" . $_SESSION['username'] . "/";
+		$path_dir = "./uploads/X3D/" . $_SESSION['username'] . "/";
 	    $target_file = $target_dir . basename($_FILES["modelX3D"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["modelX3D"]["name"]);
 

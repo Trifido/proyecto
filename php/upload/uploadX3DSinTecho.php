@@ -13,8 +13,8 @@
 	$array = $result->fetchArray();
 
 	if($nombreSala != $array["NombreSala"]){
-		$target_dir = "../../uploads/X3D/";
-		$path_dir = "./uploads/X3D/";
+		$target_dir = "../../uploads/X3D/" . $_SESSION['username'] . "/";
+		$path_dir = "./uploads/X3D/" . $_SESSION['username'] . "/";
 	    $target_file = $target_dir . basename($_FILES["modelSinTecho"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["modelSinTecho"]["name"]);
 

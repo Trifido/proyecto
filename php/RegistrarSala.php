@@ -26,8 +26,6 @@
 
 	if($nombreSala != $array["NombreSala"]){
 		$_SESSION["salaNueva"] = $nombreSala;
-
-		$target_dir = "../uploads/X3D/";
 	
 		$query = 'INSERT INTO Salas (NombreSala, AnchoSala, LargoSala, NombreUsuario) 
 				  VALUES (\''.$nombreSala.'\', \''.$anchoSala.'\', \''.$largoSala.'\', \'' .$nombreUsuario.'\')';
