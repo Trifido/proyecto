@@ -633,8 +633,8 @@
                                                             <h4 class="modal-title">Reproductor de Rutas</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div id="sceneCamera">
-                                                                <X3D>
+                                                            <div id="sceneCamera" class="col-lg-12">
+                                                                <X3D class="col-lg-10 col-lg-offset-1">
                                                                     <Scene>
                                                                         <inline url="./x3d/visionar.x3d"  translation="0 0 0"></inline>
                                                                     </Scene>
