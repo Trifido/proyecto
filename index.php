@@ -616,18 +616,36 @@
                                     </div>
                                 </div>
                                 <!------------------------------------INICIO VISTA DE CAMARA ------------------------------------>
-                                <div class="tab-pane fade row" id="cameraView-pills">
+                                <div class="tab-pane fade row" id="cameraView-pills" >
                                     <div class="panel-body">
                                         <div class="panel-group">
                                             <div id="noCameraAlert" class="alert alert-warning text-center">
-                                                Añada una nueva <strong> cámara </strong>.
+                                                Añada una nueva <strong> cámara</strong>.
                                             </div>
-                                            <div class="col-lg-12" id="sceneCamera">
-                                                <X3D id="the_sceneCamera">
-                                                    <Scene>
-                                                        <inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
-                                                    </Scene>
-                                                </X3D>
+                                            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCamera">
+                                                Reproducir Recorrido de Cámara
+                                            </button>
+                                            <div class="modal fade" id="modalCamera" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h4 class="modal-title">Reproductor de Rutas</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div id="sceneCamera">
+                                                                <X3D>
+                                                                    <Scene>
+                                                                        <inline url="./x3d/visionar.x3d"  translation="0 0 0"></inline>
+                                                                    </Scene>
+                                                                </X3D>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
