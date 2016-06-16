@@ -85,15 +85,21 @@
                     </li>
                     <li>
                         <?php
-                            if( $_SESSION['seccion'] != "nuevoEscenario" )
-                                echo '<a href="./php/mostrarSalas.php"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                            if( $_SESSION['seccion'] == "editor" )
+                                echo '<a href="./php/opciones.php?seccion=nuevoEscenario"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
                             else
-                                echo '<a href="./mostrarSalas.php"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                                echo '<a href="./opciones.php?seccion=nuevoEscenario"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
                         ?>
                        
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-qq fa-fw"></i> Esculturas</a>
+                        <?php
+                            if( $_SESSION['seccion'] == "editor" )
+                                echo '<a href="./php/opciones.php?seccion=nuevaEscultura"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
+                            else
+                                echo '<a href="./opciones.php?seccion=nuevaEscultura"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
+                        ?>
+
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-picture-o fa-fw"></i> Cuadros</a>

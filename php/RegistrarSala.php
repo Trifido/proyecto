@@ -43,7 +43,7 @@
 	    $result = sqlite_query($db, $query);
 	}
 
-	header('Location: ../php/mostrarSalas.php');
+	header('Location: ../php/opciones.php?seccion=nuevoEscenario');
 	sqlite_close($db);
 
 ?>
