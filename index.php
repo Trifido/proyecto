@@ -3,7 +3,7 @@
 
 <?php
     session_start();
-    $_SESSION['username'] = "Vicente";
+   // $_SESSION['username'] = "Vicente";
     $_SESSION["seccion"] = "editor";
 ?>
 

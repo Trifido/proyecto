@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -38,7 +42,7 @@
 
         <?php
             $_SESSION["seccion"] = "nuevoEscenario";
-            $_SESSION["username"] = "Vicente";
+            //$_SESSION["username"] = "Vicente";
             include('menuSupYLat.php');
         ?>
 

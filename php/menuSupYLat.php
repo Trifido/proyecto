@@ -7,7 +7,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Editor de Escenarios</a>
+            <?php
+                echo '<a class="navbar-brand" href="./index.php">Editor de Escenarios de ' . $_SESSION["username"] . '</a>';
+            ?>
         </div>
         <!-- /.navbar-header -->
 
@@ -53,8 +55,10 @@
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
+                    <?php
+                    echo    '<li><a href="#"><i class="fa fa-user fa-fw"></i>' . $_SESSION["username"] . '</a>
+                            </li>'
+                    ?>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
@@ -70,11 +74,23 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="./index.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>
+                    <li> 
+                        <?php
+                            if( $_SESSION['seccion'] != "editor" )
+                                echo '<a href="../index.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
+                            else
+                                echo '<a href="./index.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
+                        ?>
+                        
                     </li>
                     <li>
-                        <a href="./php/mostrarSalas.php"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>
+                        <?php
+                            if( $_SESSION['seccion'] != "nuevoEscenario" )
+                                echo '<a href="./php/mostrarSalas.php"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                            else
+                                echo '<a href="./mostrarSalas.php"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                        ?>
+                       
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-qq fa-fw"></i> Esculturas</a>
