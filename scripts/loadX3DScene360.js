@@ -1,39 +1,60 @@
+var transformName = 'transform_camera';
+var positionInterpolatorName = 'translate_camera';
+var translateTimeSensorName = 'translate_time';
+
 function loadX3D360() {
     if (activeCameras == 0) { // Si no hay una cámara activa
         $('#sceneCamera').html('\n'); // Actualizar el contenido
-        return;
     }
-    // Mensaje de error si no esta cargada la escena
+    else {
+        var content = '';
 
-    //o...
+        content += '<X3D id = "the_sceneCamera">\n';
+        content += '\t<Scene>\n';
 
-    var content = '';
-    content +='\t<X3D id="the_sceneCamera">\n';
-    content += '\t<Scene>\n\n';
+        //--------------------------------------------------------------------------------------------------------------
+        
+        content += '\t\t<transform DEF = "' + transformName + '">\n';
 
-    // AJAX - Interaccion con DB
-    var variables = 'idCamera='+selectedCamera;
-    
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            respuesta = xmlhttp.responseText;
-        }
-    };
-    
-    xmlhttp.open('GET', './php/cameras/readCamera.php?'+variables, false);
-    xmlhttp.send();
+        // Interaccion con la base de datos !
+            var variables = 'idCamera=' + selectedCamera;
 
-    content += '\t\t' + respuesta + '\n';
-    //content += '\t\t<Viewpoint description="Faceted box, smooth shading" position="2 10 3" orientation="1 0 0 -1.5708"></Viewpoint>\n';
-    
-    content += initX3DScene();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    response = JSON.parse(xmlhttp.responseText);
+                }
+            };
 
-    content += '\t</Scene>\n';
-    content += '</X3D>\n';
-    //console.log(content);
+            xmlhttp.open('GET', './php/cameras/readCamera.php?' + variables, false);
+            xmlhttp.send();
 
-    $('#sceneCamera').html(content); // Actualizar el contenido
+        // Viewpoint
+        content += '\t\t\t<ViewPoint id="camera" position="' + response.cX + ' ' + response.cY + ' ' + response.cZ + '" orientation="0 0 0 1"></Viewpoint>\n';
 
-    x3dom.reload();
+        content += '\t\t</transform>\n';
+
+        // Position Interpolator
+        content += '\t\t<PositionInterpolator DEF="' + positionInterpolatorName + '" key="' + response.keys + '" keyValue="' + response.keyValues + '"></PositionInterpolator>\n';
+
+        // Time Sensor
+        content += '\t\t<timeSensor DEF="' + translateTimeSensorName + '" cycleInterval="' + response.cycle + '" loop="false"></timeSensor>\n';
+
+        // Route para la traslacion
+        content += '\t\t<Route fromNode="' + translateTimeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
+        content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformName + '" toField="translation"></Route>\n';
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        content += initX3DScene();
+
+        content += '\t</Scene>\n';
+        content += '</X3D>\n';
+
+        //console.log(content);
+
+        $('#sceneCamera').html(content); // Actualizar el contenido
+
+        x3dom.reload();
+    }
 };

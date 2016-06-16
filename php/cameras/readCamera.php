@@ -16,8 +16,8 @@
     if ($arrayC = $resultC->fetchArray()) {
         $cameraCord = [ 'x' => $arrayC['cX'], 'y' => $arrayC['cY'], 'z' => $arrayC['cZ'] ];
         $duration = $arrayC['duration'];
-        $zFar = $arrayC['zFar'];
-        $zClose = $arrayC['zClose'];
+        //$zFar = $arrayC['zFar'];
+        //$zClose = $arrayC['zClose'];
     }
 
     /* Recoger datos puntos */
@@ -30,12 +30,8 @@
 
     sqlite_close($db);
 
-    /* Position Interpolator */
+    /* JSON para devolver */
 
-    $viewPoint = '<ViewPoint id="camera" position="'.$cameraCord['x'].' '.$cameraCord['y'].' '.$cameraCord['z'].'" orientation="0 0 0 1"></Viewpoint>';
-
-    echo $viewPoint;
-/*
     // Key
     $key = ' 0 ';
     foreach ($pointTime as $time){
@@ -49,6 +45,7 @@
         $keyValue .= $cord['x'].' '.$cord['y'].' '.$cord['z'].' ';
     }
 
-    $positionInterpolator = '<PositionInterpolator DEF="moveCamera" key="'.$key.'" keyValue="'.$keyValue.'"></PositionInterpolator>';
-*/
+    $response = array('cycle'=>$duration, 'cX'=>$cameraCord['x'], 'cY'=>$cameraCord['z'], 'cZ'=>$cameraCord['y'], 'keys'=>$key, 'keyValues'=>$keyValue);
+
+    echo json_encode($response);
 ?>
