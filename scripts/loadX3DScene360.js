@@ -3,13 +3,13 @@ var positionInterpolatorName = 'translate_camera';
 var translateTimeSensorName = 'translate_time';
 
 function loadX3D360() {
-    if (activeCameras == 0) { // Si no hay una cámara activa
+    if (activeCameras == 0 && activePoints[selectedCamera-1] == 0) { // Si no hay una cámara activa
         //$('#sceneCamera').html('\n'); // Actualizar el contenido
     }
     else {
         var content = '';
 
-        content += '<x3d id=\'x3dSceneCamera\' showStat=\'false\' showLog=\'false\' style=\'width:100%; height:100%; border:0; margin:0; padding:0;\'>\n';
+        content += '<x3d id=\'x3dSceneCamera\' class="col-lg-10 col-lg-offset-1" showStat=\'false\' showLog=\'false\' style=\'width:100%; height:100%; border:0; margin:0; padding:0;\'>\n';
         content += '\t<scene id=\'sceneCamera\'>\n';
         content += '\t<Environment frustumCulling=\"false\"></Environment>\n';
         content += '\t<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'20 20 20\' radius=\'5000000\' ></PointLight>\n';
@@ -68,8 +68,8 @@ function load360Camera() {
     content += '\t\t<timeSensor DEF="' + translateTimeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="false"></timeSensor>\n';
 
     // Route para la traslacion
-    //content += '\t\t<Route fromNode="' + translateTimeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
-    //content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformName + '" toField="translation"></Route>\n';
+    content += '\t\t<Route fromNode="' + translateTimeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
+    content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformName + '" toField="translation"></Route>\n';
 
 
     return content;

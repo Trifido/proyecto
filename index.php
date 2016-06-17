@@ -632,7 +632,7 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                             <h4 class="modal-title">Reproductor de Rutas</h4>
                                                         </div>
-                                                        <div class="modal-body">
+                                                        <div id="sceneModal" class="modal-body">
                                                             <div id="sceneCamera" class="col-lg-12">
                                                                 <X3D class="col-lg-10 col-lg-offset-1">
                                                                     <Scene>
