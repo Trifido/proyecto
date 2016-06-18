@@ -62,7 +62,7 @@ function Grab(evt)
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
         if(ObjetoEscultura())
-            changeSculture(targetElement.getAttributeNS(null,'nombre'));
+            changeSculture(targetElement.getAttributeNS(null,'pathOBJ'));
         clickFlag= 0;
     }
     else{

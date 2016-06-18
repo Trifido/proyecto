@@ -40,8 +40,6 @@ function Room(nombre, pathLocation, pathX3dSin, pathX3d, pathObj){
 
 Room.prototype.change = function( nombre, pathLocation, pathX3dSin, pathX3d, pathObj){
 	this.nombre= nombre;
-	this.height= altura;
-	this.width= anchura;
 	this.location= pathLocation;
 	this.pathX3D = pathX3d;
 	this.pathX3DSIN = pathX3dSin;

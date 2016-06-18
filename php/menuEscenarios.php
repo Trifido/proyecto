@@ -25,7 +25,7 @@
 	}
 
 	$numSalas = $db->querySingle("SELECT COUNT(*) as count FROM Salas WHERE NombreUsuario='". $_SESSION["username"] ."'");
-	$numBloques = ($numSalas % 4) + 1;
+	$numBloques = $numSalas / 4;
 
     $stringResult = '';
 
