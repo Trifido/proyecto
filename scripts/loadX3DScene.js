@@ -26,7 +26,7 @@ function initX3DScene(){
 
     texto+='\t\t<Transform DEF="Position' + objDin.nombre +'" translation="0 0 0">\n';
 
-    texto+='\t\t\t<inline url="./models/X3D/' + objDin.nombre + '.x3d"> </inline>\n';
+    texto+='\t\t\t<inline url="' + objDin.pathX3DSin + '"> </inline>\n';
 
     texto+='\t\t</Transform>\n\n';
 
@@ -63,7 +63,7 @@ function initX3DScene(){
                 texto+='\t\t<Transform DEF="Rotate' + objDin.nombre +'" rotation="0 1 0 '+ objDin.rotation + '">\n';
             }
 
-            texto+='\t\t\t\t<inline url="./models/X3D/' + objDin.nombre + '.x3d"> </inline>\n';
+            texto+='\t\t\t\t<inline url="' + objDin.pathX3D + '"> </inline>\n';
 
             if(objDin.rotation > 0)
                 texto+='\t\t\t</Transform>\n';

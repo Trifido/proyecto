@@ -30,7 +30,9 @@ function obtenerDatos(objetoDinamico) {
         alto: objetoDinamico.getAttributeNS(null, 'height'),
         clase: objetoDinamico.getAttributeNS(null, 'class'),
         pedestalAncho: objetoDinamico.getAttributeNS(null, 'pedestalAncho'),
-        pedestalAlto: objetoDinamico.getAttributeNS(null, 'pedestalAlto')
+        pedestalAlto: objetoDinamico.getAttributeNS(null, 'pedestalAlto'),
+        pathX3D: objetoDinamico.getAttributeNS(null, 'pathX3D'),
+        pathOBJ: objetoDinamico.getAttributeNS(null, 'pathOBJ')
     };
 };
 
@@ -57,7 +59,7 @@ function obtenerDatosCuadro(objetoDinamico) {
         rotation: radianes,
         largo: parseFloat(objetoDinamico.getAttributeNS(null, 'longitudReal'))/10,
         alto: parseFloat(objetoDinamico.getAttributeNS(null, 'alturaReal'))/10,
-        textura: "./img/cuadros/" + objetoDinamico.getAttributeNS(null, 'nombre') + ".jpg",
+        textura: objetoDinamico.getAttributeNS(null, 'pathEscenario'),
         clase: objetoDinamico.getAttributeNS(null, 'class')
     };
 };
@@ -84,7 +86,10 @@ function obtenerEscenario(objetoDinamico) {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
         x: objetoDinamico.getAttributeNS(null, 'x'),
         y: 0.0,
-        z: objetoDinamico.getAttributeNS(null, 'y')
+        z: objetoDinamico.getAttributeNS(null, 'y'),
+        pathX3DSin: objetoDinamico.getAttributeNS(null, 'pathX3DSIN'),
+        pathX3D: objetoDinamico.getAttributeNS(null, 'pathX3D'),
+        pathOBJ: objetoDinamico.getAttributeNS(null, 'pathOBJ')
     };
 };
 

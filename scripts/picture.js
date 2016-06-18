@@ -1,6 +1,6 @@
 var picture;
 
-function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
+function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal, pathEscena){
 
 	var location;
 	var height;
@@ -10,6 +10,7 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
 	var id;
 	var nombre;
 	var svgObject;
+	var pathEscenario;
 
 	this.height= altura;
 	this.width= anchura;
@@ -17,6 +18,7 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
 	this.longitudReal= largoReal;
 	this.location= pathLocation;
 	this.nombre= nombre;
+	this.pathEscenario = pathEscena;
 	
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
@@ -36,6 +38,7 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
 	this.svgObject.setAttributeNS(null,'posZFinal','0');
 	this.svgObject.setAttributeNS(null,'alturaReal', this.alturaReal);
 	this.svgObject.setAttributeNS(null,'longitudReal', this.longitudReal);
+	this.svgObject.setAttributeNS(null,'pathEscenario', this.pathEscenario);
 
 	document.getElementById('picture_level').appendChild(this.svgObject);
 	//Esto me sirve para poder eliminar el cuadro que acabo de cargar en la escena
@@ -43,9 +46,10 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal){
 	targetElement= document.getElementById('picture_level').childNodes[n-1];
 }
 
+/*
 Picture.prototype.change = function( nombre, pathLocation, altura, largo, anchura){
 	this.nombre= nombre;
 	this.height= altura;
 	this.width= anchura;
 	this.location= pathLocation;
-}
+}*/

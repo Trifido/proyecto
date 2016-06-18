@@ -106,59 +106,13 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-            <!-------------------------------------------------------------- COLUMNA IZQUIERDA ----------------------------------------------------------------->
+            <!-------------------------------------------------------------- COLUMNA IZQUIERDA --------------------------------------------------------------- -->
 			    <div class="col-md-6" id="columna1">
                     <!---------------------------------------------------------- EDITOR ---------------------------------------------------------------------------->
                     <div class="row">
-                        <!------------------------------------------------------ MENÚ ESCENARIOS ------------------------------------------------------------------->
-                        <div class="well">
-				            <div id="myCarousel1" class="carousel slide">
-				                <!-- Carousel items -->
-				                <div class="carousel-inner">
-				                    <div class="item active">
-				                        <div class="row">
-				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 0 )"></a>
+                        
+                        <?php include('./php/menuEscenarios.php'); ?>
 
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 2 )"></a>
-
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 3 )"></a>
-
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene4.png" alt="Image" class="img-responsive" onclick="loadRoom( 4 )"></a>
-
-				                            </div>
-				                        </div>
-				                        <!--/row-->
-				                    </div>
-				                    <!--/item-->
-				                    <div class="item">
-				                        <div class="row">
-				                            <div class="col-xs-3"><a><img src="img/menu/scene5.png" alt="Image" class="img-responsive" onclick="loadRoom( 1 )"></a>
-
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene1.png" alt="Image" class="img-responsive" onclick="loadRoom( 5 )"></a>
-
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene2.png" alt="Image" class="img-responsive" onclick="loadRoom( 2 )"></a>
-
-				                            </div>
-				                            <div class="col-xs-3"><a><img src="img/menu/scene3.png" alt="Image" class="img-responsive" onclick="loadRoom( 3 )"></a>
-
-				                            </div>
-				                        </div>
-				                        <!--/row-->
-				                    </div>
-				                    <!--/item-->
-				                </div>
-				                <!--/carousel-inner--> 
-				                <a class="left carousel-control" href="#myCarousel1" data-slide="prev">‹</a>
-				 				<a class="right carousel-control" href="#myCarousel1" data-slide="next">›</a>
-
-				            </div>
-				            <!--/myCarousel-->
-				        </div>
                         <!------------------------------------------------------ INICIO CANVAS SVG ------------------------------------------------------------------>
 
 	                    <div class="panel panel-primary" id="panelCanvas">
@@ -225,9 +179,7 @@
                     </div>
 
 			    </div>
-<!--  --------------------------------------------------------------------------------------------------------------------- FIN CANVAS SVG -------------------- -->
 
-<!--  --------------------------------------------------------------------------------------------------------------------- INICIO MENÚ OBJETOS --------------- -->
 			    <!-- /col -->
 			    <div class="col-md-6" id="columna2">
 
@@ -240,51 +192,7 @@
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
-    <!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER ESCULTURAS ---------- -->
-                                <div class="well">
-						            <div id="myCarouselEscultura" class="carousel slide">
-						                <!-- Carousel items -->
-						                <div class="carousel-inner">
-						                    <div class="item active">
-						                        <div class="row">
-						                            <div class="col-xs-3"><a><img src="./img/menu/venus.png" alt="Image" class="img-responsive" onclick="loadSculpture( 6 )"></a>
-
-						                            </div>
-						                            <div class="col-xs-3"><a><img src="./img/menu/thinker.png" alt="Image" class="img-responsive" onclick="loadSculpture( 7 )"></a>
-
-						                            </div>
-						                            <div class="col-xs-3"><a><img src="./img/menu/david.png" alt="Image" class="img-responsive" onclick="loadSculpture( 8 )"></a>
-
-						                            </div>
-						                            <div class="col-xs-3"><a><img src="./img/menu/dragon.png" alt="Image" class="img-responsive" onclick="loadSculpture( 9 )"></a>
-
-						                            </div>
-						                        </div>
-						                        <!--/row-->
-						                    </div>
-						                    <!--/item-->
-						                    <div class="item">
-						                        <div class="row">
-						                            <div class="col-xs-3"><a><img src="./img/menu/ramses2.png" alt="Image" class="img-responsive" onclick="loadSculpture( 10 )"></a>
-
-						                            </div>
-						                            <div class="col-xs-3"><a><img src="./img/menu/pascua.png" alt="Image" class="img-responsive" onclick="loadSculpture( 11 )"></a>
-
-						                            </div>
-						                        </div>
-						                        <!--/row-->
-						                    </div>
-						                    <!--/item-->
-						                </div>
-						                <!--/carousel-inner--> 
-						                <a class="left carousel-control" href="#myCarouselEscultura" data-slide="prev">‹</a>
-						 				<a class="right carousel-control" href="#myCarouselEscultura" data-slide="next">›</a>
-
-						            </div>
-						            <!--/myCarousel-->
-						        </div>
-    <!--  --------------------------------------------------------------------------------------------------------------------- FIN SLIDER ESCULTURAS ------------- -->
-    <!--  --------------------------------------------------------------------------------------------------------------------- INICIO SLIDER CUADROS ---------- -->
+                                <?php include('./php/menuEsculturas.php'); ?>
                             </div>
                         </div>
                         <!-------------------------------------------------------------- CUADROS    -------------------------------------------------------------->
@@ -295,47 +203,7 @@
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="well">
-                                    <div id="myCarouselCuadro" class="carousel slide">
-                                        <!-- Carousel items -->
-                                        <div class="carousel-inner">
-                                            <div class="item active">
-                                                <div class="row">
-                                                    <div class="col-xs-3"><a><img src="./img/menu/elgrito.png" alt="Image" class="img-responsive" onclick="loadPicture( 1 )"></a>
-
-                                                    </div>
-                                                    <div class="col-xs-3"><a><img src="./img/menu/guernica.png" alt="Image" class="img-responsive" onclick="loadPicture( 2 )"></a>
-
-                                                    </div>
-                                                    <div class="col-xs-3"><a><img src="./img/menu/meninas.png" alt="Image" class="img-responsive" onclick="loadPicture( 3 )"></a>
-
-                                                    </div>
-                                                    <div class="col-xs-3"><a><img src="./img/menu/miro.png" alt="Image" class="img-responsive"  onclick="loadPicture( 4 )"></a>
-
-                                                    </div>
-                                                </div>
-                                                <!--/row-->
-                                            </div>
-                                            <!--/item-->
-                                            <div class="item">
-                                                <div class="row">
-                                                    <div class="col-xs-3"><a><img src="./img/menu/monalisa.png" alt="Image" class="img-responsive" onclick="loadPicture( 5 )"></a>
-
-                                                    </div>
-                                                    <div class="col-xs-3"><a><img src="./img/menu/nocheestrellada.png" alt="Image" class="img-responsive" onclick="loadPicture( 6 )"></a>
-                                                    </div>
-                                                </div>
-                                                <!--/row-->
-                                            </div>
-                                            <!--/item-->
-                                        </div>
-                                        <!--/carousel-inner--> 
-                                        <a class="left carousel-control" href="#myCarouselCuadro" data-slide="prev">‹</a>
-                                        <a class="right carousel-control" href="#myCarouselCuadro" data-slide="next">›</a>
-
-                                    </div>
-                                    <!--/myCarousel-->
-                                </div>
+                                <?php include('./php/menuCuadros.php'); ?>
                             </div>
                         </div>
                         <!-------------------------------------------------------------- OTROS      -------------------------------------------------------------->

@@ -1,26 +1,24 @@
 
-function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
+function Sculpture( nombre, pathLocation, altura, anchura, pathX3d, pathObj){
 
 	//Atributos para del objeto 
 	var nombre;
 	var location;
-	var coordX;
-	var coordY;
 	var height;
 	var width;
 	var svgObject;
 	var rotation;
+	var pathX3D;
+	var pathOBJ;
 	
-
 	// Inicialización de los atributos
 	this.nombre= nombre;
 	this.height= altura;
 	this.width= anchura;
-	this.coordX= posX;
-	this.coordY= posY;
 	this.location= pathLocation;
 	this.rotation= 0;
-
+	this.pathX3D = pathX3d;
+	this.pathOBJ = pathObj;
 	
 	// Contrucción del nodo hijo que representa a la escultura y se cuelga del lienzo
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
@@ -30,18 +28,20 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);
-	this.svgObject.setAttributeNS(null,'x',this.coordX);
-	this.svgObject.setAttributeNS(null,'y',this.coordY);
-	this.svgObject.setAttributeNS(null,'coordX',this.coordX);
-	this.svgObject.setAttributeNS(null,'coordY',this.coordY);
-	this.svgObject.setAttributeNS(null,'cX', (this.coordX + (this.width/2)));
-	this.svgObject.setAttributeNS(null,'cY',(this.coordY + (this.height/2)));
+	this.svgObject.setAttributeNS(null,'x', 0);
+	this.svgObject.setAttributeNS(null,'y', 0);
+	this.svgObject.setAttributeNS(null,'coordX', 0);
+	this.svgObject.setAttributeNS(null,'coordY', 0);
+	this.svgObject.setAttributeNS(null,'cX', (this.width/2));
+	this.svgObject.setAttributeNS(null,'cY', (this.height/2));
 	this.svgObject.setAttributeNS(null,'rotation', this.rotation);
 	this.svgObject.setAttributeNS(null, 'fill', 'orange');
 	this.svgObject.setAttributeNS(null, 'visibility', 'visible');
 	this.svgObject.setAttributeNS(null, 'class', 'sculpture'); // Para localizarla luego por su 
 	this.svgObject.setAttributeNS(null,'pedestalAncho',0);
 	this.svgObject.setAttributeNS(null,'pedestalAlto',0);
+	this.svgObject.setAttributeNS(null,'pathX3D', this.pathX3D);
+	this.svgObject.setAttributeNS(null,'pathOBJ', this.pathOBJ);
 
 	document.getElementById('sculpture_level').appendChild(this.svgObject);
 
@@ -51,7 +51,7 @@ function Sculpture( nombre, pathLocation, altura, anchura, posX, posY){
 }
 
 //Metodo para cambiar los atributos del objeto
-Sculpture.prototype.change = function( pathLocation, altura, anchura){
+/*Sculpture.prototype.change = function( pathLocation, altura, anchura){
 	this.height= altura;
 	this.width= anchura;
 	this.location= pathLocation;
@@ -59,6 +59,6 @@ Sculpture.prototype.change = function( pathLocation, altura, anchura){
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);
-}
+}*/
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
