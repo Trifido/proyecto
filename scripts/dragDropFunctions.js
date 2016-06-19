@@ -61,8 +61,6 @@ function Grab(evt)
         GrabPoint.x = TrueCoords.x - Number(transMatrix.e);
         GrabPoint.y = TrueCoords.y - Number(transMatrix.f);
 
-        if(ObjetoEscultura())
-            changeSculture(targetElement.getAttributeNS(null,'pathOBJ'));
         clickFlag= 0;
     }
     else{
@@ -194,9 +192,11 @@ function Drop(evt)
 
             if(DragTarget.getAttributeNS(null,'nombre') == "delete"){
                 menu.removeMenu();
+                removeSculpture();
                 elementoSeleccionado= null;
                 //Eliminar estatua
                 removeElement(elementoAnterior.getAttributeNS(null,'class'), elementoAnterior.getAttributeNS(null,'nombre'));
+                hideFormSculpture();
             }
             else if(DragTarget.getAttributeNS(null,'nombre') == "rotate"){
                 var rot = parseInt(elementoAnterior.getAttributeNS(null, 'rotation'));
@@ -216,14 +216,27 @@ function Drop(evt)
                 menu.loadMenu(DragTarget);
                 elementoSeleccionado= DragTarget;
 
+                
                 var clase = DragTarget.getAttributeNS(null, 'class');
-                if(clase == "sculpture" || clase == "picture")
-                    showInfoForm(clase, DragTarget.getAttributeNS(null, 'nombreBD'), DragTarget.getAttributeNS(null, 'pathEscenario'))
+                if(clase == "sculpture" || clase == "picture"){
+                    showInfoForm(clase, DragTarget.getAttributeNS(null, 'nombreBD'), DragTarget.getAttributeNS(null, 'pathEscenario'));
+                    if(clase == "sculpture"){
+                        changeSculture(DragTarget.getAttributeNS(null,'pathOBJ'));
+                    }
+                }
             }
             else{
                 if(ObjetoValido()){
                     menu.loadMenu(DragTarget);
                     elementoSeleccionado= DragTarget;
+
+                    var clase = DragTarget.getAttributeNS(null, 'class');
+                    if(clase == "sculpture" || clase == "picture"){
+                        showInfoForm(clase, DragTarget.getAttributeNS(null, 'nombreBD'), DragTarget.getAttributeNS(null, 'pathEscenario'));
+                        if(clase == "sculpture"){
+                            changeSculture(DragTarget.getAttributeNS(null,'pathOBJ'));
+                        }
+                    }
                 }
             }
         }
@@ -232,6 +245,8 @@ function Drop(evt)
     else if(clickFlag==2){
         menu.removeMenu();
         removeSculpture();
+        //Oculto el formInfo
+        hideFormSculpture();
         //Oculto el x3dom
         elementoSeleccionado= null;
         typeNodeLoad = null;

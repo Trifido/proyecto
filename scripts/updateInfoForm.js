@@ -23,10 +23,32 @@ function DisplayFormSculpture(option, nombreBD, cronologia, tecnica, info, pathI
     }
 }
 
+function hideFormSculpture(){
+    lastTypeObject = null;
+    lastNameObject = null;
+
+    document.getElementById("viewPicture").style.display = "none";
+    document.getElementById("viewElement").style.display = "block";
+    document.getElementById("anchoPedestal").style.display = "block";
+    document.getElementById("altoPedestal").style.display = "block";
+    document.getElementById("anchoPedestal").style.display = "block";
+    document.getElementById("altoPedestal").style.display = "block";
+
+    document.getElementById("campNombre").value = "";
+    document.getElementById("campCronologia").value = "";
+    document.getElementById("campTecnica").value = "";
+    document.getElementById("campInfo").value = "";
+    document.getElementById("viewPicture").src = "";
+    document.getElementById("anchoPedestal").value = "";
+    document.getElementById("altoPedestal").value = "";
+    document.getElementById("anchoPedestal").value = "";
+    document.getElementById("altoPedestal").value = "";
+}
+
 function showInfoForm(typeObject, nombreBD, pathImg){
     var ajaxResponse;
 
-    if( typeObject != null && lastTypeObject != typeObject ){
+    if( typeObject != null && lastNameObject != nombreBD ){
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -36,8 +58,6 @@ function showInfoForm(typeObject, nombreBD, pathImg){
         };
         xmlhttp.open("GET", "./php/readInfoForm.php?typeObject=" + typeObject + "&nombreBD=" + nombreBD, false);
         xmlhttp.send();
-
-
 
         if( typeObject == "sculpture" ){
             DisplayFormSculpture(true, nombreBD, ajaxResponse.cronologia, ajaxResponse.tecnica, ajaxResponse.info, pathImg);
@@ -86,8 +106,6 @@ function updateInfoForm(typeInput){
                 regValue = document.getElementById("campPedAlto").value;
                 break;
         }
-
-        alert(lastNameObject + " " + regUpdate + " " + regValue);
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {

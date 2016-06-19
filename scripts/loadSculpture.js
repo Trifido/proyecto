@@ -6,7 +6,6 @@ var ScultureLoad= null;
 function initSculpture( nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ ){
 	sculpture = new Sculpture(nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
 	//loadModel('pathOBJ');
-	ScultureLoad= pathOBJ;
 }
 
 //Funcion encargada de comprobar y cargar la escultura correspondiente.
@@ -22,6 +21,9 @@ function loadSculpture( nombre, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ )
 		idSculpture++;
 		typeNodeLoad = "sculpture";
 		showInfoForm("sculpture", nombreBD, null);
+
+		ScultureLoad= pathOBJ;
+		loadModel(ScultureLoad);
 	}
 }
 
@@ -42,7 +44,7 @@ function changeSculture( path ){
 function removeSculpture(){
 	if(RoomInit){
 		//removeX3DSculpture();
-		//removeModel();
+		removeModel();
 		nameScultureLoad=null;
 	}
 }
