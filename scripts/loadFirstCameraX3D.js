@@ -13,7 +13,7 @@ function generarVRX3D() {
 	texto += "       <group id=\'root\' render=\'true\'>\n";
 	texto += "            <group DEF=\'theScene\'>\n";
 	
-	texto += initX3DScene();
+	texto += initX3DScene("techo");
 
 	texto += "            </group>\n";
 	texto += "        </group>\n";
@@ -117,7 +117,7 @@ function generarGameCameraX3D() {
 
 	texto += "        <background DEF=\'bgnd\' backUrl=\'space.jpg\'></background>\n";
 	
-	texto += initX3DScene();
+	texto += initX3DScene("techo");
 
 	texto += "    </scene>\n";
 	texto += "</x3d>";
@@ -246,7 +246,7 @@ function loadNodeVRCamera(){
 
     interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
 
-	texto += "<navigationInfo  avatarSize=\'" + 0.001 + " " + 0.15 + " " + 0.15 + "\' type=\'\"game\"\'></navigationInfo>\n";
+	texto += "<navigationInfo  avatarSize=\'" + 0.001 + " " + 0.015 + " " + 0.015 + "\' type=\'\"game\"\'></navigationInfo>\n";
 
 	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 
 	texto += "	<viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";

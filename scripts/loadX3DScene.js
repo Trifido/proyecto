@@ -7,7 +7,7 @@ function loadX3D() {
     texto+='\t\t<Background backUrl=\'space.jpg\'></Background>\n';
     texto+='\t\t<Viewpoint description="Faceted box, smooth shading" position="2 10 3" orientation="1 0 0 -1.5708"></Viewpoint>\n';
     
-    texto+= initX3DScene();
+    texto+= initX3DScene("Techo");
 
     texto+='\t</Scene>\n';
     texto+='</X3D>\n';
@@ -19,14 +19,17 @@ function loadX3D() {
     x3dom.reload();
 };
 
-function initX3DScene(){
+function initX3DScene( tipo ){
     var texto="";
     //Añadimos el escenario    
     var objDin= obtenerEscenario(document.getElementById('room_level').childNodes[0]);
 
     texto+='\t\t<Transform DEF="Position' + objDin.nombre +'" translation="0 0 0">\n';
 
-    texto+='\t\t\t<inline url="' + objDin.pathX3DSin + '"> </inline>\n';
+    if( tipo == "sinTecho" )
+        texto+='\t\t\t<inline url="' + objDin.pathX3DSin + '"> </inline>\n';
+    else
+        texto+='\t\t\t<inline url="' + objDin.pathX3D + '"> </inline>\n';
 
     texto+='\t\t</Transform>\n\n';
 

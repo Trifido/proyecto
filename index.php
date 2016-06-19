@@ -22,8 +22,8 @@
 
 	<!-- Script para jquery -->
     <script  type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-    <script  type="text/javascript" src="scripts/loadInfo.js"></script>
     <script  type="text/javascript" src="scripts/Redireccionar/redireccionarMostrar.js"></script>
+    <script  type="text/javascript" src="scripts/updateInfoForm.js"></script>
 
     <!-- Script para threeJS (visualizar modelos) -->
 	<script  type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.js"></script>
@@ -261,147 +261,9 @@
                         </div>
                     </div>
 
-                    <!--------------------------------------------- INICIO INFORMACIÓN --------------------------------------------->
-                    <div class="panel panel-primary" id="panelInfo">
-                        <div class="panel-heading">
-                            <i class="fa fa-info fa-fw"></i>
-                            Información General
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills" id="labels">
-                                <li class="active"><a href="#ficha-pills" data-toggle="tab">Ficha Técnica</a>
-                                </li>
-                                <li><a href="#escena-pills" data-toggle="tab" onclick="loadX3D()">Escenario</a>
-                                </li>
-                                <li><a href="#camara-pills" data-toggle="tab">Primera Persona</a>
-                                </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                            <!------------------------------------ INICIO FICHA TÉCNICA ------------------------------------>
-                                <div class="tab-pane fade in active" id="ficha-pills">
-                                	<div class="row" id="formSculpture">
-	                                	<div class="col-lg-6">
-		                                    <form role="form">
-		                                        <div class="form-group">
-		                                            <label>Nombre</label>
-		                                            <input class="form-control">
-		                                        </div>
-		                                        <div class="form-group">
-		                                            <label>Cronología</label>
-		                                            <input class="form-control">
-		                                        </div>
-		                                        <div class="form-group">
-		                                            <label>Técnica</label>
-		                                            <input class="form-control">
-		                                        </div>
-		                                    </form>
-	                                    </div>
+                    <!--------------------------------------------- INICIO INFORMACIÓN ------------------------------------------- -->
 
-	                                    <!--
-										<div class="col-lg-6" id="viewSculture">
-	                                    	<div class="panel panel-primary">
-	                                    		<div id="viewElement"></div>
-	                                    	</div>
-	                                    </div>
-	                                    -->
-
-	                                    <div class="col-md-6" id="visorEscultura">
-											<!--<X3D id="the_monument_viewer">
-												<Scene>
-													<Viewpoint description="Faceted box, smooth shading" position="0 0.5 0.5"></Viewpoint>
-													<inline url="./models/X3D/venus.x3d" translation="0 0 0"> </inline>
-												</Scene>
-											</X3D> -->
-											<div class="panel panel-primary">
-	                                    		<div id="viewElement"></div>
-	                                    	</div>
-	                                    </div>
-	                                </div>
-	                                <div class="row">
-	                                	<div class="col-lg-6">
-		                                	<div class="form-group">
-                                             	<label>Ancho Pedestal</label>
-	                                            <input class="form-control" onkeyup="addAnchuraPedestal(this.value)">
-	                                        </div>
-                                        </div>
-                                        <div class="col-lg-6">
-		                                	<div class="form-group">
-	                                            <label>Alto Pedestal</label>
-	                                            <input class="form-control" onkeyup="addAlturaPedestal(this.value)">
-	                                        </div>
-                                        </div>
-	                                </div>
-	                                <div class="row">
-	                                	<div class="col-lg-12">
-		                                	<div class="form-group">
-	                                            <label>Información</label>
-	                                            <textarea class="form-control" rows="3"></textarea>
-	                                        </div>
-                                        </div>
-	                                </div>
-                                </div>
-                                <!------------------------------------ INICIO ESCENARIO ------------------------------------>
-                                <div class="tab-pane fade" id="escena-pills">
-                                	<div class="row">
-                                		<div class="col-lg-12" id="escena">
-		                                    <X3D id="the_scene">
-												<Scene>
-													<inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
-												</Scene>
-											</X3D>
-										</div>
-									</div>
-                                </div>
-                                <!------------------------------------ INICIO PRIMERA PERSONA ------------------------------------>
-                                <div class="tab-pane fade" id="camara-pills">
-                                	<div class="row">
-                                		<div class="col-lg-12">
-                                			<!--<div class="row">
-                                				<div class="col-lg-12" id="FirstCameraVR">
-				                                    <X3D id="VRCamera">
-														<Scene>
-															<inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
-														</Scene>
-													</X3D> 
-												</div>
-											</div>-->
-                      
-                                            <button class="btn btn-primary btn-lg" id="botonPantallaVR" data-toggle="modal" data-target="#myModal" onclick="loadVRX3D()">
-                                                Primera Persona VR
-                                            </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content" id="FirstCameraVR">
-                                                        <X3D id="VRCamera">
-                                                            <Scene>
-                                                                <inline url="./x3d/visionar.x3d"  translation="0 0 0"> </inline>
-                                                            </Scene>
-                                                        </X3D>
-                                                    </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <!-- /.modal -->
-
-                                            <div class="form-group">
-                                                <label>Altura</label>
-                                                <input class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Zancada</label>
-                                                <input class="form-control">
-                                            </div>
-										</div>
-									</div>
-                                </div>
-                            </div>
-                        </div> <!-- /.panel-body -->
-                    </div> <!-- /.panel -->
+                    <?php include("./php/panelInformacion.php"); ?>
 
                     <!------------------------------------INICIO INFORMACIÓN DE CÁMARAS ------------------------------------>
                     <div class="panel panel-primary" id="panelCameras" style="display: none;">

@@ -1,9 +1,9 @@
 var idPicture= 0;
 
 //Iniciar la sala correspondiente.
-function initPicture( nombre, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, largo ){
+function initPicture( nombre, nombreBD, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, largo ){
 	nombre += idPicture;
-	picture = new Picture( nombre, pathCanvas, AltoPx, AnchoPx, alto, largo, pathEscena );
+	picture = new Picture( nombre, nombreBD, pathCanvas, AltoPx, AnchoPx, alto, largo, pathEscena );
 	namePictureLoad = nombre;
 	idPicture ++;
 }
@@ -11,6 +11,9 @@ function initPicture( nombre, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, lar
 //Funcion encargada de comprobar y cargar la escultura correspondiente.
 function loadPicture( nombre, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, largo ){
 	if(RoomInit){
-		initPicture(nombre, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, largo);
+		var nombreBD = nombre;
+		initPicture(nombre, nombreBD, pathCanvas, AltoPx, AnchoPx, pathEscena, alto, largo);
+		typeNodeLoad = "picture";
+		showInfoForm(typeNodeLoad, nombreBD, pathCanvas);
 	}
 }

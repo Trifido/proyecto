@@ -1,6 +1,6 @@
 var picture;
 
-function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal, pathEscena){
+function Picture(nombre, nombrebd, pathLocation, altura, anchura, altoReal, largoReal, pathEscena){
 
 	var location;
 	var height;
@@ -9,6 +9,7 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal, pat
 	var width;
 	var id;
 	var nombre;
+	var nombreBD;
 	var svgObject;
 	var pathEscenario;
 
@@ -18,12 +19,14 @@ function Picture(nombre, pathLocation, altura, anchura, altoReal, largoReal, pat
 	this.longitudReal= largoReal;
 	this.location= pathLocation;
 	this.nombre= nombre;
+	this.nombreBD = nombrebd;
 	this.pathEscenario = pathEscena;
 	
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
 	this.svgObject.setAttribute('id', this.nombre);
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
+	this.svgObject.setAttribute('nombreBD', this.nombreBD);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
 	this.svgObject.setAttributeNS('http://www.w3.org/1999/xlink','href', this.location);

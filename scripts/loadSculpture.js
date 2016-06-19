@@ -1,9 +1,10 @@
+var typeNodeLoad = null;
 var idSculpture = 0;
 var ScultureLoad= null;
 
 //Iniciar la sala correspondiente.
-function initSculpture( nombre, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ ){
-	sculpture = new Sculpture(nombre,pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
+function initSculpture( nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ ){
+	sculpture = new Sculpture(nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
 	//loadModel('pathOBJ');
 	ScultureLoad= pathOBJ;
 }
@@ -14,10 +15,13 @@ function loadSculpture( nombre, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ )
 		if( ScultureLoad != null && ScultureLoad != pathOBJ)
 			removeModel();
 
+		var nombreBD = nombre;
 		nombre += idSculpture;
-		initSculpture(nombre, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
+		initSculpture(nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
 
 		idSculpture++;
+		typeNodeLoad = "sculpture";
+		showInfoForm("sculpture", nombreBD, null);
 	}
 }
 

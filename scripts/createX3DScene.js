@@ -71,7 +71,7 @@ function obtenerVRCamera() {
     return {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
         x: (objetoDinamico.getAttributeNS(null, 'cX')),
-        y: 1.5,
+        y: 0.15,
         z: (objetoDinamico.getAttributeNS(null, 'cY')),
         rotation: radianes,
         altura: objetoDinamico.getAttributeNS(null, 'altura'),

@@ -215,6 +215,10 @@ function Drop(evt)
                 menu.removeMenu();
                 menu.loadMenu(DragTarget);
                 elementoSeleccionado= DragTarget;
+
+                var clase = DragTarget.getAttributeNS(null, 'class');
+                if(clase == "sculpture" || clase == "picture")
+                    showInfoForm(clase, DragTarget.getAttributeNS(null, 'nombreBD'), DragTarget.getAttributeNS(null, 'pathEscenario'))
             }
             else{
                 if(ObjetoValido()){
@@ -230,6 +234,7 @@ function Drop(evt)
         removeSculpture();
         //Oculto el x3dom
         elementoSeleccionado= null;
+        typeNodeLoad = null;
     }
 
     if(DragTarget != null && DragTarget.getAttributeNS(null,'nombre') != "rotate"){

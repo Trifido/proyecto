@@ -1,8 +1,9 @@
 
-function Sculpture( nombre, pathLocation, altura, anchura, pathX3d, pathObj){
+function Sculpture( nombre, nombrebd, pathLocation, altura, anchura, pathX3d, pathObj){
 
 	//Atributos para del objeto 
 	var nombre;
+	var nombreBD;
 	var location;
 	var height;
 	var width;
@@ -13,6 +14,7 @@ function Sculpture( nombre, pathLocation, altura, anchura, pathX3d, pathObj){
 	
 	// Inicialización de los atributos
 	this.nombre= nombre;
+	this.nombreBD = nombrebd;
 	this.height= altura;
 	this.width= anchura;
 	this.location= pathLocation;
@@ -24,6 +26,7 @@ function Sculpture( nombre, pathLocation, altura, anchura, pathX3d, pathObj){
 	this.svgObject = document.createElementNS('http://www.w3.org/2000/svg','image');
 
 	this.svgObject.setAttributeNS(null, 'nombre', this.nombre);
+	this.svgObject.setAttributeNS(null, 'nombreBD', this.nombreBD);
 	this.svgObject.setAttributeNS(null, 'id', this.nombre);
 	this.svgObject.setAttributeNS(null,'height', this.height);
 	this.svgObject.setAttributeNS(null,'width', this.width);
