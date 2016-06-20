@@ -1,6 +1,8 @@
-var transformName = 'transform_camera';
+var transformPosName = 'transform_pos_camera';
+var transformRotName = 'transform_rot_camera';
 var positionInterpolatorName = 'translate_camera';
-var translateTimeSensorName = 'translate_time';
+var orientationInterpolatorName = 'rotate_camera';
+var timeSensorName = 'time';
 
 function loadX3D360() {
     if (activeCameras == 0 && activePoints[selectedCamera-1] == 0) { // Si no hay una cámara activa
@@ -35,7 +37,8 @@ function loadX3D360() {
 function load360Camera() {
     var content = '', ajaxResponse;
 
-    content += '\t\t<transform DEF = "' + transformName + '">\n';
+    content += '\t\t<transform DEF = "' + transformPosName + '">\n';
+    content += '\t\t<transform DEF = "' + transformRotName + '">\n';
 
     // Interaccion con la base de datos !
         var variables = 'idCamera=' + selectedCamera;
@@ -44,9 +47,7 @@ function load360Camera() {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 ajaxResponse = JSON.parse(xmlhttp.responseText);
-            }
-            else {
-                console.log("Error", xmlhttp.statusText);
+                console.log("Ajax", xmlhttp.statusText);
             }
         };
 
@@ -57,20 +58,26 @@ function load360Camera() {
     // Viewpoint
 
     content += '\t\t\t<ViewPoint id="camera" description="Camera" centerOfRotation="3.4625 1.73998 -5.55" fieldOfView="1.5" ' +
-                'position="' + ajaxResponse.cX + ' ' + ajaxResponse.cY + ' ' + ajaxResponse.cZ + '" orientation="0 1 0" zNear="0.001 zFar="100"></Viewpoint>\n';
+                'position="' + ajaxResponse.cX + ' ' + ajaxResponse.cY + ' ' + ajaxResponse.cZ + '" orientation="0 1 0" zNear="0.001" zFar="100"></Viewpoint>\n';
 
-    content += '\t\t</transform>\n';
-
-    // Position Interpolator
-    content += '\t\t<PositionInterpolator DEF="' + positionInterpolatorName + '" key="' + ajaxResponse.keys + '" keyValue="' + ajaxResponse.keyValues + '"></PositionInterpolator>\n';
+    content += '\t\t</transform>\n \t\t</transform>\n';
 
     // Time Sensor
-    content += '\t\t<timeSensor DEF="' + translateTimeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="false"></timeSensor>\n';
+    content += '\t\t<timeSensor DEF="' + timeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="true"></timeSensor>\n';
+
+    // Position Interpolator
+    content += '\t\t<PositionInterpolator DEF="' + positionInterpolatorName + '" key="' + ajaxResponse.keys + '" keyValue="' + ajaxResponse.keyPosValue + '"></PositionInterpolator>\n';
 
     // Route para la traslacion
-    content += '\t\t<Route fromNode="' + translateTimeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
-    content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformName + '" toField="translation"></Route>\n';
+    content += '\t\t<Route fromNode="' + timeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
+    content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformPosName + '" toField="translation"></Route>\n';
 
+    // Orientation Interpolator
+    //content += '\t\t<OrientationInterpolator DEF="' + orientationInterpolatorName + '" key="' + ajaxResponse.keys + '" keyValue="' + ajaxResponse.keyRotValue + '"></OrientationInterpolator>\n';
+
+    // Route para la traslacion
+    //content += '\t\t<Route fromNode="' + timeSensorName + '" fromField ="fraction_changed" toNode="' + orientationInterpolatorName + '" toField="set_fraction"></Route>\n';
+    //content += '\t\t<Route fromNode="' + orientationInterpolatorName + '" fromField ="value_changed" toNode="' + transformRotName + '" toField="set_rotation"></Route>\n';
 
     return content;
 };
