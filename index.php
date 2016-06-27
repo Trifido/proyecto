@@ -352,15 +352,29 @@
                                             <div id="noCameraAlert" class="alert alert-warning text-center">
                                                 Añada una nueva <strong> cámara</strong>.
                                             </div>
-                                            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCamera">
-                                                Reproducir Recorrido de Cámara
+                                            <button class="btn btn-default btn-block" data-toggle="modal" data-target="#modalCamera">
+                                                Reproductor Recorrido de Cámara
                                             </button>
                                             <div class="modal fade" id="modalCamera" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title">Reproductor de Rutas</h4>
+                                                            <!-- Botones -->
+                                                            <div class="text-center">
+                                                                <button type="button" class="btn btn-default btn-circle"
+                                                                        onclick="">
+                                                                    <i class="fa fa-play"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-default btn-circle"
+                                                                        onclick="this.blur();">
+                                                                    <i class="fa fa-pause"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-default btn-circle"
+                                                                        onclick="this.blur();">
+                                                                    <i class="fa fa-stop"></i>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                         <div id="sceneModal" class="modal-body">
                                                             <div id="sceneCamera" class="col-lg-12">
@@ -370,9 +384,6 @@
                                                                     </Scene>
                                                                 </X3D>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </div>
                                                 </div>

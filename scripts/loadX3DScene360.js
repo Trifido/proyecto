@@ -15,7 +15,7 @@ function loadX3D360() {
         content += '\t<scene id=\'sceneCamera\'>\n';
         content += '\t<Environment frustumCulling=\"false\"></Environment>\n';
         content += '\t<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'20 20 20\' radius=\'5000000\' ></PointLight>\n';
-        content += '\t<navigationInfo avatarSize=\'0.001 0.15 0.15\' type=\'\"game\"\'></navigationInfo>\n';
+        //content += '\t<navigationInfo avatarSize=\'0.001 0.15 0.15\' type=\'\"game\"\'></navigationInfo>\n';
 
         content += load360Camera();
 
@@ -38,7 +38,7 @@ function load360Camera() {
     var content = '', ajaxResponse;
 
     content += '\t\t<transform DEF = "' + transformPosName + '">\n';
-    content += '\t\t<transform DEF = "' + transformRotName + '">\n';
+    //content += '\t\t<transform DEF = "' + transformRotName + '">\n';
 
     // Interaccion con la base de datos !
         var variables = 'idCamera=' + selectedCamera;
@@ -58,9 +58,11 @@ function load360Camera() {
     // Viewpoint
 
     content += '\t\t\t<ViewPoint id="camera" description="Camera" centerOfRotation="3.4625 1.73998 -5.55" fieldOfView="1.5" ' +
-                'position="' + ajaxResponse.cX + ' ' + ajaxResponse.cY + ' ' + ajaxResponse.cZ + '" orientation="0 1 0" zNear="0.001" zFar="100"></Viewpoint>\n';
+                'position="0 0 0" orientation="0 1 0 0" zNear="0.001" zFar="100"></Viewpoint>\n';
 
-    content += '\t\t</transform>\n \t\t</transform>\n';
+    //'position="' + ajaxResponse.cX + ' ' + ajaxResponse.cY + ' ' + ajaxResponse.cZ +
+    
+    content += '\t\t</transform>\n';
 
     // Time Sensor
     content += '\t\t<timeSensor DEF="' + timeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="true"></timeSensor>\n';

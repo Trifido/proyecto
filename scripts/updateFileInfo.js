@@ -10,7 +10,7 @@ function updateFileCoords (vclass, vname, nX, nY) {
 
     if (nX < 0) valueX = parseFloat(0).toFixed(4); else if (nX > 500) valueX = parseFloat(500).toFixed(4); else valueX = parseFloat(nX).toFixed(4);
     if (nY < 0) valueY = parseFloat(0).toFixed(4); else if (nY > 500) valueY = parseFloat(500).toFixed(4); else valueY = parseFloat(nY).toFixed(4);
-    valueZ = (0.3).toFixed(4);
+    valueZ = (0.15).toFixed(4);
 
     if (vclass == 'camera') {
         $('#aCameraX').val(valueX);
