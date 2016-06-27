@@ -64,6 +64,7 @@
 	<!-- Scripts Alba -->
     <script  type="text/javascript" src="scripts/showHideDiv.js"></script>
     <script  type="text/javascript" src="scripts/validation/validateCameraForm.js"></script>
+    <script  type="text/javascript" src="scripts/movieScript/movieScripts.js"></script>
 
         <script  type="text/javascript" src="scripts/loadCamera.js"></script>
         <script  type="text/javascript" src="scripts/loadPoint.js"></script>
@@ -359,11 +360,11 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
                                                             <!-- Botones -->
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-default btn-circle"
-                                                                        onclick="">
+                                                                        onclick="startAnimation();">
                                                                     <i class="fa fa-play"></i>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default btn-circle"
@@ -371,7 +372,7 @@
                                                                     <i class="fa fa-pause"></i>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default btn-circle"
-                                                                        onclick="this.blur();">
+                                                                        onclick="stopAnimation();">
                                                                     <i class="fa fa-stop"></i>
                                                                 </button>
                                                             </div>

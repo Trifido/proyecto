@@ -1,3 +1,4 @@
+var viewpointName = 'camera';
 var transformPosName = 'transform_pos_camera';
 var transformRotName = 'transform_rot_camera';
 var positionInterpolatorName = 'translate_camera';
@@ -57,7 +58,7 @@ function load360Camera() {
 
     // Viewpoint
 
-    content += '\t\t\t<ViewPoint id="camera" description="Camera" centerOfRotation="3.4625 1.73998 -5.55" fieldOfView="1.5" ' +
+    content += '\t\t\t<ViewPoint id="' + viewpointName + '" description="Camera" centerOfRotation="3.4625 1.73998 -5.55" fieldOfView="1.5" ' +
                 'position="0 0 0" orientation="0 1 0 0" zNear="0.001" zFar="100"></Viewpoint>\n';
 
     //'position="' + ajaxResponse.cX + ' ' + ajaxResponse.cY + ' ' + ajaxResponse.cZ +
@@ -65,14 +66,14 @@ function load360Camera() {
     content += '\t\t</transform>\n';
 
     // Time Sensor
-    content += '\t\t<timeSensor DEF="' + timeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="true"></timeSensor>\n';
+    content += '\t\t<timeSensor id="timeSensorCamera" DEF="' + timeSensorName + '" cycleInterval="' + ajaxResponse.cycle + '" loop="false" startTime="0"></timeSensor>\n';
 
     // Position Interpolator
     content += '\t\t<PositionInterpolator DEF="' + positionInterpolatorName + '" key="' + ajaxResponse.keys + '" keyValue="' + ajaxResponse.keyPosValue + '"></PositionInterpolator>\n';
 
     // Route para la traslacion
     content += '\t\t<Route fromNode="' + timeSensorName + '" fromField ="fraction_changed" toNode="' + positionInterpolatorName + '" toField="set_fraction"></Route>\n';
-    content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + transformPosName + '" toField="translation"></Route>\n';
+    content += '\t\t<Route fromNode="' + positionInterpolatorName + '" fromField ="value_changed" toNode="' + viewpointName + '" toField="position"></Route>\n';
 
     // Orientation Interpolator
     //content += '\t\t<OrientationInterpolator DEF="' + orientationInterpolatorName + '" key="' + ajaxResponse.keys + '" keyValue="' + ajaxResponse.keyRotValue + '"></OrientationInterpolator>\n';
