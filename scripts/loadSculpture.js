@@ -5,7 +5,6 @@ var ScultureLoad= null;
 //Iniciar la sala correspondiente.
 function initSculpture( nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ ){
 	sculpture = new Sculpture(nombre, nombreBD, pathCenital, AltoPx, AnchoPx, pathX3D, pathOBJ);
-	//loadModel('pathOBJ');
 }
 
 //Funcion encargada de comprobar y cargar la escultura correspondiente.

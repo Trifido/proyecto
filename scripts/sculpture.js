@@ -65,3 +65,29 @@ function Sculpture( nombre, nombrebd, pathLocation, altura, anchura, pathX3d, pa
 }*/
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+function LoadSculptureCanvas( posX, posY, coordX, coordY, cx, cy, rotation, pAncho, pAlto ){
+	targetElement.setAttributeNS(null,'x', posX);
+	targetElement.setAttributeNS(null,'y', posY);
+	targetElement.setAttributeNS(null,'coordX',coordX);
+	targetElement.setAttributeNS(null,'coordY',coordY);
+	targetElement.setAttributeNS(null,'cX', cx);
+	targetElement.setAttributeNS(null,'cY', cy);
+	targetElement.setAttributeNS(null,'rotation', rotation);
+	targetElement.setAttributeNS(null,'pedestalAncho', pAncho);
+	targetElement.setAttributeNS(null,'pedestalAlto', pAlto);
+
+	var posW= targetElement.getAttributeNS(null, 'width') / 2;
+    var posH= targetElement.getAttributeNS(null, 'height') / 2;
+
+    var xcord = cx;
+    var ycord = cy;
+
+	var rad= (rotation*Math.PI)/180;
+	var rotX= xcord*Math.cos(rad) + ycord*Math.sin(rad);
+	var rotY= (-1*xcord*Math.sin(rad)) + ycord*Math.cos(rad);
+
+	cx= rotX - posW;
+	cy= rotY - posH;
+
+	targetElement.setAttributeNS(null, 'transform', 'rotate(' + rotation + ', 0, 0) translate(' + cx +', '+ cy + ')');
+}

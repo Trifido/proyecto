@@ -23,6 +23,13 @@
     <!-- CSS -->
     <!--<link href="./css/style.css" rel="stylesheet" type='text/css' /> -->
 
+    <script  type="text/javascript" src="../scripts/createJSONScene.js"></script>
+    <script  type="text/javascript" src="../scripts/redireccionar/redireccionarExportar.js"></script>
+    <script  type="text/javascript" src="../scripts/redireccionar/redireccionarMostrar.js"></script>
+    <script  type="text/javascript" src="../scripts/cargarMiEscenario.js"></script>
+    <script  type="text/javascript" src="../scripts/eliminarDatos.js"></script>
+    <script  type="text/javascript" src="../scripts/editarDatos.js"></script>
+    <script  type="text/javascript" src="../scripts/updateInfoEscultura.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -56,6 +63,22 @@
                 	include('addNuevaEscultura.php');
                 else if( $_SESSION["seccion"] == "nuevoCuadro" )
                 	include('addNuevoCuadro.php');
+                else if( $_SESSION["seccion"] == "exportarEscenario" )
+                    include('exportarEscenario.php');
+                else if( $_SESSION["seccion"] == "misEscenarios" )
+                    include('misEscenarios.php');
+                else if( $_SESSION["seccion"] == "misEsculturas" )
+                    include('misEsculturas.php');
+                else if( $_SESSION["seccion"] == "misCuadros" )
+                    include('misCuadros.php');
+                else if( $_SESSION["seccion"] == "misSalas" )
+                    include('misSalas.php');
+                else if( $_SESSION["seccion"] == "editarEscultura" )
+                    include('editarEscultura.php');
+                else if( $_SESSION["seccion"] == "editarSala" )
+                    include('editarSala.php');
+                else if( $_SESSION["seccion"] == "editarCuadro" )
+                    include('editarCuadro.php');
             ?>
       
         </div>

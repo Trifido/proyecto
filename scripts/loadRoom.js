@@ -9,14 +9,14 @@ var RoomInit= false;
 
 //Iniciar la sala correspondiente.
 function initRoom(nombreSala, pathSala, ancho, largo, pixAncho, pixLargo, pathX3dSin, pathX3D, pathOBJ){
-	svgroom = new Room (nombreSala, pathSala, pathX3dSin, pathX3D, pathOBJ);
+	svgroom = new Room (nombreSala, pathSala, pixLargo, pixAncho, largo, ancho, pathX3dSin, pathX3D, pathOBJ);
 	interpolador= new InterpolarCoords( pixLargo, pixAncho, largo, ancho );
 	sceneName = nombreSala;
 }
 
 //Cambiar de sala.
 function changeRoom(nombreSala, pathSala, ancho, largo, pixAncho, pixLargo, pathX3dSin, pathX3D, pathOBJ){
-	svgroom.change(nombreSala, pathSala, pathX3D, pathOBJ);
+	svgroom.change(nombreSala, pathSala, pixLargo, pixAncho, largo, ancho, pathX3D, pathOBJ);
 	interpolador= new InterpolarCoords( pixLargo, pixAncho, largo, ancho );
 	sceneName = nombreSala;
 }
@@ -31,7 +31,7 @@ function loadRoom( nombreSala, pathSala, ancho, largo, pixAncho, pixLargo, pathX
 	else if( !RoomInit ){
 		puntolimitador= Limit("superior","./img/camera/limitIcon.png",0,0);
 		puntolimitador2= Limit("inferior","./img/camera/limitIcon.png",450,450);
-		fcamera= new FirstCamera('FirstCamera', './img/camera/FirstCamera.png', 40, 40, 0, 0);
+		fcamera= new FirstCamera(0, 0);
 		initRoom(nombreSala, pathSala, ancho, largo, pixAncho, pixLargo, pathX3dSin, pathX3D, pathOBJ);
 		RoomInit=true;
 		

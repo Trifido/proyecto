@@ -119,6 +119,16 @@
                                                 <input class="form-control" id="inputOBJ" placeholder="OBJ" name="modelOBJ" type="file" value="">
                                                 <button type="button" id="BOBJ" class="btn btn-primary btn-block" onclick="sendObjModelSculpture()">Añadir OBJ</button>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Seleccionar Texturas X3D</label>
+                                                <input class="form-control" id="inputTexX3D" placeholder="Tex X3D Sala" name="TexturesX3D[]" multiple="multiple" type="file" value="">
+                                                <button type="button" id="TexX3D" class="btn btn-primary btn-block" onclick="sendTextureX3D()">Añadir Texturas</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Seleccionar Texturas OBJ</label>
+                                                <input class="form-control" id="inputTexOBJ" placeholder="Tex OBJ Sala" name="TexturesOBJ[]" multiple="multiple" type="file" value="">
+                                                <button type="button" id="TexOBJ" class="btn btn-primary btn-block" onclick="sendTextureOBJ()">Añadir Texturas</button>
+                                            </div>
                                         </fieldset>
                                     </form>
                                 </div> 

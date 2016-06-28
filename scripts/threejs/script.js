@@ -5,8 +5,6 @@ var model;
 var controls;
 var room;
 
-//smain();
-
 function movimiento_camara() {
 	renderer.render(scene, camera.get_object());
 }
@@ -23,6 +21,7 @@ function refresh(){
 }
 
 function loadModel(path){
+
 	var oLoader = new THREE.OBJLoader();
 	oLoader.load(path, function(object) {
 		
@@ -40,6 +39,9 @@ function loadModel(path){
 
 function removeModel(){
 	scene.remove(model);
+	controls = null;
+	delete(controls);
+	delete(model);
 	refresh();
 }
 

@@ -16,28 +16,29 @@
         <ul class="nav navbar-top-links navbar-right">
 
             <?php
-                if( $_SESSION['seccion'] == "nuevoEscenario" ){
-                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoEscenario\"> 
-                        Añadir Nuevo Escenario 
+                if( $_SESSION['seccion'] == "misSalas" || $_SESSION['seccion'] == "editarSala" ){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoEscenario\" onClick=\"LoadNuevoEscenario()\"> 
+                        Añadir Nueva Sala
                         </button>";
                 }
                 else if( $_SESSION['seccion'] == "editor" ){
-                    echo "<button class=\"btn btn-warning btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemploWeb', 'web', '" . $_SESSION['username'] . "' )\"> 
-                        Exportar Escenario Web
-                        </button>
-                        
-                        <button class=\"btn btn-info btn-lg\" id=\"botonNuevoEscenario\" onClick=\"exportarX3D('UsuarioEjemploApp', 'app',  '" . $_SESSION['username'] . "' )\"> 
-                        Exportar Escenario App
+                    echo "<button class=\"btn btn-warning btn-lg\" id=\"botonNuevoEscenario\" data-toggle=\"modal\" data-target=\"#myModalForm\" onClick=\"LoadExportar()\"> 
+                        Exportar Escenario
                         </button>";
                 }
-                else if( $_SESSION['seccion'] == "nuevaEscultura" ){
-                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevaEscultura\"> 
+                else if( $_SESSION['seccion'] == "misEsculturas" || $_SESSION['seccion'] == "editarEscultura" ){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevaEscultura\" onClick=\"LoadNuevaEscultura()\"> 
                         Añadir Nueva Escultura
                         </button>";
                 }
-                else if( $_SESSION['seccion'] == "nuevoCuadro" ){
-                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoCuadro\"> 
+                else if( $_SESSION['seccion'] == "misCuadros" || $_SESSION['seccion'] == "editarCuadro"){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoCuadro\" onClick=\"LoadNuevoCuadro()\"> 
                         Añadir Nuevo Cuadro
+                        </button>";
+                }
+                else if( $_SESSION['seccion'] == "exportarEscenario" ){
+                    echo "<button class=\"btn btn-primary btn-lg\" id=\"botonNuevoCuadro\" onClick=\"backIndex()\"> 
+                        Volver a Editor
                         </button>";
                 }
             ?>
@@ -96,27 +97,35 @@
                     <li>
                         <?php
                             if( $_SESSION['seccion'] == "editor" )
-                                echo '<a href="./php/opciones.php?seccion=nuevoEscenario"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                                echo '<a href="./php/opciones.php?seccion=misEscenarios"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
                             else
-                                echo '<a href="./opciones.php?seccion=nuevoEscenario"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
+                                echo '<a href="./opciones.php?seccion=misEscenarios"><i class="fa fa-folder-open fa-fw"></i> Mis Escenarios</a>';
                         ?>
                        
                     </li>
                     <li>
                         <?php
                             if( $_SESSION['seccion'] == "editor" )
-                                echo '<a href="./php/opciones.php?seccion=nuevaEscultura"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
+                                echo '<a href="./php/opciones.php?seccion=misSalas"><i class="fa fa-folder-open fa-fw"></i> Salas</a>';
                             else
-                                echo '<a href="./opciones.php?seccion=nuevaEscultura"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
+                                echo '<a href="./opciones.php?seccion=misSalas"><i class="fa fa-folder-open fa-fw"></i> Salas</a>';
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            if( $_SESSION['seccion'] == "editor" )
+                                echo '<a href="./php/opciones.php?seccion=misEsculturas"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
+                            else
+                                echo '<a href="./opciones.php?seccion=misEsculturas"><i class="fa fa-folder-open fa-fw"></i> Esculturas</a>';
                         ?>
 
                     </li>
                     <li>
                         <?php
                             if( $_SESSION['seccion'] == "editor" )
-                                echo '<a href="./php/opciones.php?seccion=nuevoCuadro"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
+                                echo '<a href="./php/opciones.php?seccion=misCuadros"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
                             else
-                                echo '<a href="./opciones.php?seccion=nuevoCuadro"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
+                                echo '<a href="./opciones.php?seccion=misCuadros"><i class="fa fa-folder-open fa-fw"></i> Cuadros</a>';
                         ?>
                     </li>
                     <li>

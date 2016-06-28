@@ -22,10 +22,20 @@ function obtenerDatos(objetoDinamico) {
 
     return {
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
+        nombreBD: objetoDinamico.getAttributeNS(null, 'nombreBD'),
+        id: objetoDinamico.getAttributeNS(null, 'id'),
+        location: objetoDinamico.getAttributeNS('http://www.w3.org/1999/xlink', 'href'),
+        xcanvas: objetoDinamico.getAttributeNS(null, 'x'),
+        ycanvas: objetoDinamico.getAttributeNS(null, 'y'),
         x: objetoDinamico.getAttributeNS(null, 'cX'),
         y: 0.0,
         z: objetoDinamico.getAttributeNS(null, 'cY'),
+        coordx: objetoDinamico.getAttributeNS(null, 'coordX'),
+        coordy: objetoDinamico.getAttributeNS(null, 'coordY'),
+        cx: objetoDinamico.getAttributeNS(null, 'cX'),
+        cy: objetoDinamico.getAttributeNS(null, 'cY'),
         rotation: radianes,
+        rotationcanvas: parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')),
         ancho: objetoDinamico.getAttributeNS(null, 'width'),
         alto: objetoDinamico.getAttributeNS(null, 'height'),
         clase: objetoDinamico.getAttributeNS(null, 'class'),
@@ -51,7 +61,14 @@ function obtenerDatosCuadro(objetoDinamico) {
         radianes= (360*Math.PI)/180.0;
 
     return {
+        id: objetoDinamico.getAttributeNS(null, 'id'),
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
+        nombreBD: objetoDinamico.getAttributeNS(null, 'nombreBD'),
+        height: objetoDinamico.getAttributeNS(null, 'height'),
+        width: objetoDinamico.getAttributeNS(null, 'width'),
+        location: objetoDinamico.getAttributeNS('http://www.w3.org/1999/xlink', 'href'),
+        xcanvas: objetoDinamico.getAttributeNS(null, 'x'),
+        ycanvas: objetoDinamico.getAttributeNS(null, 'y'),
         x: objetoDinamico.getAttributeNS(null, 'cX'),
         y: 1.0,
         z: objetoDinamico.getAttributeNS(null, 'cY'),
@@ -69,11 +86,19 @@ function obtenerVRCamera() {
     var radianes= ((360 - parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')))*Math.PI)/180.0;
 
     return {
+        id: objetoDinamico.getAttributeNS(null, 'id'),
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
         x: (objetoDinamico.getAttributeNS(null, 'cX')),
         y: 0.15,
         z: (objetoDinamico.getAttributeNS(null, 'cY')),
+        xcanvas: (objetoDinamico.getAttributeNS(null, 'x')),
+        ycanvas: (objetoDinamico.getAttributeNS(null, 'y')),
+        coordx: (objetoDinamico.getAttributeNS(null, 'coordX')),
+        coordy: (objetoDinamico.getAttributeNS(null, 'coordY')),
+        cx: (objetoDinamico.getAttributeNS(null, 'cX')),
+        cy: (objetoDinamico.getAttributeNS(null, 'cY')),
         rotation: radianes,
+        rotationcanvas: parseFloat(objetoDinamico.getAttributeNS(null, 'rotation')),
         altura: objetoDinamico.getAttributeNS(null, 'altura'),
         zancada: objetoDinamico.getAttributeNS(null, 'zancada'),
         salto: objetoDinamico.getAttributeNS(null, 'salto')
@@ -83,13 +108,28 @@ function obtenerVRCamera() {
 //Función de ayuda: reúne los datos a exportar en un solo objeto
 function obtenerEscenario(objetoDinamico) {
     return {
+        id: objetoDinamico.getAttributeNS(null, 'id'),
         nombre: objetoDinamico.getAttributeNS(null, 'nombre'),
+        location: objetoDinamico.getAttributeNS('http://www.w3.org/1999/xlink', 'href'),
         x: objetoDinamico.getAttributeNS(null, 'x'),
         y: 0.0,
         z: objetoDinamico.getAttributeNS(null, 'y'),
         pathX3DSin: objetoDinamico.getAttributeNS(null, 'pathX3DSIN'),
         pathX3D: objetoDinamico.getAttributeNS(null, 'pathX3D'),
-        pathOBJ: objetoDinamico.getAttributeNS(null, 'pathOBJ')
+        pathOBJ: objetoDinamico.getAttributeNS(null, 'pathOBJ'),
+        pixAncho: objetoDinamico.getAttributeNS(null, 'pixAncho'),
+        pixAlto: objetoDinamico.getAttributeNS(null, 'pixAlto'),
+        ancho: objetoDinamico.getAttributeNS(null, 'ancho'),
+        alto: objetoDinamico.getAttributeNS(null, 'alto')
+    };
+};
+
+function obtenerLimites(objetoDinamico1, objetoDinamico2){
+    return {
+        xsup: objetoDinamico1.getAttributeNS(null, 'coordX'),
+        ysup: objetoDinamico1.getAttributeNS(null, 'coordY'),
+        xinf: objetoDinamico2.getAttributeNS(null, 'coordX'),
+        yinf: objetoDinamico2.getAttributeNS(null, 'coordY')
     };
 };
 
@@ -144,10 +184,10 @@ function generarX3D() {
     });
 };*/
 
-function exportarX3D( nombre, tipo, usuario ){
-    var textoX3D, destino;
+function exportarScene( nombre, usuario ){
+    //var textoX3D;//, destino;
 
-    destino = "Otro";
+   /* destino = "Otro";
 
     if( tipo == "web" ){
         destino = "Web";
@@ -157,18 +197,7 @@ function exportarX3D( nombre, tipo, usuario ){
         destino = "App";
         textoX3D = generarGameCameraX3D();
     }
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        }
-    };
-
-    xmlhttp.open("GET", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&contenido=" + textoX3D + "&destino=" + destino + "&usuario=" + usuario, true);
-    xmlhttp.send();
-
-    alert("El escenario " + nombre + ".x3d " + "ha sido exportado con éxito");
-}
+    */
 
 /*
     destino = "Otro";
@@ -189,3 +218,4 @@ function exportarX3D( nombre, tipo, usuario ){
     xmlhttp.open("POST", "./php/crearX3D.php?nombEscena=" + nombre + ".x3d" + "&destino=" + destino, true);
     xmlhttp.send();
 */
+}

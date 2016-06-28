@@ -1,7 +1,7 @@
 
 var svgroom;
 
-function Room(nombre, pathLocation, pathX3dSin, pathX3d, pathObj){
+function Room(nombre, pathLocation, pixAncho, pixAlto, ancho, alto, pathX3dSin, pathX3d, pathObj){
 
 	var location;
 	var height;
@@ -34,11 +34,15 @@ function Room(nombre, pathLocation, pathX3dSin, pathX3d, pathObj){
 	svgroom.setAttributeNS(null,'pathX3D', this.pathX3D);
 	svgroom.setAttributeNS(null,'pathX3DSIN', this.pathX3DSIN);
 	svgroom.setAttributeNS(null,'pathOBJ', this.pathOBJ);
+	svgroom.setAttributeNS(null,'pixAncho', pixAncho);
+	svgroom.setAttributeNS(null,'pixAlto', pixAlto);
+	svgroom.setAttributeNS(null,'ancho', ancho);
+	svgroom.setAttributeNS(null,'alto', alto);
 
 	document.getElementById('room_level').appendChild(svgroom);
 }
 
-Room.prototype.change = function( nombre, pathLocation, pathX3dSin, pathX3d, pathObj){
+Room.prototype.change = function( nombre, pathLocation, pixLargo, pixAncho, largo, ancho, pathX3dSin, pathX3d, pathObj){
 	this.nombre= nombre;
 	this.location= pathLocation;
 	this.pathX3D = pathX3d;
@@ -50,6 +54,10 @@ Room.prototype.change = function( nombre, pathLocation, pathX3dSin, pathX3d, pat
 	document.getElementById('room_level').childNodes[0].setAttributeNS(null,'pathX3DSIN', this.pathX3DSIN);
 	document.getElementById('room_level').childNodes[0].setAttributeNS(null, 'pathOBJ', this.pathOBJ);
 	document.getElementById('room_level').childNodes[0].setAttributeNS('http://www.w3.org/1999/xlink','href', pathLocation);
+	document.getElementById('room_level').childNodes[0].setAttributeNS(null,'pixAncho', pixAncho);
+	document.getElementById('room_level').childNodes[0].setAttributeNS(null,'pixAlto', pixAlto);
+	document.getElementById('room_level').childNodes[0].setAttributeNS(null,'ancho', ancho);
+	document.getElementById('room_level').childNodes[0].setAttributeNS(null,'alto', alto);
 	/*
 	svgroom.setAttributeNS(null,'height', altura);
 	svgroom.setAttributeNS(null,'width', anchura);

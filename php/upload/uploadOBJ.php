@@ -13,13 +13,13 @@
 	$array = $result->fetchArray();
 
 	if($nombreSala != $array["NombreSala"]){
-		$target_dir = "../../uploads/X3D/" . $_SESSION['username'] . "/";
-		$path_dir = "./uploads/X3D/" . $_SESSION['username'] . "/";
+		$target_dir = "../../uploads/OBJ/" . $_SESSION['username'] . "/";
+		$path_dir = "./uploads/OBJ/" . $_SESSION['username'] . "/";
 	    $target_file = $target_dir . basename($_FILES["modelObj"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["modelObj"]["name"]);
 
-	    $query = 'INSERT INTO ModelSala (TipoSala, NombreSala, PathSala) 
-				  VALUES (\'objModel\', \''.$nombreSala.'\', \''.$path_file.'\')';
+	    $query = 'INSERT INTO ModelSala (TipoSala, NombreSala, PathSala, NombreUsuario) 
+				  VALUES (\'objModel\', \''.$nombreSala.'\', \''.$path_file.'\', \''.$_SESSION['username'].'\')';
 	    $result = sqlite_query($db, $query);
 
 	    if (move_uploaded_file($_FILES["modelObj"]["tmp_name"], $target_file)) {

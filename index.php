@@ -23,6 +23,7 @@
 	<!-- Script para jquery -->
     <script  type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
     <script  type="text/javascript" src="scripts/Redireccionar/redireccionarMostrar.js"></script>
+    <script  type="text/javascript" src="scripts/Redireccionar/redireccionarExportar.js"></script>
     <script  type="text/javascript" src="scripts/updateInfoForm.js"></script>
 
     <!-- Script para threeJS (visualizar modelos) -->
@@ -57,6 +58,10 @@
 	<script  type="text/javascript" src="scripts/createX3DScene.js"></script>
 	<script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
 	<script  type="text/javascript" src="scripts/loadFirstCameraX3D.js"></script>
+
+    <!-- Scripts para exportar escenario en JSON -->
+    <script  type="text/javascript" src="scripts/createJSONScene.js"></script>
+    <script  type="text/javascript" src="scripts/cargarMiEscenario.js"></script>
 
 	<!-- CSS -->
 	<link href="./css/style.css" rel="stylesheet" type='text/css' />
@@ -360,7 +365,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
                                                             <!-- Botones -->
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-default btn-circle"
@@ -420,5 +425,12 @@
     <script src="dist/js/sb-admin-2.js"></script>
 
 </body>
+
+<?php
+    if( $_SESSION["tipoEditor"] == "saveScene" ){
+        echo '<script> cargarEscenarioCanvas("' . $_SESSION["pathSceneSave"] . '"); </script>';
+        $_SESSION["tipoEditor"] = "newScene";
+    }
+?>
 
 </html>

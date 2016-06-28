@@ -18,8 +18,8 @@
 	    $target_file = $target_dir . basename($_FILES["modelTecho"]["name"]);
 	    $path_file = $path_dir . basename($_FILES["modelTecho"]["name"]);
 
-	    $query = 'INSERT INTO ModelSala (TipoSala, NombreSala, PathSala) 
-				  VALUES (\'x3dConTecho\', \''.$nombreSala.'\', \''.$path_file.'\')';
+	    $query = 'INSERT INTO ModelSala (TipoSala, NombreSala, PathSala, NombreUsuario) 
+				  VALUES (\'x3dConTecho\', \''.$nombreSala.'\', \''.$path_file.'\', \''.$_SESSION['username'].'\')';
 	    $result = sqlite_query($db, $query);
 
 	    if (move_uploaded_file($_FILES["modelTecho"]["tmp_name"], $target_file)) {

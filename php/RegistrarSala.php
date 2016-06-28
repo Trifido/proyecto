@@ -32,12 +32,12 @@
 	    $result = sqlite_query($db, $query);
 
 	    //Insertamos Imagenes
-	    $query = 'INSERT INTO ImgSala (TipoImgSala, AnchoPix, AltoPix, NombreSala) 
-				  VALUES (\'canvas\', \''.$anchoPixSala.'\', \''.$altoPixSala.'\', \''.$nombreSala.'\')';
+	    $query = 'INSERT INTO ImgSala (TipoImgSala, AnchoPix, AltoPix, NombreSala, NombreUsuario) 
+				  VALUES (\'canvas\', \''.$anchoPixSala.'\', \''.$altoPixSala.'\', \''.$nombreSala.'\', \'' .$nombreUsuario.'\')';
 	    $result = sqlite_query($db, $query);
 
-	    $query = 'INSERT INTO ImgSala (TipoImgSala, AnchoPix, AltoPix, NombreSala) 
-				  VALUES (\'menu\', \''.$anchoPixMenSala.'\', \''.$altoPixMenSala.'\', \''.$nombreSala.'\')';
+	    $query = 'INSERT INTO ImgSala (TipoImgSala, AnchoPix, AltoPix, NombreSala, NombreUsuario) 
+				  VALUES (\'menu\', \''.$anchoPixMenSala.'\', \''.$altoPixMenSala.'\', \''.$nombreSala.'\', \'' .$nombreUsuario.'\')';
 	    $result = sqlite_query($db, $query);
 	}
 

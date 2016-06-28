@@ -31,7 +31,10 @@
 
 			$carpetaIMG = '../uploads/IMG/' . $username;
 			$carpetaX3D = '../uploads/X3D/' . $username;
+			$carpetaTEX = '../uploads/X3D/' . $username . '/Texture';
 			$carpetaOBJ = '../uploads/OBJ/' . $username;
+			$carpetaEXPO = '../Exposiciones/' . $username;
+			
 			if (!file_exists($carpetaIMG)) {
 			    mkdir($carpetaIMG, 0777, true);
 			}
@@ -40,6 +43,12 @@
 			}
 			if (!file_exists($carpetaOBJ)) {
 			    mkdir($carpetaOBJ, 0777, true);
+			}
+			if (!file_exists($carpetaTEX)) {
+			    mkdir($carpetaTEX, 0777, true);
+			}
+			if (!file_exists($carpetaEXPO)) {
+			    mkdir($carpetaEXPO, 0777, true);
 			}
 			
 			header('Location: ../index.php');

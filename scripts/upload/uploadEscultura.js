@@ -142,3 +142,74 @@ function sendImgMenuSculpture(){
 
     alert(Auxresult);
 }
+
+function sendTextureX3D(){
+    var form = document.getElementById('ImgForm');
+    var fileSelect = document.getElementById('inputTexX3D');
+    var uploadButton = document.getElementById('TexX3D');
+
+    uploadButton.innerHTML = 'Uploading...';
+
+    var files = fileSelect.files;
+    var formData = new FormData();
+
+    var i;
+    for( i=0; i<files.length; i++){
+        // Add the file to the request.
+        formData.append('imgTexture', files[i], files[i].name);
+        // Set up the request.
+        var xhr = new XMLHttpRequest();
+        // Open the connection.
+
+        xhr.open('POST', './upload/uploadX3DTextureSculpture.php', false); 
+        // Set up a handler for when the request finishes.
+
+        var Auxresult;
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // File(s) uploaded.
+                Auxresult= xhr.responseText;
+                uploadButton.innerHTML = 'Upload';
+                alert(Auxresult);
+            } else {
+                alert('An error occurred!');
+            }
+        };
+        xhr.send(formData);
+    }
+}
+
+function sendTextureOBJ(){
+    var form = document.getElementById('ImgForm');
+    var fileSelect = document.getElementById('inputTexOBJ');
+    var uploadButton = document.getElementById('TexOBJ');
+
+    uploadButton.innerHTML = 'Uploading...';
+
+    var files = fileSelect.files;
+    var formData = new FormData();
+
+    var i;
+    for( i=0; i<files.length; i++){
+        // Add the file to the request.
+        formData.append('imgTexture', files[i], files[i].name);
+        // Set up the request.
+        var xhr = new XMLHttpRequest();
+        // Open the connection.
+
+        xhr.open('POST', './upload/uploadOBJTextureSculpture.php', false); 
+        // Set up a handler for when the request finishes.
+
+        var Auxresult;
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // File(s) uploaded.
+                Auxresult= xhr.responseText;
+                uploadButton.innerHTML = 'Upload';
+            } else {
+                alert('An error occurred!');
+            }
+        };
+        xhr.send(formData);
+    }
+}

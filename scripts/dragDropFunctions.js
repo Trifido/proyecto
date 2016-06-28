@@ -3,7 +3,6 @@
 var TrueCoords = null;
 var GrabPoint = null;
 var BackDrop = null;
-var Sala = null;
 var DragTarget = null;
 var targetElement= null;
 var elementoAnterior= null;
@@ -221,12 +220,13 @@ function Drop(evt)
                 if(clase == "sculpture" || clase == "picture"){
                     showInfoForm(clase, DragTarget.getAttributeNS(null, 'nombreBD'), DragTarget.getAttributeNS(null, 'pathEscenario'));
                     if(clase == "sculpture"){
-                        changeSculture(DragTarget.getAttributeNS(null,'pathOBJ'));
+                        //changeSculpture(DragTarget.getAttributeNS(null,'pathOBJ'));
                     }
                 }
             }
             else{
                 if(ObjetoValido()){
+                    //alert(DragTarget.getAttributeNS(null, 'nombre'));
                     menu.loadMenu(DragTarget);
                     elementoSeleccionado= DragTarget;
 

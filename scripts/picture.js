@@ -49,10 +49,28 @@ function Picture(nombre, nombrebd, pathLocation, altura, anchura, altoReal, larg
 	targetElement= document.getElementById('picture_level').childNodes[n-1];
 }
 
-/*
-Picture.prototype.change = function( nombre, pathLocation, altura, largo, anchura){
-	this.nombre= nombre;
-	this.height= altura;
-	this.width= anchura;
-	this.location= pathLocation;
-}*/
+function LoadPictureCanvas( posX, posY, coordX, coordY, cx, cy, rotation){
+
+	targetElement.setAttributeNS(null,'x', posX);
+	targetElement.setAttributeNS(null,'y', posY);
+	targetElement.setAttributeNS(null,'coordX',coordX);
+	targetElement.setAttributeNS(null,'coordY',coordY);
+	targetElement.setAttributeNS(null,'cX', cx);
+	targetElement.setAttributeNS(null,'cY', cy);
+	targetElement.setAttributeNS(null,'rotation', rotation);
+
+	var posW= targetElement.getAttributeNS(null, 'width') / 2;
+    var posH= targetElement.getAttributeNS(null, 'height') / 2;
+
+    var xcord = cx;
+    var ycord = cy;
+
+	var rad= (rotation*Math.PI)/180;
+	var rotX= xcord*Math.cos(rad) + ycord*Math.sin(rad);
+	var rotY= (-1*xcord*Math.sin(rad)) + ycord*Math.cos(rad);
+
+	cx= rotX - posW;
+	cy= rotY - posH;
+
+	targetElement.setAttributeNS(null, 'transform', 'rotate(' + rotation + ', 0, 0) translate(' + cx +', '+ cy + ')');
+}

@@ -35,16 +35,16 @@
 	    $result = sqlite_query($db, $query);
 
 	    //Insertamos Imagenes
-	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx) 
-				  VALUES (\'' . $nombreCuadro . '\', \'canvas\', \''.$anchoPixCuadro.'\', \''.$altoPixCuadro.'\')';
+	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx, NombreUsuario) 
+				  VALUES (\'' . $nombreCuadro . '\', \'canvas\', \''.$anchoPixCuadro.'\', \''.$altoPixCuadro.'\', \''.$nombreUsuario.'\')';
 	    $result = sqlite_query($db, $query);
 
-	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx) 
-				  VALUES (\'' . $nombreCuadro . '\', \'menu\', \''.$anchoPixMenCuadro.'\', \''.$altoPixMenCuadro.'\')';
+	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx, NombreUsuario) 
+				  VALUES (\'' . $nombreCuadro . '\', \'menu\', \''.$anchoPixMenCuadro.'\', \''.$altoPixMenCuadro.'\', \''.$nombreUsuario.'\')';
 	    $result = sqlite_query($db, $query);
 
-	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx) 
-				  VALUES (\'' . $nombreCuadro . '\', \'escenario\', \''.$anchoPixCuadro.'\', \''.$altoPixCuadro.'\')';
+	    $query = 'INSERT INTO ImgCuadro (NombreCuadro, TipoImg, AnchoPx, AltoPx, NombreUsuario) 
+				  VALUES (\'' . $nombreCuadro . '\', \'escenario\', \''.$anchoPixCuadro.'\', \''.$altoPixCuadro.'\', \''.$nombreUsuario.'\')';
 	    $result = sqlite_query($db, $query);
 	}
 
