@@ -110,6 +110,7 @@ function initX3DSceneWeb(JSONEscenario){
 }
 
 function CargarEscenarioVR(pathJson){
+	//location.href="./visorEscena.php?vrScene=" + pathJson;
 	 window.open("./visorEscena.php?vrScene=" + pathJson, "nuevo", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=400, height=400");
 }
 
@@ -236,8 +237,8 @@ function CargarVRMode(pathJson){
 
 function loadCameraVR(JSONEscenario){
 	texto= "";
-
-	texto += "<navigationInfo  headlight=\"true\" avatarSize=\'" + 0.1 + " " + JSONEscenario.scene.camera.altura + " " + JSONEscenario.scene.camera.salto + "\' type=\'\"walk\"\' speed=\"1\" transitiontime=\"1\" transitiontype=\"LINEAR\"></navigationInfo>\n";
+	texto += "<navigationInfo headlight='false' type='\"GAME\"'></navigationInfo>"
+	//texto += "<navigationInfo  headlight=\"false\" avatarSize=\'" + 0.1 + " " + JSONEscenario.scene.camera.altura + " " + JSONEscenario.scene.camera.salto + "\' type=\'\"walk\"\' speed=\"1\" transitiontime=\"1\" transitiontype=\"LINEAR\"></navigationInfo>\n";
 	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 
 	texto += "   <viewpoint id=\'vpp\' DEF=\'vp\' description=\'ViewPoint 1\' centerOfRotation=\'3.4625 1.73998 -5.55\' fieldOfView=\"1.5\"\n";
 	texto += "   orientation=\'0 1 0" + JSONEscenario.scene.camera.rotation + "\' position=\'" + JSONEscenario.scene.camera.x + " " + JSONEscenario.scene.camera.y + " " + JSONEscenario.scene.camera.z + "\'\n";
