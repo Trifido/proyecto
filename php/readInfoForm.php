@@ -13,6 +13,8 @@
     $tabla = null;
     $tabla2 = null;
     $AtribNombre = null;
+    $query = null;
+    $query2 = null;
 
     if($typeObject == "sculpture"){
         $tabla = "Esculturas";
@@ -59,7 +61,7 @@
         /* JSON para devolver */
         if($typeObject == "sculpture")
             $response = array('cronologia'=>$cronologia, 'tecnica'=>$tecnica, 'info'=>$info, 'AnchoPx'=>$AnchoPx, 'AltoPx'=>$AltoPx);
-        else if($typeObject == "sculpture"){
+        else{
             $Alto = $array["Alto"];
             $Largo = $array["Largo"];
             $response = array('cronologia'=>$cronologia, 'tecnica'=>$tecnica, 'info'=>$info, 'AnchoPx'=>$AnchoPx, 'AltoPx'=>$AltoPx, 'Alto'=>$Alto, 'Largo'=>$Largo);

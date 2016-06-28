@@ -112,7 +112,7 @@ function guardarPathJSON( pathJson ){
     xmlhttp.open("GET", "../php/savePathJSON.php?pathJson=" + pathJson, false);
     xmlhttp.send();
 
-    location.href = '../index.php';
+    location.href = '../editor.php';
 }
 
 function cargarEscenarioCanvas(pathJson){

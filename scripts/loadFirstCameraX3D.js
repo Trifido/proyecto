@@ -134,7 +134,7 @@ function loadVRX3D() {
     div.innerHTML = textoX3D;
 
     x3dom.reload();
-    cargarEscenarioVRX3D();
+    //cargarEscenarioVRX3D();
 };
 
 

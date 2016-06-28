@@ -4,9 +4,9 @@ function JsonCamera(){
     interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
 
 	var text = '\"camera\" :{';
-	text += ' "x":' +  objdin.x + ',';
+	text += ' "x":' +  interpolador.getX() + ',';
 	text += ' "y":' +  objdin.y + ',';
-	text += ' "z":' +  objdin.z + ',';
+	text += ' "z":' +  interpolador.getZ() + ',';
 	text += ' "rotation":' +  objdin.rotation + ',';
 	text += ' "altura":' +  objdin.altura + ',';
 	text += ' "zancada":' +  objdin.zancada + ',';
@@ -83,9 +83,9 @@ function JsonSculpture(elemento){
 	interpolador.Interpolacion(parseInt(objdin.x),parseInt(objdin.z));
 
 	var text = '{ "nombre" : \"' + objdin.nombre +'\", ';
-	text += ' "x":' +  objdin.x + ',';
+	text += ' "x":' +  interpolador.getX() + ',';
 	text += ' "y":' +  objdin.y + ',';
-	text += ' "z":' +  objdin.z + ',';
+	text += ' "z":' +  interpolador.getZ() + ',';
 	text += ' "rotation":' +  objdin.rotation + ',';
 	text += ' "pedestalAncho":' +  objdin.pedestalAncho + ',';
 	text += ' "pedestalAlto":' +  objdin.pedestalAlto + ',';

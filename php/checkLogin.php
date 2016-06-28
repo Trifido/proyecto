@@ -21,8 +21,9 @@
 			$_SESSION['username'] = $username;
 			$_SESSION['start'] = time();
 			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+			$_SESSION["tipoEditor"] = "newScene";
 
-			echo "<script>location.href='../index.php'</script>";
+			echo "<script>location.href='../editor.php'</script>";
 			//header( "location: ../index.html");
 		}
 		else {

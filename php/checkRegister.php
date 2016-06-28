@@ -28,6 +28,7 @@
 			$_SESSION['username'] = $username;
 			$_SESSION['start'] = time();
 			$_SESSION['expire'] = $_SESSION['start'] + (5 * 60) ;
+			$_SESSION["tipoEditor"] = "newScene";
 
 			$carpetaIMG = '../uploads/IMG/' . $username;
 			$carpetaX3D = '../uploads/X3D/' . $username;
@@ -51,7 +52,7 @@
 			    mkdir($carpetaEXPO, 0777, true);
 			}
 			
-			header('Location: ../index.php');
+			header('Location: ../editor.php');
 		}
 		else{
 			$_SESSION['message'] = 'El campo contraseña está vacío.';

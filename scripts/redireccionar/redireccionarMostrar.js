@@ -42,3 +42,11 @@ function LoadEditarCuadro(){
 function LoadEditarSala(){
 	location.href = './opciones.php?seccion=editarSala';
 }
+
+function LoadLogin(){
+	location.href = './login.php';
+}
+
+function LoadRegister(){
+	location.href = './php/registrar.php';
+}

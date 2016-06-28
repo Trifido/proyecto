@@ -88,9 +88,9 @@
                     <li> 
                         <?php
                             if( $_SESSION['seccion'] != "editor" )
-                                echo '<a href="../index.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
+                                echo '<a href="../editor.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
                             else
-                                echo '<a href="./index.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
+                                echo '<a href="./editor.php"><i class="fa fa-pencil fa-fw"></i> Editor de Escenarios</a>';
                         ?>
                         
                     </li>
