@@ -1,3 +1,7 @@
+<!--
+    SOLO HAY QUE CAMBIAR LA LINEA 67, index_web enseña el visor normal e index_phone enseña el visor en VR
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +64,7 @@
         if ($detect->isMobile())
             include('./php/index_phone.php');
         else
-            include('./php/index_phone.php');
+            include('./php/index_phone.php');       //<----  ESTA LINEA CAMBIAR index_web.php por index_phone.php
     ?>
 
     <!-- Modal -->

@@ -44,7 +44,7 @@
     <!-- Scripts para montar escenario X3D -->
     <script type="text/javascript" src="x3dom/x3dom.js"></script>
     <link rel='stylesheet' type='text/css' href='x3dom/x3dom.css'>
-    
+
     <script  type="text/javascript" src="scripts/createX3DScene.js"></script>
     <script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
     <script  type="text/javascript" src="scripts/loadFirstCameraX3D.js"></script>

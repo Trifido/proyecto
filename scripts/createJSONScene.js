@@ -87,8 +87,8 @@ function JsonSculpture(elemento){
 	text += ' "y":' +  objdin.y + ',';
 	text += ' "z":' +  interpolador.getZ() + ',';
 	text += ' "rotation":' +  objdin.rotation + ',';
-	text += ' "pedestalAncho":' +  objdin.pedestalAncho + ',';
-	text += ' "pedestalAlto":' +  objdin.pedestalAlto + ',';
+	text += ' "pedestalAncho":' +  (objdin.pedestalAncho/100) + ',';
+	text += ' "pedestalAlto":' +  (objdin.pedestalAlto/100) + ',';
 	text += ' "pathX3D": \"' +  objdin.pathX3D + '\",';
 	text += ' "pathOBJ": \"' +  objdin.pathOBJ + '\"} ';
 
