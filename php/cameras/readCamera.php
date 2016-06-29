@@ -8,7 +8,7 @@
     $queryC = ' SELECT * FROM Camera WHERE idCamera = '.$idCamera;
     $queryP = ' SELECT * FROM Point WHERE idCamera = '.$idCamera.' ORDER BY idPoint ASC';
 
-    $db = sqlite_open(URL_DB.'/360DB.db');
+    $db = sqlite_open('../../database/360DB.db');
 
     /* Recoger datos camara */
     $resultC = sqlite_query($db, $queryC);

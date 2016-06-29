@@ -13,7 +13,7 @@
     $query = 'INSERT INTO Point (idPoint, idCamera, cX, cY, cZ, timePos) 
               VALUES ('.$idPoint.', '.$idCamera.', '.$cX.', '.$cY.', '.$cZ.', '.$timePos.')';
 
-    $db = sqlite_open(URL_DB.'/360DB.db');
+    $db = sqlite_open('../../database/360DB.db');
 
     sqlite_query($db, $query);
 

@@ -13,7 +13,7 @@
               cX = '.$cX.', cY = '.$cY.', cZ = '.$cZ.', duration = '.$duration.
               ' WHERE idCamera = '.$idCamera;
 
-    $db = sqlite_open(URL_DB.'/360DB.db');
+    $db = sqlite_open('../../database/360DB.db');
 
     sqlite_query($db, $query);
 

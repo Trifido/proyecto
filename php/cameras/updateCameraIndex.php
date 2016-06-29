@@ -12,7 +12,7 @@
     $query2 = 'UPDATE Point SET
               idCamera = '.$newIdCamera.' WHERE idCamera = '.$idCamera;
 
-    $db = sqlite_open(URL_DB.'/360DB.db');
+    $db = sqlite_open('../../database/360DB.db');
 
     sqlite_query($db, $query);
     sqlite_query($db, $query2);

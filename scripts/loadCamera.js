@@ -25,6 +25,11 @@ function loadNewCamera(){
             var variables = 'idCamera='+activeCameras;
 
             var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                console.log("Que pollas paaaasss\n"+xmlhttp.responseText);
+            }
+        };
             xmlhttp.open('GET', './php/cameras/createCamera.php?'+variables, true);
             xmlhttp.send();
 
