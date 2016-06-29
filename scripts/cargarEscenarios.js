@@ -238,7 +238,7 @@ function CargarVRMode(pathJson){
 function loadCameraVR(JSONEscenario){
 	texto= "";
 	texto += "<PointLight id=\'point\' on=\'TRUE\' intensity=\'0.9000\' color=\'0.9 0.9 0.9\' location=\'20 20 20\' radius=\'5000000\' ></PointLight>\n";
-	texto += "		<navigationInfo  avatarSize=\'0.01 0.15 0.15\' type=\'\"EXAMINE\" \"WALK\"\'></navigationInfo>\n";
+	texto += "		<navigationInfo headlight='true' avatarSize=\'0.01 0.15 0.15\' type=\'\"EXAMINE\" \"WALK\"\'></navigationInfo>\n";
 	//texto += "<navigationInfo headlight='true' avatarSize=\'" + 0.001 + " " + JSONEscenario.scene.camera.altura + " " + JSONEscenario.scene.camera.salto + "\' type='\"GAME\" speed=\"1\" transitiontime=\"1\" transitiontype=\"LINEAR\"'></navigationInfo>"
 	//texto += "<navigationInfo  headlight=\"false\" avatarSize=\'" + 0.1 + " " + JSONEscenario.scene.camera.altura + " " + JSONEscenario.scene.camera.salto + "\' type=\'\"walk\"\' speed=\"1\" transitiontime=\"1\" transitiontype=\"LINEAR\"></navigationInfo>\n";
 	texto += "<transform translation=\'0 0 0\' rotation=\'0 1 0 0\'>\n"; 

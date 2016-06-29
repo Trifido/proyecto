@@ -8,7 +8,7 @@ function JsonCamera(){
 	text += ' "y":' +  objdin.y + ',';
 	text += ' "z":' +  interpolador.getZ() + ',';
 	text += ' "rotation":' +  objdin.rotation + ',';
-	text += ' "altura":' +  objdin.altura + ',';
+	text += ' "altura":' +  (objdin.altura/1000) + ',';
 	text += ' "zancada":' +  objdin.zancada + ',';
 	text += ' "salto":' +  objdin.salto + '} ';
 

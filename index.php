@@ -64,7 +64,7 @@
         if ($detect->isMobile())
             include('./php/index_phone.php');
         else
-            include('./php/index_phone.php');       //<----  ESTA LINEA CAMBIAR index_web.php por index_phone.php
+            include('./php/index_web.php');       //<----  ESTA LINEA CAMBIAR index_web.php por index_phone.php
     ?>
 
     <!-- Modal -->
