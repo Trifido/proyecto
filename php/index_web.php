@@ -6,7 +6,6 @@
         public $pathJson;
     };
 
-    require_once './php/config.php';
     require_once './php/dbhandler.php';
 
     $db = sqlite_open('./database/tfgDB.db');

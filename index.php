@@ -42,7 +42,7 @@
     <link href="./css/style.css" rel="stylesheet" type='text/css' />
 
     <!-- Scripts para montar escenario X3D -->
-    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+    <script type='text/javascript' src='scripts/movieScripts/x3domMod.js'> </script>
     <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
     <script  type="text/javascript" src="scripts/createX3DScene.js"></script>
     <script  type="text/javascript" src="scripts/loadX3DScene.js"></script>

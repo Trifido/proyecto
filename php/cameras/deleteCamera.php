@@ -1,5 +1,4 @@
 <?php
-    require_once '../config.php';
     require_once '../dbhandler.php';
 
     $idCamera = $_GET['idCamera'];

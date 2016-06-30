@@ -1,5 +1,4 @@
-<?php  
-	require_once 'config.php';
+<?php
     require_once 'dbhandler.php';
 
 	$nombreUsuario = $_REQUEST["usuario"];

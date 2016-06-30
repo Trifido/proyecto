@@ -3,7 +3,6 @@
 	session_start();
 	$NombreCuadro = $_REQUEST["nameCuadro"];
 
-	require_once 'config.php';
     require_once 'dbhandler.php';
 
     $db = sqlite_open('../database/tfgDB.db');

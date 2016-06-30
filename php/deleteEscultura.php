@@ -3,7 +3,6 @@
 	session_start();
 	$nombreEscultura = $_REQUEST["nameEscultura"];
 
-	require_once 'config.php';
     require_once 'dbhandler.php';
 
     $db = sqlite_open('../database/tfgDB.db');

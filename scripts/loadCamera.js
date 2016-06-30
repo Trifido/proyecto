@@ -25,16 +25,14 @@ function loadNewCamera(){
             var variables = 'idCamera='+activeCameras;
 
             var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                console.log("Que pollas paaaasss\n"+xmlhttp.responseText);
-            }
-        };
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    // Cargar la camara recien creada
+                    loadCamera(activeCameras);
+                }
+            };
             xmlhttp.open('GET', './php/cameras/createCamera.php?'+variables, true);
             xmlhttp.send();
-
-        // Cargar la camara recien creada
-        loadCamera(activeCameras);
     }
 
     // HTML - Actualizar botones
@@ -102,27 +100,30 @@ function removeCamera( id ) {
     var variables = 'idCamera='+id;
 
     var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            updateCameraIndex( id ); //Acualizar los índices
+
+            activeCameras -= 1;
+            activePoints.splice( id-1 , 1 );
+
+            if (selectedCamera == id)
+                loadCamera(1);
+
+            if (activeCameras == 0) {
+                // Botones
+                $('#btnRemCamera').attr('disabled', 'disabled');
+                $('#btnAddPoint').attr('disabled', 'disabled');
+                $('#btnSubmit').attr('disabled', 'disabled');
+
+                $('#cameraForm').trigger("reset"); // Resetea el formulario entero
+
+                $('#noCameraAlert').css('display', ''); //Activar alerta
+            }
+        }
+    };
     xmlhttp.open('GET', './php/cameras/deleteCamera.php?'+variables, true);
     xmlhttp.send();
-    
-    updateCameraIndex( id ); //Acualizar los índices
-
-    activeCameras -= 1;
-    activePoints.splice( id-1 , 1 );
-
-    if (selectedCamera == id)
-        loadCamera(1);
-
-    if (activeCameras == 0) {
-        // Botones
-        $('#btnRemCamera').attr('disabled', 'disabled');
-        $('#btnAddPoint').attr('disabled', 'disabled');
-        $('#btnSubmit').attr('disabled', 'disabled');
-
-        $('#cameraForm').trigger("reset"); // Resetea el formulario entero
-
-        $('#noCameraAlert').css('display', ''); //Activar alerta
-    }
 }
 
 //Activa el borde en el carousel para la cámara activa

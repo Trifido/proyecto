@@ -1,6 +1,5 @@
 
 <?php
-	require_once '../config.php';
     require_once '../dbhandler.php';
 
 	session_start();

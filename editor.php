@@ -53,7 +53,7 @@
 	<script  type="text/javascript" src="scripts/interpolarCoords.js"></script>
 
 	<!-- Scripts para montar escenario X3D -->
-	<script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+	<script type='text/javascript' src='scripts/movieScripts/x3domMod.js'> </script> 
 	<link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
 	<script  type="text/javascript" src="scripts/createX3DScene.js"></script>
 	<script  type="text/javascript" src="scripts/loadX3DScene.js"></script>
@@ -69,7 +69,7 @@
 	<!-- Scripts Alba -->
     <script  type="text/javascript" src="scripts/showHideDiv.js"></script>
     <script  type="text/javascript" src="scripts/validation/validateCameraForm.js"></script>
-    <script  type="text/javascript" src="scripts/movieScript/movieScripts.js"></script>
+    <script  type="text/javascript" src="scripts/movieScripts/movieScripts.js"></script>
 
         <script  type="text/javascript" src="scripts/loadCamera.js"></script>
         <script  type="text/javascript" src="scripts/loadPoint.js"></script>
