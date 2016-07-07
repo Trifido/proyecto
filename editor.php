@@ -70,6 +70,8 @@
     <script  type="text/javascript" src="scripts/showHideDiv.js"></script>
     <script  type="text/javascript" src="scripts/validation/validateCameraForm.js"></script>
     <script  type="text/javascript" src="scripts/movieScripts/movieScripts.js"></script>
+	<script type="text/javascript" src="scripts/audioScripts/createWave.js"></script>
+	<script type="text/javascript" src="scripts/audioScripts/sendAudio.js"></script>
 
         <script  type="text/javascript" src="scripts/loadCamera.js"></script>
         <script  type="text/javascript" src="scripts/loadPoint.js"></script>
@@ -77,7 +79,6 @@
         <script  type="text/javascript" src="scripts/point.js"></script>
         <script  type="text/javascript" src="scripts/updateFileInfo.js"></script>
         <script  type="text/javascript" src="scripts/loadX3DScene360.js"></script>
-        <script type="text/javascript" src="scripts/audioScripts/createWave.js"></script>
             <!-- Scripts para WaveSurfer -->
             <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.57/plugin/wavesurfer.regions.min.js"></script>
@@ -283,7 +284,7 @@
                                 </li>
                                 <li><a href="#controlPoints-pills" data-toggle="tab">Puntos de Ruta</a> <!-- Alba -->
                                 </li>
-                                <li><a href="#cameraView-pills" data-toggle="tab" onclick="loadX3D360()">Vista de Cámara</a> <!-- Alba -->
+                                <li><a href="#cameraView-pills" data-toggle="tab" onclick="sendAudio();loadX3D360();">Vista de Cámara</a> <!-- Alba -->
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -365,16 +366,14 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                                           <button type="button" class="close"  onclick="stopAudio()" data-dismiss="modal" aria-hidden="true">
+														       <i class="fa fa-times"></i>
+														   </button>
                                                             <!-- Botones -->
                                                             <div class="text-center">
                                                                 <button type="button" class="btn btn-default btn-circle"
                                                                         onclick="startAnimation();">
                                                                     <i class="fa fa-play"></i>
-                                                                </button>
-                                                                <button type="button" class="btn btn-default btn-circle"
-                                                                        onclick="this.blur();">
-                                                                    <i class="fa fa-pause"></i>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default btn-circle"
                                                                         onclick="stopAnimation();">
