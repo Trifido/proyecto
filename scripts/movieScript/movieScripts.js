@@ -9,3 +9,7 @@ function stopAnimation() {
 
     $('#timeSensorCamera').attr('stopTime', time);
 }
+
+function stopAudio() {
+    $('#audioCamera').attr('enabled', 'false');
+}

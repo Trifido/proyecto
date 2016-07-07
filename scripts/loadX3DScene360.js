@@ -6,9 +6,9 @@ var orientationInterpolatorName = 'rotate_camera';
 var timeSensorName = 'time';
 
 function loadX3D360() {
-    if (activeCameras == 0 && activePoints[selectedCamera-1] == 0) { // Si no hay una cámara activa
-        //$('#sceneCamera').html('\n'); // Actualizar el contenido
-    }
+    if (activeCameras == 0 || activePoints[selectedCamera-1] == 0) { // Si no hay una cámara activa
+        console.log("Error: no hay cámaras o puntos de ruta.");
+	}
     else {
         var content = '';
 
@@ -23,6 +23,22 @@ function loadX3D360() {
         content += '\t<background DEF=\'bgnd\' backUrl=\'space.jpg\'></background>\n';
 
         content += initX3DScene();
+		
+		// Interaccion con la base de datos 
+        var xmlhttp = new XMLHttpRequest();
+        var audioPath;
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                audioPath = xmlhttp.responseText;
+                console.log("Ajax", xmlhttp.statusText);
+            }
+        };
+
+        xmlhttp.open('GET', './php/readAudio.php', false);
+        xmlhttp.send();
+        // -----------------------------------!
+        
+        content += '<AudioClip id="audioCamera" url="' + audioPath + '" loop="true" enabled="true"/>';
 
         content += '\t</scene>\n';
         content += '</x3d>\n';
