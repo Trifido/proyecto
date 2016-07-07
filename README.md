@@ -1,6 +1,9 @@
-## Web 3D-Scene Editor: Virtual Reality Exhibitions and 360-degree videos
+## Web 3D-Scene Editor
+#### Virtual Reality Exhibitions and 360-degree videos
 
-##### Alba Ríos Rodríguez y Vicente Martínez Rodríguez
+##### Authors: Ríos Rodríguez, Alba , Martínez Rodríguez, Vicente
+
+![Project Logo](http://i.imgur.com/qOO0QOZ.jpg)
 
 This work consists in the development of a Web-based system which allows museum managers to generate their own virtual 3D exhibitions, using a two-dimensional graphical user interface. These virtual 3D exhibitions can be displayed interactively in the museum's website, or as a inmersive experience in a virtual headset (e.g. Google CardBoard). 
 
